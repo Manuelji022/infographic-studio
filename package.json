@@ -6,9 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "node --env-file=.env.local node_modules/drizzle-kit/bin.cjs migrate"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
+    "better-auth": "^1.7.14",
+    "drizzle-orm": "^0.44.7",
     "eve": "^0.82.0",
     "next": "16.4.2",
     "react": "19.3.0",
@@ -18,9 +23,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.4",
     "eslint": "^9",
     "eslint-config-next": "16.4.2",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@10.14.0"
+  "packageManager": "pnpm@12.16.1"
 }
