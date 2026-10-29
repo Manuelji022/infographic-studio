@@ -1,6 +1,6 @@
 # Infographic Studio — Functional Spec
 
-> Estado: **borrador v0.6** · Última actualización: 2026-10-28
+> Estado: **borrador v0.9** · Última actualización: 2026-10-29
 > Documento principal del repositorio. Cualquier cambio de alcance o comportamiento debe reflejarse aquí primero.
 
 ---
@@ -91,7 +91,7 @@ La interfaz está **en español por defecto**, con un **toggle para cambiar a in
 
 **Por qué así:** si la validación vive en una tool, el agente se autocorrige antes de que veas un resultado roto. Y la BD queda como la única fuente de verdad que consume Next.js. Los borradores que no se conservan se limpian solos a los 7 días (cron de Vercel).
 
-**Requisito técnico:** la tool del agente y la app de Next comparten `DATABASE_URL` y el módulo `db/` (schema de Drizzle y validador). Hay que comprobar en M0 que el build de eve puede importar módulos de fuera de `agent/`. Si no puede, esos módulos se mueven a `agent/lib/` y la app los importa desde ahí.
+**Requisito técnico:** la tool del agente y la app de Next comparten `DATABASE_URL` y el módulo `db/` (schema de Drizzle y validador). Eve queda fuera de M0: en M3 hay que comprobar que el build de eve puede importar módulos de fuera de `agent/`. Si no puede, esos módulos se mueven a `agent/lib/` y la app los importa desde ahí.
 
 ---
 
@@ -455,7 +455,7 @@ Notas:
 
 - **Auth con Better Auth:** login con **Google** (OAuth) restringido a una **allowlist** con el email del propietario (`OWNER_EMAIL`). Un hook de Better Auth rechaza la creación de cualquier otro usuario. Sesiones en la BD con cookies `httpOnly`, `secure` y `sameSite=lax`.
 - **`proxy.ts`** (el antiguo `middleware` de Next 16) exige sesión en todo salvo `/s/*`, `/api/auth/*` y los assets estáticos (incluidas las fuentes del DS). No se usa Vercel Deployment Protection en producción porque bloquearía los enlaces compartidos.
-- **Canal eve:** `agent/channels/eve.ts` verifica la misma sesión de Better Auth con un `AuthFn` propio. Los invitados nunca llegan al agente.
+- **Canal eve (M3):** `agent/channels/eve.ts` verificará la misma sesión de Better Auth con un `AuthFn` propio. Los invitados nunca llegarán al agente.
 - **Enlaces compartidos:** el token se compara directamente en la BD y se comprueban `revoked_at` y `expires_at`. Cualquier fallo devuelve 404 genérico, sin distinguir "no existe" de "revocado". Llevan `noindex` y `Referrer-Policy: no-referrer`.
 - **Render aislado:** siempre `<iframe sandbox srcdoc>` sin `allow-scripts`, además de la validación de §5.5 y una CSP estricta en las vistas de infografía. Doble barrera.
 - **Datos:** los textos pegados se envían al proveedor del modelo vía AI Gateway y a ningún otro servicio. Los secretos (`DATABASE_URL`, `BETTER_AUTH_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`) solo en variables de entorno de Vercel.
@@ -493,10 +493,10 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 | --- | --- |
 | Hito | Contenido |
 | --- | --- |
-| M0 — Base | Mover el agente a `agent/`, `withEve` en Next, Neon + Drizzle + primera migración, Better Auth con Google y allowlist, `proxy.ts` y auth del canal eve. Infraestructura i18n (diccionarios + toggle). **Spike:** comprobar que eve puede importar `db/` y `design-system/` desde fuera de `agent/` con una tool mínima que lea de la BD. |
-| M1 — Design system | Tokens (escalas de 10 pasos y tokens semánticos, §6.2), temas claro y oscuro, fuentes autoalojadas, los 12 componentes ★ de la referencia, `manifest.ts`, validador compartido, página `/design-system` y la referencia reescrita en `examples/`. |
+| M0 — Base | Mover el agente a `agent/`, `withEve` en Next, Neon + Drizzle + primera migración (solo tablas de Better Auth; el esquema de la aplicación se crea en M2/M3), Better Auth con Google y allowlist, `proxy.ts` y login. Infraestructura i18n (diccionarios + toggle). Eve queda fuera de M0: el canal del agente y la spike de importación pasan a M3. **Cerrado el 2026-10-29** con dos pendientes trasladados a M1: prueba de rechazo de cuentas no propietarias y pruebas E2E del login. Las migraciones están aplicadas en la rama `dev`; `main` queda pendiente. |
+| M1 — Design system | Tokens (escalas de 10 pasos y tokens semánticos, §6.2), temas claro y oscuro, fuentes autoalojadas, los 12 componentes ★ de la referencia, `manifest.ts`, validador compartido, página `/design-system` y la referencia reescrita en `examples/`. Arrastre de M0: prueba E2E de que una cuenta no propietaria es rechazada por el hook de allowlist, y pruebas E2E del login y de la protección de rutas (`AGENTS.md`). |
 | M2 — Frontend | Biblioteca, búsqueda full-text multidioma con ranking y filtros, detalle, descargar/copiar/eliminar, compartir (`share_links`, `/s/[token]`, revocar, caducidad, Open Graph, `noindex`) y toggle de idioma. Se prueba con infografías de ejemplo, sin agente. |
-| M3 — Agente | Generar con `save_infographic` (validación y reintentos), renderer de borradores, conservar/descartar, refinar en la misma sesión, `save_translation` con *Traducir* y evals en ES y EN. |
+| M3 — Agente | Agente eve: canal con auth del propietario (`agent/channels/eve.ts`) y spike de importación de `db/` y `design-system/` desde fuera de `agent/` con una tool mínima que lea de la BD. Generar con `save_infographic` (validación y reintentos), renderer de borradores, conservar/descartar, refinar en la misma sesión, `save_translation` con *Traducir* y evals en ES y EN. |
 | M4 — Pulido | Componentes de datos restantes, evals en CI, cron de limpieza de borradores y aplicar el estilo visual definitivo cuando llegue. |
 
 ---
@@ -509,6 +509,7 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 | Agente | eve, en `agent/` en la raíz del repo |
 | Base de datos | PostgreSQL (Neon vía Vercel Marketplace) |
 | ORM | Drizzle |
+| Migraciones por etapa | M0 solo crea las tablas de Better Auth (`0000_auth_better_auth_tables`). El esquema de la aplicación (§7: `infographics`, `infographic_contents`, `share_links`) se añade en M2/M3, con migraciones nombradas por funcionalidad. Así no se crean tablas que todavía no se usan. |
 | Auth | Better Auth con Google, con allowlist de un único email |
 | Despliegue | Vercel, app y agente en el mismo proyecto |
 | Acceso | Solo el propietario; invitados únicamente por enlace compartido |
@@ -517,7 +518,7 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 | Idioma de la UI | Español por defecto, con toggle a inglés (también en la vista compartida) |
 | Idioma de las infografías | Se generan en el idioma del texto original (con opción de forzar ES/EN) y se traducen solo bajo demanda |
 | Referencia visual | Artifact *Los sacrificios ya están decididos* (estructura); el estilo definitivo llegará más adelante |
-| Orden de trabajo | Design system → frontend → agente, tras M0. El spike de importación del agente se hace en M0 para no descubrir el riesgo al final |
+| Orden de trabajo | Design system → frontend → agente, tras M0. El spike de importación del agente se hace al inicio de M3 para no descubrir el riesgo al final |
 | Color del DS | Estructura de escalas de 10 pasos con uso por paso y tokens semánticos, inspirada en Geist (sin copiar sus valores). Valores propios: defaults en v1, después los del propietario |
 
 ## 13. Preguntas abiertas
