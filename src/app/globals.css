@@ -32,6 +32,11 @@ body {
   margin: 0;
 }
 
+::selection {
+  background-color: var(--ds-accent);
+  color: var(--ds-on-accent);
+}
+
 a {
   color: inherit;
   text-decoration: none;
