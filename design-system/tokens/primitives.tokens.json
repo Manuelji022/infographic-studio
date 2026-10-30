@@ -109,6 +109,21 @@
       "$value": "#9db08f",
       "$type": "color",
       "$description": "The sage-light palette color."
+    },
+    "red": {
+      "$value": "#e2162a",
+      "$type": "color",
+      "$description": "The red palette color. Error signal; non-text use only (4.1:1 on canvas)."
+    },
+    "red-deep": {
+      "$value": "#d4132a",
+      "$type": "color",
+      "$description": "The red-deep palette color. Error text in the light theme (4.6:1 on canvas)."
+    },
+    "red-light": {
+      "$value": "#ff6b78",
+      "$type": "color",
+      "$description": "The red-light palette color. Error text in the dark theme (6.7:1 on canvas)."
     }
   },
   "font": {

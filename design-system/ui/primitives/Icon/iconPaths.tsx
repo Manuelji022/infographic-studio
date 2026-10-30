@@ -29,8 +29,8 @@ export const paths: Record<IconName, ReactNode> = {
   ),
   alert: (
     <>
-      <path d="M12 4 3 20h18L12 4Z" />
-      <path d="M12 10v4m0 3v.01" />
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7.5v5.5m0 3v.01" />
     </>
   ),
   link: (

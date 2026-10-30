@@ -3,6 +3,7 @@
 import type { ComponentProps, ReactNode } from "react";
 import { Button } from "../../primitives/Button";
 import { Callout } from "../../primitives/Callout";
+import { ErrorMessage } from "../ErrorMessage";
 import { Field } from "../../primitives/Field";
 import { Icon } from "../../primitives/Icon";
 import { Input } from "../../primitives/Input";
@@ -37,6 +38,14 @@ export type PromptComposerLabels = {
   submitting: string;
 };
 
+export type PromptComposerError = {
+  message: ReactNode;
+  /** Concrete recovery action, for example "Try again". */
+  action?: { label: string; onClick: () => void };
+  /** Stable ID of a system error, shown inside a collapsed <details>. */
+  reference?: { summary: string; id: string };
+};
+
 export type PromptComposerProps = Omit<
   ComponentProps<"form">,
   "onSubmit" | "onChange" | "children"
@@ -47,7 +56,7 @@ export type PromptComposerProps = Omit<
   labels: PromptComposerLabels;
   themeOptions: Array<{ value: string; label: string }>;
   status?: "idle" | "submitting";
-  error?: ReactNode;
+  error?: PromptComposerError;
   warnAt?: number;
 };
 
@@ -141,7 +150,11 @@ export function PromptComposer({
           </Field>
         </div>
       </details>
-      {error != null && <Callout role="alert">{error}</Callout>}
+      {error ? (
+        <ErrorMessage size="small" action={error.action} reference={error.reference}>
+          {error.message}
+        </ErrorMessage>
+      ) : null}
       <div className={styles.actions}>
         <Button
           variant="accent"

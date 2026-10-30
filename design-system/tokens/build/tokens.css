@@ -23,6 +23,9 @@
   --ds-color-taupe-light: #b89580;
   --ds-color-sage: #6f8266;
   --ds-color-sage-light: #9db08f;
+  --ds-color-red: #e2162a;
+  --ds-color-red-deep: #d4132a;
+  --ds-color-red-light: #ff6b78;
   --ds-font-serif: "Source Serif 4", ui-serif, Georgia, serif;
   --ds-font-sans: Geist, system-ui, sans-serif;
   --ds-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;

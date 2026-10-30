@@ -13,3 +13,22 @@
   border-color: var(--ds-data-3);
   background: var(--ds-surface-feature);
 }
+
+.danger {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ds-spacing-8);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ds-danger-text);
+  font-family: var(--ds-type-ui-sm-family);
+  font-size: var(--ds-type-ui-sm-size);
+  font-weight: var(--ds-type-ui-sm-weight);
+  line-height: var(--ds-type-ui-sm-leading);
+}
+
+.dangerIcon {
+  flex: none;
+  margin-top: var(--ds-spacing-4);
+}

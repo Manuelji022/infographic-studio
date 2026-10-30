@@ -7,7 +7,7 @@
   display: flex;
   align-items: flex-start;
   gap: var(--ds-spacing-8);
-  color: var(--ds-text);
+  color: var(--ds-danger-text);
 }
 
 .errorIcon {
@@ -15,7 +15,7 @@
   width: var(--ds-spacing-16);
   height: var(--ds-spacing-16);
   fill: none;
-  stroke: var(--ds-accent-hover);
+  stroke: var(--ds-danger-text);
   stroke-linecap: round;
   stroke-width: 1.5;
 }

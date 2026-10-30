@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { CatalogSectionProps } from "../types";
 import { Button } from "../../ui/primitives/Button";
 import { EmptyState } from "../../ui/composites/EmptyState";
+import { ErrorMessage } from "../../ui/composites/ErrorMessage";
 import { ErrorState } from "../../ui/composites/ErrorState";
 import { GenerationProgress } from "../../ui/composites/GenerationProgress";
 import styles from "./ProgressAndStatesSection.module.css";
@@ -39,7 +40,12 @@ const copy = {
     errorTitle: "No se pudo generar la infografía",
     errorDescription: "Se produjo un problema durante la generación.",
     retry: "Reintentar",
-    detail: "Código de error: GEN-042 · Tiempo de espera agotado",
+    detail: "req_8f3a21c9",
+    detailLabel: "Mostrar referencia",
+    msgTitle: "Mensajes de error", msgDefault: "Ese correo ya está en uso.",
+    msgLabel: "Correo", msgNext: "Usa otro correo o inicia sesión.",
+    msgAction: "Reintentar", msgLink: "Contactar con soporte",
+    msgSmall: "Pequeño", msgLarge: "Grande",
     simpleErrorTitle: "No se pudo cargar el contenido",
     simpleErrorDescription: "Comprueba la conexión e inténtalo de nuevo.",
     retryCount: (count: number) => `Reintentado ${count} veces`,
@@ -74,7 +80,12 @@ const copy = {
     errorTitle: "Could not generate the infographic",
     errorDescription: "A problem occurred during generation.",
     retry: "Retry",
-    detail: "Error code: GEN-042 · Request timed out",
+    detail: "req_8f3a21c9",
+    detailLabel: "Show reference",
+    msgTitle: "Error messages", msgDefault: "That email address is already in use.",
+    msgLabel: "Email", msgNext: "Use another email or sign in.",
+    msgAction: "Try again", msgLink: "Contact support",
+    msgSmall: "Small", msgLarge: "Large",
     simpleErrorTitle: "Could not load content",
     simpleErrorDescription: "Check your connection and try again.",
     retryCount: (count: number) => `Retried ${count} times`,
@@ -197,6 +208,7 @@ export function ProgressAndStatesSection({ locale }: CatalogSectionProps) {
             description={c.errorDescription}
             retryLabel={c.retry}
             detail={c.detail}
+            detailLabel={c.detailLabel}
             onRetry={() => setRetries((count) => count + 1)}
           />
           <p className="ds-type-caption">{c.retryCount(retries)}</p>
@@ -212,6 +224,22 @@ export function ProgressAndStatesSection({ locale }: CatalogSectionProps) {
           />
           <p className="ds-type-caption">{c.retryCount(retries)}</p>
         </section>
+      </div>
+      <h3 className="ds-type-title">{c.msgTitle}</h3>
+      <div className={styles.stack}>
+        <ErrorMessage size="small">{c.msgDefault}</ErrorMessage>
+        <ErrorMessage>{c.msgDefault}</ErrorMessage>
+        <ErrorMessage size="large">{c.msgDefault}</ErrorMessage>
+        <ErrorMessage label={c.msgLabel} description={c.msgNext}>{c.msgDefault}</ErrorMessage>
+        <ErrorMessage
+          label={c.msgLabel}
+          description={c.msgNext}
+          action={{ label: c.msgAction, onClick: () => setRetries((count) => count + 1) }}
+          link={{ label: c.msgLink, href: "#" }}
+          reference={{ summary: c.detailLabel, id: c.detail }}
+        >
+          {c.msgDefault}
+        </ErrorMessage>
       </div>
     </div>
   );

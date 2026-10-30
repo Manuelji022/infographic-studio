@@ -100,5 +100,15 @@
       "$type": "color",
       "$description": "Theme light data color 6."
     }
+  },
+  "danger": {
+    "$value": "{color.red}",
+    "$type": "color",
+    "$description": "Theme light danger color. Borders and icons only, never text."
+  },
+  "danger-text": {
+    "$value": "{color.red-deep}",
+    "$type": "color",
+    "$description": "Theme light danger-text color. Error messages and their icon."
   }
 }

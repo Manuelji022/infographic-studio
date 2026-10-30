@@ -23,6 +23,7 @@ export * from "./primitives/VisuallyHidden";
 export * from "./composites/AppHeader";
 export * from "./composites/ConfirmDialog";
 export * from "./composites/EmptyState";
+export * from "./composites/ErrorMessage";
 export * from "./composites/ErrorState";
 export * from "./composites/FilterBar";
 export * from "./composites/GenerationProgress";

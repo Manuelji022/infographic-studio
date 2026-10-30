@@ -1,9 +1,7 @@
 "use client";
 
 import type { ComponentProps } from "react";
-import { Button } from "../../primitives/Button";
-import { Icon } from "../../primitives/Icon";
-import { Text } from "../../primitives/Text";
+import { ErrorMessage } from "../ErrorMessage";
 import styles from "./ErrorState.module.css";
 
 export type ErrorStateProps = Omit<ComponentProps<"div">, "title"> & {
@@ -11,7 +9,11 @@ export type ErrorStateProps = Omit<ComponentProps<"div">, "title"> & {
   description?: string;
   retryLabel: string;
   onRetry: () => void;
+  /** Stable ID of a system error (request ID, trace ID); shown inside a collapsed <details>. */
   detail?: string;
+  detailLabel?: string;
+  /** Move focus to the retry button (full-page route errors). */
+  autoFocusRetry?: boolean;
 };
 
 export function ErrorState({
@@ -20,18 +22,23 @@ export function ErrorState({
   retryLabel,
   onRetry,
   detail,
+  detailLabel,
+  autoFocusRetry = false,
   className,
   ...props
 }: ErrorStateProps) {
   return (
-    <div role="alert" className={`${styles.state}${className ? ` ${className}` : ""}`} {...props}>
-      <Icon name="alert" className={styles.icon} />
-      <Text as="h2" variant="title">{title}</Text>
-      {description ? <Text variant="body-sm" tone="muted">{description}</Text> : null}
-      {detail ? <Text as="code" variant="code" className={styles.detail}>{detail}</Text> : null}
-      <div className={styles.action}>
-        <Button variant="outline" onClick={onRetry}>{retryLabel}</Button>
-      </div>
+    <div {...props} className={`${styles.state}${className ? ` ${className}` : ""}`}>
+      <ErrorMessage
+        size="large"
+        live="assertive"
+        description={description}
+        action={{ label: retryLabel, onClick: onRetry }}
+        reference={detail && detailLabel ? { summary: detailLabel, id: detail } : undefined}
+        focusAction={autoFocusRetry}
+      >
+        {title}
+      </ErrorMessage>
     </div>
   );
 }

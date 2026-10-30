@@ -136,6 +136,22 @@ const contrastPairs = [
     kind: 'NON-TEXT',
     note: 'Focus indicator on deep surface.',
   },
+  ...['canvas', 'surface'].map((background) => ({
+    id: `danger-text-on-${background}`,
+    foreground: 'danger-text',
+    background,
+    minRatio: 4.5,
+    kind: 'TEXT',
+    note: `Error message text on ${background}.`,
+  })),
+  ...['canvas', 'surface'].map((background) => ({
+    id: `danger-on-${background}`,
+    foreground: 'danger',
+    background,
+    minRatio: 3,
+    kind: 'NON-TEXT',
+    note: `Danger signal (borders, icons) on ${background}.`,
+  })),
   ...Array.from({ length: 6 }, (_, index) => {
     const dataToken = `data.${index + 1}`;
     return [

@@ -28,7 +28,7 @@
 }
 
 .control[aria-invalid="true"] {
-  border: 2px solid var(--ds-accent-hover);
+  border: 2px solid var(--ds-danger);
   padding: calc(var(--ds-spacing-12) - 1px)
     calc(var(--ds-spacing-16) - 1px);
 }

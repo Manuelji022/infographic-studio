@@ -18,6 +18,7 @@ const copy = {
     loading: "Cargando…",
     hidden: "El icono incluye un nombre accesible solo para lectores de pantalla.",
     callout: "Avisos", note: "Nota informativa", highlight: "Contenido destacado",
+    danger: "No se pudo completar la acción.",
     state: "El foco y el hover se aprecian al interactuar con elementos enfocables.",
   },
   en: {
@@ -30,6 +31,7 @@ const copy = {
     loading: "Loading…",
     hidden: "The icon has an accessible name available only to screen readers.",
     callout: "Callouts", note: "Informational note", highlight: "Highlighted content",
+    danger: "The action could not be completed.",
     state: "Focus and hover are visible when interacting with focusable elements.",
   },
 };
@@ -96,6 +98,7 @@ export function SurfacesAndFeedbackSection({ locale }: CatalogSectionProps) {
       <div className={styles.stack}>
         <Callout>{c.note}</Callout>
         <Callout variant="highlight">{c.highlight}</Callout>
+        <Callout variant="danger" role="alert">{c.danger}</Callout>
         <Card><Callout variant="highlight">{c.sample}</Callout></Card>
       </div>
       <p className="ds-type-caption-medium">{c.state}</p>

@@ -105,6 +105,13 @@ try {
     fs.writeFileSync(process.env.SHOT_DIR ? path.join(process.env.SHOT_DIR, 'composer-options-open.png') : path.join(os.tmpdir(), 'composer-options-open.png'), Buffer.from(r.result.data, 'base64'));
   });
 
+  // ---- ErrorMessage inside the composer error demo
+  const errBox = `document.querySelector('#composer form:has([aria-live=polite] svg) [aria-live=polite]:has(details)')`;
+  check('error shows retry action and collapsed reference', (await evaluate(`!!${errBox}?.querySelector('button')`)) &&
+    !(await evaluate(`${errBox}.querySelector('details').open`)));
+  await evaluate(`${errBox}.querySelector('summary').click()`);
+  check('reference opens and shows the ID', /req_/.test(await evaluate(`${errBox}.querySelector('code').textContent`)));
+
   // ---- ShareDialog: copy link
   await evaluate(`[...document.querySelectorAll('#dialogs button')].find((b) => /con enlace|with link/i.test(b.textContent)).click()`);
   await sleep(400);

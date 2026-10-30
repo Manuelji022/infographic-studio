@@ -13,7 +13,7 @@ Formulario controlado para redactar una solicitud y configurar opciones de salid
 | `labels` | `PromptComposerLabels` | Requerido | Etiquetas, mensajes y nombres de las opciones de idioma. |
 | `themeOptions` | `Array<{ value: string; label: string }>` | Requerido | Temas disponibles. |
 | `status` | `"idle" \| "submitting"` | `"idle"` | Estado de envío. |
-| `error` | `ReactNode` | — | Mensaje de error anunciado como alerta. |
+| `error` | `{ message; action?; reference? }` | — | Error de envío con `ErrorMessage` pequeño: mensaje, acción de reintento y referencia opcional. |
 | `warnAt` | `number` | `30000` | Umbral de caracteres para mostrar el aviso. |
 | Props nativas | `ComponentProps<"form">` sin `onSubmit`, `onChange` ni `children` | — | Atributos nativos del formulario. |
 
@@ -30,7 +30,7 @@ en este último estado muestra el indicador y el texto proporcionado.
 
 ## Accesibilidad
 Los controles usan `Field` con etiquetas asociadas; el contador se anuncia con
-`aria-live="polite"` y el error con `role="alert"`. Las opciones usan disclosure
+`aria-live="polite"` y el error en una región `aria-live="polite"`. Las opciones usan disclosure
 nativo. El botón refleja los estados de envío y texto vacío mediante `disabled`.
 
 ## Cuándo usarlo y cuándo no

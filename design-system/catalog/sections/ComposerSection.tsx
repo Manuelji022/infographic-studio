@@ -24,7 +24,8 @@ const copy = {
     outputLanguageLabel: "Idioma de salida",
     outputLanguageOptions: { original: "Idioma original", es: "Español", en: "Inglés" },
     submit: "Generar infografía", submitting: "Generando…",
-    error: "No se pudo generar la infografía. Inténtalo de nuevo.",
+    error: "No se pudo generar la infografía.",
+    retry: "Reintentar", refSummary: "Mostrar referencia",
     themes: ["Editorial", "Datos", "Minimal"],
     sample:
       "Las ciudades están creciendo con rapidez. " +
@@ -49,7 +50,8 @@ const copy = {
     outputLanguageLabel: "Output language",
     outputLanguageOptions: { original: "Original language", es: "Spanish", en: "English" },
     submit: "Generate infographic", submitting: "Generating…",
-    error: "The infographic could not be generated. Please try again.",
+    error: "Failed to generate the infographic.",
+    retry: "Try again", refSummary: "Show reference",
     themes: ["Editorial", "Data", "Minimal"],
     sample:
       "Cities are growing rapidly. Public transport connects neighborhoods and jobs. " +
@@ -134,7 +136,11 @@ export function ComposerSection({ locale }: CatalogSectionProps) {
         onSubmit={() => {}}
         labels={labels}
         themeOptions={themeOptions}
-        error={c.error}
+        error={{
+          message: c.error,
+          action: { label: c.retry, onClick: () => {} },
+          reference: { summary: c.refSummary, id: "req_8f3a21c9" },
+        }}
       />
       <h3 className="ds-type-title">{c.warningState}</h3>
       <p className="ds-type-caption">{c.warningCaption}</p>

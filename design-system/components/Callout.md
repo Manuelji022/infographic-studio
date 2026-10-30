@@ -6,7 +6,7 @@ Componente reutilizable de superficies y feedback.
 ## API
 | Prop | Tipo | Default | Descripción |
 |---|---|---|---|
-| variant | string | — | Variante visual. |
+| variant | `"note" \| "highlight" \| "danger"` | `"note"` | Variante visual. `danger` muestra un icono de alerta y el mensaje en rojo (`--ds-danger-text`), sin fondo ni borde, como el componente de error de Geist. Úsalo con `role="alert"`. |
 | children | ReactNode | — | Contenido accesible. |
 
 ## Variantes y estados
