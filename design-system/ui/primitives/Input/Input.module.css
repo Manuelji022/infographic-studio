@@ -1,0 +1,32 @@
+.control {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-button-outlined);
+  padding: var(--ds-spacing-12) var(--ds-spacing-16);
+  background: var(--ds-surface);
+  color: var(--ds-text);
+  font: inherit;
+}
+
+.control::placeholder {
+  color: var(--ds-text-muted);
+}
+
+.control:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.control:disabled {
+  border-color: var(--ds-border);
+  background: var(--ds-surface-deep);
+  color: var(--ds-text-muted);
+  cursor: not-allowed;
+}
+
+.control[aria-invalid="true"] {
+  border: 2px solid var(--ds-accent-hover);
+  padding: calc(var(--ds-spacing-12) - 1px)
+    calc(var(--ds-spacing-16) - 1px);
+}

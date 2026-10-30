@@ -1,0 +1,35 @@
+.card {
+  border-radius: var(--ds-radius-card);
+  padding: var(--ds-card-padding);
+  color: var(--ds-text);
+}
+
+.surface {
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+}
+
+.feature {
+  background: var(--ds-surface-feature);
+}
+
+.deep {
+  background: var(--ds-surface-deep);
+}
+
+.inverse {
+  background: var(--ds-surface-inverse);
+  color: var(--ds-text-inverse);
+}
+
+.part {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-16);
+}
+.footer {
+  border-top: 1px solid var(--ds-border);
+  margin-top: var(--ds-spacing-16);
+  padding-top: var(--ds-spacing-16);
+}
+.inverse .footer { border-color: color-mix(in srgb, var(--ds-text-inverse) 35%, transparent); }

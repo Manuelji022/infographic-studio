@@ -1,0 +1,36 @@
+.dialog {
+  box-sizing: border-box;
+  width: min(32rem, calc(100% - var(--ds-spacing-32)));
+  padding: 0;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-card);
+  background: var(--ds-surface);
+  color: var(--ds-text);
+}
+
+.dialog::backdrop {
+  background: color-mix(in srgb, var(--ds-text) 40%, transparent);
+}
+
+.panel {
+  padding: var(--ds-card-padding);
+}
+
+.header {
+  margin-bottom: var(--ds-spacing-16);
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.body {
+  min-width: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ds-spacing-12);
+  margin-top: var(--ds-spacing-24);
+}

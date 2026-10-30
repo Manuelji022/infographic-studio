@@ -1,0 +1,52 @@
+.root {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.control {
+  box-sizing: border-box;
+  width: 100%;
+  appearance: none;
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-button-outlined);
+  padding: var(--ds-spacing-12) var(--ds-spacing-32)
+    var(--ds-spacing-12) var(--ds-spacing-16);
+  background: var(--ds-surface);
+  color: var(--ds-text);
+  font: inherit;
+}
+
+.control:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.control:disabled {
+  border-color: var(--ds-border);
+  background: var(--ds-surface-deep);
+  color: var(--ds-text-muted);
+  cursor: not-allowed;
+}
+
+.control[aria-invalid="true"] {
+  border: 2px solid var(--ds-accent-hover);
+  padding: calc(var(--ds-spacing-12) - 1px)
+    calc(var(--ds-spacing-32) - 1px) calc(var(--ds-spacing-12) - 1px)
+    calc(var(--ds-spacing-16) - 1px);
+}
+
+.chevron {
+  position: absolute;
+  top: 50%;
+  right: var(--ds-spacing-12);
+  width: var(--ds-spacing-16);
+  height: var(--ds-spacing-16);
+  transform: translateY(-50%);
+  fill: none;
+  stroke: var(--ds-text-muted);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+  pointer-events: none;
+}
