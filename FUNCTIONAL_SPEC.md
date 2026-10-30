@@ -1,6 +1,6 @@
 # Infographic Studio — Functional Spec
 
-> Estado: **borrador v0.10** · Última actualización: 2026-10-30
+> Estado: **borrador v0.11** · Última actualización: 2026-10-30 (M1b cerrado; siguiente: M2)
 > Documento principal del repositorio. Cualquier cambio de alcance o comportamiento debe reflejarse aquí primero.
 
 ---
@@ -51,7 +51,9 @@ La interfaz está **en español por defecto**, con un **toggle para cambiar a in
 │  /              Generar          (privado)                           │
 │  /library       Biblioteca       (privado)                           │
 │  /i/[id]        Detalle          (privado)                           │
-│  /design-system Catálogo vivo    (privado)                           │
+│  /design-system Catálogo: tokens, infografía y ejemplos (privado)    │
+│  /components    Catálogo de componentes de UI (privado)              │
+│  /charts        Catálogo de gráficos (privado)                       │
 │  /s/[token]     Vista compartida (público, solo lectura)             │
 │                                                                      │
 │  Toggle ES/EN (cookie `locale`) · Better Auth (/api/auth/*)          │
@@ -224,7 +226,7 @@ Prioridad: **P0** = imprescindible para v1 · **P1** = deseable en v1 · **P2** 
 - Solo puede usar elementos HTML de una allowlist y **clases del design system** (prefijo `ig-`). El agente **no escribe SVG**.
 - No lleva `<style>` propio. El atributo `style` solo se admite para pasar datos mediante custom properties del DS (`style="--ig-value: 42"`).
 - Los gráficos de la librería (§6.5) se insertan con un **hueco** `ig-chart` que apunta por id a un spec de `charts`. El agente nunca calcula coordenadas ni escalas.
-- Nunca se inventan datos. Cada número visible debe estar en `keyData` con su `sourceQuote`.
+- Nunca se inventan datos. Cada número visible en el HTML debe estar en `keyData` con su `sourceQuote`. Los valores de los gráficos no se duplican en `keyData`: los respalda el `sourceQuote` de su spec (por serie o por gráfico, §6.5).
 - Pie obligatorio (componente `ig-footer`) con la fuente y la fecha.
 
 ### 5.5 Validación (determinista, dentro de la tool)
@@ -233,7 +235,7 @@ Prioridad: **P0** = imprescindible para v1 · **P1** = deseable en v1 · **P2** 
 - Parseo del HTML: allowlist de etiquetas y atributos; nada de `<script>`, `<style>`, `on*`, `javascript:` ni URLs externas.
 - Todas las clases existen en el manifiesto del design system (§6.4).
 - `style` solo contiene custom properties `--ig-*` con valores numéricos o tokens válidos.
-- Cada `value` de `keyData` aparece en el HTML, y cada `sourceQuote` aparece en el texto original.
+- Cada `value` de `keyData` aparece en el HTML, y cada `sourceQuote` (de `keyData` y de los specs de `charts`) aparece en el texto original.
 - En traducciones: el número de `keyData` y sus valores numéricos normalizados coinciden con los del original, y lo mismo con los valores de cada spec de `charts`.
 - Cada spec de `charts` cumple el schema Zod de su tipo (§6.5). Cada hueco `ig-chart` del HTML apunta a un spec existente, y cada spec se usa al menos una vez.
 - Tamaño máximo del fragmento: 100 KB.
@@ -409,7 +411,7 @@ Cada componente define su marcado canónico, las variantes, las custom propertie
 ### 6.3 Render y exportación
 
 - La BD guarda el **fragmento** y los **specs de gráficos** por idioma, y la **versión del DS** con la que se creó (`ds_version`).
-- El renderer de Next.js (`buildDocument(fragmento, { locale, theme, dsVersion, embed, charts })`) monta el documento completo: `<!doctype html>` + `<html lang>` + CSS del DS en esa versión + `data-ds-theme` + fragmento dentro de `.ig-root`. Antes, sustituye cada hueco `ig-chart` por el SVG que genera la librería de gráficos (§6.5) a partir de su spec. Ese documento se inyecta en el iframe (`srcdoc`) en las vistas privada y compartida.
+- El renderer de Next.js (`buildDocument(fragmento, { locale, theme, dsVersion, embed, charts })`) monta el documento completo: `<!doctype html>` + `<html lang>` + CSS del DS en esa versión + `data-ds-theme` + fragmento dentro de `.ig-root`. Antes, `expandCharts` sustituye cada hueco `ig-chart` por el marcado estático (SVG + HTML) que genera la librería de gráficos (§6.5) a partir de su spec; si un hueco no tiene spec o un spec no es válido, el render falla. Ese documento se inyecta en el iframe (`srcdoc`) en las vistas privada y compartida.
 - **Descargar `.html`** produce el mismo documento con el CSS y las fuentes incrustados en base64, totalmente autocontenido.
 - Versionado semántico del DS. Un cambio *breaking* (renombrar o eliminar una clase) obliga a subir la versión mayor; las versiones anteriores del CSS se conservan para no romper infografías antiguas.
 
@@ -420,29 +422,35 @@ design-system/
 ├── fonts/            # woff2 + licencias + fonts.css
 ├── tokens/           # JSON DTCG (primitives, typography, semantic, themes/) y build/ (CSS generado)
 ├── ui/               # React: primitives/ y composites/
-├── infographic/      # components.css (ig-*), manifest.ts, validate.ts, render.ts
+├── infographic/      # components.css (ig-*), manifest.ts, validate.ts, render.ts, document.ts
+├── charts/           # librería de gráficos (§6.5): schema/, layout/, render/, css/, expand.ts
 ├── components/       # una ficha .md por componente: propósito, marcado, cuándo usarlo
-├── examples/         # infografías de referencia (ES y EN), reescritas con el DS
-├── catalog/          # secciones del catálogo vivo
-└── CHANGELOG.md
+├── examples/         # referencias: <nombre>.<locale>.html + <nombre>.charts.<locale>.json
+├── catalog/          # secciones de los catálogos vivos
+└── reports/          # artefactos de prueba (contraste, informes de gráficos)
 scripts/
 ├── build-tokens.mjs  # JSON → CSS, con --check de deriva
 ├── check-contrast.mjs
-└── sync-design-system-fonts.mjs
+├── sync-design-system-fonts.mjs
+└── dev/              # pruebas E2E sin runner (*-test.ts, *-check.ts) y capturas (shoot.mjs)
 ```
+
+El `CHANGELOG.md` previsto no se creó al cerrar M1 (Oleada 5 descartada); se creará con la primera versión que rompa compatibilidad. La estructura completa del repositorio está en `AGENTS.md`.
 
 - Los **JSON de `tokens/`** son la fuente de verdad de color, tipografía, espaciado y radios. `build-tokens.mjs` genera el CSS, resuelve los alias y falla si hay un alias roto, un valor inválido o falta una clave semántica en algún tema. Un comando de comprobación detecta CSS editado a mano. El CSS generado no se edita.
 - `infographic/manifest.ts` es la fuente de verdad del vocabulario de infografía. De él salen el validador (§5.5) y la skill del agente (`agent/skills/design-system.md`), que se regenera con un script para que nunca queden desincronizados.
 - `examples/` sirve como few-shot para el agente y como caso de regresión visual.
-- La página privada **`/design-system`** de la app es un catálogo vivo: muestra tokens, temas y cada componente (UI e infografía) en cada tema y en los dos idiomas, con datos de ejemplo.
+- Los **catálogos vivos** son privados y muestran cada pieza en los temas claro, oscuro y auto, y en los dos idiomas: `/design-system` (tokens, componentes `ig-*` y los ejemplos completos con sus gráficos expandidos), `/components` (UI de la app) y `/charts` (un ejemplo por tipo de gráfico).
 
 ### 6.5 Librería de gráficos
 
-Los gráficos que no se resuelven con HTML y CSS (`ig-bar-chart`) los dibuja una **librería determinista** a partir de specs JSON que escribe el agente. El plan de ejecución vive en `CHART_LIBRARY_PLAN.md`.
+Los gráficos que no se resuelven con HTML y CSS (`ig-bar-chart`) los dibuja una **librería determinista** a partir de specs JSON que escribe el agente. El plan de ejecución, el contrato v1 de los specs y las lecciones viven en `CHART_LIBRARY_PLAN.md`.
+
+**Estado (2026-10-30): implementada (M1b).** Los ocho tipos se renderizan con `renderChart`, `buildDocument({ charts })` expande los huecos en el iframe y en el export, y hay dos ejemplos completos en `design-system/examples/`. Falta lo que depende del agente (M3): la skill con las reglas de uso de cada tipo y la comprobación de los `sourceQuote` en `save_infographic`.
 
 **Decisiones (propietario, 2026-10-30):**
 
-- **Spec JSON → SVG.** El agente describe *qué* mostrar (tipo, series, categorías, valores, unidades, textos). La librería decide *cómo*: escalas, ejes, posiciones, colores y colocación de etiquetas. El agente nunca escribe SVG ni calcula coordenadas.
+- **Spec JSON → marcado estático.** El agente describe *qué* mostrar (tipo, series, categorías, valores, unidades, textos). La librería decide *cómo*: escalas, ejes, posiciones, colores y colocación de etiquetas. El agente nunca escribe SVG ni calcula coordenadas.
 - **Hueco en el fragmento.** El HTML lleva un marcador `ig-chart` que referencia un spec por id. El spec se guarda junto al fragmento (`charts`, §5.3, §7) y el renderer (§6.3) lo expande al servir o exportar. El validador nunca acepta SVG del agente, y un cambio de estilo de la librería se aplica a todos los gráficos sin regenerarlos.
 - **Estáticos.** Sin JavaScript, sin tooltips ni animación: todos los valores se leen como texto en el propio gráfico. El `.html` exportado sigue siendo autocontenido y el iframe mantiene el sandbox sin scripts.
 
@@ -463,7 +471,8 @@ Los gráficos que no se resuelven con HTML y CSS (`ig-bar-chart`) los dibuja una
 
 - Colores solo de `--ds-data-1…6` y tokens semánticos, en ambos temas. Más de seis categorías se agrupan por color o pasan a "Otros".
 - El texto encima de un color de datos debe cumplir AA. Si no lo cumple, la etiqueta va sobre una pastilla `--ds-surface` o fuera de la marca, como ya hace `ig-bar-chart`.
-- Cada SVG lleva `role="img"`, `<title>` y `<desc>`, y debajo una tabla de datos oculta visualmente para lectores de pantalla.
+- **Técnica:** geometría en SVG (proporción libre, trazo que no escala) y textos en HTML posicionado encima, para que el texto no encoja con el ancho. Las etiquetas se deciden para varias bandas de ancho y una *container query* muestra la que toca, sin JavaScript.
+- Cada gráfico es una `<figure>` con título (`h3`) y descripción; el área del gráfico lleva `role="img"` y `aria-labelledby` hacia ambos, y debajo hay una tabla de datos oculta visualmente para lectores de pantalla.
 - Números formateados con `Intl` según el idioma (I18N-07).
 - Se adaptan de 360 a 1200 px. En móvil se simplifican los ejes y se reduce el número de etiquetas, nunca se recortan valores.
 - Cada valor visible es trazable al texto original (§5.4).
@@ -472,7 +481,9 @@ Los gráficos que no se resuelven con HTML y CSS (`ig-bar-chart`) los dibuja una
 
 - **Contraste:** `check-contrast.mjs` calcula las razones WCAG de los pares texto/fondo y elemento/fondo de ambos temas y emite un informe reproducible; falla si algo no cumple AA.
 - **Reglas de estilo:** comprobaciones por `grep` de que no hay colores literales fuera de los primitivos, ni sombras, ni degradados, ni `!important`.
-- **Visual:** capturas del catálogo en claro y oscuro a 360 y 1280 px, revisadas a mano (`scripts/dev/shoot.mjs`).
+- **Visual:** capturas del catálogo en claro y oscuro a 360 y 1280 px, revisadas a mano (`scripts/dev/shoot.mjs`). Revisar también a anchos > 1280 px (la columna de página tiene 1280 px).
+- **Gráficos:** pruebas por tipo (`charts-*-test.ts`), contrato común y determinismo (`charts-render-test.ts`), informe HTML por tipo (`charts-report.ts`) y solapes, desbordes y recortes medidos en el DOM real de Chrome (`charts-layout-check.mjs`). El layout-check no ve texto sobre líneas ni gráficos mal diseñados: las capturas siguen siendo obligatorias.
+- **Documento y ejemplos:** `render-test.ts` (expansión de huecos, seguridad y tamaño) y `examples-check.ts` (pares ES/EN, specs, cobertura de componentes y documentos autocontenidos en los tres temas).
 - **E2E:** aplazadas. La Oleada 5 del plan del DS (Playwright, arrastre de M0) se descartó al cerrar M1 (§11).
 
 ---
@@ -581,7 +592,7 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 2. **Generar (`/`)** — área de texto y campos opcionales (tema e idioma de salida, "original" por defecto), *Generar*, progreso, previsualización, panel de datos clave y avisos, *Conservar / Refinar / Descartar*.
 3. **Biblioteca (`/library`)** — buscador, filtros, rejilla de tarjetas y estado vacío.
 4. **Detalle (`/i/[id]`)** — infografía en el idioma del toggle (o *Traducir* si no existe), metadatos, datos clave, texto original, *Compartir* (crear, copiar, revocar, caducidad, idioma por defecto), *Descargar*, *Copiar HTML*, *Refinar*, *Eliminar*.
-5. **Design system (`/design-system`)** — catálogo vivo de tokens, temas y componentes.
+5. **Catálogos (`/design-system`, `/components`, `/charts`)** — catálogos vivos de tokens, componentes `ig-*` con los ejemplos completos, componentes de UI y gráficos.
 6. **Vista compartida (`/s/[token]`)** — la infografía a pantalla completa con su pie y, si hay dos idiomas, un toggle ES/EN discreto. Nada más.
 
 ---
@@ -592,8 +603,8 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 | --- | --- | --- |
 | [x] | M0 — Base          | Mover el agente a `agent/`, `withEve` en Next, Neon + Drizzle + primera migración (solo tablas de Better Auth; el esquema de la aplicación se crea en M2/M3), Better Auth con Google y allowlist, `proxy.ts` y login. Infraestructura i18n (diccionarios + toggle). Eve queda fuera de M0: el canal del agente y la spike de importación pasan a M3. **Cerrado el 2026-10-29** con dos pendientes trasladados a M1: prueba de rechazo de cuentas no propietarias y pruebas E2E del login. Las migraciones están aplicadas en la rama `dev`; `main` queda pendiente. |
 | [x] | M1 — Design system | **Cerrado el 2026-10-30** sin la Oleada 5 del plan (E2E con Playwright y `CHANGELOG`), que el propietario descartó. Las pruebas E2E arrastradas de M0 quedan pendientes, sin hito asignado. Estilo editorial de papel cálido (§6). Tokens en JSON DTCG con generador propio y check de deriva, temas claro y oscuro (el oscuro, derivado, aprobado el 2026-10-30), informe de contraste AA, fuentes autoalojadas (**hechas**: Source Serif 4, Geist y Geist Mono), componentes de UI (primitivas y composites, incl. `PromptComposer`), los 12 componentes `ig-*` ★ con su `manifest.ts`, validador y renderer/exportación, página `/design-system` y la referencia reescrita en `examples/`. Plan por oleadas en `DESIGN_SYSTEM_PLAN.md`. Arrastre de M0: prueba E2E de que una cuenta no propietaria es rechazada por el hook de allowlist, y pruebas E2E del login y de la protección de rutas (Playwright; `AGENTS.md`). |
-| [ ] | M1b — Gráficos    | Librería de gráficos (§6.5): schemas Zod por tipo, renderer spec → SVG, hueco `ig-chart` en manifiesto, validador y `buildDocument`, fichas, ejemplos y sección del catálogo. Se prueba con specs de ejemplo, sin agente. Plan en `CHART_LIBRARY_PLAN.md`. |
-| [ ] | M2 — Frontend      | Biblioteca, búsqueda full-text multidioma con ranking y filtros, detalle, descargar/copiar/eliminar, compartir (`share_links`, `/s/[token]`, revocar, caducidad, Open Graph, `noindex`) y toggle de idioma. Se prueba con infografías de ejemplo, sin agente.                                                                                                                                                                                                                                                                                                       |
+| [x] | M1b — Gráficos    | **Cerrado el 2026-10-30.** Librería de gráficos (§6.5): schemas Zod de los 8 tipos, renderer determinista spec → SVG + HTML, hueco `ig-chart` en manifiesto y validador, `expandCharts` en `buildDocument` (iframe y export), fichas `ig-chart-*.md`, ejemplos `gasto-publico` y `pensiones` con specs, y catálogo `/charts` (sustituye a la sección "Gráficos" de `/design-system`, que solo enlaza a él). Probado con specs de ejemplo y sin agente. Plan, seguimiento y lecciones en `CHART_LIBRARY_PLAN.md`. |
+| [ ] | M2 — Frontend (**siguiente**) | Biblioteca, búsqueda full-text multidioma con ranking y filtros, detalle, descargar/copiar/eliminar, compartir (`share_links`, `/s/[token]`, revocar, caducidad, Open Graph, `noindex`) y toggle de idioma. Se prueba con infografías de ejemplo, sin agente.                                                                                                                                                                                                                                                                                                       |
 | [ ] | M3 — Agente        | Agente eve: canal con auth del propietario (`agent/channels/eve.ts`) y spike de importación de `db/` y `design-system/` desde fuera de `agent/` con una tool mínima que lea de la BD. Generar con `save_infographic` (validación y reintentos), renderer de borradores, conservar/descartar, refinar en la misma sesión, `save_translation` con *Traducir* y evals en ES y EN.                                                                                                                                                                                      |
 | [ ] | M4 — Pulido        | Componentes de texto restantes (`ig-quote`, `ig-key-points`), evals en CI, cron de limpieza de borradores y aplicar el estilo visual definitivo cuando llegue.                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
@@ -624,7 +635,11 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 | Textos en el DS | Los componentes de UI no llevan textos propios: los reciben por props y la i18n vive en la app |
 | E2E | Playwright cuando se retome; **aplazado** al cerrar M1 (2026-10-30) |
 | Salida estructurada del agente | Considerada y aplazada (§5.6): en v1 el HTML sigue siendo la fuente de verdad, salvo los gráficos |
-| Gráficos | Spec JSON validado con Zod → SVG determinista, insertado mediante un hueco `ig-chart` que expande el renderer. Estáticos, sin JS. Tipos: líneas, columnas, apiladas, donut, pictograma, dispersión, ranking y treemap (§6.5) |
+| Gráficos | Spec JSON validado con Zod → marcado estático determinista (SVG + HTML), insertado mediante un hueco `ig-chart` que expande el renderer. Estáticos, sin JS. Tipos: líneas, columnas, apiladas, donut, pictograma, dispersión, ranking y treemap (§6.5) |
+| Hueco de gráfico | `<div class="ig-chart" data-chart="id"></div>`, vacío; `data-chart` solo se admite en `ig-chart` (contrato v1, C9) |
+| Trazabilidad de gráficos | Un `sourceQuote` por serie o por gráfico dentro del spec; los valores no se duplican en `keyData` (C10) |
+| Treemap | Un solo periodo por gráfico (C4); si hace falta comparar años, pequeños múltiplos en el futuro |
+| Catálogo de gráficos | `/charts` (un ejemplo por tipo); `/design-system` enlaza a él y muestra los ejemplos completos |
 | Orden de trabajo | Design system → frontend → agente, tras M0. El spike de importación del agente se hace al inicio de M3 para no descubrir el riesgo al final |
 | Color del DS | Dos capas: primitivos de color (familia marfil/slate/arcilla) y tokens semánticos por tema. Sustituye a las escalas de 10 pasos de azul/gris del borrador anterior |
 
@@ -633,6 +648,6 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 1. **Modelo** del agente: se define más adelante.
 2. **Mínimos fluidos** de `display` (40 px) y `heading` (36 px): a validar a 360 px.
 3. **Crédito de Source Serif 4:** el paquete de Fontsource trae "Google Inc." como copyright, no la autoría original (Adobe). Decidir si se cita en una página de créditos.
-4. **Trazabilidad de los valores de los gráficos:** si cada valor de un spec debe estar también en `keyData` o si basta con un `sourceQuote` por serie dentro del propio spec.
-5. **Marcado del hueco `ig-chart`:** cómo referencia su spec. El validador hoy no admite atributos `data-*`; la opción prevista es permitir solo `data-chart` en `ig-chart`.
-6. **Treemap con varios periodos:** si hace falta comparar años, opciones estáticas (pequeños múltiplos de 2–3 años) frente a dejarlo fuera.
+4. **Pruebas E2E con runner:** las de M0 (rechazo de cuentas no propietarias, login y protección de rutas) siguen sin hito. Decidir si se instala Playwright en M2.
+
+Resueltas el 2026-10-30 (ver §12): trazabilidad de los gráficos, marcado del hueco `ig-chart` y treemap de un solo periodo.

@@ -2,7 +2,8 @@
 
 > Estado: **cerrado** · 2026-10-30
 > El propietario dio por concluido el design system tras la Oleada 4. La Oleada 5 (E2E con Playwright y cierre formal) **se descarta** y no forma parte de M1. Los cambios de alcance ya están en `FUNCTIONAL_SPEC.md` §6 y §11 (la spec manda; este plan es el "cómo").
-> Siguiente trabajo: la librería de gráficos para el agente (`FUNCTIONAL_SPEC.md` §6.5, plan en `CHART_LIBRARY_PLAN.md`).
+> Después del DS se hizo la librería de gráficos (M1b, **cerrada el 2026-10-30**, plan en `CHART_LIBRARY_PLAN.md`). Siguiente trabajo: **M2 — Frontend** (`FUNCTIONAL_SPEC.md` §11).
+> Este plan queda como registro histórico. La estructura actual de carpetas está en `AGENTS.md` (sección *Repository layout*); el árbol de §4 refleja lo previsto en M1.
 > Convención: `[ ]` pendiente · `[~]` en curso · `[x]` hecho y revisado.
 
 ---
@@ -73,8 +74,8 @@ design-system/
 │   └── render.ts                  # buildDocument(): fragmento → documento / export
 ├── components/                    # fichas .md por componente (propósito, marcado, cuándo usarlo)
 ├── examples/                      # infografías de referencia (ES y EN)
-├── catalog/                       # secciones del catálogo vivo (/design-system)
-└── CHANGELOG.md
+├── catalog/                       # secciones de los catálogos vivos (/design-system, /components, /charts)
+└── CHANGELOG.md                   # no se creó (Oleada 5 descartada)
 scripts/
 ├── build-tokens.mjs               # JSON → CSS (+ check de deriva)
 ├── check-contrast.mjs             # informe AA de ambos temas
@@ -333,8 +334,9 @@ El propietario aprueba explícitamente: tema oscuro (**aprobado 2026-10-30**), p
 ## 10. Riesgos abiertos
 
 - **Paleta de datos cálida (D2):** pocos tonos distinguibles en la familia tierra; riesgo de gráficos poco legibles o con poco contraste. Mitigación: validar `--ds-data-*` con el script de contraste y sobre capturas de ejemplos reales.
+- **Alineación con la columna de página:** la barra del catálogo no seguía `--ds-page-max-width` y a 1280 px coincidía por casualidad (corregido en M1b, 3.F). Toda pieza a ancho completo debe alinear su contenido con esa columna.
 - ~~Tema oscuro derivado~~ (aprobado el 2026-10-30; la referencia no define uno, se revisará si aparecen problemas en pantallas reales).
-- **Peso de la fuente serif en exportación:** ~122 KB (≈ 165 KB en base64). Si pesa demasiado, versión solo `wght` (51 KB).
+- **Peso de la fuente serif en exportación:** ~122 KB (≈ 165 KB en base64). Si pesa demasiado, versión solo `wght` (51 KB). Medido en M1b: un documento autocontenido pesa 273 KB sin gráficos y 343 KB con 8 gráficos (presupuesto de 400 KB en `render-test.ts`).
 - **Copyright de Source Serif 4:** el paquete de Fontsource trae "Google Inc."; revisar si se quiere citar a Adobe en una página de créditos.
 - **Fluid type:** los mínimos de display/heading pueden rozar en 360 px con títulos largos en español.
 - **`@font-face` con URL absoluta `/fonts/...`:** el render en `iframe srcdoc` y el `.html` exportado necesitan resolverla (origen en el primero, base64 en el segundo). Cubierto por 4.C; probar pronto.

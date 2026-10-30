@@ -22,6 +22,44 @@ Package manager is pnpm, pinned by `packageManager` in `package.json`.
 
 Run the typecheck and lint before reporting work as done, and paste the output as evidence.
 
+## Repository layout
+
+```text
+src/
+├── app/                  # Next.js routes: home, login, api/auth (Better Auth),
+│                         # private catalogs /design-system, /components and /charts
+├── components/           # App-level components (app header, login button)
+├── lib/                  # Auth (server, client, allowlist) and locale helpers
+└── proxy.ts              # Route guard: private pages need a session cookie
+messages/                 # UI copy per locale (es, en)
+agent/                    # Infographic agent: entry point and instructions (M3)
+db/                       # Drizzle client and schema.ts (high-risk, see below)
+drizzle/                  # Generated migrations; never edit by hand
+design-system/            # Imported as @ds/* (tsconfig paths)
+├── tokens/               # DTCG JSON (source of truth) and build/ (generated CSS)
+├── fonts/                # woff2, licences and fonts.css
+├── ui/                   # React primitives/ and composites/ for the app
+├── infographic/          # ig-* CSS, manifest.ts (vocabulary), validate.ts, render.ts
+│                         # (buildDocument), document.ts (pure composition), samples
+├── charts/               # Chart library: schema/ (zod specs), layout/, render/, css/,
+│                         # fixtures/, expand.ts (fills ig-chart holes); see
+│                         # CHART_LIBRARY_PLAN.md
+├── components/           # One .md spec per component (ui and ig-*)
+├── examples/             # Reference infographics: <name>.<locale>.html plus
+│                         # <name>.charts.<locale>.json
+├── catalog/              # Sections of the private catalogs (registry.ts)
+└── reports/              # Committed test artifacts; shots/ and self-contained
+                          # documents are gitignored and regenerable
+scripts/
+├── build-tokens.mjs      # tokens:build / tokens:check
+├── check-contrast.mjs    # contrast:check
+└── dev/                  # End-to-end checks and review tools (run with `node`):
+                          # *-test.ts, *-check.ts, charts-report.ts,
+                          # charts-layout-check.mjs, shoot.mjs (screenshots)
+```
+
+Plans and specs live at the root: `FUNCTIONAL_SPEC.md` (the what), `DESIGN_SYSTEM_PLAN.md` and `CHART_LIBRARY_PLAN.md` (the how, with progress tables and lessons).
+
 ## Testing approach
 
 - End-to-end tests are the only test mechanism. Each one verifies that a complete feature works.

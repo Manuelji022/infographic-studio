@@ -1,6 +1,7 @@
 # Librería de gráficos — Plan de implementación (M1b)
 
-> Estado: **contrato v1 congelado** · 2026-10-30 (Oleada 0 cerrada)
+> Estado: **cerrado** · 2026-10-30 (Oleadas 0–3 hechas; M1b cerrado en `FUNCTIONAL_SPEC.md` §11). Contrato v1 congelado.
+> Para continuar: §11 (*Traspaso*) resume qué queda para M2 y M3 y las reglas de uso que necesitará la skill del agente.
 > Documento de trabajo para iterar los pasos y delegarlos. El *qué* vive en `FUNCTIONAL_SPEC.md` §6.5 (la spec manda); este plan es el *cómo*. Mismo formato y convenciones que `DESIGN_SYSTEM_PLAN.md`.
 > Convención: `[ ]` pendiente · `[~]` en curso · `[x]` hecho y revisado.
 
@@ -68,15 +69,20 @@ design-system/charts/
 │   ├── line.ts · column.ts · stacked.ts · donut.ts · pictogram.ts · scatter.ts · ranking.ts · treemap.ts
 │   └── index.ts           # renderChart(spec, { locale }) → string
 ├── format.ts              # Intl por locale: número, %, moneda, compacto
-├── css/charts.css         # clases ig-chart__* (importado desde infographic/components.css)
+├── css/charts.css         # clases ig-chart__* + un CSS por tipo (los inlinea getInfographicCss)
+├── expand.ts              # expandCharts(): huecos ig-chart → renderChart (pura)
 ├── fixtures/
 │   ├── valid/*.json       # un spec por tipo y variante (ES y EN)
 │   └── invalid/*.json     # specs que deben fallar, con el código esperado
 └── index.ts               # API pública: validateChartSpec, renderChart, expandCharts, tipos
 scripts/dev/
 ├── glyph-widths.mjs       # genera layout/glyph-widths.json con Chrome headless
-├── charts-*-test.ts       # uno por tarea de la Oleada 1 (schema, scale, measure); se unifican en 3.A
-└── charts-report.ts       # escribe design-system/reports/charts/<tipo>.html (artefacto)
+├── charts-*-test.ts       # schema, scale, measure y uno por tipo (line, column, donut, scatter, treemap)
+├── charts-render-test.ts  # contrato común de todos los fixtures (determinismo, tabla, sin colores)
+├── charts-layout-check.mjs # solapes, desbordes y recortes en el DOM real (360/1280, claro/oscuro)
+├── charts-report.ts       # escribe design-system/reports/charts/<tipo>.html (artefacto)
+├── render-test.ts         # buildDocument con huecos, seguridad y tamaño
+└── examples-check.ts      # ejemplos ES/EN con sus specs; escribe documentos autocontenidos
 ```
 
 Integración con lo existente: `infographic/manifest.ts` (hueco), `infographic/validate.ts` (atributo `data-chart` y reglas del hueco), `infographic/render.ts` y `document.ts` (opción `charts`), `catalog/registry.ts` (sección "Gráficos", solo el coordinador) y `tokens/` (roles de §5.3).
@@ -168,10 +174,12 @@ Todas las clases que emite el render llevan prefijo `ig-chart`. El agente **no**
 
 ```ts
 validateChartSpec(input: unknown): { ok: true; spec: ChartSpec } | { ok: false; issues: ChartIssue[] };
-renderChart(spec: ChartSpec, options: { locale: "es" | "en" }): string;           // pura, sin node:*
-expandCharts(fragment: string, charts: ChartSpec[], options): string;            // sustituye huecos
-buildDocument(fragment, { …, charts?: ChartSpec[] });                             // llama a expandCharts
+renderChart(spec: ChartSpec, options: { locale: "es" | "en"; instance?: number }): string; // pura
+expandCharts(fragment: string, charts: readonly unknown[], options: { locale }): string;
+buildDocument(fragment, { …, charts?: readonly unknown[] });                // llama a expandCharts
 ```
+
+`expandCharts` revalida cada spec (vienen de `jsonb`), rechaza ids duplicados y huecos sin spec, ignora specs sin usar y numera los usos repetidos de un mismo spec (`instance`) para que los ids del DOM no se repitan (`chart-<id>_<n>`; `_` no puede aparecer en un id de spec).
 
 `ChartIssue` sigue la forma de `ValidationIssue` (`code`, `message`, `path`), para que el agente reciba los errores de specs y de HTML con el mismo formato.
 
@@ -260,10 +268,10 @@ Cada tarea entrega `render/<tipo>.ts`, sus fixtures, su ficha `design-system/com
 | Tarea | Entregable |
 | --- | --- |
 | **3.A** `expandCharts` + `buildDocument` | Opción `charts` en `render.ts` y `document.ts`; huecos expandidos en iframe y en export autocontenido; `render-test.ts` ampliado |
-| **3.B** Catálogo | (Adelantado en la Oleada 2: `/charts` ya muestra los fixtures aceptados con `renderChart`.) Sección "Gráficos" en `/design-system`: cada tipo y variante en claro/oscuro y ES/EN, dentro del iframe con el CSP real. El registro lo edita el coordinador |
+| **3.B** Catálogo | **Cumplido con `/charts`** (decisión del propietario, 2026-10-30): un ejemplo por tipo en claro/oscuro/auto y ES/EN, dentro del iframe con el CSP real. `/design-system` no tiene sección "Gráficos": enlaza a `/charts` y muestra los ejemplos completos con sus gráficos expandidos |
 | **3.C** Ejemplos | `examples/gasto-publico.es/en.html` + specs: treemap del gasto por función (1996, datos de la imagen de referencia, marcados como ilustrativos) y `pensiones.*` con una serie temporal en `line` |
 
-Salida de la oleada: **capturas del catálogo y de los ejemplos** a 360 y 1280 px en ambos temas, revisadas por el coordinador y **aprobadas por el propietario**.
+Salida de la oleada: **capturas del catálogo y de los ejemplos** a 360 y 1280 px en ambos temas, revisadas por el coordinador; el propietario las aceptó y pidió el commit y la PR (2026-10-30). Durante la revisión se añadieron 3.D–3.G (ver §9).
 
 ### Lecciones de la Oleada 3
 
@@ -277,7 +285,7 @@ Salida de la oleada: **capturas del catálogo y de los ejemplos** a 360 y 1280 p
 
 ### Aceptación común
 
-`pnpm lint`, `pnpm next typegen && pnpm tsc --noEmit`, `pnpm tokens:check`, `pnpm contrast:check`, `node scripts/dev/charts-test.ts` (salida pegada), greps de §3 (sin hex en `charts/render/**`, sin `box-shadow`, sin `gradient`, sin `!important`), líneas ≤ 100 y capturas propias. Artefacto repetible: `design-system/reports/charts/*.html`, regenerable con `charts-report.ts` y comparable por diff.
+`pnpm lint`, `pnpm next typegen && pnpm tsc --noEmit`, `pnpm tokens:check`, `pnpm contrast:check`, los scripts de `scripts/dev` (`charts-*-test`, `charts-render-test`, `validate-test`, `render-test`, `manifest-check`, `examples-check`, `samples-check`; salida pegada), `charts-layout-check.mjs` con 0 incidencias, greps de §3 (sin hex en `charts/render/**`, sin `box-shadow`, sin `gradient`, sin `!important`), líneas ≤ 100 y capturas propias. Artefacto repetible: `design-system/reports/charts/*.html`, regenerable con `charts-report.ts` y comparable por diff.
 
 ## 8. Plantilla de `SPEC` para workers
 
@@ -317,4 +325,23 @@ La de `DESIGN_SYSTEM_PLAN.md` §7, añadiendo a "Lee antes": `CHART_LIBRARY_PLAN
 - **Amarillos en tema claro (C11):** contraste de relleno ≤ 1,43:1; depende de bordes y etiquetas. Revisar con capturas reales.
 - **Paleta con amarillo + rojo + cálidos:** riesgo de gráficos demasiado cargados. Regla: como máximo un `highlight` y un `negative` por gráfico.
 - **Treemap con varios periodos:** fuera por C4. Si aparece la necesidad, pequeños múltiplos de 2–3 periodos con la misma escala.
-- **Tamaño del fragmento:** la expansión ocurre al renderizar, así que no cuenta para los 100 KB del agente, pero sí para el iframe y el export. Medir en 3.A.
+- **Tamaño del documento:** la expansión ocurre al renderizar, así que no cuenta para los 100 KB del agente, pero sí para el iframe y el export. Medido: ~8,8 KB por gráfico de media; 8 gráficos dan 343 KB autocontenido (presupuesto de 400 KB en `render-test.ts`). El más pesado es `line` con muchas series y puntos (~24 KB).
+- **Etiquetas del primer valor en `line`** pueden rozar el inicio de otra serie (pendiente menor de la Oleada 2, sin abordar).
+
+## 11. Traspaso (para continuar)
+
+**M2 — Frontend** (siguiente hito). La librería ya está lista para consumirse:
+
+- Vistas privada y compartida: `buildDocument(fragment, { locale, theme, dsVersion, embed: true, charts })` con los `charts` de `infographic_contents` del idioma mostrado. Descargar `.html`: lo mismo con `embed: false`.
+- El esquema de BD de §7 de la spec (columna `charts jsonb` por idioma) se crea en M2/M3; `expandCharts` revalida lo que lea de ahí, así que un spec corrupto falla el render en vez de pintar algo erróneo.
+- Para probar M2 sin agente sirven los ejemplos `design-system/examples/{pensiones,gasto-publico}.{es,en}.html` con sus `*.charts.*.json`.
+
+**M3 — Agente.** La skill `agent/skills/design-system.md` (generada desde el manifiesto) debe incluir, además del contrato §5, estas reglas aprendidas:
+
+- `projectedFrom` es el **primer índice proyectado**: el tramo que llega a ese punto ya sale discontinuo.
+- Si el spec lleva `period`, no repetir el periodo en `title` (se pinta aparte).
+- Como máximo un `highlight` y un `negative` por gráfico; el amarillo solo en áreas grandes (C11) y el rojo solo con `emphasis: "negative"` (C12).
+- El titular de la `ig-section` cuenta la conclusión; el `title` del gráfico describe qué se mide. Si el spec lleva `description`, sobra `ig-section__measure`.
+- `save_infographic` comprueba que cada `sourceQuote` de los specs está en el texto original (C10) y, en `save_translation`, que los valores numéricos de cada spec coinciden con los del original (como hace `examples-check.ts`).
+
+**Pendientes sin hito:** etiquetas del primer valor en `line` (§10); treemap con varios periodos (C4).
