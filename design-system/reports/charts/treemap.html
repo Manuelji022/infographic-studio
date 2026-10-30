@@ -1003,6 +1003,7 @@ Canonical markup:
   fill: none;
   stroke: var(--chart-color);
   stroke-width: 2.5px;
+  vector-effect: non-scaling-stroke;
 }
 
 .ig-chart__line-projected {
@@ -1015,17 +1016,15 @@ Canonical markup:
 }
 
 .ig-chart__line-dot {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--chart-color);
-  transform: translate(-50%, -50%);
+  fill: none;
+  stroke: var(--chart-color);
+  stroke-width: 5px;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
 }
 
 .ig-chart__line-y,
 .ig-chart__line-x,
-.ig-chart__line-first,
 .ig-chart__line-end {
   position: absolute;
 }
@@ -1037,18 +1036,6 @@ Canonical markup:
 .ig-chart__line-x-middle { transform: translateX(-50%); }
 .ig-chart__line-x-end { transform: translateX(-100%); }
 
-.ig-chart__line-first,
-.ig-chart__line-end {
-  background: var(--ds-surface);
-  padding: 2px 3px;
-  line-height: 15px;
-}
-
-.ig-chart__line-first {
-  transform: translateY(-100%);
-  white-space: nowrap;
-}
-
 .ig-chart__line-end {
   margin-left: 10px;
   width: max-content;
@@ -1056,19 +1043,10 @@ Canonical markup:
   transform: translateY(-50%);
 }
 
-.ig-chart__line-end-narrow {
-  margin-left: 0;
-  max-width: 150px;
-  transform: translate(-100%, -100%);
-}
-
 .ig-chart--line .ig-chart__legend {
   margin-top: 12px;
 }
 
-.ig-chart__line-end-start {
-  transform: translateY(-100%);
-}
 
 .ig-chart__column-plot {
   height: 320px;
@@ -1212,29 +1190,22 @@ Canonical markup:
 }
 
 .ig-chart__pictogram-icon { position: relative; display: block; width: 20px; height: 24px; }
-.ig-chart__pictogram-base,
-.ig-chart__pictogram-fill { position: absolute; inset: 0; display: block; overflow: hidden; }
-.ig-chart__pictogram-base > span,
-.ig-chart__pictogram-fill > span {
-  display: block;
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
-  background: var(--chart-color);
-}
-
-.ig-chart__pictogram-base > span {
-  border: 1px solid var(--ds-border-strong);
-  box-sizing: border-box;
-}
-.ig-chart__pictogram-circle > span > span { border-radius: 50%; }
+.ig-chart__pictogram-symbol { position: absolute; width: 0; height: 0; }
+.ig-chart__pictogram-grid { --chart-color: var(--ds-data-1); }
+.ig-chart__pictogram-grid > svg,
 .ig-chart__pictogram-icon svg {
   display: block;
   width: 20px;
   height: 24px;
   fill: var(--chart-color);
 }
-.ig-chart__pictogram-base svg { stroke: var(--ds-border-strong); stroke-width: 0.5; }
+.ig-chart__pictogram-grid > svg[data-fill="0"] { --chart-color: var(--ds-surface-deep); }
+.ig-chart__pictogram-grid > svg[data-fill="0"],
+.ig-chart__pictogram-grid > svg[data-fill="100"],
+.ig-chart__pictogram-base { stroke: var(--ds-border-strong); stroke-width: 0.5; }
+.ig-chart__pictogram-base { --chart-color: var(--ds-surface-deep); position: absolute; inset: 0; }
+.ig-chart__pictogram-fill { position: absolute; inset: 0; display: block; overflow: hidden; }
+.ig-chart__pictogram-fill svg { max-width: none; }
 
 .ig-chart__scatter-plot { height: 360px; }
 .ig-chart__scatter-point {
@@ -1337,6 +1308,13 @@ Canonical markup:
   aspect-ratio: 280 / 320;
 }
 
+.ig-chart--treemap .ig-chart__treemap-xl { display: none; }
+
+@container (min-width: 720px) {
+  .ig-chart--treemap .ig-chart__treemap-md { display: none; }
+  .ig-chart--treemap .ig-chart__treemap-xl { display: revert; }
+}
+
 .ig-chart--treemap .ig-chart__plot {
   width: 100%;
   max-width: 800px;
@@ -1385,8 +1363,8 @@ Canonical markup:
   color: var(--ds-text);
 }
 
+/* No margin here: .ig-section > * + * spaces the chart from its siblings. */
 .ig-chart {
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: var(--ds-spacing-8);
@@ -1577,25 +1555,50 @@ html{background:var(--ds-canvas)}body{margin:0}.report-case{padding:24px 0;borde
 99.00</span></div><div class="ig-chart__cell ig-chart__s2" style="left:99%;top:0%;width:1%;height:100%"></div></div><div class="ig-chart__also"><span>Also</span><ul><li>Community services 1.00</li></ul></div></div><div class="ig-chart__narrow"><div class="ig-chart__plot ig-chart__treemap-narrow"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:100%;height:99%"><span class="ig-chart__label">Social protection
 99.00</span></div><div class="ig-chart__cell ig-chart__s2" style="left:0%;top:99%;width:100%;height:1%"></div></div><div class="ig-chart__also"><span>Also</span><ul><li>Community services 1.00</li></ul></div></div><ul class="ig-chart__legend"><li class="ig-chart__legend-item ig-chart__s2"><span class="ig-chart__swatch" aria-hidden="true"></span>Essential services</li></ul></div><table class="ig-chart__table"><caption>Public spending distribution</caption><thead><tr><th scope="col">Category</th><th scope="col">Value</th><th scope="col">Group</th></tr></thead><tbody><tr><th scope="row">Social protection</th><td>99.00</td><td>Essential services</td></tr><tr><th scope="row">Community services</th><td>1.00</td><td>Essential services</td></tr></tbody></table></figure></section><section class="report-case" lang="es"><h2>treemap.dominant.es.json</h2><figure class="ig-chart ig-chart--treemap"><h3 class="ig-chart__title" id="chart-treemap-dominant-es-title">Distribución del gasto público</h3><p class="ig-chart__desc" id="chart-treemap-dominant-es-desc">Datos de ejemplo para comprobar el reparto por áreas.</p><div class="ig-chart__body" role="img" aria-labelledby="chart-treemap-dominant-es-title chart-treemap-dominant-es-desc"><p class="ig-chart__treemap-period">1996</p><div class="ig-chart__wide"><div class="ig-chart__plot ig-chart__treemap-wide"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:99%;height:100%"><span class="ig-chart__label">Protección social
 99,00</span></div><div class="ig-chart__cell ig-chart__s2" style="left:99%;top:0%;width:1%;height:100%"></div></div><div class="ig-chart__also"><span>También</span><ul><li>Servicios comunitarios 1,00</li></ul></div></div><div class="ig-chart__narrow"><div class="ig-chart__plot ig-chart__treemap-narrow"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:100%;height:99%"><span class="ig-chart__label">Protección social
-99,00</span></div><div class="ig-chart__cell ig-chart__s2" style="left:0%;top:99%;width:100%;height:1%"></div></div><div class="ig-chart__also"><span>También</span><ul><li>Servicios comunitarios 1,00</li></ul></div></div><ul class="ig-chart__legend"><li class="ig-chart__legend-item ig-chart__s2"><span class="ig-chart__swatch" aria-hidden="true"></span>Servicios esenciales</li></ul></div><table class="ig-chart__table"><caption>Distribución del gasto público</caption><thead><tr><th scope="col">Categoría</th><th scope="col">Valor</th><th scope="col">Grupo</th></tr></thead><tbody><tr><th scope="row">Protección social</th><td>99,00</td><td>Servicios esenciales</td></tr><tr><th scope="row">Servicios comunitarios</th><td>1,00</td><td>Servicios esenciales</td></tr></tbody></table></figure></section><section class="report-case" lang="en"><h2>treemap.en.json</h2><figure class="ig-chart ig-chart--treemap"><h3 class="ig-chart__title" id="chart-gasto-funcion-en-title">Public spending by function, 1996</h3><p class="ig-chart__desc" id="chart-gasto-funcion-en-desc">Share of total public spending</p><div class="ig-chart__body" role="img" aria-labelledby="chart-gasto-funcion-en-title chart-gasto-funcion-en-desc"><p class="ig-chart__treemap-period">1996</p><div class="ig-chart__wide"><div class="ig-chart__plot ig-chart__treemap-wide"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:32.9%;height:77.812%"><span class="ig-chart__label">Pensions and sickness
+99,00</span></div><div class="ig-chart__cell ig-chart__s2" style="left:0%;top:99%;width:100%;height:1%"></div></div><div class="ig-chart__also"><span>También</span><ul><li>Servicios comunitarios 1,00</li></ul></div></div><ul class="ig-chart__legend"><li class="ig-chart__legend-item ig-chart__s2"><span class="ig-chart__swatch" aria-hidden="true"></span>Servicios esenciales</li></ul></div><table class="ig-chart__table"><caption>Distribución del gasto público</caption><thead><tr><th scope="col">Categoría</th><th scope="col">Valor</th><th scope="col">Grupo</th></tr></thead><tbody><tr><th scope="row">Protección social</th><td>99,00</td><td>Servicios esenciales</td></tr><tr><th scope="row">Servicios comunitarios</th><td>1,00</td><td>Servicios esenciales</td></tr></tbody></table></figure></section><section class="report-case" lang="en"><h2>treemap.en.json</h2><figure class="ig-chart ig-chart--treemap"><h3 class="ig-chart__title" id="chart-gasto-funcion-en-title">Public spending by function, 1996</h3><p class="ig-chart__desc" id="chart-gasto-funcion-en-desc">Share of total public spending</p><div class="ig-chart__body" role="img" aria-labelledby="chart-gasto-funcion-en-title chart-gasto-funcion-en-desc"><p class="ig-chart__treemap-period">1996</p><div class="ig-chart__wide ig-chart__treemap-md"><div class="ig-chart__plot ig-chart__treemap-wide"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:32.9%;height:77.812%"><span class="ig-chart__label">Pensions and sickness
 25.6%</span></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:0%;top:77.812%;width:22.084%;height:22.188%"></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:22.084%;top:77.812%;width:10.816%;height:12.019%"></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:22.084%;top:89.83%;width:10.816%;height:10.17%"></div><div class="ig-chart__cell ig-chart__s2" style="left:32.9%;top:0%;width:35.1%;height:34.758%"><span class="ig-chart__label">Health
 12.2%</span></div><div class="ig-chart__cell ig-chart__s2" style="left:32.9%;top:34.758%;width:35.1%;height:28.205%"><span class="ig-chart__label">Education
 9.9%</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:32.9%;top:62.963%;width:15.93%;height:37.037%"><span class="ig-chart__label">General public services
 5.9%</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:48.83%;top:62.963%;width:19.17%;height:22.431%"><span class="ig-chart__label">Public order
 4.3%</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:48.83%;top:85.394%;width:19.17%;height:14.606%"></div><div class="ig-chart__cell ig-chart__s5" style="left:68%;top:0%;width:14.884%;height:40.313%"></div><div class="ig-chart__cell ig-chart__s5" style="left:82.884%;top:0%;width:17.116%;height:26.875%"><span class="ig-chart__label">Economic affairs
 4.6%</span></div><div class="ig-chart__cell ig-chart__s5" style="left:82.884%;top:26.875%;width:17.116%;height:13.438%"></div><div class="ig-chart__cell ig-chart__negative" style="left:68%;top:40.313%;width:32%;height:37.5%"><span class="ig-chart__label">Debt interest
-12.0%</span></div><div class="ig-chart__cell ig-chart__s3" style="left:68%;top:77.813%;width:13.521%;height:22.187%"></div><div class="ig-chart__cell ig-chart__s3" style="left:81.521%;top:77.813%;width:10.366%;height:22.187%"></div><div class="ig-chart__cell ig-chart__s3" style="left:91.887%;top:77.813%;width:8.113%;height:22.187%"></div></div><div class="ig-chart__also"><span>Also</span><ul><li>Unemployment 4.9%</li><li>Other social protection 1.3%</li><li>Family and children 1.1%</li><li>Defence 2.8%</li><li>Transport 6.0%</li><li>R&amp;D 2.3%</li><li>Leisure, culture and religion 3.0%</li><li>Housing and urban planning 2.3%</li><li>Environment 1.8%</li></ul></div></div><div class="ig-chart__narrow"><div class="ig-chart__plot ig-chart__treemap-narrow"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:59.818%;height:42.796%"><span class="ig-chart__label">Pensions and sickness
+12.0%</span></div><div class="ig-chart__cell ig-chart__s3" style="left:68%;top:77.813%;width:13.521%;height:22.187%"></div><div class="ig-chart__cell ig-chart__s3" style="left:81.521%;top:77.813%;width:10.366%;height:22.187%"></div><div class="ig-chart__cell ig-chart__s3" style="left:91.887%;top:77.813%;width:8.113%;height:22.187%"></div></div><div class="ig-chart__also"><span>Also</span><ul><li>Unemployment 4.9%</li><li>Other social protection 1.3%</li><li>Family and children 1.1%</li><li>Defence 2.8%</li><li>Transport 6.0%</li><li>R&amp;D 2.3%</li><li>Leisure, culture and religion 3.0%</li><li>Housing and urban planning 2.3%</li><li>Environment 1.8%</li></ul></div></div><div class="ig-chart__wide ig-chart__treemap-xl"><div class="ig-chart__plot ig-chart__treemap-wide"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:32.9%;height:77.812%"><span class="ig-chart__label">Pensions and sickness
+25.6%</span></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:0%;top:77.812%;width:22.084%;height:22.188%"><span class="ig-chart__label">Unemployment
+4.9%</span></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:22.084%;top:77.812%;width:10.816%;height:12.019%"></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:22.084%;top:89.83%;width:10.816%;height:10.17%"></div><div class="ig-chart__cell ig-chart__s2" style="left:32.9%;top:0%;width:35.1%;height:34.758%"><span class="ig-chart__label">Health
+12.2%</span></div><div class="ig-chart__cell ig-chart__s2" style="left:32.9%;top:34.758%;width:35.1%;height:28.205%"><span class="ig-chart__label">Education
+9.9%</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:32.9%;top:62.963%;width:15.93%;height:37.037%"><span class="ig-chart__label">General public services
+5.9%</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:48.83%;top:62.963%;width:19.17%;height:22.431%"><span class="ig-chart__label">Public order
+4.3%</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:48.83%;top:85.394%;width:19.17%;height:14.606%"><span class="ig-chart__label">Defence
+2.8%</span></div><div class="ig-chart__cell ig-chart__s5" style="left:68%;top:0%;width:14.884%;height:40.313%"><span class="ig-chart__label">Transport
+6.0%</span></div><div class="ig-chart__cell ig-chart__s5" style="left:82.884%;top:0%;width:17.116%;height:26.875%"><span class="ig-chart__label">Economic affairs
+4.6%</span></div><div class="ig-chart__cell ig-chart__s5" style="left:82.884%;top:26.875%;width:17.116%;height:13.438%"><span class="ig-chart__label">R&amp;D
+2.3%</span></div><div class="ig-chart__cell ig-chart__negative" style="left:68%;top:40.313%;width:32%;height:37.5%"><span class="ig-chart__label">Debt interest
+12.0%</span></div><div class="ig-chart__cell ig-chart__s3" style="left:68%;top:77.813%;width:13.521%;height:22.187%"><span class="ig-chart__label">Leisure, culture and religion
+3.0%</span></div><div class="ig-chart__cell ig-chart__s3" style="left:81.521%;top:77.813%;width:10.366%;height:22.187%"><span class="ig-chart__label">Housing and urban planning
+2.3%</span></div><div class="ig-chart__cell ig-chart__s3" style="left:91.887%;top:77.813%;width:8.113%;height:22.187%"></div></div><div class="ig-chart__also"><span>Also</span><ul><li>Other social protection 1.3%</li><li>Family and children 1.1%</li><li>Environment 1.8%</li></ul></div></div><div class="ig-chart__narrow"><div class="ig-chart__plot ig-chart__treemap-narrow"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:59.818%;height:42.796%"><span class="ig-chart__label">Pensions and sickness
 25.6%</span></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:0%;top:42.796%;width:40.152%;height:12.204%"></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:40.152%;top:42.796%;width:10.653%;height:12.204%"></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:50.804%;top:42.796%;width:9.014%;height:12.204%"></div><div class="ig-chart__cell ig-chart__s2" style="left:59.818%;top:0%;width:40.182%;height:30.362%"><span class="ig-chart__label">Health
 12.2%</span></div><div class="ig-chart__cell ig-chart__s2" style="left:59.818%;top:30.362%;width:40.182%;height:24.638%"><span class="ig-chart__label">Education
 9.9%</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:0%;top:55%;width:28.889%;height:20.423%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:0%;top:75.423%;width:17.496%;height:24.577%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:17.496%;top:75.423%;width:11.393%;height:24.577%"></div><div class="ig-chart__cell ig-chart__s5" style="left:28.889%;top:55%;width:28.667%;height:20.93%"><span class="ig-chart__label">Transport
 6.0%</span></div><div class="ig-chart__cell ig-chart__s5" style="left:28.889%;top:75.93%;width:19.111%;height:24.07%"></div><div class="ig-chart__cell ig-chart__s5" style="left:48%;top:75.93%;width:9.556%;height:24.07%"></div><div class="ig-chart__cell ig-chart__negative" style="left:57.556%;top:55%;width:42.444%;height:28.272%"><span class="ig-chart__label">Debt interest
-12.0%</span></div><div class="ig-chart__cell ig-chart__s3" style="left:57.556%;top:83.272%;width:17.934%;height:16.728%"></div><div class="ig-chart__cell ig-chart__s3" style="left:75.49%;top:83.272%;width:13.75%;height:16.728%"></div><div class="ig-chart__cell ig-chart__s3" style="left:89.239%;top:83.272%;width:10.761%;height:16.728%"></div></div><div class="ig-chart__also"><span>Also</span><ul><li>Unemployment 4.9%</li><li>Other social protection 1.3%</li><li>Family and children 1.1%</li><li>General public services 5.9%</li><li>Public order 4.3%</li><li>Defence 2.8%</li><li>Economic affairs 4.6%</li><li>R&amp;D 2.3%</li><li>Leisure, culture and religion 3.0%</li><li>Housing and urban planning 2.3%</li><li>Environment 1.8%</li></ul></div></div><ul class="ig-chart__legend"><li class="ig-chart__legend-item ig-chart__highlight"><span class="ig-chart__swatch" aria-hidden="true"></span>Social protection</li><li class="ig-chart__legend-item ig-chart__s2"><span class="ig-chart__swatch" aria-hidden="true"></span>Services</li><li class="ig-chart__legend-item ig-chart__negative"><span class="ig-chart__swatch" aria-hidden="true"></span>Debt</li><li class="ig-chart__legend-item ig-chart__s5"><span class="ig-chart__swatch" aria-hidden="true"></span>Economy</li><li class="ig-chart__legend-item ig-chart__neutral"><span class="ig-chart__swatch" aria-hidden="true"></span>State</li><li class="ig-chart__legend-item ig-chart__s3"><span class="ig-chart__swatch" aria-hidden="true"></span>Other</li></ul></div><table class="ig-chart__table"><caption>Public spending by function, 1996</caption><thead><tr><th scope="col">Category</th><th scope="col">Value</th><th scope="col">Group</th></tr></thead><tbody><tr><th scope="row">Pensions and sickness</th><td>25.6%</td><td>Social protection</td></tr><tr><th scope="row">Unemployment</th><td>4.9%</td><td>Social protection</td></tr><tr><th scope="row">Other social protection</th><td>1.3%</td><td>Social protection</td></tr><tr><th scope="row">Family and children</th><td>1.1%</td><td>Social protection</td></tr><tr><th scope="row">Health</th><td>12.2%</td><td>Services</td></tr><tr><th scope="row">Education</th><td>9.9%</td><td>Services</td></tr><tr><th scope="row">Debt interest</th><td>12.0%</td><td>Debt</td></tr><tr><th scope="row">Transport</th><td>6.0%</td><td>Economy</td></tr><tr><th scope="row">Economic affairs</th><td>4.6%</td><td>Economy</td></tr><tr><th scope="row">R&amp;D</th><td>2.3%</td><td>Economy</td></tr><tr><th scope="row">General public services</th><td>5.9%</td><td>State</td></tr><tr><th scope="row">Public order</th><td>4.3%</td><td>State</td></tr><tr><th scope="row">Defence</th><td>2.8%</td><td>State</td></tr><tr><th scope="row">Leisure, culture and religion</th><td>3.0%</td><td>Other</td></tr><tr><th scope="row">Housing and urban planning</th><td>2.3%</td><td>Other</td></tr><tr><th scope="row">Environment</th><td>1.8%</td><td>Other</td></tr></tbody></table></figure></section><section class="report-case" lang="es"><h2>treemap.es.json</h2><figure class="ig-chart ig-chart--treemap"><h3 class="ig-chart__title" id="chart-gasto-funcion-es-title">Gasto público por función, 1996</h3><p class="ig-chart__desc" id="chart-gasto-funcion-es-desc">Porcentaje del gasto público total</p><div class="ig-chart__body" role="img" aria-labelledby="chart-gasto-funcion-es-title chart-gasto-funcion-es-desc"><p class="ig-chart__treemap-period">1996</p><div class="ig-chart__wide"><div class="ig-chart__plot ig-chart__treemap-wide"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:32.9%;height:77.812%"><span class="ig-chart__label">Pensiones e I.T.
+12.0%</span></div><div class="ig-chart__cell ig-chart__s3" style="left:57.556%;top:83.272%;width:17.934%;height:16.728%"></div><div class="ig-chart__cell ig-chart__s3" style="left:75.49%;top:83.272%;width:13.75%;height:16.728%"></div><div class="ig-chart__cell ig-chart__s3" style="left:89.239%;top:83.272%;width:10.761%;height:16.728%"></div></div><div class="ig-chart__also"><span>Also</span><ul><li>Unemployment 4.9%</li><li>Other social protection 1.3%</li><li>Family and children 1.1%</li><li>General public services 5.9%</li><li>Public order 4.3%</li><li>Defence 2.8%</li><li>Economic affairs 4.6%</li><li>R&amp;D 2.3%</li><li>Leisure, culture and religion 3.0%</li><li>Housing and urban planning 2.3%</li><li>Environment 1.8%</li></ul></div></div><ul class="ig-chart__legend"><li class="ig-chart__legend-item ig-chart__highlight"><span class="ig-chart__swatch" aria-hidden="true"></span>Social protection</li><li class="ig-chart__legend-item ig-chart__s2"><span class="ig-chart__swatch" aria-hidden="true"></span>Services</li><li class="ig-chart__legend-item ig-chart__negative"><span class="ig-chart__swatch" aria-hidden="true"></span>Debt</li><li class="ig-chart__legend-item ig-chart__s5"><span class="ig-chart__swatch" aria-hidden="true"></span>Economy</li><li class="ig-chart__legend-item ig-chart__neutral"><span class="ig-chart__swatch" aria-hidden="true"></span>State</li><li class="ig-chart__legend-item ig-chart__s3"><span class="ig-chart__swatch" aria-hidden="true"></span>Other</li></ul></div><table class="ig-chart__table"><caption>Public spending by function, 1996</caption><thead><tr><th scope="col">Category</th><th scope="col">Value</th><th scope="col">Group</th></tr></thead><tbody><tr><th scope="row">Pensions and sickness</th><td>25.6%</td><td>Social protection</td></tr><tr><th scope="row">Unemployment</th><td>4.9%</td><td>Social protection</td></tr><tr><th scope="row">Other social protection</th><td>1.3%</td><td>Social protection</td></tr><tr><th scope="row">Family and children</th><td>1.1%</td><td>Social protection</td></tr><tr><th scope="row">Health</th><td>12.2%</td><td>Services</td></tr><tr><th scope="row">Education</th><td>9.9%</td><td>Services</td></tr><tr><th scope="row">Debt interest</th><td>12.0%</td><td>Debt</td></tr><tr><th scope="row">Transport</th><td>6.0%</td><td>Economy</td></tr><tr><th scope="row">Economic affairs</th><td>4.6%</td><td>Economy</td></tr><tr><th scope="row">R&amp;D</th><td>2.3%</td><td>Economy</td></tr><tr><th scope="row">General public services</th><td>5.9%</td><td>State</td></tr><tr><th scope="row">Public order</th><td>4.3%</td><td>State</td></tr><tr><th scope="row">Defence</th><td>2.8%</td><td>State</td></tr><tr><th scope="row">Leisure, culture and religion</th><td>3.0%</td><td>Other</td></tr><tr><th scope="row">Housing and urban planning</th><td>2.3%</td><td>Other</td></tr><tr><th scope="row">Environment</th><td>1.8%</td><td>Other</td></tr></tbody></table></figure></section><section class="report-case" lang="es"><h2>treemap.es.json</h2><figure class="ig-chart ig-chart--treemap"><h3 class="ig-chart__title" id="chart-gasto-funcion-es-title">Gasto público por función, 1996</h3><p class="ig-chart__desc" id="chart-gasto-funcion-es-desc">Porcentaje del gasto público total</p><div class="ig-chart__body" role="img" aria-labelledby="chart-gasto-funcion-es-title chart-gasto-funcion-es-desc"><p class="ig-chart__treemap-period">1996</p><div class="ig-chart__wide ig-chart__treemap-md"><div class="ig-chart__plot ig-chart__treemap-wide"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:32.9%;height:77.812%"><span class="ig-chart__label">Pensiones e I.T.
 25,6 %</span></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:0%;top:77.812%;width:22.084%;height:22.188%"><span class="ig-chart__label">Desempleo
 4,9 %</span></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:22.084%;top:77.812%;width:10.816%;height:12.019%"></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:22.084%;top:89.83%;width:10.816%;height:10.17%"></div><div class="ig-chart__cell ig-chart__s2" style="left:32.9%;top:0%;width:35.1%;height:34.758%"><span class="ig-chart__label">Sanidad
 12,2 %</span></div><div class="ig-chart__cell ig-chart__s2" style="left:32.9%;top:34.758%;width:35.1%;height:28.205%"><span class="ig-chart__label">Educación
 9,9 %</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:32.9%;top:62.963%;width:15.93%;height:37.037%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:48.83%;top:62.963%;width:19.17%;height:22.431%"><span class="ig-chart__label">Orden público
 4,3 %</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:48.83%;top:85.394%;width:19.17%;height:14.606%"></div><div class="ig-chart__cell ig-chart__s5" style="left:68%;top:0%;width:14.884%;height:40.313%"></div><div class="ig-chart__cell ig-chart__s5" style="left:82.884%;top:0%;width:17.116%;height:26.875%"></div><div class="ig-chart__cell ig-chart__s5" style="left:82.884%;top:26.875%;width:17.116%;height:13.438%"></div><div class="ig-chart__cell ig-chart__negative" style="left:68%;top:40.313%;width:32%;height:37.5%"><span class="ig-chart__label">Intereses de la deuda
-12,0 %</span></div><div class="ig-chart__cell ig-chart__s3" style="left:68%;top:77.813%;width:13.521%;height:22.187%"></div><div class="ig-chart__cell ig-chart__s3" style="left:81.521%;top:77.813%;width:10.366%;height:22.187%"></div><div class="ig-chart__cell ig-chart__s3" style="left:91.887%;top:77.813%;width:8.113%;height:22.187%"></div></div><div class="ig-chart__also"><span>También</span><ul><li>Resto protección social 1,3 %</li><li>Familia e hijos 1,1 %</li><li>Serv. públicos generales 5,9 %</li><li>Defensa 2,8 %</li><li>Transporte 6,0 %</li><li>Asuntos económicos 4,6 %</li><li>I+D 2,3 %</li><li>Ocio, cultura y religión 3,0 %</li><li>Vivienda y urbanismo 2,3 %</li><li>Medio ambiente 1,8 %</li></ul></div></div><div class="ig-chart__narrow"><div class="ig-chart__plot ig-chart__treemap-narrow"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:59.818%;height:42.796%"><span class="ig-chart__label">Pensiones e I.T.
+12,0 %</span></div><div class="ig-chart__cell ig-chart__s3" style="left:68%;top:77.813%;width:13.521%;height:22.187%"></div><div class="ig-chart__cell ig-chart__s3" style="left:81.521%;top:77.813%;width:10.366%;height:22.187%"></div><div class="ig-chart__cell ig-chart__s3" style="left:91.887%;top:77.813%;width:8.113%;height:22.187%"></div></div><div class="ig-chart__also"><span>También</span><ul><li>Resto protección social 1,3 %</li><li>Familia e hijos 1,1 %</li><li>Serv. públicos generales 5,9 %</li><li>Defensa 2,8 %</li><li>Transporte 6,0 %</li><li>Asuntos económicos 4,6 %</li><li>I+D 2,3 %</li><li>Ocio, cultura y religión 3,0 %</li><li>Vivienda y urbanismo 2,3 %</li><li>Medio ambiente 1,8 %</li></ul></div></div><div class="ig-chart__wide ig-chart__treemap-xl"><div class="ig-chart__plot ig-chart__treemap-wide"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:32.9%;height:77.812%"><span class="ig-chart__label">Pensiones e I.T.
+25,6 %</span></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:0%;top:77.812%;width:22.084%;height:22.188%"><span class="ig-chart__label">Desempleo
+4,9 %</span></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:22.084%;top:77.812%;width:10.816%;height:12.019%"></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:22.084%;top:89.83%;width:10.816%;height:10.17%"></div><div class="ig-chart__cell ig-chart__s2" style="left:32.9%;top:0%;width:35.1%;height:34.758%"><span class="ig-chart__label">Sanidad
+12,2 %</span></div><div class="ig-chart__cell ig-chart__s2" style="left:32.9%;top:34.758%;width:35.1%;height:28.205%"><span class="ig-chart__label">Educación
+9,9 %</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:32.9%;top:62.963%;width:15.93%;height:37.037%"><span class="ig-chart__label">Serv. públicos generales
+5,9 %</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:48.83%;top:62.963%;width:19.17%;height:22.431%"><span class="ig-chart__label">Orden público
+4,3 %</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:48.83%;top:85.394%;width:19.17%;height:14.606%"><span class="ig-chart__label">Defensa
+2,8 %</span></div><div class="ig-chart__cell ig-chart__s5" style="left:68%;top:0%;width:14.884%;height:40.313%"><span class="ig-chart__label">Transporte
+6,0 %</span></div><div class="ig-chart__cell ig-chart__s5" style="left:82.884%;top:0%;width:17.116%;height:26.875%"><span class="ig-chart__label">Asuntos económicos
+4,6 %</span></div><div class="ig-chart__cell ig-chart__s5" style="left:82.884%;top:26.875%;width:17.116%;height:13.438%"><span class="ig-chart__label">I+D
+2,3 %</span></div><div class="ig-chart__cell ig-chart__negative" style="left:68%;top:40.313%;width:32%;height:37.5%"><span class="ig-chart__label">Intereses de la deuda
+12,0 %</span></div><div class="ig-chart__cell ig-chart__s3" style="left:68%;top:77.813%;width:13.521%;height:22.187%"><span class="ig-chart__label">Ocio, cultura y religión
+3,0 %</span></div><div class="ig-chart__cell ig-chart__s3" style="left:81.521%;top:77.813%;width:10.366%;height:22.187%"></div><div class="ig-chart__cell ig-chart__s3" style="left:91.887%;top:77.813%;width:8.113%;height:22.187%"></div></div><div class="ig-chart__also"><span>También</span><ul><li>Resto protección social 1,3 %</li><li>Familia e hijos 1,1 %</li><li>Vivienda y urbanismo 2,3 %</li><li>Medio ambiente 1,8 %</li></ul></div></div><div class="ig-chart__narrow"><div class="ig-chart__plot ig-chart__treemap-narrow"><div class="ig-chart__cell ig-chart__highlight" style="left:0%;top:0%;width:59.818%;height:42.796%"><span class="ig-chart__label">Pensiones e I.T.
 25,6 %</span></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:0%;top:42.796%;width:40.152%;height:12.204%"></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:40.152%;top:42.796%;width:10.653%;height:12.204%"></div><div class="ig-chart__cell ig-chart__highlight-soft" style="left:50.804%;top:42.796%;width:9.014%;height:12.204%"></div><div class="ig-chart__cell ig-chart__s2" style="left:59.818%;top:0%;width:40.182%;height:30.362%"><span class="ig-chart__label">Sanidad
 12,2 %</span></div><div class="ig-chart__cell ig-chart__s2" style="left:59.818%;top:30.362%;width:40.182%;height:24.638%"><span class="ig-chart__label">Educación
 9,9 %</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:0%;top:55%;width:28.889%;height:20.423%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:0%;top:75.423%;width:17.496%;height:24.577%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:17.496%;top:75.423%;width:11.393%;height:24.577%"></div><div class="ig-chart__cell ig-chart__s5" style="left:28.889%;top:55%;width:28.667%;height:20.93%"></div><div class="ig-chart__cell ig-chart__s5" style="left:28.889%;top:75.93%;width:19.111%;height:24.07%"></div><div class="ig-chart__cell ig-chart__s5" style="left:48%;top:75.93%;width:9.556%;height:24.07%"></div><div class="ig-chart__cell ig-chart__negative" style="left:57.556%;top:55%;width:42.444%;height:28.272%"><span class="ig-chart__label">Intereses de la deuda
@@ -1622,11 +1625,17 @@ html{background:var(--ds-canvas)}body{margin:0}.report-case{padding:24px 0;borde
 20.00</span></div><div class="ig-chart__cell ig-chart__s3" style="left:0%;top:50%;width:30%;height:50%"><span class="ig-chart__label">Higher education
 15.00</span></div><div class="ig-chart__cell ig-chart__s4" style="left:30%;top:50%;width:42%;height:28.571%"><span class="ig-chart__label">Intercity transport
 12.00</span></div><div class="ig-chart__cell ig-chart__s5" style="left:30%;top:78.571%;width:42%;height:21.429%"><span class="ig-chart__label">Scientific research
-9.00</span></div><div class="ig-chart__cell ig-chart__s6" style="left:72%;top:50%;width:28%;height:25%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:72%;top:75%;width:28%;height:17.857%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:72%;top:92.857%;width:28%;height:7.143%"></div></div><div class="ig-chart__also"><span>Also</span><ul><li>Environment 7.00</li><li>Housing and urban planning 5.00</li><li>Community services 2.00</li></ul></div></div></div><table class="ig-chart__table"><caption>Public spending distribution</caption><thead><tr><th scope="col">Category</th><th scope="col">Value</th><th scope="col">Group</th></tr></thead><tbody><tr><th scope="row">Social protection</th><td>30.00</td><td></td></tr><tr><th scope="row">Public health</th><td>20.00</td><td></td></tr><tr><th scope="row">Higher education</th><td>15.00</td><td></td></tr><tr><th scope="row">Intercity transport</th><td>12.00</td><td></td></tr><tr><th scope="row">Scientific research</th><td>9.00</td><td></td></tr><tr><th scope="row">Environment</th><td>7.00</td><td></td></tr><tr><th scope="row">Housing and urban planning</th><td>5.00</td><td></td></tr><tr><th scope="row">Community services</th><td>2.00</td><td></td></tr></tbody></table></figure></section><section class="report-case" lang="es"><h2>treemap.no-groups.es.json</h2><figure class="ig-chart ig-chart--treemap"><h3 class="ig-chart__title" id="chart-treemap-no-groups-es-title">Distribución del gasto público</h3><p class="ig-chart__desc" id="chart-treemap-no-groups-es-desc">Datos de ejemplo para comprobar el reparto por áreas.</p><div class="ig-chart__body" role="img" aria-labelledby="chart-treemap-no-groups-es-title chart-treemap-no-groups-es-desc"><p class="ig-chart__treemap-period">1996</p><div class="ig-chart__wide"><div class="ig-chart__plot ig-chart__treemap-wide"><div class="ig-chart__cell ig-chart__s1" style="left:0%;top:0%;width:50%;height:60%"><span class="ig-chart__label">Protección social
+9.00</span></div><div class="ig-chart__cell ig-chart__s6" style="left:72%;top:50%;width:28%;height:25%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:72%;top:75%;width:28%;height:17.857%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:72%;top:92.857%;width:28%;height:7.143%"></div></div><div class="ig-chart__also"><span>Also</span><ul><li>Environment 7.00</li><li>Housing and urban planning 5.00</li><li>Community services 2.00</li></ul></div></div></div><table class="ig-chart__table"><caption>Public spending distribution</caption><thead><tr><th scope="col">Category</th><th scope="col">Value</th><th scope="col">Group</th></tr></thead><tbody><tr><th scope="row">Social protection</th><td>30.00</td><td></td></tr><tr><th scope="row">Public health</th><td>20.00</td><td></td></tr><tr><th scope="row">Higher education</th><td>15.00</td><td></td></tr><tr><th scope="row">Intercity transport</th><td>12.00</td><td></td></tr><tr><th scope="row">Scientific research</th><td>9.00</td><td></td></tr><tr><th scope="row">Environment</th><td>7.00</td><td></td></tr><tr><th scope="row">Housing and urban planning</th><td>5.00</td><td></td></tr><tr><th scope="row">Community services</th><td>2.00</td><td></td></tr></tbody></table></figure></section><section class="report-case" lang="es"><h2>treemap.no-groups.es.json</h2><figure class="ig-chart ig-chart--treemap"><h3 class="ig-chart__title" id="chart-treemap-no-groups-es-title">Distribución del gasto público</h3><p class="ig-chart__desc" id="chart-treemap-no-groups-es-desc">Datos de ejemplo para comprobar el reparto por áreas.</p><div class="ig-chart__body" role="img" aria-labelledby="chart-treemap-no-groups-es-title chart-treemap-no-groups-es-desc"><p class="ig-chart__treemap-period">1996</p><div class="ig-chart__wide ig-chart__treemap-md"><div class="ig-chart__plot ig-chart__treemap-wide"><div class="ig-chart__cell ig-chart__s1" style="left:0%;top:0%;width:50%;height:60%"><span class="ig-chart__label">Protección social
 30,00</span></div><div class="ig-chart__cell ig-chart__s2" style="left:0%;top:60%;width:50%;height:40%"><span class="ig-chart__label">Sanidad pública
 20,00</span></div><div class="ig-chart__cell ig-chart__s3" style="left:50%;top:0%;width:27.778%;height:54%"><span class="ig-chart__label">Educación universitaria
 15,00</span></div><div class="ig-chart__cell ig-chart__s4" style="left:77.778%;top:0%;width:22.222%;height:54%"><span class="ig-chart__label">Transporte interurbano
-12,00</span></div><div class="ig-chart__cell ig-chart__s5" style="left:50%;top:54%;width:19.565%;height:46%"></div><div class="ig-chart__cell ig-chart__s6" style="left:69.565%;top:54%;width:15.217%;height:46%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:84.783%;top:54%;width:15.217%;height:32.857%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:84.783%;top:86.857%;width:15.217%;height:13.143%"></div></div><div class="ig-chart__also"><span>También</span><ul><li>Investigación científica 9,00</li><li>Medio ambiente 7,00</li><li>Vivienda y urbanismo 5,00</li><li>Servicios comunitarios 2,00</li></ul></div></div><div class="ig-chart__narrow"><div class="ig-chart__plot ig-chart__treemap-narrow"><div class="ig-chart__cell ig-chart__s1" style="left:0%;top:0%;width:60%;height:50%"><span class="ig-chart__label">Protección social
+12,00</span></div><div class="ig-chart__cell ig-chart__s5" style="left:50%;top:54%;width:19.565%;height:46%"></div><div class="ig-chart__cell ig-chart__s6" style="left:69.565%;top:54%;width:15.217%;height:46%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:84.783%;top:54%;width:15.217%;height:32.857%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:84.783%;top:86.857%;width:15.217%;height:13.143%"></div></div><div class="ig-chart__also"><span>También</span><ul><li>Investigación científica 9,00</li><li>Medio ambiente 7,00</li><li>Vivienda y urbanismo 5,00</li><li>Servicios comunitarios 2,00</li></ul></div></div><div class="ig-chart__wide ig-chart__treemap-xl"><div class="ig-chart__plot ig-chart__treemap-wide"><div class="ig-chart__cell ig-chart__s1" style="left:0%;top:0%;width:50%;height:60%"><span class="ig-chart__label">Protección social
+30,00</span></div><div class="ig-chart__cell ig-chart__s2" style="left:0%;top:60%;width:50%;height:40%"><span class="ig-chart__label">Sanidad pública
+20,00</span></div><div class="ig-chart__cell ig-chart__s3" style="left:50%;top:0%;width:27.778%;height:54%"><span class="ig-chart__label">Educación universitaria
+15,00</span></div><div class="ig-chart__cell ig-chart__s4" style="left:77.778%;top:0%;width:22.222%;height:54%"><span class="ig-chart__label">Transporte interurbano
+12,00</span></div><div class="ig-chart__cell ig-chart__s5" style="left:50%;top:54%;width:19.565%;height:46%"><span class="ig-chart__label">Investigación científica
+9,00</span></div><div class="ig-chart__cell ig-chart__s6" style="left:69.565%;top:54%;width:15.217%;height:46%"></div><div class="ig-chart__cell ig-chart__neutral" style="left:84.783%;top:54%;width:15.217%;height:32.857%"><span class="ig-chart__label">Vivienda y urbanismo
+5,00</span></div><div class="ig-chart__cell ig-chart__neutral" style="left:84.783%;top:86.857%;width:15.217%;height:13.143%"></div></div><div class="ig-chart__also"><span>También</span><ul><li>Medio ambiente 7,00</li><li>Servicios comunitarios 2,00</li></ul></div></div><div class="ig-chart__narrow"><div class="ig-chart__plot ig-chart__treemap-narrow"><div class="ig-chart__cell ig-chart__s1" style="left:0%;top:0%;width:60%;height:50%"><span class="ig-chart__label">Protección social
 30,00</span></div><div class="ig-chart__cell ig-chart__s2" style="left:60%;top:0%;width:40%;height:50%"><span class="ig-chart__label">Sanidad pública
 20,00</span></div><div class="ig-chart__cell ig-chart__s3" style="left:0%;top:50%;width:30%;height:50%"></div><div class="ig-chart__cell ig-chart__s4" style="left:30%;top:50%;width:42%;height:28.571%"><span class="ig-chart__label">Transporte interurbano
 12,00</span></div><div class="ig-chart__cell ig-chart__s5" style="left:30%;top:78.571%;width:42%;height:21.429%"><span class="ig-chart__label">Investigación científica

@@ -86,6 +86,7 @@ export function renderColumn(spec: ColumnSpec, options: RenderOptions): string {
     label: s.name, className: seriesClass(i),
   }))) : "";
   return renderFrame(spec, {
+    instance: options.instance,
     body: `<div class="ig-chart__wide">${vertical("wide")}</div>` +
       `<div class="ig-chart__narrow">${vertical("narrow")}</div>` +
       legend,

@@ -7,14 +7,16 @@ import {
   renderFrame, renderLegend, seriesClass, toneClass, words, type RenderOptions,
 } from "./shared.ts";
 
-const HEIGHT = { wide: 300, narrow: 320 } as const;
+const XL_WIDTH = 720;
+const HEIGHT = { wide: 300, narrow: 320, xl: 449 } as const;
 
 export function renderTreemap(spec: TreemapSpec, options: RenderOptions): string {
   const value = (n: number) => formatValue(n, options.locale, spec.unit);
-  const variants = (["wide", "narrow"] as const).map((band) => {
-    const width = MIN_WIDTH[band];
+  const renderBand = (band: "wide" | "narrow" | "xl", wrapperOverride?: string) => {
+    const width = band === "xl" ? XL_WIDTH : MIN_WIDTH[band];
     const height = HEIGHT[band];
     const also: string[] = [];
+    const labels: string[] = [];
     const cells = layoutTreemap(spec.items, width / height).items.map((rect) => {
       const item = spec.items[rect.index];
       const group = spec.groups?.find((entry) => entry.id === item.group);
@@ -35,14 +37,28 @@ export function renderTreemap(spec: TreemapSpec, options: RenderOptions): string
         height: rect.h * height / 100 - 20,
       }, LABEL_FONT, LABEL_LINE_HEIGHT);
       if (!show) also.push(`${item.label} ${value(item.value)}`);
+      else labels.push(item.label);
       const text = show ? `<span class="ig-chart__label">${escapeHtml(label)}</span>` : "";
       const style = placeStyle({ left: rect.x, top: rect.y, width: rect.w, height: rect.h });
       return `<div class="ig-chart__cell ${color}" style="${style}">${text}</div>`;
     }).join("");
-    const plot = `<div class="ig-chart__plot ig-chart__treemap-${band}">${cells}</div>`;
-    return `<div class="ig-chart__${band}">${plot}` +
-      `${renderAlso(words(options.locale).also, also)}</div>`;
-  }).join("");
+    const plotBand = band === "xl" ? "wide" : band;
+    const plot = `<div class="ig-chart__plot ig-chart__treemap-${plotBand}">${cells}</div>`;
+    const wrapper = wrapperOverride ?? (band === "xl" ? "ig-chart__wide ig-chart__treemap-xl"
+      : band === "wide" ? "ig-chart__wide ig-chart__treemap-md" : "ig-chart__narrow");
+    return {
+      html: `<div class="${wrapper}">${plot}` +
+        `${renderAlso(words(options.locale).also, also)}</div>`,
+      labels,
+    };
+  };
+  const wide = renderBand("wide");
+  const xl = renderBand("xl");
+  const sameLabels = wide.labels.length === xl.labels.length &&
+    wide.labels.every((item, index) => item === xl.labels[index]);
+  const wideHtml = sameLabels ? renderBand("wide", "ig-chart__wide").html : wide.html;
+  const variants = `${wideHtml}${sameLabels ? "" : xl.html}` +
+    renderBand("narrow").html;
   const legend = spec.groups ? renderLegend(spec.groups.map((group) => ({
     label: group.label,
     className: toneClass(group.tone),
@@ -50,6 +66,7 @@ export function renderTreemap(spec: TreemapSpec, options: RenderOptions): string
   const period = spec.period
     ? `<p class="ig-chart__treemap-period">${escapeHtml(spec.period)}</p>` : "";
   return renderFrame(spec, {
+    instance: options.instance,
     body: `${period}${variants}${legend}`,
     table: {
       head: options.locale === "es" ? ["Categoría", "Valor", "Grupo"]

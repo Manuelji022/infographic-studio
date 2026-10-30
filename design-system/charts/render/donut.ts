@@ -51,6 +51,7 @@ export function renderDonut(spec: DonutSpec, options: RenderOptions): string {
     + `${arcs}</svg>${center}</div><ul class="ig-chart__donut-legend">${legend}</ul></div>`;
   if (spec.total) rows.push([spec.total.label, formatValue(total, locale, spec.unit), ""]);
   return renderFrame(spec, {
+    instance: options.instance,
     body,
     table: {
       head: locale === "es" ? ["Parte", "Valor", "Porcentaje"] : ["Part", "Value", "Percent"],

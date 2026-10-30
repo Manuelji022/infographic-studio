@@ -10,6 +10,7 @@
   fill: none;
   stroke: var(--chart-color);
   stroke-width: 2.5px;
+  vector-effect: non-scaling-stroke;
 }
 
 .ig-chart__line-projected {
@@ -22,12 +23,11 @@
 }
 
 .ig-chart__line-dot {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--chart-color);
-  transform: translate(-50%, -50%);
+  fill: none;
+  stroke: var(--chart-color);
+  stroke-width: 5px;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
 }
 
 .ig-chart__line-y,

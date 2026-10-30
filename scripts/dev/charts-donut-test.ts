@@ -3,6 +3,8 @@
 // reordered sectors; absent total; missing visible/table values and percentages;
 // pictogram zero/full/decimal counts, partial clipping, and incorrect grid capacity.
 import assert from "node:assert/strict";
+import { readFileSync, readdirSync } from "node:fs";
+import path from "node:path";
 import { renderDonut } from "../../design-system/charts/render/donut.ts";
 import { renderPictogram } from "../../design-system/charts/render/pictogram.ts";
 import { formatValue } from "../../design-system/charts/format.ts";
@@ -63,6 +65,9 @@ for (const ofValue of [10, 100] as const) {
     assert.equal([...html.matchAll(/data-icon="/g)].length, ofValue);
     assert.equal([...html.matchAll(/data-fill="100"/g)].length, Math.floor(value));
     assert.equal([...html.matchAll(/data-fill="50"/g)].length, value % 1 ? 1 : 0);
+    assert.equal([...html.matchAll(/<symbol id=/g)].length, 1);
+    assert.equal([...html.matchAll(/<path /g)].length, 1);
+    assert.equal([...html.matchAll(/<use href="#/g)].length, ofValue + (value % 1 ? 1 : 0));
     if (value % 1) assert(html.includes('style="width:50%"'));
     const count = formatValue(value, "en", {
       kind: "number", decimals: value % 1 ? 1 : 0,
@@ -79,5 +84,20 @@ for (const ofValue of [10, 100] as const) {
     assert(html.slice(html.indexOf("<table")).includes("People"));
     checks++;
   }
+}
+const pictogramFixtures = path.resolve("design-system/charts/fixtures/valid");
+const shapeTags = { person: "path", square: "rect", circle: "circle" } as const;
+for (const fixture of readdirSync(pictogramFixtures).filter((file) =>
+  /^pictogram\..+\.json$/.test(file))) {
+  const spec = JSON.parse(
+    readFileSync(path.join(pictogramFixtures, fixture), "utf8"),
+  ) as PictogramSpec;
+  const html = renderPictogram(spec, { locale: fixture.endsWith(".en.json") ? "en" : "es" });
+  const symbol = html.match(/<symbol\b[^>]*>(.*?)<\/symbol>/)?.[1] ?? "";
+  assert(
+    symbol.includes(`<${shapeTags[spec.icon]}`),
+    `${fixture} must render its ${spec.icon} icon`,
+  );
+  checks++;
 }
 console.log(`charts-donut-test: ${checks} cases passed, 0 failures`);

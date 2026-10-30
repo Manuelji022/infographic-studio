@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { expandCharts } from "../charts/expand.ts";
 import {
   CSP_IFRAME,
   CSP_STANDALONE,
@@ -17,6 +18,7 @@ export type BuildDocumentOptions = {
   embed: boolean;
   title?: string;
   fontBaseUrl?: string;
+  charts?: readonly unknown[];
 };
 
 const SUPPORTED_DS_VERSIONS: readonly string[] = ["1.0.0"];
@@ -100,7 +102,8 @@ export function getInfographicCss(options: {
 }
 
 export function buildDocument(fragment: string, options: BuildDocumentOptions): string {
-  return composeDocument(fragment, {
+  const expanded = expandCharts(fragment, options.charts ?? [], { locale: options.locale });
+  return composeDocument(expanded, {
     locale: options.locale,
     theme: options.theme,
     title: options.title,

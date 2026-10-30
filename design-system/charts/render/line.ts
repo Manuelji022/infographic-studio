@@ -35,18 +35,42 @@ export function renderLine(spec: LineSpec, options: RenderOptions): string {
     : `${s.name} ${valueText(s.values[ends[i]]!)}`);
   const endY = separate(spec.series.map((s, i) => ends[i] < 0 ? 50 : y(s.values[ends[i]]!)), 13);
   const geometry = spec.series.map((s, si) => {
-    const segments = s.values.map((v, i) => {
-      const previous = s.values[i - 1];
-      if (v === null || previous === null || previous === undefined) return "";
+    const segments: string[] = [];
+    let run: string[] = [];
+    let runProjected: boolean | undefined;
+    const flush = () => {
+      if (run.length > 1) {
+        const cls = `ig-chart__line-stroke${runProjected ? " ig-chart__line-projected" : ""}`;
+        segments.push(`<polyline class="${cls}" points="${run.join(" ")}"/>`);
+      }
+      run = [];
+      runProjected = undefined;
+    };
+    s.values.forEach((value, i) => {
+      if (value === null) {
+        flush();
+        return;
+      }
       const projected = s.projectedFrom !== undefined && i >= s.projectedFrom;
-      const cls = `ig-chart__line-stroke${projected ? " ig-chart__line-projected" : ""}`;
-      return `<line class="${cls}" x1="${num(x(i - 1))}" x2="${num(x(i))}"` +
-        ` y1="${num(y(previous))}" y2="${num(y(v))}"/>`;
-    }).join("");
+      if (run.length && projected !== runProjected) {
+        const previous = s.values[i - 1]!;
+        flush();
+        run = [`${num(x(i - 1))},${num(y(previous))}`];
+        runProjected = projected;
+      }
+      if (!run.length) {
+        const previous = i > 0 ? s.values[i - 1] : null;
+        if (previous !== null && previous !== undefined) {
+          run.push(`${num(x(i - 1))},${num(y(previous))}`);
+        }
+        runProjected = projected;
+      }
+      run.push(`${num(x(i))},${num(y(value))}`);
+    });
+    flush();
     const dots = s.values.map((v, i) => v === null ? "" :
-      `<span class="ig-chart__line-dot ${seriesClass(si)}"` +
-      ` style="${placeStyle({ left: x(i), top: y(v) })}"></span>`).join("");
-    return { segments: `<g class="${seriesClass(si)}">${segments}</g>`, dots };
+      `<path class="ig-chart__line-dot" d="M${num(x(i))} ${num(y(v))}h0"/>`).join("");
+    return { segments: `<g class="${seriesClass(si)}">${segments.join("")}${dots}</g>` };
   });
   const grid = domain.ticks.map((v) => {
     const cls = v === 0 && domain.min < 0 ? "ig-chart__axis" : "ig-chart__grid";
@@ -102,10 +126,11 @@ export function renderLine(spec: LineSpec, options: RenderOptions): string {
       '<svg class="ig-chart__svg" viewBox="0 0 100 100"' +
       ' preserveAspectRatio="none" aria-hidden="true">' + grid +
       geometry.map((g) => g.segments).join("") + "</svg>" +
-      geometry.map((g) => g.dots).join("") + labels + xLabels + "</div></div>" +
+      labels + xLabels + "</div></div>" +
       legendHtml + "</div>";
   }
   return renderFrame(spec, {
+    instance: options.instance,
     body: band(false) + band(true),
     table: {
       head: [locale === "es" ? "Periodo" : "Period", ...spec.series.map((s) => s.name)],

@@ -6,6 +6,13 @@
   aspect-ratio: 280 / 320;
 }
 
+.ig-chart--treemap .ig-chart__treemap-xl { display: none; }
+
+@container (min-width: 720px) {
+  .ig-chart--treemap .ig-chart__treemap-md { display: none; }
+  .ig-chart--treemap .ig-chart__treemap-xl { display: revert; }
+}
+
 .ig-chart--treemap .ig-chart__plot {
   width: 100%;
   max-width: 800px;

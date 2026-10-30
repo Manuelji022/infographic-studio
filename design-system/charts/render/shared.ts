@@ -4,7 +4,11 @@ import type { TextFont } from "../layout/measure.ts";
 import type { ChartSpec, ChartTone, Emphasis } from "../schema/index.ts";
 
 export type ChartLocale = "es" | "en";
-export type RenderOptions = { locale: ChartLocale };
+export type RenderOptions = {
+  locale: ChartLocale;
+  /** Use of the same spec in one document (0 = first); keeps DOM ids unique. */
+  instance?: number;
+};
 
 /** Container widths each label decision must hold at (C8): the smallest width of each band. */
 export const MIN_WIDTH = { narrow: 280, wide: 481 } as const;
@@ -69,10 +73,14 @@ export function toneClass(tone: ChartTone): string {
   return `ig-chart__s${tone.slice("data-".length)}`;
 }
 
-/** DOM ids of a chart; `instance` separates two uses of the same spec in one document. */
+/**
+ * DOM ids of a chart; `instance` separates two uses of the same spec in one document. The "_"
+ * separator cannot appear in a spec id, so "a" (instance 1) never collides with spec "a-1".
+ */
 export function chartIds(spec: Pick<ChartSpec, "id">, instance = 0) {
-  const base = instance === 0 ? `chart-${spec.id}` : `chart-${spec.id}-${instance}`;
-  return { title: `${base}-title`, desc: `${base}-desc` };
+  if (!Number.isSafeInteger(instance) || instance < 0) throw new Error("Invalid chart instance");
+  const base = instance === 0 ? `chart-${spec.id}` : `chart-${spec.id}_${instance}`;
+  return { title: `${base}-title`, desc: `${base}-desc`, icon: `${base}-icon` };
 }
 
 export type TableData = {

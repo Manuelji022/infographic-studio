@@ -11,26 +11,19 @@
 }
 
 .ig-chart__pictogram-icon { position: relative; display: block; width: 20px; height: 24px; }
-.ig-chart__pictogram-base,
-.ig-chart__pictogram-fill { position: absolute; inset: 0; display: block; overflow: hidden; }
-.ig-chart__pictogram-base > span,
-.ig-chart__pictogram-fill > span {
-  display: block;
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
-  background: var(--chart-color);
-}
-
-.ig-chart__pictogram-base > span {
-  border: 1px solid var(--ds-border-strong);
-  box-sizing: border-box;
-}
-.ig-chart__pictogram-circle > span > span { border-radius: 50%; }
+.ig-chart__pictogram-symbol { position: absolute; width: 0; height: 0; }
+.ig-chart__pictogram-grid { --chart-color: var(--ds-data-1); }
+.ig-chart__pictogram-grid > svg,
 .ig-chart__pictogram-icon svg {
   display: block;
   width: 20px;
   height: 24px;
   fill: var(--chart-color);
 }
-.ig-chart__pictogram-base svg { stroke: var(--ds-border-strong); stroke-width: 0.5; }
+.ig-chart__pictogram-grid > svg[data-fill="0"] { --chart-color: var(--ds-surface-deep); }
+.ig-chart__pictogram-grid > svg[data-fill="0"],
+.ig-chart__pictogram-grid > svg[data-fill="100"],
+.ig-chart__pictogram-base { stroke: var(--ds-border-strong); stroke-width: 0.5; }
+.ig-chart__pictogram-base { --chart-color: var(--ds-surface-deep); position: absolute; inset: 0; }
+.ig-chart__pictogram-fill { position: absolute; inset: 0; display: block; overflow: hidden; }
+.ig-chart__pictogram-fill svg { max-width: none; }

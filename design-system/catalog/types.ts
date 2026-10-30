@@ -8,7 +8,13 @@ export type CatalogTheme = "auto" | "light" | "dark";
 /** Server-built data for the infographic section (CSS and reference examples as fragments). */
 export type InfographicCatalogData = {
   css: string;
-  examples: Record<CatalogLocale, string>;
+  examples: InfographicExample[];
+};
+
+export type InfographicExample = {
+  id: string;
+  title: Record<CatalogLocale, string>;
+  html: Record<CatalogLocale, string>;
 };
 
 /** One chart shown at /charts: a server-rendered fragment per sample language. */

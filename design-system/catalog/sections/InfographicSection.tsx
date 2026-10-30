@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import type { CatalogLocale, CatalogSectionProps } from "../types";
 import { composeDocument, CSP_IFRAME } from "../../infographic/document.ts";
 import { INFOGRAPHIC_SAMPLES } from "../../infographic/samples.ts";
@@ -10,13 +11,13 @@ const copy = {
   es: {
     desktop: "Escritorio",
     mobile: "Móvil",
-    fullExample: "Ejemplo completo",
+    chartsLink: "Los gráficos de la librería, tipo a tipo, están en",
     strictSandbox: "Las vistas reales usan sandbox estricto sin allow-same-origin",
   },
   en: {
     desktop: "Desktop",
     mobile: "Mobile",
-    fullExample: "Complete example",
+    chartsLink: "Library charts, type by type, are at",
     strictSandbox: "Live views use a strict sandbox without allow-same-origin",
   },
 };
@@ -108,17 +109,22 @@ export function InfographicSection({ locale, theme, infographic }: CatalogSectio
         </button>
       </div>
       <p className={styles.note}>{text.strictSandbox}</p>
+      <p className={styles.chartsLink}>
+        {text.chartsLink} <Link href="/charts">/charts</Link>
+      </p>
       <div className={`${styles.preview} ${mobile ? styles.mobile : ""}`}>
-        <section className={styles.item}>
-          <h3>{text.fullExample}</h3>
-          <IgFrame
-            fragment={infographic.examples[locale]}
-            title={text.fullExample}
-            locale={locale}
-            theme={theme}
-            css={infographic.css}
-          />
-        </section>
+        {infographic.examples.map((example) => (
+          <section className={styles.item} key={example.id}>
+            <h3>{locale === "es" ? "Ejemplo: " : "Example: "}{example.title[locale]}</h3>
+            <IgFrame
+              fragment={example.html[locale]}
+              title={example.title[locale]}
+              locale={locale}
+              theme={theme}
+              css={infographic.css}
+            />
+          </section>
+        ))}
         {INFOGRAPHIC_SAMPLES.map((sample) => (
           <section className={styles.item} key={sample.id}>
             <h3>

@@ -45,9 +45,32 @@ for (const file of readdirSync(dir).filter((name) => /^treemap\..*json$/.test(na
   const locale = file.endsWith(".en.json") ? "en" : "es";
   const html = renderTreemap(spec, { locale });
   const [body, table] = html.split('<table class="ig-chart__table">');
-  for (const variant of ["wide", "narrow"]) {
-    const visible = body.split(`<div class="ig-chart__${variant}">`)[1]
-      .split('<div class="ig-chart__narrow">')[0];
+  const plotWrappers = [...body.matchAll(
+    /<div class="([^"]+)"[^>]*><div class="ig-chart__plot\b/g,
+  )].map((match) => match[1].split(" "));
+  for (const width of [360, 600, 800]) {
+    const visible = plotWrappers.filter((classes) => {
+      const narrow = classes.includes("ig-chart__narrow");
+      const wide = classes.includes("ig-chart__wide");
+      const md = classes.includes("ig-chart__treemap-md");
+      const xl = classes.includes("ig-chart__treemap-xl");
+      if (width <= 480) return narrow;
+      if (narrow || !wide) return false;
+      if (xl) return width >= 720;
+      if (md) return width >= 481 && width < 720;
+      return true;
+    });
+    assert.equal(visible.length, 1, `${file}: ${width}px has exactly one plot wrapper`);
+  }
+  for (const variant of ["md", "xl", "narrow"]) {
+    const marker = variant === "narrow" ? 'class="ig-chart__narrow"'
+      : `class="ig-chart__wide ig-chart__treemap-${variant}"`;
+    const start = body.indexOf(marker);
+    if (start < 0) continue;
+    const nextMarkers = ['class="ig-chart__wide ig-chart__treemap-xl"',
+      'class="ig-chart__narrow"'].filter((next) => body.indexOf(next, start + marker.length) >= 0)
+      .map((next) => body.indexOf(next, start + marker.length));
+    const visible = body.slice(start, nextMarkers.length ? Math.min(...nextMarkers) : undefined);
     for (const item of spec.items) {
       assert(visible.includes(escapeHtml(item.label)), `${file}: visible ${item.label}`);
       assert(visible.includes(escapeHtml(formatValue(item.value, locale, spec.unit))));
@@ -55,6 +78,7 @@ for (const file of readdirSync(dir).filter((name) => /^treemap\..*json$/.test(na
       assert(table.includes(escapeHtml(formatValue(item.value, locale, spec.unit))));
     }
   }
+  assert.equal(renderTreemap(spec, { locale }), html, `${file}: deterministic`);
   for (const cell of html.matchAll(/<div class="ig-chart__cell ([^"]+)"[^>]*>([\s\S]*?)<\/div>/g)) {
     if (cell[1].includes("ig-chart__s6")) assert.equal(cell[2], "");
   }
@@ -103,3 +127,22 @@ const grouped = layoutTreemap(mixed, 1);
 assert.deepEqual(grouped.groups.map((group) => group.group), ["b", "a", undefined]);
 assert.deepEqual(grouped.items.map((item) => item.index), [0, 1, 2]);
 console.log(`charts-treemap-test: ${cases} geometry cases, visible/table data passed`);
+
+const spanish = treemapSpecSchema.parse(JSON.parse(
+  readFileSync(`${dir}/treemap.es.json`, "utf8"),
+));
+const spanishHtml = renderTreemap(spanish, { locale: "es" });
+const mdStart = spanishHtml.indexOf('class="ig-chart__wide ig-chart__treemap-md"');
+const xlStart = spanishHtml.indexOf('class="ig-chart__wide ig-chart__treemap-xl"');
+const narrowStart = spanishHtml.indexOf('class="ig-chart__narrow"');
+const mdCells = spanishHtml.slice(mdStart, xlStart < 0 ? narrowStart : xlStart);
+const xlCells = spanishHtml.slice(xlStart, narrowStart);
+const mdCount = [...mdCells.matchAll(/class="ig-chart__label"/g)].length;
+const xlCount = [...xlCells.matchAll(/class="ig-chart__label"/g)].length;
+assert(xlCount > mdCount, `xl labels ${xlCount} > md labels ${mdCount}`);
+const alsoCount = (variant: string) => {
+  const also = variant.match(/<div class="ig-chart__also">[\s\S]*?<\/div>/)?.[0] ?? "";
+  return (also.match(/<li>/g) ?? []).length;
+};
+assert(alsoCount(xlCells) < alsoCount(mdCells), "xl also list is shorter");
+assert.equal((spanishHtml.match(/<tr\b/g) ?? []).length, spanish.items.length + 1);

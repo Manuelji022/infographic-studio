@@ -130,6 +130,7 @@ export function renderScatter(spec: ScatterSpec, options: RenderOptions): string
       + `${escapeHtml(spec.x.label)}</div>${list}</div>`;
   };
   return renderFrame(spec, {
+    instance: options.instance,
     body: variant("wide") + variant("narrow"),
     table: {
       head: ["", spec.x.label, spec.y.label],

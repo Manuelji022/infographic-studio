@@ -34,6 +34,7 @@ export function renderRanking(spec: RankingSpec, options: RenderOptions): string
       + `${escapeHtml(formatValue(item.value, options.locale, spec.unit))}</span></div></div></li>`;
   }).join("");
   return renderFrame(spec, {
+    instance: options.instance,
     body: `<ol class="ig-chart__ranking-list" style="${spacing}">${rows}</ol>`,
     table: {
       head: [options.locale === "es" ? "Categoría" : "Category",

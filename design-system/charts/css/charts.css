@@ -16,8 +16,8 @@
   color: var(--ds-text);
 }
 
+/* No margin here: .ig-section > * + * spaces the chart from its siblings. */
 .ig-chart {
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: var(--ds-spacing-8);

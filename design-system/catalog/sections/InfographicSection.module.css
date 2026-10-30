@@ -29,6 +29,17 @@
   text-align: center;
 }
 
+.chartsLink {
+  margin: 0;
+  color: var(--ds-text);
+  text-align: center;
+}
+
+.chartsLink a {
+  color: var(--ds-text);
+  text-decoration: underline;
+}
+
 .preview {
   display: grid;
   gap: var(--ds-spacing-24);

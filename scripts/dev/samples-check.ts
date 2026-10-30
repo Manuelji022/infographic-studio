@@ -10,8 +10,9 @@ const check = (name: string, ok: boolean, details = ""): void => {
 
 check("12 samples", INFOGRAPHIC_SAMPLES.length === 12);
 check("unique ids", new Set(INFOGRAPHIC_SAMPLES.map(({ id }) => id)).size === 12);
+// ig-chart is a hole for library charts; its catalog is /charts, not a sample here.
 check("component order", INFOGRAPHIC_SAMPLES.map(({ id }) => id).join(",") ===
-  COMPONENTS.map(({ name }) => name).join(","));
+  COMPONENTS.filter(({ name }) => name !== "ig-chart").map(({ name }) => name).join(","));
 
 for (const sample of INFOGRAPHIC_SAMPLES) {
   const spec = COMPONENTS.find(({ name }) => name === sample.id);

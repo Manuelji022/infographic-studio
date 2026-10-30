@@ -106,6 +106,7 @@ export function renderStacked(spec: StackedSpec, options: RenderOptions): string
     }).join("");
   };
   return renderFrame(spec, {
+    instance: options.instance,
     body: `<div class="ig-chart__wide">${variant("wide")}</div>` +
       `<div class="ig-chart__narrow">${variant("narrow")}</div>` +
       renderLegend(spec.series.map((series, i) => ({

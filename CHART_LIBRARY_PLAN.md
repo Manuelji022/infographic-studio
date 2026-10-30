@@ -265,6 +265,16 @@ Cada tarea entrega `render/<tipo>.ts`, sus fixtures, su ficha `design-system/com
 
 Salida de la oleada: **capturas del catálogo y de los ejemplos** a 360 y 1280 px en ambos temas, revisadas por el coordinador y **aprobadas por el propietario**.
 
+### Lecciones de la Oleada 3
+
+- **Margen anulado por orden de CSS:** `.ig-chart { margin: 0 }` (en `charts.css`, que va después de `components.css`) pisaba `.ig-section > * + *` y pegaba el gráfico a su hermano anterior. Ningún test lo detecta; solo se vio en las capturas de los ejemplos. Los reseteos de `figure` ya los hace `base.css` con `:where`.
+- **Contenido coherente con la serie:** `projectedFrom` es el primer índice proyectado; con 6 el tramo 2020–2025 salía discontinuo mientras la tarjeta decía que el 2,7x ya había ocurrido. Y `period` ya pinta el año: no repetirlo en `title`. Ambas reglas van a la skill del agente (M3).
+- **Treemap en ancho:** las etiquetas se decidían a 481 px y el plot escala hasta 800 px, así que a 1280 px quedaban celdas grandes vacías. Resuelto con una tercera banda (3.D). Una banda que se oculta por container query necesita siempre su pareja visible: el layout-check no ve un plot que falta, solo el test de visibilidad por rango y las capturas.
+- **Peso:** el pictograma repetía el mismo `<path>` 200 veces y `line` dibujaba un `<line>` por tramo. Resuelto en 3.E con `<symbol>`/`<use>` y `<polyline>`. Al reutilizar un símbolo, comprobar todas las variantes (`icon`), no solo la del fixture por defecto.
+- **Alineación del catálogo** (propietario): la barra de `CatalogShell` no seguía la columna de `--ds-page-max-width`; a 1280 px coincidía por casualidad. Revisar las páginas también a anchos > 1280 px.
+- `samples-check.ts` fallaba desde 1.E (el manifiesto incluye `ig-chart` sin muestra). Excluido: su catálogo es `/charts`.
+- Workers luna (Codex, medium) entregaron las tres tareas a la primera; la única pregunta (`ask`, límite de 100 columnas en JSON de datos) fue pertinente. Reutilizar terminales para la tarea siguiente funcionó bien.
+
 ### Aceptación común
 
 `pnpm lint`, `pnpm next typegen && pnpm tsc --noEmit`, `pnpm tokens:check`, `pnpm contrast:check`, `node scripts/dev/charts-test.ts` (salida pegada), greps de §3 (sin hex en `charts/render/**`, sin `box-shadow`, sin `gradient`, sin `!important`), líneas ≤ 100 y capturas propias. Artefacto repetible: `design-system/reports/charts/*.html`, regenerable con `charts-report.ts` y comparable por diff.
@@ -292,9 +302,12 @@ La de `DESIGN_SYSTEM_PLAN.md` §7, añadiendo a "Lee antes": `CHART_LIBRARY_PLAN
 | 2.C `donut`, `pictogram` | [x] | Codex gpt-6.1-sol | Aceptada a la primera | `value` del pictograma es recuento sobre `of` (decidido por `ask`); leyenda con valor y % |
 | 2.D `scatter`, `ranking` | [x] | Codex gpt-6.1-sol | Aceptada con 1 ronda de correcciones | Scatter: solo los `highlight` llevan texto visible (el resto en la tabla); etiquetas que no tapan puntos. Ranking: valor junto a la barra |
 | 2.E `treemap` | [x] | Codex gpt-6.1-sol (+1 worker nuevo para correcciones) | Aceptada con 1 ronda de correcciones | `layout/treemap.ts` (squarify con grupos). Plot al 100 % con `aspect-ratio` 481/300 y 280/320, máx. 800 px; `highlight-soft` solo en grupos `tone: highlight` |
-| 3.A Integración | [ ] | | | |
-| 3.B Catálogo | [ ] | | | |
-| 3.C Ejemplos | [ ] | | | |
+| 3.A Integración | [x] | Codex gpt-6-luna (medium) | Aceptada a la primera | `charts/expand.ts` (revalida specs, ids duplicados, hueco sin spec → error; `instance` por uso repetido, ids `chart-<id>_<n>`); `buildDocument({ charts })`. `render-test.ts`: 17 OK. 8 gráficos: autocontenido 362 KB, iframe 134 KB (+11,2 KB/gráfico) |
+| 3.B Catálogo | [x] | Codex gpt-6-luna (mismo terminal que 3.A) | Aceptada a la primera | Propietario: se da por cumplido con `/charts`. `/design-system` muestra los dos ejemplos con gráficos expandidos en servidor y enlaza a `/charts` |
+| 3.C Ejemplos | [x] | Codex gpt-6-luna (+ `examples-check.ts` en el mismo terminal) | Aceptada con correcciones del coordinador | `gasto-publico.*` (treemap 1996, ilustrativo) y `pensiones.*` (line 1995–2035). `examples-check.ts`: pares ES/EN, specs, cobertura sobre la unión, 12 documentos (3 temas). Corregido: año duplicado en título y `period`; `projectedFrom` marcaba 2025 como previsión |
+| 3.D Treemap banda xl | [x] | Codex gpt-6-luna (medium) | Aceptada con 1 ronda de correcciones | Tercera banda a 720×449 (`ig-chart__treemap-md/-xl`, container query ≥ 720 px): `treemap.es.json` pasa de 6 a 12 celdas etiquetadas. Corregido: si xl = md quedaba solo `-md` y el plot desaparecía ≥ 720 px; test nuevo exige un único plot visible por rango de ancho |
+| 3.E Peso de `line` y `pictogram` | [x] | Codex gpt-6-luna (medium) | Aceptada con 1 ronda de correcciones | `line`: `<polyline>` por tramo y puntos en SVG (`line.dense` 46 → 24 KB). `pictogram`: un `<symbol>` por gráfico y `<use>` (50 → 9,6 KB). Corregido: cuadrados y círculos salían como personas. 8 gráficos: 343 KB autocontenido (antes 362) |
+| 3.F Alineación del catálogo | [x] | Codex gpt-6-luna (medium) | Aceptada a la primera | Petición del propietario: la barra de `CatalogShell` iba a 24 px del borde mientras la cabecera y el contenido van en la columna de 1280 px. Ahora coinciden (medido en el DOM a 360/1280/1920/2560 px) |
 
 ## 10. Riesgos abiertos
 

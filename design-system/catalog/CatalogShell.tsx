@@ -33,34 +33,38 @@ export function CatalogShell({ title, sections, infographic, charts }: CatalogSh
   return (
     <div className={styles.stage} data-ds-theme={theme}>
       <header className={styles.toolbar}>
-        <h1 className="ds-type-subheading-sans">{title}</h1>
-        <div className={styles.group} role="group" aria-label="Theme">
-          {themes.map(({ value, icon, label }) => (
-            <button
-              key={value}
-              type="button"
-              className={`${styles.toggle} ${styles.iconToggle}`}
-              aria-pressed={theme === value}
-              aria-label={label}
-              title={label}
-              onClick={() => setTheme(value)}
-            >
-              <Icon name={icon} size="sm" />
-            </button>
-          ))}
-        </div>
-        <div className={styles.group} role="group" aria-label="Sample language">
-          {locales.map((value) => (
-            <button
-              key={value}
-              type="button"
-              className={styles.toggle}
-              aria-pressed={locale === value}
-              onClick={() => setLocale(value)}
-            >
-              {value}
-            </button>
-          ))}
+        <div className={styles.toolbarInner}>
+          <h1 className="ds-type-subheading-sans">{title}</h1>
+          <div className={styles.controls}>
+            <div className={styles.group} role="group" aria-label="Theme">
+              {themes.map(({ value, icon, label }) => (
+                <button
+                  key={value}
+                  type="button"
+                  className={`${styles.toggle} ${styles.iconToggle}`}
+                  aria-pressed={theme === value}
+                  aria-label={label}
+                  title={label}
+                  onClick={() => setTheme(value)}
+                >
+                  <Icon name={icon} size="sm" />
+                </button>
+              ))}
+            </div>
+            <div className={styles.group} role="group" aria-label="Sample language">
+              {locales.map((value) => (
+                <button
+                  key={value}
+                  type="button"
+                  className={styles.toggle}
+                  aria-pressed={locale === value}
+                  onClick={() => setLocale(value)}
+                >
+                  {value}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </header>
       <main className={styles.content}>

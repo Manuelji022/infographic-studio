@@ -1003,6 +1003,7 @@ Canonical markup:
   fill: none;
   stroke: var(--chart-color);
   stroke-width: 2.5px;
+  vector-effect: non-scaling-stroke;
 }
 
 .ig-chart__line-projected {
@@ -1015,17 +1016,15 @@ Canonical markup:
 }
 
 .ig-chart__line-dot {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--chart-color);
-  transform: translate(-50%, -50%);
+  fill: none;
+  stroke: var(--chart-color);
+  stroke-width: 5px;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
 }
 
 .ig-chart__line-y,
 .ig-chart__line-x,
-.ig-chart__line-first,
 .ig-chart__line-end {
   position: absolute;
 }
@@ -1037,18 +1036,6 @@ Canonical markup:
 .ig-chart__line-x-middle { transform: translateX(-50%); }
 .ig-chart__line-x-end { transform: translateX(-100%); }
 
-.ig-chart__line-first,
-.ig-chart__line-end {
-  background: var(--ds-surface);
-  padding: 2px 3px;
-  line-height: 15px;
-}
-
-.ig-chart__line-first {
-  transform: translateY(-100%);
-  white-space: nowrap;
-}
-
 .ig-chart__line-end {
   margin-left: 10px;
   width: max-content;
@@ -1056,19 +1043,10 @@ Canonical markup:
   transform: translateY(-50%);
 }
 
-.ig-chart__line-end-narrow {
-  margin-left: 0;
-  max-width: 150px;
-  transform: translate(-100%, -100%);
-}
-
 .ig-chart--line .ig-chart__legend {
   margin-top: 12px;
 }
 
-.ig-chart__line-end-start {
-  transform: translateY(-100%);
-}
 
 .ig-chart__column-plot {
   height: 320px;
@@ -1212,29 +1190,22 @@ Canonical markup:
 }
 
 .ig-chart__pictogram-icon { position: relative; display: block; width: 20px; height: 24px; }
-.ig-chart__pictogram-base,
-.ig-chart__pictogram-fill { position: absolute; inset: 0; display: block; overflow: hidden; }
-.ig-chart__pictogram-base > span,
-.ig-chart__pictogram-fill > span {
-  display: block;
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
-  background: var(--chart-color);
-}
-
-.ig-chart__pictogram-base > span {
-  border: 1px solid var(--ds-border-strong);
-  box-sizing: border-box;
-}
-.ig-chart__pictogram-circle > span > span { border-radius: 50%; }
+.ig-chart__pictogram-symbol { position: absolute; width: 0; height: 0; }
+.ig-chart__pictogram-grid { --chart-color: var(--ds-data-1); }
+.ig-chart__pictogram-grid > svg,
 .ig-chart__pictogram-icon svg {
   display: block;
   width: 20px;
   height: 24px;
   fill: var(--chart-color);
 }
-.ig-chart__pictogram-base svg { stroke: var(--ds-border-strong); stroke-width: 0.5; }
+.ig-chart__pictogram-grid > svg[data-fill="0"] { --chart-color: var(--ds-surface-deep); }
+.ig-chart__pictogram-grid > svg[data-fill="0"],
+.ig-chart__pictogram-grid > svg[data-fill="100"],
+.ig-chart__pictogram-base { stroke: var(--ds-border-strong); stroke-width: 0.5; }
+.ig-chart__pictogram-base { --chart-color: var(--ds-surface-deep); position: absolute; inset: 0; }
+.ig-chart__pictogram-fill { position: absolute; inset: 0; display: block; overflow: hidden; }
+.ig-chart__pictogram-fill svg { max-width: none; }
 
 .ig-chart__scatter-plot { height: 360px; }
 .ig-chart__scatter-point {
@@ -1337,6 +1308,13 @@ Canonical markup:
   aspect-ratio: 280 / 320;
 }
 
+.ig-chart--treemap .ig-chart__treemap-xl { display: none; }
+
+@container (min-width: 720px) {
+  .ig-chart--treemap .ig-chart__treemap-md { display: none; }
+  .ig-chart--treemap .ig-chart__treemap-xl { display: revert; }
+}
+
 .ig-chart--treemap .ig-chart__plot {
   width: 100%;
   max-width: 800px;
@@ -1385,8 +1363,8 @@ Canonical markup:
   color: var(--ds-text);
 }
 
+/* No margin here: .ig-section > * + * spaces the chart from its siblings. */
 .ig-chart {
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: var(--ds-spacing-8);
