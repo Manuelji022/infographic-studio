@@ -1,0 +1,31 @@
+.layout {
+  display: grid;
+  gap: var(--ds-spacing-24);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--ds-spacing-16);
+}
+
+.stack {
+  display: grid;
+  gap: var(--ds-spacing-12);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-16);
+}
+
+.inverse {
+  background: var(--ds-surface-inverse);
+  border-radius: var(--ds-radius-card);
+  padding: var(--ds-card-padding);
+}
+
+.longText {
+  overflow-wrap: anywhere;
+}
