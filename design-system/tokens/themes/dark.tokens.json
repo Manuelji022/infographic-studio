@@ -110,5 +110,74 @@
     "$value": "{color.red-light}",
     "$type": "color",
     "$description": "Theme dark danger-text color. Error messages and their icon."
+  },
+  "chart": {
+    "highlight": {
+      "$value": "{color.yellow}",
+      "$type": "color",
+      "$description": "Theme dark chart highlight color."
+    },
+    "highlight-soft": {
+      "$value": "{color.yellow-muted}",
+      "$type": "color",
+      "$description": "Theme dark chart soft highlight color."
+    },
+    "on-highlight": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark chart highlight foreground color."
+    },
+    "negative": {
+      "$value": "{color.red}",
+      "$type": "color",
+      "$description": "Theme dark chart negative emphasis color."
+    },
+    "on-negative": {
+      "$value": "{color.ivory-light}",
+      "$type": "color",
+      "$description": "Theme dark chart negative foreground color."
+    },
+    "gap": {
+      "$value": "{color.slate-raised}",
+      "$type": "color",
+      "$description": "Theme dark chart cell gap color."
+    },
+    "grid": {
+      "$value": "{color.slate-medium}",
+      "$type": "color",
+      "$description": "Theme dark chart grid color."
+    }
+  },
+  "on-data": {
+    "1": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 1 foreground color."
+    },
+    "2": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 2 foreground color."
+    },
+    "3": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 3 foreground color."
+    },
+    "4": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 4 foreground color."
+    },
+    "5": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 5 foreground color."
+    },
+    "6": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 6 foreground color."
+    }
   }
 }

@@ -1,0 +1,30 @@
+{
+  "id": "tendencia-en",
+  "type": "line",
+  "title": "Inflation over time",
+  "description": "Annual change, in percent",
+  "sourceQuote": "Source: example data.",
+  "unit": {
+    "kind": "percent",
+    "decimals": 1
+  },
+  "x": {
+    "kind": "year",
+    "values": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "series": [
+    {
+      "name": "Inflation",
+      "values": [
+        8.4,
+        null,
+        3.1
+      ],
+      "projectedFrom": 2
+    }
+  ]
+}

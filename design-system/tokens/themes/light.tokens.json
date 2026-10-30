@@ -110,5 +110,74 @@
     "$value": "{color.red-deep}",
     "$type": "color",
     "$description": "Theme light danger-text color. Error messages and their icon."
+  },
+  "chart": {
+    "highlight": {
+      "$value": "{color.yellow}",
+      "$type": "color",
+      "$description": "Theme light chart highlight color."
+    },
+    "highlight-soft": {
+      "$value": "{color.yellow-pale}",
+      "$type": "color",
+      "$description": "Theme light chart soft highlight color."
+    },
+    "on-highlight": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme light chart highlight foreground color."
+    },
+    "negative": {
+      "$value": "{color.red}",
+      "$type": "color",
+      "$description": "Theme light chart negative emphasis color."
+    },
+    "on-negative": {
+      "$value": "{color.ivory-light}",
+      "$type": "color",
+      "$description": "Theme light chart negative foreground color."
+    },
+    "gap": {
+      "$value": "{color.ivory-light}",
+      "$type": "color",
+      "$description": "Theme light chart cell gap color."
+    },
+    "grid": {
+      "$value": "{color.stone}",
+      "$type": "color",
+      "$description": "Theme light chart grid color."
+    }
+  },
+  "on-data": {
+    "1": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme light on-data 1 foreground color."
+    },
+    "2": {
+      "$value": "{color.ivory-light}",
+      "$type": "color",
+      "$description": "Theme light on-data 2 foreground color."
+    },
+    "3": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme light on-data 3 foreground color."
+    },
+    "4": {
+      "$value": "{color.ivory-light}",
+      "$type": "color",
+      "$description": "Theme light on-data 4 foreground color."
+    },
+    "5": {
+      "$value": "{color.ivory-light}",
+      "$type": "color",
+      "$description": "Theme light on-data 5 foreground color."
+    },
+    "6": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme light on-data 6 foreground color."
+    }
   }
 }

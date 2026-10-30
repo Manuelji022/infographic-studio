@@ -1,0 +1,26 @@
+{
+  "id": "ventas-en",
+  "type": "column",
+  "title": "Sales by quarter",
+  "description": "Units sold",
+  "sourceQuote": "Source: example data.",
+  "unit": {
+    "kind": "number",
+    "decimals": 0
+  },
+  "categories": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "series": [
+    {
+      "name": "Sales",
+      "values": [
+        12,
+        17,
+        15
+      ]
+    }
+  ]
+}

@@ -24,6 +24,19 @@
   --ds-data-6: var(--ds-color-sage);
   --ds-danger: var(--ds-color-red);
   --ds-danger-text: var(--ds-color-red-deep);
+  --ds-chart-highlight: var(--ds-color-yellow);
+  --ds-chart-highlight-soft: var(--ds-color-yellow-pale);
+  --ds-chart-on-highlight: var(--ds-color-slate-dark);
+  --ds-chart-negative: var(--ds-color-red);
+  --ds-chart-on-negative: var(--ds-color-ivory-light);
+  --ds-chart-gap: var(--ds-color-ivory-light);
+  --ds-chart-grid: var(--ds-color-stone);
+  --ds-on-data-1: var(--ds-color-slate-dark);
+  --ds-on-data-2: var(--ds-color-ivory-light);
+  --ds-on-data-3: var(--ds-color-slate-dark);
+  --ds-on-data-4: var(--ds-color-ivory-light);
+  --ds-on-data-5: var(--ds-color-ivory-light);
+  --ds-on-data-6: var(--ds-color-slate-dark);
 }
 
 [data-ds-theme="light"] {
@@ -50,6 +63,19 @@
   --ds-data-6: var(--ds-color-sage);
   --ds-danger: var(--ds-color-red);
   --ds-danger-text: var(--ds-color-red-deep);
+  --ds-chart-highlight: var(--ds-color-yellow);
+  --ds-chart-highlight-soft: var(--ds-color-yellow-pale);
+  --ds-chart-on-highlight: var(--ds-color-slate-dark);
+  --ds-chart-negative: var(--ds-color-red);
+  --ds-chart-on-negative: var(--ds-color-ivory-light);
+  --ds-chart-gap: var(--ds-color-ivory-light);
+  --ds-chart-grid: var(--ds-color-stone);
+  --ds-on-data-1: var(--ds-color-slate-dark);
+  --ds-on-data-2: var(--ds-color-ivory-light);
+  --ds-on-data-3: var(--ds-color-slate-dark);
+  --ds-on-data-4: var(--ds-color-ivory-light);
+  --ds-on-data-5: var(--ds-color-ivory-light);
+  --ds-on-data-6: var(--ds-color-slate-dark);
 }
 
 [data-ds-theme="dark"] {
@@ -76,6 +102,19 @@
   --ds-data-6: var(--ds-color-sage-light);
   --ds-danger: var(--ds-color-red);
   --ds-danger-text: var(--ds-color-red-light);
+  --ds-chart-highlight: var(--ds-color-yellow);
+  --ds-chart-highlight-soft: var(--ds-color-yellow-muted);
+  --ds-chart-on-highlight: var(--ds-color-slate-dark);
+  --ds-chart-negative: var(--ds-color-red);
+  --ds-chart-on-negative: var(--ds-color-ivory-light);
+  --ds-chart-gap: var(--ds-color-slate-raised);
+  --ds-chart-grid: var(--ds-color-slate-medium);
+  --ds-on-data-1: var(--ds-color-slate-dark);
+  --ds-on-data-2: var(--ds-color-slate-dark);
+  --ds-on-data-3: var(--ds-color-slate-dark);
+  --ds-on-data-4: var(--ds-color-slate-dark);
+  --ds-on-data-5: var(--ds-color-slate-dark);
+  --ds-on-data-6: var(--ds-color-slate-dark);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -103,5 +142,18 @@
     --ds-data-6: var(--ds-color-sage-light);
     --ds-danger: var(--ds-color-red);
     --ds-danger-text: var(--ds-color-red-light);
+    --ds-chart-highlight: var(--ds-color-yellow);
+    --ds-chart-highlight-soft: var(--ds-color-yellow-muted);
+    --ds-chart-on-highlight: var(--ds-color-slate-dark);
+    --ds-chart-negative: var(--ds-color-red);
+    --ds-chart-on-negative: var(--ds-color-ivory-light);
+    --ds-chart-gap: var(--ds-color-slate-raised);
+    --ds-chart-grid: var(--ds-color-slate-medium);
+    --ds-on-data-1: var(--ds-color-slate-dark);
+    --ds-on-data-2: var(--ds-color-slate-dark);
+    --ds-on-data-3: var(--ds-color-slate-dark);
+    --ds-on-data-4: var(--ds-color-slate-dark);
+    --ds-on-data-5: var(--ds-color-slate-dark);
+    --ds-on-data-6: var(--ds-color-slate-dark);
   }
 }

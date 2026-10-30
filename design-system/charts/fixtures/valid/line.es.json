@@ -1,0 +1,30 @@
+{
+  "id": "tendencia-es",
+  "type": "line",
+  "title": "Evolución de la inflación",
+  "description": "Variación anual, en porcentaje",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "unit": {
+    "kind": "percent",
+    "decimals": 1
+  },
+  "x": {
+    "kind": "year",
+    "values": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "series": [
+    {
+      "name": "Inflación",
+      "values": [
+        8.4,
+        null,
+        3.1
+      ],
+      "projectedFrom": 2
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "participacion-en",
+  "type": "pictogram",
+  "title": "Survey participation",
+  "description": "People who responded",
+  "sourceQuote": "Source: example data.",
+  "unit": {
+    "kind": "percent",
+    "decimals": 1
+  },
+  "of": 10,
+  "value": 6.5,
+  "label": "People",
+  "icon": "person"
+}

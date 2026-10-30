@@ -1,0 +1,28 @@
+{
+  "id": "ciudades-en",
+  "type": "ranking",
+  "title": "Cities by population",
+  "description": "Population in thousands",
+  "sourceQuote": "Source: example data.",
+  "unit": {
+    "kind": "number",
+    "decimals": 0,
+    "suffix": "k"
+  },
+  "items": [
+    {
+      "label": "Dublin",
+      "value": 3300,
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Cork",
+      "value": 1600
+    },
+    {
+      "label": "Galway",
+      "value": 800
+    }
+  ],
+  "order": "desc"
+}

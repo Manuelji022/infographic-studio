@@ -173,7 +173,42 @@ const contrastPairs = [
       },
     ];
   }).flat(),
+  ...Array.from({ length: 6 }, (_, index) => ({
+    id: `on-data-${index + 1}-on-data-${index + 1}`,
+    foreground: `on-data.${index + 1}`,
+    background: `data.${index + 1}`,
+    minRatio: 4.5,
+    kind: 'TEXT',
+    note: `Chart label ${index + 1} on its data color.`,
+  })),
+  ...[
+    ['chart-on-highlight', 'chart.on-highlight', 'chart.highlight'],
+    ['chart-on-highlight-soft', 'chart.on-highlight', 'chart.highlight-soft'],
+    ['chart-on-negative', 'chart.on-negative', 'chart.negative'],
+  ].map(([id, foreground, background]) => ({
+    id,
+    foreground,
+    background,
+    minRatio: 4.5,
+    kind: 'TEXT',
+    note: 'Chart emphasis label on its fill.',
+  })),
+  {
+    id: 'chart-negative-on-surface',
+    foreground: 'chart.negative',
+    background: 'surface',
+    minRatio: 3,
+    kind: 'NON-TEXT',
+    note: 'Chart negative signal on surface.',
+  },
 ];
+
+const exceptions = {
+  light: {
+    'on-data-6-on-data-6':
+      'Never place text on data-6 in light theme; place its label outside or on --ds-surface.',
+  },
+};
 
 /** Convert an sRGB channel to its WCAG relative-luminance linear value. */
 function linearize(channel) {
@@ -223,6 +258,7 @@ function evaluateTheme(values, theme) {
       ...pair,
       ratio,
       passed: ratio >= pair.minRatio,
+      exception: exceptions[theme]?.[pair.id],
     };
   });
 }
@@ -237,7 +273,8 @@ function markdownTable(rows) {
     '| --- | --- | --- | --- | ---: | ---: | --- |',
   ];
   for (const row of rows) {
-    const result = row.passed ? 'PASS' : '**FAIL**';
+    const result = row.exception ? `EXCEPCIÓN — ${row.exception}`
+      : row.passed ? 'PASS' : '**FAIL**';
     table.push(
       `| ${row.id} | ${row.kind} | ${row.foreground} | ${row.background} `
         + `| ${formatRatio(row.ratio)}:1 | ${row.minRatio.toFixed(1)}:1 | ${result} |`,
@@ -248,8 +285,9 @@ function markdownTable(rows) {
 
 function reportContents(results) {
   const allRows = Object.values(results).flat();
-  const passed = allRows.filter((row) => row.passed).length;
-  const failed = allRows.length - passed;
+  const passed = allRows.filter((row) => row.passed && !row.exception).length;
+  const failed = allRows.filter((row) => !row.passed && !row.exception).length;
+  const excepted = allRows.filter((row) => row.exception).length;
   const sections = [
     '# WCAG Contrast Report',
     '',
@@ -268,6 +306,7 @@ function reportContents(results) {
     `- Pairs evaluated: ${allRows.length}`,
     `- PASS: ${passed}`,
     `- FAIL: ${failed}`,
+    `- EXCEPCIÓN: ${excepted}`,
     '',
     '## Not tested, and why',
     '',
@@ -284,7 +323,8 @@ function printTable(results) {
   console.log('Theme | Pair | Ratio | Required | Result');
   for (const theme of ['light', 'dark']) {
     for (const row of results[theme]) {
-      const result = row.passed ? 'PASS' : 'FAIL';
+      const result = row.exception ? `EXCEPCIÓN (${row.ratio.toFixed(2)}:1)`
+        : row.passed ? 'PASS' : 'FAIL';
       console.log(
         `${theme} | ${row.id} | ${formatRatio(row.ratio)}:1 `
           + `| ${row.minRatio.toFixed(1)}:1 | ${result}`,
@@ -303,7 +343,7 @@ function main() {
   fs.mkdirSync(path.dirname(reportPath), { recursive: true });
   fs.writeFileSync(reportPath, reportContents(results));
   printTable(results);
-  if (allRows.some((row) => !row.passed)) process.exitCode = 1;
+  if (allRows.some((row) => !row.passed && !row.exception)) process.exitCode = 1;
 }
 
 try {

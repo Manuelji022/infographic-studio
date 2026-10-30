@@ -3,6 +3,8 @@ import {
   ALLOWED_CLASSES,
   ALLOWED_ENTITIES,
   ALLOWED_TAGS,
+  CHART_ATTRIBUTE,
+  CHART_ID_PATTERN,
   DATA_PROPS,
   MAX_FRAGMENT_BYTES,
   ROOT_CLASS,
@@ -10,6 +12,7 @@ import {
 } from "./manifest.ts";
 
 export type ValidationCode =
+  | "chart-hole-invalid"
   | "too-large"
   | "bad-syntax"
   | "tag-not-allowed"
@@ -168,6 +171,8 @@ export function validateFragment(html: string): ValidationResult {
       continue;
     }
     const attrs = new Set<string>();
+    let chartClass = false;
+    let chartId: string | undefined;
     let selfClose = false;
     while (j < html.length) {
       while (/\s/.test(html[j] ?? "")) {
@@ -196,7 +201,7 @@ export function validateFragment(html: string): ValidationResult {
         add("bad-syntax", "Duplicate attribute", at);
       }
       attrs.add(name);
-      if (!ALLOWED_ATTRIBUTES.has(name)) {
+      if (!ALLOWED_ATTRIBUTES.has(name) && name !== CHART_ATTRIBUTE) {
         add("attribute-not-allowed", "Attribute is not allowed", at);
       }
       while (/\s/.test(html[j] ?? "")) {
@@ -228,7 +233,11 @@ export function validateFragment(html: string): ValidationResult {
       ) {
         add("bad-syntax", "Unsafe attribute value", valueAt);
       }
+      if (name === CHART_ATTRIBUTE) {
+        chartId = value;
+      }
       if (name === "class") {
+        chartClass ||= decoded.split(/\s+/).includes("ig-chart");
         for (const token of value.split(/\s+/).filter(Boolean)) {
           if (!ALLOWED_CLASSES.has(token) || token === ROOT_CLASS) {
             add("class-unknown", "Unknown class", valueAt);
@@ -247,6 +256,20 @@ export function validateFragment(html: string): ValidationResult {
         }
       }
     }
+    if (chartClass) {
+      // Accept one spelling so expansion never disagrees with HTML attribute parsing.
+      const canonical = `<div class="ig-chart" data-chart="${chartId}">`;
+      if (
+        chartId === undefined ||
+        !CHART_ID_PATTERN.test(chartId) ||
+        html.slice(i, j) !== canonical ||
+        !html.startsWith("</div>", j)
+      ) {
+        add("chart-hole-invalid", "Chart hole must be canonical and empty", i);
+      }
+    } else if (attrs.has(CHART_ATTRIBUTE)) {
+      add("attribute-not-allowed", "data-chart is only allowed on a chart hole", i);
+    }
     if (j > html.length || (html[j - 1] !== ">" && !selfClose)) {
       add("bad-syntax", "Unterminated tag", i);
     }
@@ -262,4 +285,12 @@ export function validateFragment(html: string): ValidationResult {
     add("unbalanced", "Unclosed tag", html.length);
   }
   return issues.length ? { ok: false, issues } : { ok: true };
+}
+
+export function chartReferences(html: string): string[] {
+  if (!validateFragment(html).ok) {
+    throw new Error("Cannot read chart references from an invalid fragment");
+  }
+  const holes = /<div class="ig-chart" data-chart="([a-z][a-z0-9-]{0,31})"><\/div>/g;
+  return Array.from(html.matchAll(holes), (match) => match[1]);
 }

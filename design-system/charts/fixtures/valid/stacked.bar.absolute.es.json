@@ -1,0 +1,29 @@
+{
+  "id": "apilado-bar-absolute-es",
+  "type": "stacked",
+  "title": "Composición por región",
+  "description": "Distribución de dos grupos",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "unit": {
+    "kind": "number"
+  },
+  "layout": "bar",
+  "mode": "absolute",
+  "categories": [
+    "2026"
+  ],
+  "series": [
+    {
+      "name": "Grupo A",
+      "values": [
+        62
+      ]
+    },
+    {
+      "name": "Grupo B",
+      "values": [
+        38
+      ]
+    }
+  ]
+}

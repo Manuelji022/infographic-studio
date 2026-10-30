@@ -1,0 +1,32 @@
+{
+  "id": "apilado-columns-absolute-es",
+  "type": "stacked",
+  "title": "Composición por región",
+  "description": "Distribución de dos grupos",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "unit": {
+    "kind": "number"
+  },
+  "layout": "columns",
+  "mode": "absolute",
+  "categories": [
+    "Norte",
+    "Sur"
+  ],
+  "series": [
+    {
+      "name": "Grupo A",
+      "values": [
+        62,
+        51
+      ]
+    },
+    {
+      "name": "Grupo B",
+      "values": [
+        38,
+        49
+      ]
+    }
+  ]
+}

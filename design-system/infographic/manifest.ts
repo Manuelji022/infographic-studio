@@ -1,5 +1,7 @@
 export const DS_VERSION = "1.0.0";
 export const MAX_FRAGMENT_BYTES = 102400;
+export const CHART_ID_PATTERN = /^[a-z][a-z0-9-]{0,31}$/;
+export const CHART_ATTRIBUTE = "data-chart";
 
 export type ComponentSpec = {
   name: string;
@@ -49,6 +51,7 @@ export const COMPONENTS: readonly ComponentSpec[] = [
     "ig-bar-chart__bar", "ig-bar-chart__value",
   ], ["ig-bar-chart__row--projected", "ig-bar-chart__row--series-2",
     "ig-bar-chart__row--series-3", "ig-bar-chart__row--series-4"], ["--ig-value", "--ig-max"]),
+  component("ig-chart", "data", "Hueco para un gráfico de la librería", ["ig-chart"]),
   component("ig-stat", "data", "Cifra destacada", [
     "ig-stat", "ig-stat__value", "ig-stat__label",
   ]),

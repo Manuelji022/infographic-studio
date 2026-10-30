@@ -1,0 +1,32 @@
+{
+  "id": "presupuesto-es",
+  "type": "donut",
+  "title": "Presupuesto por área",
+  "description": "Importes en millones",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "unit": {
+    "kind": "currency",
+    "currency": "EUR",
+    "decimals": 0
+  },
+  "parts": [
+    {
+      "label": "Personal",
+      "value": 42,
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Operaciones",
+      "value": 31
+    },
+    {
+      "label": "Otros",
+      "value": 27,
+      "emphasis": "negative"
+    }
+  ],
+  "total": {
+    "label": "Total",
+    "value": 100
+  }
+}

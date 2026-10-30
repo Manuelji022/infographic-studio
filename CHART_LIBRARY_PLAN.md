@@ -31,7 +31,7 @@ render ──► buildDocument(html, { charts, locale, theme, … })
 | C4 | Treemap de un solo periodo | **Decidido** (2026-10-30) | La versión animada por años queda fuera; comparar años, si hace falta, con pequeños múltiplos (ver §10) |
 | C5 | Validación de specs | **Decidido** (2026-10-30) | **Añadir `zod`** como dependencia: la spec ya la prevé para `save_infographic` (§5.5) y en M3 hará falta igualmente. Alternativa: validador propio como el de `validate.ts` (más código que mantener). Requiere aprobación (nueva dependencia) |
 | C6 | Técnica de render | **Confirmado** por la spike 0.3 | **Geometría en SVG, textos en HTML.** Marcas en un `<svg viewBox="0 0 100 100" preserveAspectRatio="none">` con `vector-effect: non-scaling-stroke`; etiquetas y valores en HTML posicionado en % encima. Así el texto no encoge con el ancho, respeta los roles tipográficos y hace saltos de línea solo. Donut y pictograma con proporción fija |
-| C7 | Medida de texto (¿cabe la etiqueta?) | **Confirmado** (la spike usó una estimación por caracteres; la tabla de glifos llega en 1.D) | Tabla de anchos de glifo de Geist y Source Serif 4 generada **una vez** con Chrome headless (`scripts/dev/glyph-widths.mjs`) y versionada como JSON. `measure.ts` estima el ancho sin DOM, con un margen de seguridad del 10 % |
+| C7 | Medida de texto (¿cabe la etiqueta?) | **Confirmado** (la spike usó una estimación por caracteres; la tabla de glifos llega en 1.D). **Solo sans (Geist):** Source Serif 4 tiene eje `opsz` y sus avances cambian con el tamaño (error del 14 % medido en 1.D); los gráficos no usan serif | Tabla de anchos de glifo de Geist y Source Serif 4 generada **una vez** con Chrome headless (`scripts/dev/glyph-widths.mjs`) y versionada como JSON. `measure.ts` estima el ancho sin DOM, con un margen de seguridad del 10 % |
 | C8 | Responsive | **Confirmado** por la spike 0.3 | La geometría ya es fluida (C6). La densidad de etiquetas se decide para dos anchos (estrecho ≤ 480 px y ancho); el render emite ambas variantes de etiquetas y una *container query* muestra la que toca. Sin JS |
 | C9 | Marcado del hueco | **Decidido** (contrato v1) | `<div class="ig-chart" data-chart="c1"></div>`: vacío, `data-chart` permitido **solo** en `ig-chart`, id `^[a-z][a-z0-9-]{0,31}$`. Las clases `ig-chart__*` que genera el render **no** se admiten en el fragmento del agente |
 | C10 | Trazabilidad de valores | **Decidido** (contrato v1) | Cada serie (o el gráfico entero, si es una sola fuente) lleva `sourceQuote`. No se duplican los valores en `keyData`; `keyData` queda para las cifras de texto (`ig-stat`, `ig-change`…). La comprobación de que la cita está en el texto original llega con `save_infographic` (M3) |
@@ -61,7 +61,7 @@ design-system/charts/
 ├── layout/
 │   ├── scale.ts           # escalas lineales, dominio, ticks "bonitos"
 │   ├── measure.ts         # ancho estimado de texto (tabla de glifos)
-│   ├── glyph-widths.json  # GENERADO por scripts/dev/glyph-widths.mjs
+│   ├── glyph-widths.ts    # GENERADO por scripts/dev/glyph-widths.mjs
 │   └── treemap.ts         # squarify con grupos
 ├── render/
 │   ├── shared.ts          # escape, contenedor, título/desc, tabla accesible, leyenda
@@ -75,7 +75,7 @@ design-system/charts/
 └── index.ts               # API pública: validateChartSpec, renderChart, expandCharts, tipos
 scripts/dev/
 ├── glyph-widths.mjs       # genera layout/glyph-widths.json con Chrome headless
-├── charts-test.ts         # fixtures válidos/inválidos + determinismo + escape
+├── charts-*-test.ts       # uno por tarea de la Oleada 1 (schema, scale, measure); se unifican en 3.A
 └── charts-report.ts       # escribe design-system/reports/charts/<tipo>.html (artefacto)
 ```
 
@@ -114,6 +114,8 @@ Límites comunes: ≤ 6 series con color propio (spec §6.5: más categorías �
 
 `emphasis`: `"highlight"` (amarillo, §5.3), `"negative"` (rojo, C12) o ausente.
 
+`tone` (grupos de treemap): `"data-1"`…`"data-6"`, `"highlight"` (el item con `emphasis: "highlight"` usa `highlight`; sus hermanos, `highlight-soft`), `"negative"` o `"neutral"` (`--ds-surface-deep` con `--ds-text`, clase `ig-chart__neutral`). Decidido durante 1.A.
+
 ### 5.3 Tokens nuevos (capa semántica, en ambos temas)
 
 Los amarillos son ya primitivos (`yellow`, `yellow-light`, `yellow-pale`, `yellow-muted`). Contraste medido por el coordinador (el informe de 1.C lo re-verifica):
@@ -135,11 +137,34 @@ Consecuencia: en el tema claro ningún amarillo distingue una marca de su fondo 
 | `--ds-chart-negative` | `red` | `red` | `emphasis: "negative"` (C12) |
 | `--ds-chart-gap` | `surface` | `surface` | Separación de 2 px entre celdas o sectores |
 | `--ds-chart-grid` | `border` | `border` | Rejilla y ejes |
-| `--ds-on-data-1…6` | texto que da ≥ 4,5:1 sobre cada `--ds-data-*` | ídem | Etiquetas dentro de marcas (treemap, columnas apiladas). Lo calcula `build-tokens`/`check-contrast`, no el render (lección de 0.3b) |
+| `--ds-on-data-1…6` | 1 `slate-dark` (4,55) · 2 `ivory-light` (17,5) · 3 `slate-dark` (4,55) · 4 `ivory-light` (4,86) · 5 `ivory-light` (4,66) · 6 `slate-dark` (ver nota) | todos `slate-dark` (≥ 5,90) | Etiquetas dentro de marcas (treemap, columnas apiladas). Valores fijados por el coordinador; `check-contrast` los verifica |
+| `--ds-chart-on-negative` | `ivory-light` (4,55) | `ivory-light` (4,55) | Texto sobre `--ds-chart-negative` |
+
+**Nota `data-6`:** en el tema claro ningún texto llega a 4,5:1 sobre `sage` (`slate-dark` 4,44, `ivory-light` 3,94). Regla: el render **nunca** pone texto sobre una marca `data-6`; su etiqueta va fuera o sobre pastilla `--ds-surface`. `check-contrast` registra el par `on-data-6`/`data-6` claro como excepción documentada, no como aprobado.
 
 Regla de uso: en el tema claro las áreas amarillas siempre llevan **borde de 1 px `--ds-border-strong`** o la separación `--ds-chart-gap` y una **etiqueta de texto**, de modo que la marca no dependa del contraste de relleno. Prohibido usar amarillo en líneas, puntos o barras de menos de 8 px.
 
-### 5.4 API
+### 5.4 Vocabulario CSS (lo crea 1.C; lo usan los renders de la Oleada 2)
+
+Todas las clases que emite el render llevan prefijo `ig-chart`. El agente **no** puede escribirlas (C9): solo existen en la salida de `renderChart`.
+
+| Clase | Qué es |
+| --- | --- |
+| `ig-chart` | Contenedor (`container-type: inline-size`, fuente sans, color `--ds-text`) |
+| `ig-chart__title` · `ig-chart__desc` · `ig-chart__note` | Título, descripción (qué se mide) y nota al pie |
+| `ig-chart__plot` | Área de trazado (`position: relative`); alto por modificador `--h-sm/md/lg` (240/320/400 px) o `aspect-ratio` en línea |
+| `ig-chart__svg` | SVG de geometría (`position: absolute; inset: 0`, `non-scaling-stroke` en sus hijos) |
+| `ig-chart__grid` · `ig-chart__axis` · `ig-chart__tick` | Rejilla, eje y etiqueta de tick |
+| `ig-chart__label` · `ig-chart__value` | Etiqueta y valor posicionados en % (HTML) |
+| `ig-chart__s1…s6` | Serie/categoría: fija `--chart-color: var(--ds-data-N)` y `--chart-on: var(--ds-on-data-N)` |
+| `ig-chart__highlight` · `ig-chart__highlight-soft` · `ig-chart__negative` · `ig-chart__neutral` | Énfasis y tono neutro (§5.3), mismas dos variables |
+| `ig-chart__cell` | Celda HTML posicionada (treemap, apiladas) con `background: var(--chart-color)` y `color: var(--chart-on)` |
+| `ig-chart__legend` · `ig-chart__legend-item` · `ig-chart__swatch` | Leyenda |
+| `ig-chart__also` | Lista anexa «También: …» |
+| `ig-chart__wide` · `ig-chart__narrow` | Variantes por ancho: `@container (max-width: 480px)` oculta `__wide` y muestra `__narrow` (con `display: revert`). Ponerlas solo en **envoltorios** `div`/`span` sin `display` propio: si un elemento flex lleva `__narrow`, `revert` lo devuelve a `block` |
+| `ig-chart__table` | Tabla accesible oculta (`display: block`, 1 px, `clip-path`) |
+
+### 5.5 API
 
 ```ts
 validateChartSpec(input: unknown): { ok: true; spec: ChartSpec } | { ok: false; issues: ChartIssue[] };
@@ -193,10 +218,17 @@ Ejecutan workers `pi` (gpt-6-luna) según la memoria de flujo del propietario; e
 | **1.A** Schemas | `charts/schema/**` | Schema común + 8 tipos, `validateChartSpec`, fixtures `valid/` e `invalid/` | `charts-test.ts`: todos los válidos pasan, cada inválido falla con su `code` |
 | **1.B** Escalas y formato | `charts/layout/scale.ts`, `charts/format.ts` | Escala lineal, dominio con 0, ticks bonitos; `Intl` por locale | Casos de §6 "Escala y ticks" y formato ES/EN en `charts-test.ts` |
 | **1.C** Tokens y CSS base | `tokens/semantic.tokens.json`, `themes/*.tokens.json`, `charts/css/charts.css`, `scripts/check-contrast.mjs` (pares nuevos) | Tokens de §5.3, contenedor, título, leyenda, ejes, tabla accesible | `tokens:check` y `contrast:check` limpios con los pares nuevos en el informe |
-| **1.D** Medida de texto | `scripts/dev/glyph-widths.mjs`, `charts/layout/measure.ts`, `glyph-widths.json` | Tabla generada y estimador | Error ≤ 10 % frente a la medida real de Chrome en 50 cadenas ES/EN |
+| **1.D** Medida de texto | `scripts/dev/glyph-widths.mjs`, `charts/layout/measure.ts`, `glyph-widths.ts` | Tabla generada y estimador | Error ≤ 10 % frente a la medida real de Chrome en 50 cadenas ES/EN |
 | **1.E** Hueco | `infographic/manifest.ts`, `infographic/validate.ts`, fixtures del validador | `ig-chart` y `data-chart` según C9 | Los 59 fixtures actuales siguen pasando + fixtures nuevos de §6 "Hueco" |
 
 1.A–1.E en paralelo (ficheros disjuntos). 1.C es la única que toca tokens.
+
+### Lecciones de la Oleada 1
+
+- **Pruebas tautológicas:** una prueba que mide con el mismo método con que se generó el dato no demuestra nada (1.D comparaba canvas sin kerning con una tabla sin kerning). Exigir siempre una referencia independiente del objeto real (aquí, el HTML que pinta el navegador).
+- Los workers se detienen correctamente ante un typecheck roto por otro worker; en una oleada paralela, avisar desde el principio de que el `tsc` global puede fallar por ficheros ajenos y que comprueben los suyos con `grep -v`.
+- Codex `gpt-6.1-sol` preguntó con `ask` en vez de inventar en tres ocasiones (formato de %, `maxTicks`, extremos IEEE): las preguntas fueron buenas y evitaron cambios de contrato silenciosos.
+- `pi` sigue entregando CSS con fallos sutiles (`display: initial`, reglas de tema globales). Para la Oleada 2, render y CSS van a Codex; `pi` solo para fichas `.md`.
 
 ### Oleada 2 — Tipos de gráfico
 
@@ -237,11 +269,11 @@ La de `DESIGN_SYSTEM_PLAN.md` §7, añadiendo a "Lee antes": `CHART_LIBRARY_PLAN
 | 0.3a Spike `line` | [x] | pi (falló: no dibujaba líneas) → Codex gpt-6.1-sol | Aceptada | C6/C8 válidos. Capturas en `design-system/reports/charts-spike/line/` |
 | 0.3b Spike `treemap` | [x] | pi (1.º bien, corrección fallida) → Codex gpt-6.1-sol | Aceptada | Squarify con grupos, contraste por grupo y tema (mín. 4,55:1), lista «También». Capturas en `design-system/reports/charts-spike/treemap/` |
 | 0.4 Esqueleto + `zod` | [x] | pi | Aceptada | `zod` 4.6.7; esqueleto sin lógica |
-| 1.A Schemas | [ ] | | | |
-| 1.B Escalas y formato | [ ] | | | |
-| 1.C Tokens y CSS base | [ ] | | | |
-| 1.D Medida de texto | [ ] | | | |
-| 1.E Hueco | [ ] | | | |
+| 1.A Schemas | [x] | Codex gpt-6-luna (max) | Aceptada | 8 schemas zod estrictos, `ChartTone` (decidido durante la tarea), límite \|v\| ≤ 1e15. 22 válidos + 19 inválidos; probado además con entradas adversariales (`__proto__`, NaN en texto, null, bidi) |
+| 1.B Escalas y formato | [x] | Codex gpt-6.1-sol | Aceptada | 45/45. El 0 y la cobertura mandan sobre `maxTicks`; ES usa U+00A0 antes de % (Intl) y U+202F antes del sufijo |
+| 1.C Tokens y CSS base | [x] | pi | Aceptada con correcciones | Tokens y pares de contraste con excepción `data-6` claro. Corregido por el coordinador: `display: initial` volvía inline los div, el borde del amarillo borraba el separador en tema `auto` oscuro (ahora `outline` con `--chart-edge`), línea > 100 |
+| 1.D Medida de texto | [x] | Codex gpt-6.1-sol (4 envíos) | Aceptada con correcciones | Solo Geist (serif descartada por `opsz`). `‰` sin cobertura. La primera prueba era tautológica (canvas sin kerning contra tabla sin kerning); ahora compara con HTML real: subestima ≤ 0,53 %, sobreestima ≤ 5,7 % (kerning), margen con SAFETY ≥ 9,4 % |
+| 1.E Hueco | [x] | Codex gpt-6.1-sol | Aceptada con correcciones | Forma canónica exacta o `chart-hole-invalid`; `chartReferences()`. 96/96 fixtures (34 nuevos). Corregido por el coordinador: `manifest-check.ts` no leía `charts.css` |
 | 2.A `line` | [ ] | | | |
 | 2.B `column`, `stacked` | [ ] | | | |
 | 2.C `donut`, `pictogram` | [ ] | | | |

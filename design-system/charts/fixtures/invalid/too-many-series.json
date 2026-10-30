@@ -1,0 +1,56 @@
+{
+  "id": "apilado-valido",
+  "type": "stacked",
+  "title": "Title",
+  "description": "Description",
+  "sourceQuote": "Source",
+  "layout": "bar",
+  "mode": "absolute",
+  "categories": [
+    "Total"
+  ],
+  "series": [
+    {
+      "name": "Group 0",
+      "values": [
+        0
+      ]
+    },
+    {
+      "name": "Group 1",
+      "values": [
+        1
+      ]
+    },
+    {
+      "name": "Group 2",
+      "values": [
+        2
+      ]
+    },
+    {
+      "name": "Group 3",
+      "values": [
+        3
+      ]
+    },
+    {
+      "name": "Group 4",
+      "values": [
+        4
+      ]
+    },
+    {
+      "name": "Group 5",
+      "values": [
+        5
+      ]
+    },
+    {
+      "name": "Group 6",
+      "values": [
+        6
+      ]
+    }
+  ]
+}

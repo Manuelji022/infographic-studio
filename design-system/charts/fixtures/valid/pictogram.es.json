@@ -1,0 +1,15 @@
+{
+  "id": "participacion-es",
+  "type": "pictogram",
+  "title": "Participación en la encuesta",
+  "description": "Personas que respondieron",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "unit": {
+    "kind": "percent",
+    "decimals": 1
+  },
+  "of": 10,
+  "value": 6.5,
+  "label": "Personas",
+  "icon": "person"
+}
