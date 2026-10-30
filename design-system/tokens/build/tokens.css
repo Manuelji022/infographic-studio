@@ -26,6 +26,10 @@
   --ds-color-red: #e2162a;
   --ds-color-red-deep: #d4132a;
   --ds-color-red-light: #ff6b78;
+  --ds-color-yellow: #FFCD00;
+  --ds-color-yellow-light: #FFDA48;
+  --ds-color-yellow-pale: #FFE586;
+  --ds-color-yellow-muted: #EDE0B0;
   --ds-font-serif: "Source Serif 4", ui-serif, Georgia, serif;
   --ds-font-sans: Geist, system-ui, sans-serif;
   --ds-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;

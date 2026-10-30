@@ -124,6 +124,26 @@
       "$value": "#ff6b78",
       "$type": "color",
       "$description": "The red-light palette color. Error text in the dark theme (6.7:1 on canvas)."
+    },
+    "yellow": {
+      "$value": "#FFCD00",
+      "$type": "color",
+      "$description": "Yellow palette color."
+    },
+    "yellow-light": {
+      "$value": "#FFDA48",
+      "$type": "color",
+      "$description": "Light yellow palette color."
+    },
+    "yellow-pale": {
+      "$value": "#FFE586",
+      "$type": "color",
+      "$description": "Pale yellow palette color."
+    },
+    "yellow-muted": {
+      "$value": "#EDE0B0",
+      "$type": "color",
+      "$description": "Muted yellow palette color."
     }
   },
   "font": {
