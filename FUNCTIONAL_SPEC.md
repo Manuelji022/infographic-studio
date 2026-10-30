@@ -331,7 +331,7 @@ A ellos se suman los tonos derivados que haga falta (por ejemplo, un texto atenu
 | `--ds-accent` / `--ds-accent-hover` | `clay` / `clay-deep` | igual | Acción principal |
 | `--ds-on-accent` | `slate-dark` | `slate-dark` | Texto sobre el acento |
 | `--ds-focus-ring` | `slate-dark` | `ivory-light` | Anillo de foco |
-| `--ds-data-1…6` | paleta cálida | derivada | Series y categorías de gráficos (valores por definir) |
+| `--ds-data-1…6` | `clay-deep`, `slate-dark`, `ochre`, `olive`, `taupe`, `sage` | `clay`, `ivory-light`, `ochre-light`, `olive-light`, `taupe-light`, `sage-light` | Series y categorías de gráficos (≥ 3:1 sobre canvas y surface en ambos temas, según el informe de contraste) |
 
 **Tipografía.** Roles definidos en JSON; el generador emite `--ds-type-{rol}-*` y una clase `.ds-type-{rol}`. Display y heading son **fluidos** (`clamp()`, mínimos propuestos 40 y 36 px, a validar a 360 px).
 
@@ -351,7 +351,7 @@ A ellos se suman los tonos derivados que haga falta (por ejemplo, un texto atenu
 
 **Forma, espacio y layout.** Espaciado de base 4 px (4, 8, 12, 16, 24, 32, 76, 100). Radios 0, 8, 12, 16 y 24 px; por componente: tarjeta 24 px, botón relleno **solo con esquinas inferiores de 8 px** (las superiores a 0), botón con borde 12 px, badge y navegación 0. Ancho de página 1280 px; ancho de prosa de la infografía 880 px. Sin sombras.
 
-**Temas:** `light` y `dark`, más `auto` (sigue `prefers-color-scheme`). Se aplican con el atributo `data-ds-theme` en el contenedor raíz; sin atributo, tema claro. El **tema oscuro es derivado** (la referencia solo define el claro): se aprueba sobre capturas antes de darlo por cerrado.
+**Temas:** `light` y `dark`, más `auto` (sigue `prefers-color-scheme`). Se aplican con el atributo `data-ds-theme` en el contenedor raíz; sin atributo, tema claro. El **tema oscuro es derivado** (la referencia solo define el claro) y está **aprobado** (2026-10-30).
 
 **Fuentes** (autoalojadas, variables, subset `latin`, licencia OFL; sin recursos externos):
 
@@ -557,7 +557,7 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 | Completado | Hito | Contenido |
 | --- | --- | --- |
 | [x] | M0 — Base          | Mover el agente a `agent/`, `withEve` en Next, Neon + Drizzle + primera migración (solo tablas de Better Auth; el esquema de la aplicación se crea en M2/M3), Better Auth con Google y allowlist, `proxy.ts` y login. Infraestructura i18n (diccionarios + toggle). Eve queda fuera de M0: el canal del agente y la spike de importación pasan a M3. **Cerrado el 2026-10-29** con dos pendientes trasladados a M1: prueba de rechazo de cuentas no propietarias y pruebas E2E del login. Las migraciones están aplicadas en la rama `dev`; `main` queda pendiente. |
-| [ ] | M1 — Design system | Estilo editorial de papel cálido (§6). Tokens en JSON DTCG con generador propio y check de deriva, temas claro y oscuro (el oscuro, derivado, se aprueba sobre capturas), informe de contraste AA, fuentes autoalojadas (**hechas**: Source Serif 4, Geist y Geist Mono), componentes de UI (primitivas y composites, incl. `PromptComposer`), los 12 componentes `ig-*` ★ con su `manifest.ts`, validador y renderer/exportación, página `/design-system` y la referencia reescrita en `examples/`. Plan por oleadas en `DESIGN_SYSTEM_PLAN.md`. Arrastre de M0: prueba E2E de que una cuenta no propietaria es rechazada por el hook de allowlist, y pruebas E2E del login y de la protección de rutas (Playwright; `AGENTS.md`). |
+| [ ] | M1 — Design system | Estilo editorial de papel cálido (§6). Tokens en JSON DTCG con generador propio y check de deriva, temas claro y oscuro (el oscuro, derivado, aprobado el 2026-10-30), informe de contraste AA, fuentes autoalojadas (**hechas**: Source Serif 4, Geist y Geist Mono), componentes de UI (primitivas y composites, incl. `PromptComposer`), los 12 componentes `ig-*` ★ con su `manifest.ts`, validador y renderer/exportación, página `/design-system` y la referencia reescrita en `examples/`. Plan por oleadas en `DESIGN_SYSTEM_PLAN.md`. Arrastre de M0: prueba E2E de que una cuenta no propietaria es rechazada por el hook de allowlist, y pruebas E2E del login y de la protección de rutas (Playwright; `AGENTS.md`). |
 | [ ] | M2 — Frontend      | Biblioteca, búsqueda full-text multidioma con ranking y filtros, detalle, descargar/copiar/eliminar, compartir (`share_links`, `/s/[token]`, revocar, caducidad, Open Graph, `noindex`) y toggle de idioma. Se prueba con infografías de ejemplo, sin agente.                                                                                                                                                                                                                                                                                                       |
 | [ ] | M3 — Agente        | Agente eve: canal con auth del propietario (`agent/channels/eve.ts`) y spike de importación de `db/` y `design-system/` desde fuera de `agent/` con una tool mínima que lea de la BD. Generar con `save_infographic` (validación y reintentos), renderer de borradores, conservar/descartar, refinar en la misma sesión, `save_translation` con *Traducir* y evals en ES y EN.                                                                                                                                                                                      |
 | [ ] | M4 — Pulido        | Componentes de datos restantes, evals en CI, cron de limpieza de borradores y aplicar el estilo visual definitivo cuando llegue.                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -585,7 +585,7 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 | Fuentes | Source Serif 4 (serif, cuerpo), Geist (sans, UI) y Geist Mono (código); variables, subset `latin`, autoalojadas |
 | Tokens | JSON DTCG como fuente de verdad y script propio sin dependencias (`build-tokens.mjs`) que genera el CSS; prefijo `--ds-*`. Props de datos de infografía: `--ig-*` |
 | Color de datos | Arcilla como color principal de datos en las infografías (no tienen acciones), slate para lo neutro y paleta cálida categórica para el resto |
-| Tema oscuro | Derivado (la referencia solo define el claro); se aprueba sobre capturas |
+| Tema oscuro | Derivado (la referencia solo define el claro). **Aprobado por el propietario el 2026-10-30** sobre el catálogo `/design-system` |
 | Textos en el DS | Los componentes de UI no llevan textos propios: los reciben por props y la i18n vive en la app |
 | E2E | Playwright, con informes como artefacto repetible |
 | Salida estructurada del agente | Considerada y aplazada (§5.6): en v1 el HTML sigue siendo la fuente de verdad |
@@ -595,7 +595,5 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 ## 13. Preguntas abiertas
 
 1. **Modelo** del agente: se define más adelante.
-2. **Paleta de datos** de las infografías (`--ds-data-1…6`): valores cálidos por definir y validar con el informe de contraste.
-3. **Tema oscuro** derivado: pendiente de aprobación sobre capturas.
-4. **Mínimos fluidos** de `display` (40 px) y `heading` (36 px): a validar a 360 px.
-5. **Crédito de Source Serif 4:** el paquete de Fontsource trae "Google Inc." como copyright, no la autoría original (Adobe). Decidir si se cita en una página de créditos.
+2. **Mínimos fluidos** de `display` (40 px) y `heading` (36 px): a validar a 360 px.
+3. **Crédito de Source Serif 4:** el paquete de Fontsource trae "Google Inc." como copyright, no la autoría original (Adobe). Decidir si se cita en una página de créditos.

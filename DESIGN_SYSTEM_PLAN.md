@@ -25,7 +25,7 @@ Fuera de alcance de M1: generación con el agente (M3), biblioteca y compartir (
 | D1 | El sistema cubre UI de la app **e** infografías, con tokens compartidos | **Decidido** (en la spec §6, §12) | Sí, dos capas de componentes |
 | D2 | Clay también como color de datos en infografías | **Decidido** (spec §12) | Clay = color principal de datos, slate = neutro, paleta cálida categórica (valores por definir en la Oleada 1) |
 | D3 | Fuentes | **Decidido** | Source Serif 4 (cuerpo/serif), Geist (sans/UI), Geist Mono (código) |
-| D4 | Tema oscuro derivado | **Decidido** (spec §12) | Derivado en M1; se aprueba sobre capturas al final de la Oleada 1 |
+| D4 | Tema oscuro derivado | **Decidido y aprobado** (2026-10-30) | Derivado en M1; aprobado por el propietario sobre el catálogo |
 | D5 | Descartar el trabajo de la oleada 1 (`design-system/*.css`, escalas azul/gris) | **Decidido** (spec §12) | Descartar; los archivos se retiran en la tarea 0.3 y se reescriben con el generador |
 | D6 | Generador de tokens | **Decidido** | Script propio en JS, sin dependencias (`scripts/build-tokens.mjs`) |
 | D7 | Prefijos | **Propuesto** | Tokens `--ds-*` · clases infografía `ig-*` · props de datos de infografía `--ig-*` (`--ig-value`, `--ig-max`) · componentes UI con CSS Modules |
@@ -275,7 +275,7 @@ Checklist por entrega, antes de aceptar y de lanzar la siguiente oleada:
 7. **API de componentes:** variantes explícitas, `ref` como prop, sin strings propios, sin props booleanas de estilo.
 8. **Veredicto por tarea:** aceptada · corrección (reenvío al mismo terminal o `--retry-of`) · rechazada. Se registra en la tabla de seguimiento.
 
-El propietario aprueba explícitamente: tema oscuro (fin Oleada 1), primer catálogo (fin Oleada 2) y `PromptComposer` (fin Oleada 3).
+El propietario aprueba explícitamente: tema oscuro (**aprobado 2026-10-30**), primer catálogo (**aprobado 2026-10-30**) y `PromptComposer` (fin Oleada 3).
 
 ## 9. Seguimiento
 
@@ -309,7 +309,7 @@ El propietario aprueba explícitamente: tema oscuro (fin Oleada 1), primer catá
 ## 10. Riesgos abiertos
 
 - **Paleta de datos cálida (D2):** pocos tonos distinguibles en la familia tierra; riesgo de gráficos poco legibles o con poco contraste. Mitigación: validar `--ds-data-*` con el script de contraste y sobre capturas de ejemplos reales.
-- **Tema oscuro derivado:** la referencia no define uno; puede perder el carácter "papel". Se aprueba sobre capturas.
+- ~~Tema oscuro derivado~~ (aprobado el 2026-10-30; la referencia no define uno, se revisará si aparecen problemas en pantallas reales).
 - **Peso de la fuente serif en exportación:** ~122 KB (≈ 165 KB en base64). Si pesa demasiado, versión solo `wght` (51 KB).
 - **Copyright de Source Serif 4:** el paquete de Fontsource trae "Google Inc."; revisar si se quiere citar a Adobe en una página de créditos.
 - **Fluid type:** los mínimos de display/heading pueden rozar en 360 px con títulos largos en español.
