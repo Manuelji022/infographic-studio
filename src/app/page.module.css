@@ -1,6 +1,6 @@
 .page {
-  --background: #fafafa;
-  --foreground: #fff;
+  --page-background: var(--ds-canvas);
+  --page-foreground: var(--ds-surface);
 
   --text-primary: #000;
   --text-secondary: #666;
@@ -14,8 +14,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  font-family: var(--ds-font-sans);
+  background-color: var(--ds-canvas);
 }
 
 .main {
@@ -26,7 +26,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  background-color: var(--foreground);
+  background-color: var(--page-foreground);
   padding: 120px 60px;
 }
 
@@ -86,7 +86,7 @@
 
 a.primary {
   background: var(--text-primary);
-  color: var(--background);
+  color: var(--page-background);
   gap: 8px;
 }
 
@@ -129,8 +129,8 @@ a.secondary {
   }
 
   .page {
-    --background: #000;
-    --foreground: #000;
+    --page-background: var(--ds-canvas);
+    --page-foreground: var(--ds-surface);
 
     --text-primary: #ededed;
     --text-secondary: #999;
@@ -142,7 +142,7 @@ a.secondary {
 }
 
 .code {
-  font-family: var(--font-geist-mono);
+  font-family: var(--ds-font-mono);
   font-size: 0.9em;
   background: color-mix(in srgb, currentColor 8%, transparent);
   padding: 0.1em 0.4em;
