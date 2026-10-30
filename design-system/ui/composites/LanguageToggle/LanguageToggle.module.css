@@ -1,17 +1,16 @@
-.group {
-  display: inline-flex;
-  width: fit-content;
-  border: 1px solid var(--ds-border-strong);
-  border-radius: var(--ds-radius-nav);
-  overflow: hidden;
+.root {
+  display: inline-block;
 }
 
-.option {
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-spacing-8);
   min-height: 44px;
-  padding: 0 var(--ds-spacing-16);
-  border: 0;
-  border-right: 1px solid var(--ds-border-strong);
-  background: var(--ds-surface);
+  padding: 0 var(--ds-spacing-12);
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-xl);
+  background: transparent;
   color: var(--ds-text);
   cursor: pointer;
   font-family: var(--ds-type-ui-sm-family);
@@ -21,18 +20,79 @@
   letter-spacing: var(--ds-type-ui-sm-tracking);
 }
 
-.option:last-child {
-  border-right: 0;
+@media (prefers-reduced-motion: no-preference) {
+  .trigger,
+  .item {
+    transition: background-color 150ms ease;
+  }
 }
 
-.option[aria-pressed="true"] {
-  background: var(--ds-surface-inverse);
-  color: var(--ds-text-inverse);
+.trigger:hover,
+.root:has(.panel:popover-open) .trigger,
+.item:hover {
+  background: var(--ds-surface-deep);
 }
 
-.option:focus-visible {
+.trigger:focus-visible,
+.item:focus-visible {
   outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
-  outline-offset: calc(-1 * var(--ds-focus-ring-offset));
-  position: relative;
-  z-index: 1;
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.code {
+  min-width: 2ch;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel {
+  box-sizing: border-box;
+  min-width: 180px;
+  max-width: calc(100vw - 2 * var(--ds-spacing-16));
+  padding: var(--ds-spacing-8);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-surface);
+  color: var(--ds-text);
+  position: fixed;
+  top: anchor(bottom);
+  right: anchor(right);
+  left: auto;
+  margin: var(--ds-spacing-4) 0 0;
+}
+
+.items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-spacing-12);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--ds-spacing-8) var(--ds-spacing-12);
+  border: 0;
+  border-radius: var(--ds-radius-lg);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.item[aria-current="true"] {
+  font-weight: var(--ds-type-ui-strong-weight);
+}
+
+@supports not (anchor-name: --a) {
+  .panel {
+    top: var(--ds-spacing-76);
+    right: var(--ds-spacing-16);
+    left: auto;
+    margin: 0;
+  }
 }

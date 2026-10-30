@@ -12,7 +12,8 @@ const copy = {
     title: "Idioma", languageLabel: "Idioma", spanish: "ES", english: "EN",
     spanishName: "Español", englishName: "English", userMenu: "Menú de usuario",
     account: "Mi cuenta", signOut: "Cerrar sesión", selected: "Acciones seleccionadas",
-    languageNote: "El idioma activo se marca con el fondo oscuro.",
+    languageNote: "Con dos idiomas, el botón cambia al otro. Con tres o más, abre un menú.",
+    frenchName: "Français", french: "FR",
     popover: "Pulsa el botón para abrir el panel emergente.", header: "Cabecera completa",
     brand: "Infographic Studio", nav: "Navegación principal", generate: "Generar",
     library: "Biblioteca", design: "Design system", noSession: "Sin sesión",
@@ -22,7 +23,8 @@ const copy = {
     title: "Language", languageLabel: "Language", spanish: "ES", english: "EN",
     spanishName: "Español", englishName: "English", userMenu: "User menu",
     account: "My account", signOut: "Sign out", selected: "Selected actions",
-    languageNote: "The active language is marked with the dark background.",
+    languageNote: "With two languages, the button switches to the other one. With three or more, it opens a menu.",
+    frenchName: "Français", french: "FR",
     popover: "Press the button to open the popover panel.", header: "Full header",
     brand: "Infographic Studio", nav: "Main navigation", generate: "Generate",
     library: "Library", design: "Design system", noSession: "Signed out",
@@ -54,7 +56,11 @@ export function NavigationSection({ locale }: CatalogSectionProps) {
     <div className={styles.layout}>
       <h3 className="ds-type-title">{c.title}</h3>
       <p className="ds-type-caption">{c.languageNote}</p>
-      {toggle}
+      <div className={styles.languageRow}>
+        {toggle}
+        <LanguageToggle value={language} label={labels.label} onChange={setLanguage}
+          options={[...labels.options, { value: "fr", label: c.french, ariaLabel: c.frenchName }]} />
+      </div>
       <h3 className="ds-type-title">{c.userMenu}</h3>
       <div className={styles.menuRow}>{userMenu}</div>
       <p className="ds-type-caption">{c.popover} {c.selected}: {selected}</p>

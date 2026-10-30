@@ -4,6 +4,12 @@
   min-width: 0;
 }
 
+.languageRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-8);
+}
+
 .menuRow {
   display: flex;
   justify-content: flex-end;
