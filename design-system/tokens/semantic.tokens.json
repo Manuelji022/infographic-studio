@@ -1,0 +1,73 @@
+{
+  "layout": {
+    "page-max-width": {
+      "$value": "1280px",
+      "$type": "dimension",
+      "$description": "Maximum page width."
+    },
+    "prose-max-width": {
+      "$value": "880px",
+      "$type": "dimension",
+      "$description": "Maximum prose width."
+    },
+    "section-gap": {
+      "$value": "clamp(80px, 10vw, 120px)",
+      "$type": "dimension",
+      "$description": "Vertical section spacing."
+    },
+    "card-padding": {
+      "$value": "clamp(24px, 3vw, 32px)",
+      "$type": "dimension",
+      "$description": "Card inner spacing."
+    },
+    "element-gap": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Gap between elements."
+    }
+  },
+  "component": {
+    "radius-card": {
+      "$value": "{radius.3xl}",
+      "$type": "dimension",
+      "$description": "Card corner radius."
+    },
+    "radius-button-outlined": {
+      "$value": "{radius.xl}",
+      "$type": "dimension",
+      "$description": "Outlined button radius."
+    },
+    "radius-button-filled-bottom": {
+      "$value": "{radius.lg}",
+      "$type": "dimension",
+      "$description": "Filled button lower radius."
+    },
+    "radius-button-filled-top": {
+      "$value": "{radius.none}",
+      "$type": "dimension",
+      "$description": "Filled button upper radius."
+    },
+    "radius-badge": {
+      "$value": "{radius.none}",
+      "$type": "dimension",
+      "$description": "Badge radius."
+    },
+    "radius-nav": {
+      "$value": "{radius.none}",
+      "$type": "dimension",
+      "$description": "Navigation radius."
+    }
+  },
+  "focus": {
+    "focus-ring-width": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Focus ring thickness."
+    },
+    "focus-ring-offset": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Focus ring separation."
+    }
+  }
+}

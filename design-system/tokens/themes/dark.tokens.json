@@ -1,0 +1,104 @@
+{
+  "canvas": {
+    "$value": "{color.slate-dark}",
+    "$type": "color",
+    "$description": "Theme dark canvas color."
+  },
+  "surface": {
+    "$value": "{color.slate-raised}",
+    "$type": "color",
+    "$description": "Theme dark surface color."
+  },
+  "surface-feature": {
+    "$value": "{color.manilla-night}",
+    "$type": "color",
+    "$description": "Theme dark surface-feature color."
+  },
+  "surface-deep": {
+    "$value": "{color.slate-medium}",
+    "$type": "color",
+    "$description": "Theme dark surface-deep color."
+  },
+  "surface-inverse": {
+    "$value": "{color.ivory-light}",
+    "$type": "color",
+    "$description": "Theme dark surface-inverse color."
+  },
+  "text": {
+    "$value": "{color.ivory-light}",
+    "$type": "color",
+    "$description": "Theme dark text color."
+  },
+  "text-muted": {
+    "$value": "{color.cloud-medium}",
+    "$type": "color",
+    "$description": "Theme dark text-muted color."
+  },
+  "text-inverse": {
+    "$value": "{color.slate-dark}",
+    "$type": "color",
+    "$description": "Theme dark text-inverse color."
+  },
+  "border": {
+    "$value": "{color.slate-medium}",
+    "$type": "color",
+    "$description": "Theme dark border color."
+  },
+  "border-strong": {
+    "$value": "{color.cloud-dark}",
+    "$type": "color",
+    "$description": "Theme dark border-strong color."
+  },
+  "accent": {
+    "$value": "{color.clay}",
+    "$type": "color",
+    "$description": "Theme dark accent color."
+  },
+  "accent-hover": {
+    "$value": "{color.clay-deep}",
+    "$type": "color",
+    "$description": "Theme dark accent-hover color."
+  },
+  "on-accent": {
+    "$value": "{color.slate-dark}",
+    "$type": "color",
+    "$description": "Theme dark on-accent color."
+  },
+  "focus-ring": {
+    "$value": "{color.ivory-light}",
+    "$type": "color",
+    "$description": "Theme dark focus-ring color."
+  },
+  "data": {
+    "1": {
+      "$value": "{color.clay}",
+      "$type": "color",
+      "$description": "Theme dark data color 1."
+    },
+    "2": {
+      "$value": "{color.ivory-light}",
+      "$type": "color",
+      "$description": "Theme dark data color 2."
+    },
+    "3": {
+      "$value": "{color.ochre-light}",
+      "$type": "color",
+      "$description": "Theme dark data color 3."
+    },
+    "4": {
+      "$value": "{color.olive-light}",
+      "$type": "color",
+      "$description": "Theme dark data color 4."
+    },
+    "5": {
+      "$value": "{color.taupe-light}",
+      "$type": "color",
+      "$description": "Theme dark data color 5."
+    },
+    "6": {
+      "$value": "{color.sage-light}",
+      "$type": "color",
+      "$description": "Theme dark data color 6."
+    }
+  }
+}

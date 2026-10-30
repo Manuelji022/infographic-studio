@@ -1,0 +1,104 @@
+{
+  "canvas": {
+    "$value": "{color.ivory-medium}",
+    "$type": "color",
+    "$description": "Theme light canvas color."
+  },
+  "surface": {
+    "$value": "{color.ivory-light}",
+    "$type": "color",
+    "$description": "Theme light surface color."
+  },
+  "surface-feature": {
+    "$value": "{color.manilla}",
+    "$type": "color",
+    "$description": "Theme light surface-feature color."
+  },
+  "surface-deep": {
+    "$value": "{color.oat-warm}",
+    "$type": "color",
+    "$description": "Theme light surface-deep color."
+  },
+  "surface-inverse": {
+    "$value": "{color.slate-dark}",
+    "$type": "color",
+    "$description": "Theme light surface-inverse color."
+  },
+  "text": {
+    "$value": "{color.slate-dark}",
+    "$type": "color",
+    "$description": "Theme light text color."
+  },
+  "text-muted": {
+    "$value": "{color.slate-soft}",
+    "$type": "color",
+    "$description": "Theme light text-muted color."
+  },
+  "text-inverse": {
+    "$value": "{color.ivory-light}",
+    "$type": "color",
+    "$description": "Theme light text-inverse color."
+  },
+  "border": {
+    "$value": "{color.stone}",
+    "$type": "color",
+    "$description": "Theme light border color."
+  },
+  "border-strong": {
+    "$value": "{color.cloud-dark}",
+    "$type": "color",
+    "$description": "Theme light border-strong color."
+  },
+  "accent": {
+    "$value": "{color.clay}",
+    "$type": "color",
+    "$description": "Theme light accent color."
+  },
+  "accent-hover": {
+    "$value": "{color.clay-deep}",
+    "$type": "color",
+    "$description": "Theme light accent-hover color."
+  },
+  "on-accent": {
+    "$value": "{color.slate-dark}",
+    "$type": "color",
+    "$description": "Theme light on-accent color."
+  },
+  "focus-ring": {
+    "$value": "{color.slate-dark}",
+    "$type": "color",
+    "$description": "Theme light focus-ring color."
+  },
+  "data": {
+    "1": {
+      "$value": "{color.clay-deep}",
+      "$type": "color",
+      "$description": "Theme light data color 1."
+    },
+    "2": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme light data color 2."
+    },
+    "3": {
+      "$value": "{color.ochre}",
+      "$type": "color",
+      "$description": "Theme light data color 3."
+    },
+    "4": {
+      "$value": "{color.olive}",
+      "$type": "color",
+      "$description": "Theme light data color 4."
+    },
+    "5": {
+      "$value": "{color.taupe}",
+      "$type": "color",
+      "$description": "Theme light data color 5."
+    },
+    "6": {
+      "$value": "{color.sage}",
+      "$type": "color",
+      "$description": "Theme light data color 6."
+    }
+  }
+}

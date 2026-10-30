@@ -1,0 +1,220 @@
+{
+  "color": {
+    "slate-dark": {
+      "$value": "#141413",
+      "$type": "color",
+      "$description": "The slate-dark palette color."
+    },
+    "slate-medium": {
+      "$value": "#3d3d3a",
+      "$type": "color",
+      "$description": "The slate-medium palette color."
+    },
+    "ivory-medium": {
+      "$value": "#f0eee6",
+      "$type": "color",
+      "$description": "The ivory-medium palette color."
+    },
+    "ivory-light": {
+      "$value": "#faf9f5",
+      "$type": "color",
+      "$description": "The ivory-light palette color."
+    },
+    "oat-warm": {
+      "$value": "#e3dacc",
+      "$type": "color",
+      "$description": "The oat-warm palette color."
+    },
+    "manilla": {
+      "$value": "#f5e3c7",
+      "$type": "color",
+      "$description": "The manilla palette color."
+    },
+    "stone": {
+      "$value": "#cccbc8",
+      "$type": "color",
+      "$description": "The stone palette color."
+    },
+    "cloud-medium": {
+      "$value": "#b0aea5",
+      "$type": "color",
+      "$description": "The cloud-medium palette color."
+    },
+    "cloud-dark": {
+      "$value": "#87867f",
+      "$type": "color",
+      "$description": "The cloud-dark palette color."
+    },
+    "clay": {
+      "$value": "#d97757",
+      "$type": "color",
+      "$description": "The clay palette color."
+    },
+    "clay-deep": {
+      "$value": "#c6613f",
+      "$type": "color",
+      "$description": "The clay-deep palette color."
+    },
+    "slate-soft": {
+      "$value": "#5e5d59",
+      "$type": "color",
+      "$description": "The slate-soft palette color."
+    },
+    "slate-raised": {
+      "$value": "#1f1f1d",
+      "$type": "color",
+      "$description": "The slate-raised palette color."
+    },
+    "manilla-night": {
+      "$value": "#3a3226",
+      "$type": "color",
+      "$description": "The manilla-night palette color."
+    },
+    "ochre": {
+      "$value": "#a8741a",
+      "$type": "color",
+      "$description": "The ochre palette color."
+    },
+    "ochre-light": {
+      "$value": "#d4a24a",
+      "$type": "color",
+      "$description": "The ochre-light palette color."
+    },
+    "olive": {
+      "$value": "#66742f",
+      "$type": "color",
+      "$description": "The olive palette color."
+    },
+    "olive-light": {
+      "$value": "#9aab5c",
+      "$type": "color",
+      "$description": "The olive-light palette color."
+    },
+    "taupe": {
+      "$value": "#8a6a55",
+      "$type": "color",
+      "$description": "The taupe palette color."
+    },
+    "taupe-light": {
+      "$value": "#b89580",
+      "$type": "color",
+      "$description": "The taupe-light palette color."
+    },
+    "sage": {
+      "$value": "#6f8266",
+      "$type": "color",
+      "$description": "The sage palette color."
+    },
+    "sage-light": {
+      "$value": "#9db08f",
+      "$type": "color",
+      "$description": "The sage-light palette color."
+    }
+  },
+  "font": {
+    "serif": {
+      "$value": [
+        "Source Serif 4",
+        "ui-serif",
+        "Georgia",
+        "serif"
+      ],
+      "$type": "fontFamily",
+      "$description": "The serif font stack."
+    },
+    "sans": {
+      "$value": [
+        "Geist",
+        "system-ui",
+        "sans-serif"
+      ],
+      "$type": "fontFamily",
+      "$description": "The sans font stack."
+    },
+    "mono": {
+      "$value": [
+        "Geist Mono",
+        "ui-monospace",
+        "SFMono-Regular",
+        "Menlo",
+        "monospace"
+      ],
+      "$type": "fontFamily",
+      "$description": "The mono font stack."
+    }
+  },
+  "spacing": {
+    "4": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Spacing step of 4 pixels."
+    },
+    "8": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Spacing step of 8 pixels."
+    },
+    "12": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Spacing step of 12 pixels."
+    },
+    "16": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Spacing step of 16 pixels."
+    },
+    "24": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Spacing step of 24 pixels."
+    },
+    "32": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Spacing step of 32 pixels."
+    },
+    "76": {
+      "$value": "76px",
+      "$type": "dimension",
+      "$description": "Spacing step of 76 pixels."
+    },
+    "100": {
+      "$value": "100px",
+      "$type": "dimension",
+      "$description": "Spacing step of 100 pixels."
+    },
+    "unit": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Base spacing unit."
+    }
+  },
+  "radius": {
+    "none": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "No corner rounding."
+    },
+    "lg": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Large corner radius."
+    },
+    "xl": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Extra large corner radius."
+    },
+    "2xl": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "2x large corner radius."
+    },
+    "3xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "3x large corner radius."
+    }
+  }
+}
