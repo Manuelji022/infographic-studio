@@ -1,0 +1,20 @@
+{
+  "id": "donut-no-total-es",
+  "type": "donut",
+  "title": "Distribución de recursos",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "unit": {
+    "kind": "number",
+    "decimals": 1
+  },
+  "parts": [
+    {
+      "label": "Atención a personas dependientes",
+      "value": 65
+    },
+    {
+      "label": "Formación y empleo juvenil",
+      "value": 35
+    }
+  ]
+}

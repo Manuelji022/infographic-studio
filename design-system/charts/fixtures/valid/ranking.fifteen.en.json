@@ -1,0 +1,70 @@
+{
+  "id": "ranking-fifteen-en",
+  "type": "ranking",
+  "title": "Regions by investment",
+  "sourceQuote": "Source: example data.",
+  "order": "desc",
+  "items": [
+    {
+      "label": "Castile and Leon",
+      "value": 150
+    },
+    {
+      "label": "Castile-La Mancha",
+      "value": 143
+    },
+    {
+      "label": "Community of Madrid",
+      "value": 136
+    },
+    {
+      "label": "Valencian Community",
+      "value": 129,
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Principality of Asturias",
+      "value": 122
+    },
+    {
+      "label": "Region of Murcia",
+      "value": 115
+    },
+    {
+      "label": "Chartered Community of Navarre",
+      "value": 108
+    },
+    {
+      "label": "Basque Country",
+      "value": 101
+    },
+    {
+      "label": "Andalusia",
+      "value": 94
+    },
+    {
+      "label": "Aragon",
+      "value": 87
+    },
+    {
+      "label": "Canary Islands",
+      "value": 80
+    },
+    {
+      "label": "Cantabria",
+      "value": 73
+    },
+    {
+      "label": "Catalonia",
+      "value": 66
+    },
+    {
+      "label": "Extremadura",
+      "value": 59
+    },
+    {
+      "label": "Galicia",
+      "value": 52
+    }
+  ]
+}

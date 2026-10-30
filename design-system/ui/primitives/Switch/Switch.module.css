@@ -1,0 +1,62 @@
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-12);
+  color: var(--ds-text);
+  font-family: var(--ds-type-ui-family);
+  font-size: var(--ds-type-ui-size);
+  line-height: var(--ds-type-ui-leading);
+}
+
+.control {
+  appearance: none;
+  position: relative;
+  flex: none;
+  width: calc(var(--ds-spacing-32) + var(--ds-spacing-8));
+  height: var(--ds-spacing-24);
+  margin: 0;
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-3xl);
+  background: var(--ds-border);
+  cursor: pointer;
+}
+
+.control::before {
+  position: absolute;
+  top: 50%;
+  left: var(--ds-spacing-4);
+  width: calc(var(--ds-spacing-24) - var(--ds-spacing-8));
+  height: calc(var(--ds-spacing-24) - var(--ds-spacing-8));
+  border-radius: 50%;
+  background: var(--ds-surface);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.control:checked {
+  background: var(--ds-surface-inverse);
+}
+
+.control:checked::before {
+  transform: translate(var(--ds-spacing-16), -50%);
+}
+
+.control:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.label:has(.control:disabled) {
+  color: var(--ds-text-muted);
+  cursor: not-allowed;
+}
+
+.control:disabled {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .control::before {
+    transition: transform 160ms ease;
+  }
+}

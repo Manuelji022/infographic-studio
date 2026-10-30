@@ -1,0 +1,70 @@
+{
+  "id": "stacked-columns-six-series-en",
+  "type": "stacked",
+  "title": "Composition by category",
+  "sourceQuote": "Example data.",
+  "categories": [
+    "January",
+    "February",
+    "March",
+    "April"
+  ],
+  "series": [
+    {
+      "name": "Series 1",
+      "values": [
+        12,
+        21,
+        30,
+        39
+      ]
+    },
+    {
+      "name": "Series 2",
+      "values": [
+        18,
+        27,
+        36,
+        45
+      ]
+    },
+    {
+      "name": "Series 3",
+      "values": [
+        24,
+        33,
+        42,
+        51
+      ]
+    },
+    {
+      "name": "Series 4",
+      "values": [
+        30,
+        39,
+        48,
+        57
+      ]
+    },
+    {
+      "name": "Series 5",
+      "values": [
+        36,
+        45,
+        54,
+        63
+      ]
+    },
+    {
+      "name": "Series 6",
+      "values": [
+        42,
+        51,
+        60,
+        69
+      ]
+    }
+  ],
+  "layout": "columns",
+  "mode": "absolute"
+}

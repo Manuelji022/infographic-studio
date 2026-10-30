@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  min-height: calc(100vh - 5rem);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-spacing-24);
+  padding: var(--ds-spacing-24);
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+}

@@ -1,0 +1,45 @@
+[
+  {
+    "type": "line",
+    "sourceQuote": "Illustrative figures and scenarios created to demonstrate the design system components.",
+    "id": "gasto-pensiones",
+    "title": "Annual pension spending",
+    "description": "Index, 1995 = 100",
+    "unit": {
+      "kind": "number",
+      "decimals": 0
+    },
+    "note": "Dashed segment: illustrative projection",
+    "x": {
+      "kind": "year",
+      "values": [
+        1995,
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2025,
+        2030,
+        2035
+      ]
+    },
+    "series": [
+      {
+        "name": "Spending",
+        "values": [
+          100,
+          118,
+          140,
+          165,
+          190,
+          230,
+          270,
+          300,
+          330
+        ],
+        "projectedFrom": 7
+      }
+    ]
+  }
+]

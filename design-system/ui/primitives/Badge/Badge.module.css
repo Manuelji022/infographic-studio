@@ -1,0 +1,21 @@
+.base {
+  color: var(--ds-text);
+  border-radius: var(--ds-radius-badge);
+}
+
+.neutral {
+  padding: 0;
+}
+
+.outlined,
+.solid {
+  padding: var(--ds-spacing-4) var(--ds-spacing-8);
+}
+
+.outlined {
+  border: 1px solid var(--ds-border-strong);
+}
+
+.solid {
+  background: var(--ds-surface-deep);
+}

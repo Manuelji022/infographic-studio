@@ -1,0 +1,11 @@
+{
+  "id": "pictogram-valido",
+  "type": "pictogram",
+  "title": "Title",
+  "description": "Description",
+  "sourceQuote": "Source",
+  "of": 100,
+  "value": 5.5,
+  "label": "People",
+  "icon": "person"
+}

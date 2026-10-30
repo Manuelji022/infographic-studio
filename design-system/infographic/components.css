@@ -1,0 +1,6 @@
+/* Vocabulario ig-*: punto de entrada. render.ts resuelve estos @import e inlinea el resultado. */
+@import "./css/base.css";
+@import "./css/structure-a.css";
+@import "./css/structure-b.css";
+@import "./css/data-a.css";
+@import "./css/data-b.css";

@@ -19,6 +19,7 @@
 
 # production
 /build
+/public/fonts/
 
 # misc
 .DS_Store
@@ -44,3 +45,10 @@ next-env.d.ts
 # eve generated output
 .eve/
 !.env.example
+
+# Chart report screenshots: regenerate with scripts/dev/shoot.mjs
+design-system/reports/charts/shots/
+# Self-contained documents (fonts in base64): regenerate with
+# scripts/dev/examples-check.ts and scripts/dev/render-test.ts <dir>
+design-system/reports/charts/examples/
+design-system/reports/charts/render-test/

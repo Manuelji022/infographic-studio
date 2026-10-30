@@ -1,0 +1,38 @@
+{
+  "id": "donut-six-parts-en",
+  "type": "donut",
+  "title": "Resource distribution",
+  "sourceQuote": "Source: example data.",
+  "parts": [
+    {
+      "label": "Care for dependent people",
+      "value": 32,
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Training and youth employment",
+      "value": 24
+    },
+    {
+      "label": "Transport infrastructure",
+      "value": 18
+    },
+    {
+      "label": "Local research and development",
+      "value": 12
+    },
+    {
+      "label": "Environmental protection",
+      "value": 9,
+      "emphasis": "negative"
+    },
+    {
+      "label": "Administrative services",
+      "value": 5
+    }
+  ],
+  "total": {
+    "label": "Total",
+    "value": 100
+  }
+}

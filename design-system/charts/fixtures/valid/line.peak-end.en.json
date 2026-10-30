@@ -1,0 +1,35 @@
+{
+  "id": "pico-final-en",
+  "type": "line",
+  "title": "Sharp rise at the end",
+  "description": "Annual change",
+  "sourceQuote": "Source: example data.",
+  "unit": {
+    "kind": "number",
+    "decimals": 0
+  },
+  "x": {
+    "kind": "year",
+    "values": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "series": [
+    {
+      "name": "Sharp rise",
+      "values": [
+        2,
+        2,
+        2,
+        2,
+        3,
+        20
+      ]
+    }
+  ]
+}

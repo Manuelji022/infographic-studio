@@ -1,0 +1,35 @@
+.ig-chart__stacked-columns {
+  height: 320px;
+  margin-bottom: 28px;
+  margin-left: calc(var(--stacked-axis) * 1px);
+}
+.ig-chart__stacked-bar { height: 80px; margin-bottom: 16px; }
+.ig-chart__stacked-cell {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ig-chart__stacked-cell .ig-chart__value { text-align: center; }
+.ig-chart__stacked-tick {
+  position: absolute;
+  right: 100%;
+  padding-right: 8px;
+  transform: translateY(-50%);
+}
+.ig-chart__stacked-category { position: absolute; text-align: center; }
+.ig-chart__stacked-total { position: absolute; transform: translate(-50%, -110%); }
+.ig-chart__stacked-detail { margin-bottom: 16px; }
+.ig-chart__stacked-detail p { margin: 0 0 8px; }
+.ig-chart--stacked .ig-chart__legend-item { flex-wrap: wrap; overflow-wrap: anywhere; }
+.ig-chart--stacked .ig-chart__stacked-cell { border: 0; overflow: hidden; }
+.ig-chart__stacked-cell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--ds-chart-gap);
+  pointer-events: none;
+}
+
+.ig-chart__stacked-heading { margin: 8px 0 0; overflow-wrap: anywhere; }

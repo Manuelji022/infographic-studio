@@ -1,0 +1,21 @@
+.root {
+  display: grid;
+  gap: var(--ds-spacing-8);
+}
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ds-spacing-8);
+  color: var(--ds-danger-text);
+}
+
+.errorIcon {
+  flex: none;
+  width: var(--ds-spacing-16);
+  height: var(--ds-spacing-16);
+  fill: none;
+  stroke: var(--ds-danger-text);
+  stroke-linecap: round;
+  stroke-width: 1.5;
+}

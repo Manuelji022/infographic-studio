@@ -1,0 +1,38 @@
+{
+  "id": "scatter-negative-es",
+  "type": "scatter",
+  "title": "Saldos y variaciones",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "x": {
+    "label": "Variación de ingresos"
+  },
+  "y": {
+    "label": "Variación de gastos"
+  },
+  "points": [
+    {
+      "x": -12,
+      "y": 8,
+      "highlight": true,
+      "label": "Norte"
+    },
+    {
+      "x": 8,
+      "y": -5,
+      "highlight": true,
+      "label": "Sur"
+    },
+    {
+      "x": -4,
+      "y": -3
+    },
+    {
+      "x": 5,
+      "y": 9
+    },
+    {
+      "x": 0,
+      "y": 0
+    }
+  ]
+}

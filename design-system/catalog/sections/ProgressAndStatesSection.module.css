@@ -1,0 +1,34 @@
+.layout {
+  display: grid;
+  gap: var(--ds-spacing-24);
+  min-width: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--ds-spacing-16);
+  min-width: 0;
+}
+
+.item {
+  display: grid;
+  align-content: start;
+  gap: var(--ds-spacing-12);
+  min-width: 0;
+  padding: var(--ds-spacing-16);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-card);
+  background: var(--ds-surface);
+}
+
+.item > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.stack {
+  display: grid;
+  justify-items: start;
+  gap: var(--ds-spacing-16);
+}

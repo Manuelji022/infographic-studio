@@ -1,0 +1,68 @@
+{
+  "runs": [
+    {
+      "type": "scatter",
+      "width": 360,
+      "theme": "light",
+      "labels": 24,
+      "rows": 0,
+      "issues": []
+    },
+    {
+      "type": "scatter",
+      "width": 360,
+      "theme": "dark",
+      "labels": 24,
+      "rows": 0,
+      "issues": []
+    },
+    {
+      "type": "scatter",
+      "width": 1280,
+      "theme": "light",
+      "labels": 24,
+      "rows": 0,
+      "issues": []
+    },
+    {
+      "type": "scatter",
+      "width": 1280,
+      "theme": "dark",
+      "labels": 24,
+      "rows": 0,
+      "issues": []
+    },
+    {
+      "type": "ranking",
+      "width": 360,
+      "theme": "light",
+      "labels": 0,
+      "rows": 48,
+      "issues": []
+    },
+    {
+      "type": "ranking",
+      "width": 360,
+      "theme": "dark",
+      "labels": 0,
+      "rows": 48,
+      "issues": []
+    },
+    {
+      "type": "ranking",
+      "width": 1280,
+      "theme": "light",
+      "labels": 0,
+      "rows": 48,
+      "issues": []
+    },
+    {
+      "type": "ranking",
+      "width": 1280,
+      "theme": "dark",
+      "labels": 0,
+      "rows": 48,
+      "issues": []
+    }
+  ]
+}

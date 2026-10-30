@@ -1,0 +1,13 @@
+{
+  "id": "tree-valido",
+  "type": "treemap",
+  "title": "Title",
+  "description": "Description",
+  "sourceQuote": "Source",
+  "items": [
+    {
+      "label": "Item",
+      "value": -1
+    }
+  ]
+}

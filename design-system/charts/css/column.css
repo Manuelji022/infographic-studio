@@ -1,0 +1,28 @@
+.ig-chart__column-plot {
+  height: 320px;
+  margin-bottom: 24px;
+  margin-left: calc(var(--column-axis) * 1px);
+}
+.ig-chart__column-bar { fill: var(--chart-color); }
+.ig-chart__column-tick {
+  position: absolute;
+  right: 100%;
+  padding-right: 8px;
+  transform: translateY(-50%);
+}
+.ig-chart__column-value {
+  position: absolute;
+  white-space: nowrap;
+  transform: translate(-50%, -110%);
+}
+.ig-chart__column-below { transform: translate(-50%, 10%); }
+.ig-chart__column-category { position: absolute; text-align: center; }
+.ig-chart__column-group { margin-bottom: 20px; }
+.ig-chart__column-group p { margin: 0 0 8px; overflow-wrap: anywhere; }
+.ig-chart__column-row { margin: 8px 0; }
+.ig-chart__column-track { position: relative; height: 24px; }
+.ig-chart__column-mark { position: absolute; height: 18px; background: var(--chart-color); }
+.ig-chart--column .ig-chart__legend-item { overflow-wrap: anywhere; }
+
+.ig-chart__column-end { position: absolute; margin-left: 8px; white-space: nowrap; }
+.ig-chart__column-end-negative { margin-left: -8px; transform: translateX(-100%); }

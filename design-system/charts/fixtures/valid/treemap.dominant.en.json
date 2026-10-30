@@ -1,0 +1,32 @@
+{
+  "id": "treemap-dominant-en",
+  "type": "treemap",
+  "title": "Public spending distribution",
+  "description": "Example data for checking the distribution by area.",
+  "sourceQuote": "Source: synthetic example data.",
+  "period": "1996",
+  "unit": {
+    "kind": "number",
+    "decimals": 2
+  },
+  "items": [
+    {
+      "label": "Social protection",
+      "value": 99,
+      "group": "g0",
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Community services",
+      "value": 1,
+      "group": "g0"
+    }
+  ],
+  "groups": [
+    {
+      "id": "g0",
+      "label": "Essential services",
+      "tone": "data-2"
+    }
+  ]
+}

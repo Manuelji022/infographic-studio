@@ -1,0 +1,49 @@
+{
+  "id": "tendencia-es",
+  "type": "line",
+  "title": "Evolución de la inflación",
+  "description": "Variación anual, en porcentaje",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "note": "Previsión a partir de 2025",
+  "unit": {
+    "kind": "percent",
+    "decimals": 1
+  },
+  "x": {
+    "kind": "year",
+    "values": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ]
+  },
+  "series": [
+    {
+      "name": "Inflación",
+      "values": [
+        -0.5,
+        -0.2,
+        2.0,
+        1.7,
+        0.7,
+        -0.3,
+        3.1,
+        8.4,
+        3.5,
+        2.8,
+        2.3,
+        2.0
+      ],
+      "projectedFrom": 10
+    }
+  ]
+}

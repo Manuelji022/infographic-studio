@@ -1,0 +1,34 @@
+.skeleton {
+  background: var(--ds-surface-deep);
+  opacity: 0.65;
+}
+
+.text {
+  width: var(--ds-skeleton-width, 100%);
+  height: var(--ds-skeleton-height, var(--ds-spacing-16));
+  border-radius: var(--ds-radius-lg);
+}
+
+.block {
+  width: var(--ds-skeleton-width, 100%);
+  height: var(--ds-skeleton-height, var(--ds-spacing-76));
+  border-radius: var(--ds-radius-lg);
+}
+
+.circle {
+  width: var(--ds-skeleton-width, var(--ds-spacing-32));
+  height: var(--ds-skeleton-height, var(--ds-spacing-32));
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton {
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    50% {
+      opacity: 0.35;
+    }
+  }
+}
