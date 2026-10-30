@@ -1,7 +1,8 @@
 // Failure modes: singleton; 99% dominant; tiny items; singleton groups; non-100 total;
 // extreme aspect ratios; gaps, overlaps, out-of-bounds or nonproportional areas;
 // nondeterminism; disconnected groups; missing visible/table data; labels on data-6;
-// incorrect highlight, soft highlight leaking into data-tone groups or negative emphasis.
+// incorrect highlight, soft highlight leaking into data-tone groups, data-6 labels,
+// or negative emphasis.
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
 import { layoutTreemap } from "../../design-system/charts/layout/treemap.ts";
@@ -80,7 +81,12 @@ for (const file of readdirSync(dir).filter((name) => /^treemap\..*json$/.test(na
   }
   assert.equal(renderTreemap(spec, { locale }), html, `${file}: deterministic`);
   for (const cell of html.matchAll(/<div class="ig-chart__cell ([^"]+)"[^>]*>([\s\S]*?)<\/div>/g)) {
-    if (cell[1].includes("ig-chart__s6")) assert.equal(cell[2], "");
+    if (cell[1].includes("ig-chart__s6")) {
+      assert(!/<span class="ig-chart__label">/.test(cell[2]));
+      if (file.startsWith("treemap.data6.")) {
+        assert(cell[2].includes("ig-chart__label ig-chart__label--on-surface"));
+      }
+    }
   }
   if (spec.items.some((item) => item.emphasis === "highlight")) {
     assert(html.includes("ig-chart__highlight"));
@@ -90,6 +96,17 @@ for (const file of readdirSync(dir).filter((name) => /^treemap\..*json$/.test(na
     }
   }
 }
+const data6 = treemapSpecSchema.parse(JSON.parse(
+  readFileSync(`${dir}/treemap.data6.es.json`, "utf8"),
+));
+const data6Html = renderTreemap(data6, { locale: "es" });
+const data6MdStart = data6Html.indexOf('class="ig-chart__wide"');
+const data6NarrowStart = data6Html.indexOf('class="ig-chart__narrow"');
+const data6Md = data6Html.slice(data6MdStart, data6NarrowStart);
+assert(data6Md.includes("ig-chart__label ig-chart__label--on-surface"));
+assert(!/<span class="ig-chart__label">/.test(data6Md));
+assert(!data6Md.includes('<div class="ig-chart__also">'));
+assert.equal(renderTreemap(data6, { locale: "es" }), data6Html, "data-6 deterministic");
 const emphasis = treemapSpecSchema.parse({
   id: "emphasis", type: "treemap", title: "Emphasis", sourceQuote: "Synthetic",
   groups: [{ id: "g", label: "Group", tone: "data-2" }],

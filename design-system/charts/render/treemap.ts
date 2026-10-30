@@ -32,13 +32,16 @@ export function renderTreemap(spec: TreemapSpec, options: RenderOptions): string
         color = "ig-chart__neutral";
       }
       const label = `${item.label}\n${value(item.value)}`;
-      const show = color !== "ig-chart__s6" && fits(label, {
-        width: rect.w * width / 100 - 20,
-        height: rect.h * height / 100 - 20,
+      const onSurface = color === "ig-chart__s6";
+      const show = fits(label, {
+        width: rect.w * width / 100 - (onSurface ? 28 : 20),
+        height: rect.h * height / 100 - (onSurface ? 24 : 20),
       }, LABEL_FONT, LABEL_LINE_HEIGHT);
       if (!show) also.push(`${item.label} ${value(item.value)}`);
       else labels.push(item.label);
-      const text = show ? `<span class="ig-chart__label">${escapeHtml(label)}</span>` : "";
+      const labelClass = onSurface
+        ? "ig-chart__label ig-chart__label--on-surface" : "ig-chart__label";
+      const text = show ? `<span class="${labelClass}">${escapeHtml(label)}</span>` : "";
       const style = placeStyle({ left: rect.x, top: rect.y, width: rect.w, height: rect.h });
       return `<div class="ig-chart__cell ${color}" style="${style}">${text}</div>`;
     }).join("");

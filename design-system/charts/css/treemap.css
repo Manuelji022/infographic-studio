@@ -39,6 +39,14 @@
   white-space: pre-line;
 }
 
+.ig-chart--treemap .ig-chart__label--on-surface {
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-surface);
+  color: var(--ds-text);
+}
+
 .ig-chart--treemap .ig-chart__treemap-period {
   margin: 0;
   color: var(--ds-text-muted);
