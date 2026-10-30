@@ -53,6 +53,17 @@ function loadCss(embed: boolean, fontBaseUrl: string | undefined): string {
       return readFileSync(path.join(infographic, specifier), "utf8");
     },
   );
+  // Chart styles: charts.css imports one file per chart type from its own folder.
+  const chartsDir = path.join(root, "charts", "css");
+  const charts = read("charts/css/charts.css").replace(
+    /@import\s+(["'])(.*?)\1\s*;/g,
+    (_match, _quote: string, specifier: string) => {
+      if (!/^\.\/[a-z-]+\.css$/.test(specifier)) {
+        throw new Error(`Unsupported chart CSS import: ${specifier}`);
+      }
+      return readFileSync(path.join(chartsDir, specifier), "utf8");
+    },
+  );
   let fonts = read("fonts/fonts.css");
   if (embed) {
     fonts = fonts.replaceAll("/fonts/", `${fontBaseUrl ?? "/fonts"}/`);
@@ -70,6 +81,7 @@ function loadCss(embed: boolean, fontBaseUrl: string | undefined): string {
     read("tokens/build/themes.css"),
     fonts,
     components,
+    charts,
     "html{background:var(--ds-canvas)}body{margin:0}",
   ].join("\n");
   cssCache.set(key, css);

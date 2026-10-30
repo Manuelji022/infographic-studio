@@ -1,0 +1,27 @@
+{
+  "id": "column-negative-en",
+  "type": "column",
+  "title": "Comparison by category",
+  "sourceQuote": "Example data.",
+  "categories": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June"
+  ],
+  "series": [
+    {
+      "name": "Series 1",
+      "values": [
+        -21,
+        32,
+        -12,
+        15,
+        -28,
+        43
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "treemap-item-highlight-en",
+  "type": "treemap",
+  "title": "Public services by function",
+  "description": "A highlighted area preserves its siblings’ group tone.",
+  "sourceQuote": "Synthetic example data.",
+  "groups": [
+    {
+      "id": "services",
+      "label": "Services",
+      "tone": "data-2"
+    }
+  ],
+  "items": [
+    {
+      "label": "Specialist health care",
+      "value": 40,
+      "group": "services",
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Public university education",
+      "value": 35,
+      "group": "services"
+    },
+    {
+      "label": "Intercity public transport",
+      "value": 25,
+      "group": "services",
+      "emphasis": "negative"
+    }
+  ]
+}

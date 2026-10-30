@@ -1,0 +1,25 @@
+{
+  "id": "ranking-asc-en",
+  "type": "ranking",
+  "title": "Costs from lowest to highest",
+  "sourceQuote": "Source: example data.",
+  "order": "asc",
+  "unit": {
+    "kind": "number",
+    "decimals": 2
+  },
+  "items": [
+    {
+      "label": "Public transport",
+      "value": 12.35
+    },
+    {
+      "label": "Municipal services",
+      "value": 8.75
+    },
+    {
+      "label": "Waste management",
+      "value": 10.25
+    }
+  ]
+}

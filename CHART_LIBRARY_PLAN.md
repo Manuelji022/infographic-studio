@@ -242,12 +242,25 @@ Ejecutan workers `pi` (gpt-6-luna) según la memoria de flujo del propietario; e
 
 Cada tarea entrega `render/<tipo>.ts`, sus fixtures, su ficha `design-system/components/ig-chart-<tipo>.md` y su página en `charts-report.ts`. Dependen de la Oleada 1 completa.
 
+### Lecciones de la Oleada 2
+
+- **Base del coordinador antes de lanzar.** `render/shared.ts` (marco, escape, tabla, leyenda, «También», clases de color), `render/index.ts` con stubs por tipo, un CSS por tipo importado desde `charts.css` y tres arneses comunes (`charts-report.ts`, `charts-render-test.ts`, `charts-layout-check.mjs`) permitieron cinco workers en paralelo sin tocar ficheros compartidos. `charts.css` no se estaba inlineando en `getInfographicCss`: corregido en `render.ts`.
+- **Medida independiente:** `charts-layout-check.mjs` mide solapes, desbordes y recortes con rangos de texto del DOM real en Chrome (360/1280, claro/oscuro). Ningún worker pudo «aprobarse» con `measure.ts`. Aun así, todos los defectos de diseño (gráficos partidos en filas, plot fijo de 481 px, lista de 60 puntos visibles, leyendas repetidas) pasaron el layout-check: solo se vieron en las capturas del coordinador.
+- **Decidir a la anchura mínima de la banda** (C8) es correcto para que nada se corte, pero empuja a soluciones pobres en ancho (filas de columnas, muchas celdas en «También»). Regla añadida: nunca pequeños múltiplos implícitos; si no cabe en columnas, la banda pasa a barras horizontales.
+- **«Valores siempre visibles» tiene excepción en scatter:** la nube es el dato; solo los `highlight` llevan texto y el resto va a la tabla accesible.
+- **Artefactos del informe:** `.ig-root` separa sus hijos con `--ds-section-gap`; el informe envuelve los casos en un único `div`. Un worker lo diagnosticó y preguntó en vez de tocar el script ajeno.
+- **Pendientes menores** (no bloquean): en `line` las etiquetas del primer valor pueden rozar el inicio de otra serie; un grupo de treemap con `tone: data-6` queda sin etiquetas (todo a «También»): valorar la pastilla `--ds-surface` de §5.3.
+- **Reutilizar terminales** para correcciones conserva el contexto del worker y ahorra tokens; liberar antes de decidir obliga a lanzar uno nuevo.
+- A partir de aquí, por petición del propietario (2026-10-30), los workers nuevos usan `gpt-6-luna` para ahorrar tokens.
+- **Revisión del propietario en `/charts`:** (1) el fixture básico de `line` (3 puntos con un `null` en medio) no dibujaba línea; se sustituye por inflación 2015–2026 con previsión. (2) `.ig-root` centraba los gráficos en la columna de prosa y quedaban desalineados del título de la página; en `/charts` se anula solo en el CSS del catálogo. (3) `/charts` muestra **un ejemplo por tipo** (`SHOWCASE` en `src/app/charts/page.tsx`); el resto de fixtures queda para pruebas e informes.
+- **`line`, regla final de etiquetas:** sin etiqueta de primer valor; en ancho, «Nombre valor» a la derecha del plot (margen reservado), nunca dentro; en estrecho, nombre y último valor en la leyenda. La colocación «encima de la envolvente» que intentó un worker luna dejaba las etiquetas lejos de sus puntos y se descartó. El layout-check no detecta texto sobre líneas (solo texto contra texto): revisar siempre con capturas.
+
 ### Oleada 3 — Integración, catálogo y ejemplos
 
 | Tarea | Entregable |
 | --- | --- |
 | **3.A** `expandCharts` + `buildDocument` | Opción `charts` en `render.ts` y `document.ts`; huecos expandidos en iframe y en export autocontenido; `render-test.ts` ampliado |
-| **3.B** Catálogo | Sección "Gráficos" en `/design-system`: cada tipo y variante en claro/oscuro y ES/EN, dentro del iframe con el CSP real. El registro lo edita el coordinador |
+| **3.B** Catálogo | (Adelantado en la Oleada 2: `/charts` ya muestra los fixtures aceptados con `renderChart`.) Sección "Gráficos" en `/design-system`: cada tipo y variante en claro/oscuro y ES/EN, dentro del iframe con el CSP real. El registro lo edita el coordinador |
 | **3.C** Ejemplos | `examples/gasto-publico.es/en.html` + specs: treemap del gasto por función (1996, datos de la imagen de referencia, marcados como ilustrativos) y `pensiones.*` con una serie temporal en `line` |
 
 Salida de la oleada: **capturas del catálogo y de los ejemplos** a 360 y 1280 px en ambos temas, revisadas por el coordinador y **aprobadas por el propietario**.
@@ -274,11 +287,11 @@ La de `DESIGN_SYSTEM_PLAN.md` §7, añadiendo a "Lee antes": `CHART_LIBRARY_PLAN
 | 1.C Tokens y CSS base | [x] | pi | Aceptada con correcciones | Tokens y pares de contraste con excepción `data-6` claro. Corregido por el coordinador: `display: initial` volvía inline los div, el borde del amarillo borraba el separador en tema `auto` oscuro (ahora `outline` con `--chart-edge`), línea > 100 |
 | 1.D Medida de texto | [x] | Codex gpt-6.1-sol (4 envíos) | Aceptada con correcciones | Solo Geist (serif descartada por `opsz`). `‰` sin cobertura. La primera prueba era tautológica (canvas sin kerning contra tabla sin kerning); ahora compara con HTML real: subestima ≤ 0,53 %, sobreestima ≤ 5,7 % (kerning), margen con SAFETY ≥ 9,4 % |
 | 1.E Hueco | [x] | Codex gpt-6.1-sol | Aceptada con correcciones | Forma canónica exacta o `chart-hole-invalid`; `chartReferences()`. 96/96 fixtures (34 nuevos). Corregido por el coordinador: `manifest-check.ts` no leía `charts.css` |
-| 2.A `line` | [ ] | | | |
-| 2.B `column`, `stacked` | [ ] | | | |
-| 2.C `donut`, `pictogram` | [ ] | | | |
-| 2.D `scatter`, `ranking` | [ ] | | | |
-| 2.E `treemap` | [ ] | | | |
+| 2.A `line` | [x] | Codex gpt-6.1-sol | Aceptada con 1 ronda de correcciones | Años sin separador de miles (EN salía «2,018»), márgenes verticales, último punto centrado. 15 comprobaciones; layout-check 0 issues |
+| 2.B `column`, `stacked` | [x] | Codex gpt-6.1-sol | Aceptada con 2 rondas de correcciones | Partía el gráfico en filas con ejes repetidos (pequeños múltiplos): ahora un solo plot o barras horizontales por banda; valor junto a la barra; leyenda de valores solo para segmentos sin texto interior |
+| 2.C `donut`, `pictogram` | [x] | Codex gpt-6.1-sol | Aceptada a la primera | `value` del pictograma es recuento sobre `of` (decidido por `ask`); leyenda con valor y % |
+| 2.D `scatter`, `ranking` | [x] | Codex gpt-6.1-sol | Aceptada con 1 ronda de correcciones | Scatter: solo los `highlight` llevan texto visible (el resto en la tabla); etiquetas que no tapan puntos. Ranking: valor junto a la barra |
+| 2.E `treemap` | [x] | Codex gpt-6.1-sol (+1 worker nuevo para correcciones) | Aceptada con 1 ronda de correcciones | `layout/treemap.ts` (squarify con grupos). Plot al 100 % con `aspect-ratio` 481/300 y 280/320, máx. 800 px; `highlight-soft` solo en grupos `tone: highlight` |
 | 3.A Integración | [ ] | | | |
 | 3.B Catálogo | [ ] | | | |
 | 3.C Ejemplos | [ ] | | | |

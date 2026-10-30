@@ -3,46 +3,46 @@ import path from "node:path";
 import type { Metadata } from "next";
 import { ChartsCatalog } from "@ds/catalog/Catalogs";
 import type { ChartSample } from "@ds/catalog/types";
-import { renderLineSpike } from "@ds/charts/spike/line.ts";
-import { renderTreemapSpike } from "@ds/charts/spike/treemap.ts";
+import { renderChart, validateChartSpec, type ChartType } from "@ds/charts/index.ts";
 import { DS_VERSION } from "@ds/infographic/manifest.ts";
 import { getInfographicCss } from "@ds/infographic/render.ts";
 
 export const metadata: Metadata = { title: "Charts" };
 
-// Wave 0 spike data (illustrative). Replaced by the library fixtures in Wave 3.
-const LINE_VALUES = [
-  [8.1, 7.9, 9.9, 11.1, 12.9, 12.6, 13.4, 14.6, 15.8, 16.3, 16.1],
-  [10.2, 10.1, 11.4, 11.5, 12.2, 11.9, 12.3, 12.6, 12.8, 12.7, 12.4],
-];
-const LINE_NAMES = { es: ["España", "Media UE"], en: ["Spain", "EU average"] };
+// One representative fixture per chart type. The other fixtures stay for the tests and the
+// reports in design-system/reports/charts/.
+const SHOWCASE: Record<ChartType, string> = {
+  line: "line.projected",
+  column: "column",
+  stacked: "stacked.columns.absolute",
+  donut: "donut",
+  pictogram: "pictogram.hundred",
+  scatter: "scatter.dense",
+  ranking: "ranking.fifteen",
+  treemap: "treemap",
+};
 
-function lineFragment(locale: "es" | "en"): string {
-  const data = LINE_VALUES.map((values, index) => ({ name: LINE_NAMES[locale][index], values }));
-  return renderLineSpike(data, locale);
+const FIXTURES = path.join(process.cwd(), "design-system", "charts", "fixtures", "valid");
+
+function renderFixture(file: string, locale: "es" | "en"): { title: string; html: string } {
+  const result = validateChartSpec(JSON.parse(readFileSync(path.join(FIXTURES, file), "utf8")));
+  if (!result.ok) throw new Error(`Invalid chart fixture: ${file}`);
+  return { title: result.spec.title, html: renderChart(result.spec, { locale }) };
 }
 
-function readSpikeCss(file: string): string {
-  return readFileSync(path.join(process.cwd(), "design-system", "charts", "spike", file), "utf8");
+function showcaseSamples(): ChartSample[] {
+  return Object.entries(SHOWCASE).map(([type, stem]) => {
+    const es = renderFixture(`${stem}.es.json`, "es");
+    const en = renderFixture(`${stem}.en.json`, "en");
+    return { id: type, title: { es: es.title, en: en.title }, html: { es: es.html, en: en.html } };
+  });
 }
 
 export default function Page() {
-  const samples: ChartSample[] = [
-    {
-      id: "line",
-      title: { es: "Líneas", en: "Line" },
-      html: { es: lineFragment("es"), en: lineFragment("en") },
-    },
-    {
-      id: "treemap",
-      title: { es: "Treemap", en: "Treemap" },
-      html: { es: renderTreemapSpike([], "es"), en: renderTreemapSpike([], "en") },
-    },
-  ];
+  // The catalog shows charts flush with its own headings, not in the centered prose column.
   const css = [
     getInfographicCss({ dsVersion: DS_VERSION, embed: true }),
-    readSpikeCss("line.css"),
-    readSpikeCss("treemap.css"),
+    ".ig-root{max-width:none;margin:0;padding:var(--ds-spacing-24)}",
   ].join("\n");
-  return <ChartsCatalog charts={{ css, samples }} />;
+  return <ChartsCatalog charts={{ css, samples: showcaseSamples() }} />;
 }

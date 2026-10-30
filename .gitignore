@@ -45,3 +45,6 @@ next-env.d.ts
 # eve generated output
 .eve/
 !.env.example
+
+# Chart report screenshots: regenerate with scripts/dev/shoot.mjs
+design-system/reports/charts/shots/

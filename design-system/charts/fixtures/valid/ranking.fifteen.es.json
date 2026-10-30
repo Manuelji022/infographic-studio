@@ -1,0 +1,70 @@
+{
+  "id": "ranking-fifteen-es",
+  "type": "ranking",
+  "title": "Comunidades por inversión",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "order": "desc",
+  "items": [
+    {
+      "label": "Castilla y León",
+      "value": 150
+    },
+    {
+      "label": "Castilla-La Mancha",
+      "value": 143
+    },
+    {
+      "label": "Comunidad de Madrid",
+      "value": 136
+    },
+    {
+      "label": "Comunitat Valenciana",
+      "value": 129,
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Principado de Asturias",
+      "value": 122
+    },
+    {
+      "label": "Región de Murcia",
+      "value": 115
+    },
+    {
+      "label": "Comunidad Foral de Navarra",
+      "value": 108
+    },
+    {
+      "label": "País Vasco",
+      "value": 101
+    },
+    {
+      "label": "Andalucía",
+      "value": 94
+    },
+    {
+      "label": "Aragón",
+      "value": 87
+    },
+    {
+      "label": "Canarias",
+      "value": 80
+    },
+    {
+      "label": "Cantabria",
+      "value": 73
+    },
+    {
+      "label": "Cataluña",
+      "value": 66
+    },
+    {
+      "label": "Extremadura",
+      "value": 59
+    },
+    {
+      "label": "Galicia",
+      "value": 52
+    }
+  ]
+}

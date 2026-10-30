@@ -1,0 +1,48 @@
+{
+  "type": "line",
+  "sourceQuote": "Fuente: datos ilustrativos.",
+  "id": "line-gaps-es",
+  "title": "Series con observaciones ausentes",
+  "x": {
+    "kind": "category",
+    "values": [
+      "Inicio",
+      "Marzo",
+      "Junio",
+      "Septiembre",
+      "Final"
+    ]
+  },
+  "series": [
+    {
+      "name": "Producción nacional",
+      "values": [
+        4,
+        null,
+        6,
+        null,
+        8
+      ]
+    },
+    {
+      "name": "Consumo de los hogares",
+      "values": [
+        null,
+        8,
+        null,
+        null,
+        3
+      ]
+    },
+    {
+      "name": "Inversión pública",
+      "values": [
+        2,
+        4,
+        null,
+        7,
+        null
+      ]
+    }
+  ]
+}

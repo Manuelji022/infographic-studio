@@ -1,0 +1,20 @@
+{
+  "id": "donut-no-total-en",
+  "type": "donut",
+  "title": "Resource distribution",
+  "sourceQuote": "Source: example data.",
+  "unit": {
+    "kind": "number",
+    "decimals": 1
+  },
+  "parts": [
+    {
+      "label": "Care for dependent people",
+      "value": 65
+    },
+    {
+      "label": "Training and youth employment",
+      "value": 35
+    }
+  ]
+}

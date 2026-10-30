@@ -1,0 +1,33 @@
+{
+  "id": "treemap-item-highlight-es",
+  "type": "treemap",
+  "title": "Servicios públicos por función",
+  "description": "Un área destacada conserva el tono de sus hermanas.",
+  "sourceQuote": "Datos sintéticos de ejemplo.",
+  "groups": [
+    {
+      "id": "services",
+      "label": "Servicios",
+      "tone": "data-2"
+    }
+  ],
+  "items": [
+    {
+      "label": "Atención sanitaria especializada",
+      "value": 40,
+      "group": "services",
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Educación universitaria pública",
+      "value": 35,
+      "group": "services"
+    },
+    {
+      "label": "Transporte público interurbano",
+      "value": 25,
+      "group": "services",
+      "emphasis": "negative"
+    }
+  ]
+}

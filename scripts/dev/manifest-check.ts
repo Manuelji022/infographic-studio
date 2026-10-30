@@ -7,16 +7,19 @@ const files = (await readdir(cssDirectory)).filter((file) => file.endsWith(".css
 const cssClasses = new Set<string>();
 
 // charts.css styles the chart hole; its ig-chart__* classes are render output, never agent input.
+const chartsDirectory = "design-system/charts/css";
+const chartFiles = (await readdir(chartsDirectory)).filter((file) => file.endsWith(".css"));
 const sources = [
   ...files.map((file) => join(cssDirectory, file)),
-  "design-system/charts/css/charts.css",
+  ...chartFiles.map((file) => join(chartsDirectory, file)),
 ];
 
 for (const source of sources) {
   const css = await readFile(source, "utf8");
   for (const match of css.matchAll(/\.ig-[a-z0-9_-]+/g)) {
     const className = match[0].slice(1);
-    if (className !== "ig-root" && !className.startsWith("ig-chart__")) {
+    const chartOutput = className.startsWith("ig-chart__") || className.startsWith("ig-chart--");
+    if (className !== "ig-root" && !chartOutput) {
       cssClasses.add(className);
     }
   }

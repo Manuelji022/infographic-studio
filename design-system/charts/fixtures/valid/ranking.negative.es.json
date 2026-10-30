@@ -1,0 +1,22 @@
+{
+  "id": "ranking-negative-es",
+  "type": "ranking",
+  "title": "Saldos y variaciones",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "order": "desc",
+  "items": [
+    {
+      "label": "Saldo corriente",
+      "value": 34
+    },
+    {
+      "label": "Saldo de capital",
+      "value": -18,
+      "emphasis": "negative"
+    },
+    {
+      "label": "Saldo financiero",
+      "value": 7
+    }
+  ]
+}

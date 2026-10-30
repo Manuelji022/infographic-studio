@@ -1,0 +1,18 @@
+{
+  "id": "treemap-single-es",
+  "type": "treemap",
+  "title": "Distribución del gasto público",
+  "description": "Datos de ejemplo para comprobar el reparto por áreas.",
+  "sourceQuote": "Fuente: datos sintéticos de ejemplo.",
+  "period": "1996",
+  "unit": {
+    "kind": "number",
+    "decimals": 2
+  },
+  "items": [
+    {
+      "label": "Servicios públicos generales",
+      "value": 42
+    }
+  ]
+}

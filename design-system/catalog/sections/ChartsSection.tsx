@@ -9,12 +9,12 @@ const copy = {
   es: {
     desktop: "Escritorio",
     mobile: "Móvil",
-    note: "Prototipos de la Oleada 0 (spike). Se sustituirán por la librería definitiva.",
+    note: "Un ejemplo por tipo, renderizado con renderChart.",
   },
   en: {
     desktop: "Desktop",
     mobile: "Mobile",
-    note: "Wave 0 prototypes (spike). They will be replaced by the final library.",
+    note: "One example per type, rendered with renderChart.",
   },
 };
 

@@ -1,0 +1,47 @@
+.ig-chart--treemap .ig-chart__treemap-wide {
+  aspect-ratio: 481 / 300;
+}
+
+.ig-chart--treemap .ig-chart__treemap-narrow {
+  aspect-ratio: 280 / 320;
+}
+
+.ig-chart--treemap .ig-chart__plot {
+  width: 100%;
+  max-width: 800px;
+}
+
+.ig-chart--treemap .ig-chart__plot + .ig-chart__also {
+  margin-top: var(--ds-spacing-12);
+}
+
+.ig-chart--treemap .ig-chart__cell {
+  position: absolute;
+  box-sizing: border-box;
+  border: 0;
+  outline: 1px solid var(--ds-chart-gap);
+  outline-offset: -1px;
+}
+
+.ig-chart--treemap .ig-chart__cell:has(.ig-chart__label) {
+  padding: 8px;
+}
+
+.ig-chart--treemap .ig-chart__label {
+  display: block;
+  white-space: pre-line;
+}
+
+.ig-chart--treemap .ig-chart__treemap-period {
+  margin: 0;
+  color: var(--ds-text-muted);
+}
+
+.ig-chart--treemap .ig-chart__swatch {
+  border: 1px solid var(--ds-border-strong);
+}
+
+.ig-chart--treemap .ig-chart__cell.ig-chart__highlight,
+.ig-chart--treemap .ig-chart__cell.ig-chart__highlight-soft {
+  outline-color: var(--ds-border-strong);
+}

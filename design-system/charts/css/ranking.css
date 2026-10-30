@@ -1,0 +1,41 @@
+.ig-chart__ranking-list { list-style: none; margin: 0; padding: 0; }
+.ig-chart__ranking-row {
+  display: grid;
+  grid-template-columns: 24px minmax(100px, 32%) minmax(0, 1fr);
+  gap: 8px 12px;
+  align-items: center;
+  padding: 10px 0;
+}
+.ig-chart__ranking-position { font-size: 12px; color: var(--ds-text-muted); }
+.ig-chart__ranking-label { overflow-wrap: anywhere; }
+.ig-chart__ranking-track { height: 24px; }
+.ig-chart__ranking-scale {
+  position: relative;
+  height: 100%;
+  margin-left: calc(var(--ranking-before) * 1px);
+  margin-right: calc(var(--ranking-after) * 1px);
+}
+.ig-chart__ranking-zero {
+  position: absolute;
+  height: 100%;
+  border-left: 1px solid var(--ds-text-muted);
+}
+.ig-chart__ranking-bar {
+  position: absolute;
+  top: 2px;
+  height: 20px;
+  background: var(--chart-color);
+  outline: 1px solid var(--chart-edge, transparent);
+  outline-offset: -1px;
+}
+.ig-chart__ranking-value {
+  position: absolute;
+  white-space: nowrap;
+  transform: translate(8px, -50%);
+}
+.ig-chart__ranking-value--negative { transform: translate(calc(-100% - 8px), -50%); }
+@container (max-width: 480px) {
+  .ig-chart__ranking-row { grid-template-columns: 20px minmax(0, 1fr); }
+  .ig-chart__ranking-label { grid-column: 2; }
+  .ig-chart__ranking-track { grid-column: 2; }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "stacked-columns-highlight-free-e",
+  "type": "stacked",
+  "title": "Composición por categoría",
+  "sourceQuote": "Datos de ejemplo.",
+  "categories": [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto"
+  ],
+  "series": [
+    {
+      "name": "Serie 1",
+      "values": [
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44
+      ]
+    },
+    {
+      "name": "Serie 2",
+      "values": [
+        70,
+        68,
+        66,
+        64,
+        62,
+        60,
+        58,
+        56
+      ]
+    }
+  ],
+  "layout": "columns",
+  "mode": "percent"
+}

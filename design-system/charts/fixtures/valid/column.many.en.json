@@ -1,0 +1,56 @@
+{
+  "id": "column-many-en",
+  "type": "column",
+  "title": "Comparison by category",
+  "sourceQuote": "Example data.",
+  "categories": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
+  "series": [
+    {
+      "name": "Series 1",
+      "values": [
+        1200,
+        1511,
+        1822,
+        2133,
+        2444,
+        2755,
+        3066,
+        3377,
+        3688,
+        3999,
+        4310,
+        4621
+      ]
+    },
+    {
+      "name": "Series 2",
+      "values": [
+        1600,
+        1857,
+        2114,
+        2371,
+        2628,
+        2885,
+        3142,
+        3399,
+        3656,
+        3913,
+        4170,
+        4427
+      ]
+    }
+  ]
+}
