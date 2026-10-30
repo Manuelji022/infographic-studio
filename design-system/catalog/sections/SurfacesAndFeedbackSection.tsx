@@ -4,8 +4,12 @@ import { Divider } from "../../ui/primitives/Divider";
 import { Spinner } from "../../ui/primitives/Spinner";
 import { Skeleton } from "../../ui/primitives/Skeleton";
 import { VisuallyHidden } from "../../ui/primitives/VisuallyHidden";
-import { Callout } from "../../ui/primitives/Callout";
+import { Button } from "../../ui/primitives/Button";
+import { Note } from "../../ui/primitives/Note";
+import type { NoteVariant } from "../../ui/primitives/Note";
 import styles from "./SurfacesAndFeedbackSection.module.css";
+
+const variants: NoteVariant[] = ["default", "secondary", "success", "warning", "error"];
 
 const copy = {
   es: {
@@ -17,8 +21,18 @@ const copy = {
     divider: "Divisores", spinner: "Cargando contenido", skeleton: "Esqueletos",
     loading: "Cargando…",
     hidden: "El icono incluye un nombre accesible solo para lectores de pantalla.",
-    callout: "Avisos", note: "Nota informativa", highlight: "Contenido destacado",
-    danger: "No se pudo completar la acción.",
+    callout: "Notas",
+    variants: {
+      default: "Tu cuenta usa el idioma del navegador.",
+      secondary: "Los cambios se guardan automáticamente.",
+      success: "Las comprobaciones han pasado.",
+      warning: "Cambiar el tema regenera la infografía.",
+      error: "Ese correo ya está en uso.",
+    },
+    noteLabel: "Región",
+    noteLong: "La región se aplicará a todas las infografías nuevas de esta cuenta.",
+    noteAction: "Cambiar", noteSmall: "Pequeña", noteFill: "Rellena", noteNoIcon: "Sin icono",
+    noteOutline: "Contorno",
     state: "El foco y el hover se aprecian al interactuar con elementos enfocables.",
   },
   en: {
@@ -30,8 +44,18 @@ const copy = {
     divider: "Dividers", spinner: "Loading content", skeleton: "Skeletons",
     loading: "Loading…",
     hidden: "The icon has an accessible name available only to screen readers.",
-    callout: "Callouts", note: "Informational note", highlight: "Highlighted content",
-    danger: "The action could not be completed.",
+    callout: "Notes",
+    variants: {
+      default: "Your account uses the browser language.",
+      secondary: "Changes are saved automatically.",
+      success: "All checks passed.",
+      warning: "Changing the theme regenerates the infographic.",
+      error: "That email address is already in use.",
+    },
+    noteLabel: "Region",
+    noteLong: "The region applies to every new infographic in this account.",
+    noteAction: "Change", noteSmall: "Small", noteFill: "Filled", noteNoIcon: "No icon",
+    noteOutline: "Outline",
     state: "Focus and hover are visible when interacting with focusable elements.",
   },
 };
@@ -96,10 +120,27 @@ export function SurfacesAndFeedbackSection({ locale }: CatalogSectionProps) {
       </div>
       <h3 className="ds-type-title">{c.callout}</h3>
       <div className={styles.stack}>
-        <Callout>{c.note}</Callout>
-        <Callout variant="highlight">{c.highlight}</Callout>
-        <Callout variant="danger" role="alert">{c.danger}</Callout>
-        <Card><Callout variant="highlight">{c.sample}</Callout></Card>
+        <p className="ds-type-caption">{c.noteOutline}</p>
+        {variants.map((variant) => (
+          <Note key={variant} variant={variant}>{c.variants[variant]}</Note>
+        ))}
+        <p className="ds-type-caption">{c.noteFill}</p>
+        {variants.map((variant) => (
+          <Note key={variant} variant={variant} appearance="fill">{c.variants[variant]}</Note>
+        ))}
+        <p className="ds-type-caption">{c.noteSmall}</p>
+        <Note variant="warning" size="small">{c.variants.warning}</Note>
+        <Note variant="error" size="small" appearance="fill">{c.variants.error}</Note>
+        <p className="ds-type-caption">{c.noteLabel} · {c.noteAction} · {c.noteNoIcon}</p>
+        <Note
+          variant="warning"
+          label={c.noteLabel}
+          action={<Button variant="outline" size="sm">{c.noteAction}</Button>}
+        >
+          {c.noteLong}
+        </Note>
+        <Note icon={null}>{c.variants.default}</Note>
+        <Card><Note variant="success" appearance="fill">{c.variants.success}</Note></Card>
       </div>
       <p className="ds-type-caption-medium">{c.state}</p>
     </div>

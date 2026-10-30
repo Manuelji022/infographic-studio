@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { getMessages } from "../../../messages";
 import { LoginButton } from "../../components/login-button";
-import { Callout } from "@ds/ui";
+import { Note } from "@ds/ui";
 import styles from "./login.module.css";
 import { LOCALE_COOKIE, parseLocale } from "../../lib/locale";
 
@@ -19,7 +19,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   return (
     <main className={styles.main}>
       <h1 className={`ds-type-heading ${styles.title}`}>{messages.appName}</h1>
-      {error ? <Callout as="div" role="alert">{messages.loginError}</Callout> : null}
+      {error ? <Note variant="error" role="alert">{messages.loginError}</Note> : null}
       <LoginButton label={messages.loginButton} pendingLabel={messages.loginPending} />
     </main>
   );

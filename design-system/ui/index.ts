@@ -1,7 +1,7 @@
 // Public entry point of the UI primitives. Assembled by the coordinator, not by workers.
 export * from "./primitives/Badge";
 export * from "./primitives/Button";
-export * from "./primitives/Callout";
+export * from "./primitives/Note";
 export * from "./primitives/Card";
 export * from "./primitives/Checkbox";
 export * from "./primitives/Dialog";

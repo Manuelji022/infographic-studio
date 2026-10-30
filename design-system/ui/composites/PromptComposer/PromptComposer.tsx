@@ -2,7 +2,7 @@
 
 import type { ComponentProps, ReactNode } from "react";
 import { Button } from "../../primitives/Button";
-import { Callout } from "../../primitives/Callout";
+import { Note } from "../../primitives/Note";
 import { ErrorMessage } from "../ErrorMessage";
 import { Field } from "../../primitives/Field";
 import { Icon } from "../../primitives/Icon";
@@ -96,7 +96,7 @@ export function PromptComposer({
           {labels.counter(values.text.length)}
         </Text>
         {values.text.length > warnAt && (
-          <Callout variant="highlight">{labels.warning(warnAt)}</Callout>
+          <Note variant="warning" size="small">{labels.warning(warnAt)}</Note>
         )}
       </div>
       <details className={styles.options}>

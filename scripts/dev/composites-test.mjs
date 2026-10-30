@@ -83,10 +83,10 @@ try {
   check('typing enables submit', !(await btnDisabled()));
   check('counter shows 10 characters', /^10\b/.test(await evaluate(`${demo}.querySelector('[aria-live=polite]').textContent`)),
     await evaluate(`${demo}.querySelector('[aria-live=polite]').textContent`));
-  check('no warning under the limit', (await evaluate(`${demo}.querySelectorAll('aside').length`)) === 0);
+  check('no warning under the limit', !(await evaluate(`/límite|limit/i.test(${demo}.textContent)`)));
   await evaluate(`(() => { const t = ${demo}.querySelector('textarea'); const set = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set; set.call(t, 'x'.repeat(30001)); t.dispatchEvent(new Event('input', { bubbles: true })); })()`);
   await sleep(400);
-  check('warning appears above 30000 characters', (await evaluate(`${demo}.querySelectorAll('aside').length`)) === 1);
+  check('warning appears above 30000 characters', await evaluate(`/límite|limit/i.test(${demo}.textContent)`));
   check('counter shows 30001 characters', /30[.,  ]?001/.test(await evaluate(`${demo}.querySelector('[aria-live=polite]').textContent`)),
     await evaluate(`${demo}.querySelector('[aria-live=polite]').textContent`));
   check('submit still allowed above the warning', !(await btnDisabled()));

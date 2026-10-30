@@ -195,7 +195,7 @@ Antes: scaffold de `/design-system` (coordinador o worker 2.0): ruta privada, se
 | Tarea | Componentes | Notas |
 | --- | --- | --- |
 | **2.A** Texto y acciones | `Text` (variantes = roles tipográficos), `Button` (variantes `accent`, `ivory`, `outline`, `ghost`; relleno con esquinas inferiores 8), `Link` (subrayado persistente), `Badge`, `Icon` (set mínimo: chevron, flecha, cerrar, comprobar, copiar, compartir, borrar) | Solo un `accent` por pantalla se documenta en la ficha |
-| **2.B** Superficies y feedback | `Card` (variantes `surface`, `feature`, `deep`, `inverse`), `Divider`, `Spinner`, `Skeleton`, `VisuallyHidden`, `Callout` | Sin sombras; los radios vienen del token de card |
+| **2.B** Superficies y feedback | `Card` (variantes `surface`, `feature`, `deep`, `inverse`), `Divider`, `Spinner`, `Skeleton`, `VisuallyHidden`, `Note` | Sin sombras; los radios vienen del token de card |
 | **2.C** Formularios | `Label`, `Field` (etiqueta + control + ayuda + error), `Input`, `Textarea` (base), `Select`, `Checkbox`/`Switch`, `Dialog` (base, accesible, foco atrapado) | Estados: normal, hover, foco, deshabilitado, error |
 
 Cada tarea entrega también: ficha `design-system/components/<nombre>.md`, sección de catálogo (todas las variantes y estados × claro/oscuro) y accesibilidad (roles ARIA, teclado).

@@ -12,9 +12,30 @@ export type IconName =
   | "search"
   | "user"
   | "alert"
-  | "link";
+  | "link"
+  | "info"
+  | "success"
+  | "warning";
 
 export const paths: Record<IconName, ReactNode> = {
+  info: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v5.5m0-8.5v.01" />
+    </>
+  ),
+  success: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m8 12.5 3 3 5-6" />
+    </>
+  ),
+  warning: (
+    <>
+      <path d="M12 4 3 20h18L12 4Z" />
+      <path d="M12 10v4m0 3v.01" />
+    </>
+  ),
   search: (
     <>
       <circle cx="11" cy="11" r="6" />
