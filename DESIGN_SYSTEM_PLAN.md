@@ -287,16 +287,24 @@ El propietario aprueba explícitamente: tema oscuro (fin Oleada 1), primer catá
 | 1.A Tokens + generador | [x] | pi/gpt-6-luna (3 envíos) | Aceptada | Reprodujo 5 negativos; refactor de legibilidad y errores limpios; CSS generado idéntico |
 | 1.B Contraste | [x] | pi/gpt-6-luna | Aceptada | 56 pares pasan; ratios verificados con cálculo independiente; prueba negativa hecha por el coordinador en copia aislada |
 | 1.C Fuentes en app | [x] | pi/gpt-6-luna | Aceptada con correcciones | Corregido `page.module.css` (fondo de tarjeta) y `.eve/**` en ESLint; capturas con etiquetas claro/oscuro invertidas |
-| 2.0 Scaffold catálogo | [ ] | | | |
-| 2.A Texto y acciones | [ ] | | | |
-| 2.B Superficies y feedback | [ ] | | | |
-| 2.C Formularios | [ ] | | | |
+| 2.0 Scaffold catálogo | [x] | coordinador + pi (2T) | Aceptada | Esqueleto y sección de tokens (leída de los JSON); captura propia revisada |
+| 2.A Texto y acciones | [x] | pi/gpt-6-luna (2A, 2A1, 2A2, 2A3, 2F) | Aceptada con correcciones | `Button` gana `tone="inverse"` (outline/ghost invisibles en fondo oscuro); `Text` tipado polimórfico corregido por el coordinador |
+| 2.B Superficies y feedback | [x] | pi/gpt-6-luna (2B, 2B2, 2F) | Aceptada con correcciones | `Card` tipado corregido por el coordinador; catálogo reescrito |
+| 2.C Formularios | [x] | pi/gpt-6-luna (2C, 2C2, 2C3, 2C4, 2G) | Aceptada con correcciones | `Dialog` corregido por el coordinador (Escape llamaba dos veces a `onClose`; clic en el relleno cerraba). Verificado en navegador 12/12 |
 | 3.A PromptComposer | [ ] | | | |
 | 3.B AppHeader | [ ] | | | |
 | 3.C Biblioteca | [ ] | | | |
 | 3.D Diálogos y estados | [ ] | | | |
 | 4.A–4.E Infografía | [ ] | | | |
 | 5.A–5.E E2E y cierre | [ ] | | | |
+
+### Lecciones de la Oleada 2 (para las siguientes)
+
+- Los workers `pi`/luna se detienen tras 4–6 archivos: tareas de **2–3 componentes** como máximo, y la sección del catálogo aparte.
+- Dar **rangos de lectura** (`sed -n 'a,bp'`) para los documentos de referencia; leerlos enteros se trunca.
+- Para tipos polimórficos con `as`: `const Component = as as ElementType;` (con anotación de tipo, TypeScript estrecha el tipo y sigue fallando).
+- Los workers informan "sin fallos visuales" aunque haya defectos: la revisión con capturas propias es imprescindible. Herramientas de revisión (fuera del repo): captura por CDP con cookie falsa y test de comportamiento del `Dialog`.
+- Un único servidor de desarrollo compartido evita choques en `.next`.
 
 ## 10. Riesgos abiertos
 
