@@ -1,6 +1,7 @@
 .button {
   align-items: center;
-  border: 0;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-lg);
   cursor: pointer;
   display: inline-flex;
   font-family: var(--ds-type-ui-strong-family);
@@ -11,6 +12,7 @@
   letter-spacing: var(--ds-type-ui-strong-tracking);
   line-height: var(--ds-type-ui-single-leading);
   max-width: 100%;
+  min-height: 44px;
   text-align: center;
 }
 
@@ -27,24 +29,22 @@
 
 .button:disabled {
   background: var(--ds-surface-deep);
+  border-color: transparent;
   color: var(--ds-text-muted);
   cursor: not-allowed;
 }
 
 .md {
-  padding: var(--ds-spacing-12) var(--ds-spacing-24);
+  padding: 0 var(--ds-spacing-24);
 }
 
 .sm {
-  padding: var(--ds-spacing-8) var(--ds-spacing-16);
+  min-height: 36px;
+  padding: 0 var(--ds-spacing-16);
 }
 
 .accent {
   background: var(--ds-accent);
-  border-radius: var(--ds-radius-button-filled-top)
-    var(--ds-radius-button-filled-top)
-    var(--ds-radius-button-filled-bottom)
-    var(--ds-radius-button-filled-bottom);
   color: var(--ds-on-accent);
 }
 
@@ -54,10 +54,7 @@
 
 .ivory {
   background: var(--ds-surface);
-  border-radius: var(--ds-radius-button-filled-top)
-    var(--ds-radius-button-filled-top)
-    var(--ds-radius-button-filled-bottom)
-    var(--ds-radius-button-filled-bottom);
+  border-color: var(--ds-border-strong);
   color: var(--ds-text);
 }
 
@@ -67,8 +64,7 @@
 
 .outline {
   background: transparent;
-  border: 1px solid var(--ds-border-strong);
-  border-radius: var(--ds-radius-button-outlined);
+  border-color: var(--ds-text);
   color: var(--ds-text);
 }
 
@@ -79,15 +75,15 @@
 .ghost {
   background: transparent;
   color: var(--ds-text);
-  text-decoration: none;
 }
 
 .ghost:not(:disabled):hover {
-  text-decoration: underline;
+  background: var(--ds-surface-deep);
 }
 
 .inverse.outline {
   background: transparent;
+  border-color: var(--ds-text-inverse);
   color: var(--ds-text-inverse);
 }
 
@@ -103,6 +99,10 @@
   outline-color: var(--ds-text-inverse);
 }
 
+.inverse.outline:disabled {
+  border-color: color-mix(in srgb, var(--ds-text-inverse) 55%, transparent);
+}
+
 .inverse.outline:disabled,
 .inverse.ghost:disabled {
   background: transparent;
@@ -112,5 +112,4 @@
 .inverse.outline:disabled:hover,
 .inverse.ghost:disabled:hover {
   background: transparent;
-  text-decoration: none;
 }

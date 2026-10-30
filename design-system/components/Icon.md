@@ -8,7 +8,7 @@ Representa visualmente una acción o concepto mediante un SVG lineal compacto.
 
 | Prop | Tipo | Predeterminado | Descripción |
 | --- | --- | --- | --- |
-| `name` | `IconName` | — | Nombre del icono: `chevron-down`, `chevron-right`, `arrow-right`, `close`, `check`, `copy`, `share` o `trash`. |
+| `name` | `IconName` | — | Nombre del icono: `chevron-down`, `chevron-right`, `arrow-right`, `close`, `check`, `copy`, `share`, `trash`, `search`, `user`, `alert` o `link`. |
 | `size` | `"sm" \| "md" \| "lg"` | `"md"` | Tamaño de 16, 20 o 24 px. |
 | `title` | `string` | — | Nombre accesible; sin título el SVG queda oculto a tecnologías asistivas. |
 | Props SVG | Props nativas | — | Atributos estándar del elemento SVG raíz. |

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { CatalogShell } from "@ds/catalog/CatalogShell";
+import { FoundationsCatalog } from "@ds/catalog/Catalogs";
 
 export const metadata: Metadata = { title: "Design system" };
 
-export default function DesignSystemPage() {
-  return <CatalogShell />;
+export default function Page() {
+  return <FoundationsCatalog />;
 }

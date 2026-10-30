@@ -18,7 +18,7 @@ Acción nativa de formulario con variantes visuales y tamaños consistentes.
 
 ## Variantes y estados
 
-Incluye las variantes accent, ivory, outline y ghost; tamaños md y sm; estado deshabilitado nativo.
+Todas comparten radio (`--ds-radius-lg`) y altura mínima de 44 px (36 px en `sm`). `accent`: relleno clay. `ivory`: superficie con borde `--ds-border-strong`, visible sobre cualquier fondo. `outline`: transparente con borde `--ds-text`. `ghost`: sin borde, fondo `--ds-surface-deep` al pasar el cursor. Tamaños md y sm; estado deshabilitado nativo.
 
 ## Accesibilidad
 

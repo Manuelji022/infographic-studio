@@ -18,3 +18,17 @@ export * from "./primitives/Switch";
 export * from "./primitives/Text";
 export * from "./primitives/Textarea";
 export * from "./primitives/VisuallyHidden";
+
+// Composites (assembled by the coordinator).
+export * from "./composites/AppHeader";
+export * from "./composites/ConfirmDialog";
+export * from "./composites/EmptyState";
+export * from "./composites/ErrorState";
+export * from "./composites/FilterBar";
+export * from "./composites/GenerationProgress";
+export * from "./composites/InfographicCard";
+export * from "./composites/LanguageToggle";
+export * from "./composites/PromptComposer";
+export * from "./composites/SearchBar";
+export * from "./composites/ShareDialog";
+export * from "./composites/UserMenu";

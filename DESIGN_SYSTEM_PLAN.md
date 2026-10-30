@@ -203,14 +203,22 @@ Aceptación común: lint/tsc, **captura del catálogo en claro y oscuro** a 360 
 
 ### Oleada 3 — Composites
 
-| Tarea | Componente | Descripción |
-| --- | --- | --- |
-| **3.A** | `PromptComposer` | Área grande de texto de la pantalla Generar: `Textarea` + contador (aviso al pasar ~30.000, GEN-11) + opciones (tema, idioma de salida: original/ES/EN) + botón Generar (único `accent`). Recibe strings, valores y callbacks por props |
-| **3.B** | `AppHeader`, `LanguageToggle`, menú de sesión | Sustituye a `src/components/header.tsx` y `language-toggle.tsx`; conserva el comportamiento de cookie `locale` (la app pasa los textos) |
-| **3.C** | `InfographicCard`, `SearchBar`, `FilterBar` | Tarjeta de biblioteca (SRCH-05): título, resumen, etiquetas, fecha, banderas ES/EN, indicador de compartida, miniatura |
-| **3.D** | `ShareDialog`, `ConfirmDialog`, `GenerationProgress`, `EmptyState`, `ErrorState` | `GenerationProgress` muestra los 4 pasos del stream (GEN-04) |
+**Decisiones tomadas (2026-10-30):** (1) `AppHeader` se integra en la app real ahora, sustituyendo `src/components/header.tsx`, con un restyle mínimo del login; (2) el `PromptComposer` muestra el texto y el botón Generar, y pliega título, URL de origen, tema e idioma de salida en un bloque "Opciones"; (3) la miniatura de `InfographicCard` es un hueco (`thumbnail: ReactNode`) que rellena la biblioteca en M2.
 
-Aceptación: igual que la Oleada 2, más una **página de prueba temporal** (no se commitea) que monta cada composite con datos de ejemplo en ES y EN.
+Los composites **solo componen primitivas** de `design-system/ui/` (ya se pueden importar, vía `../../primitives/<Nombre>` o `@ds/ui`), no llevan textos propios (strings, valores y callbacks por props) y siguen las reglas de §3. Carpeta: `design-system/ui/composites/<Nombre>/` (misma estructura que las primitivas) y ficha en `design-system/components/<Nombre>.md`.
+
+| Tarea | Componentes | Descripción |
+| --- | --- | --- |
+| **3.A** | `PromptComposer` | Textarea grande con contador y aviso al pasar ~30.000 caracteres (GEN-11), bloque plegable "Opciones" (título, URL de origen, tema, idioma de salida original/ES/EN, GEN-02/03) y botón Generar (único `accent`). Estados: vacío (envío bloqueado), listo, enviando (Spinner), error. Contador con `aria-live="polite"` |
+| **3.B** | `AppHeader`, `LanguageToggle`, `UserMenu` | Cabecera con navegación, toggle ES/EN y menú de sesión (nativo: `popover`/`details`, teclado y Escape). Integración en la app: `layout.tsx` y wrappers en `src/components/` que pasan textos de `messages/` y conservan la cookie `locale`; restyle mínimo del login con `Button`. Retirar `header.tsx` y `language-toggle.tsx` antiguos |
+| **3.C** | `InfographicCard`, `SearchBar`, `FilterBar` | Tarjeta de biblioteca (SRCH-05: título, resumen, etiquetas, fecha, banderas ES/EN, indicador de compartida, hueco de miniatura); buscador; filtros (etiqueta, fecha, idioma, compartidas; SRCH-04) |
+| **3.D** | `ConfirmDialog`, `ShareDialog` | Sobre el `Dialog` existente. Confirmación de borrado (LIB-05). Compartir: crear/copiar/revocar enlace, caducidad (nunca/7/30 días) e idioma por defecto (SHR-01 a SHR-06); copiar con `navigator.clipboard` y estado "copiado" |
+| **3.E** | `GenerationProgress`, `EmptyState`, `ErrorState` | Progreso de 4 pasos (analizando, componiendo, validando, guardando; GEN-04) con estados pendiente/activo/hecho/error; estados vacío y de error con acción "Reintentar" |
+| **3.F** | Secciones del catálogo | Una sección por grupo (`CatalogSection` en `design-system/catalog/sections/`), todos los estados en claro/oscuro y ES/EN; el registro lo edita solo el coordinador |
+
+Orden: 3.A a 3.E en paralelo (archivos disjuntos, tareas de 2–3 componentes como máximo) → 3.F → pruebas de comportamiento en navegador (contador y límite del `PromptComposer`, copiar enlace en `ShareDialog`, teclado y Escape en `UserMenu`; herramientas en `scripts/dev/`) → revisión con capturas propias → **aprobación del propietario del `PromptComposer`**.
+
+Aceptación: la de la Oleada 2 (lint, typecheck, `tokens:check`, `contrast:check`, greps de reglas, líneas ≤ 100, capturas a 360 y 1280 px en ambos temas revisadas por el coordinador), más una prueba de comportamiento por composite interactivo.
 
 ### Oleada 4 — Capa de infografía
 
@@ -291,10 +299,12 @@ El propietario aprueba explícitamente: tema oscuro (**aprobado 2026-10-30**), p
 | 2.A Texto y acciones | [x] | pi/gpt-6-luna (2A, 2A1, 2A2, 2A3, 2F) | Aceptada con correcciones | `Button` gana `tone="inverse"` (outline/ghost invisibles en fondo oscuro); `Text` tipado polimórfico corregido por el coordinador |
 | 2.B Superficies y feedback | [x] | pi/gpt-6-luna (2B, 2B2, 2F) | Aceptada con correcciones | `Card` tipado corregido por el coordinador; catálogo reescrito |
 | 2.C Formularios | [x] | pi/gpt-6-luna (2C, 2C2, 2C3, 2C4, 2G) | Aceptada con correcciones | `Dialog` corregido por el coordinador (Escape llamaba dos veces a `onClose`; clic en el relleno cerraba). Verificado en navegador 12/12 |
-| 3.A PromptComposer | [ ] | | | |
-| 3.B AppHeader | [ ] | | | |
-| 3.C Biblioteca | [ ] | | | |
-| 3.D Diálogos y estados | [ ] | | | |
+| 3.A PromptComposer | [x] | pi/gpt-6-luna | Aceptada; pendiente de aprobación del propietario | Prueba en navegador 22/22 (contador, aviso >30000, Opciones, envío). Puerta humana |
+| 3.B AppHeader | [x] | pi/gpt-6-luna (3.B1, 3.B2) | Aceptada con correcciones | `LanguageToggle` sin fuente sans y a ancho completo, y ancla CSS compartida de `UserMenu`, corregidos por el coordinador. Integrado en `layout.tsx`; `header.tsx` y `language-toggle.tsx` retirados. Verificado solo sin sesión real (cabecera con sesión cubierta por el catálogo) |
+| 3.C Biblioteca | [x] | pi/gpt-6-luna (3.C1, 3.C2) | Aceptada con correcciones | Botón Buscar vacío en 360 px, etiqueta «Compartida» en serif y espaciado de la tarjeta corregidos por el coordinador |
+| 3.D ConfirmDialog y ShareDialog | [x] | pi/gpt-6-luna | Aceptada | Copiar enlace verificado con portapapeles real; `index.ts` sin tipos corregido por el coordinador |
+| 3.E Progreso y estados | [x] | pi/gpt-6-luna | Aceptada con correcciones | Texto de pasos en serif y botón `ivory` invisible sobre superficie (ErrorState pasa a `outline`) corregidos por el coordinador |
+| 3.F Catálogo de composites | [x] | pi/gpt-6-luna (3.F1–3.F5) | Aceptada con correcciones | 5 secciones; pies de foto y demo de búsqueda corregidos. Capturas 360/1280 claro/oscuro revisadas; `scripts/dev/composites-test.mjs` |
 | 4.A–4.E Infografía | [ ] | | | |
 | 5.A–5.E E2E y cierre | [ ] | | | |
 
@@ -305,6 +315,13 @@ El propietario aprueba explícitamente: tema oscuro (**aprobado 2026-10-30**), p
 - Para tipos polimórficos con `as`: `const Component = as as ElementType;` (con anotación de tipo, TypeScript estrecha el tipo y sigue fallando).
 - Los workers informan "sin fallos visuales" aunque haya defectos: la revisión con capturas propias es imprescindible. Herramientas de revisión (fuera del repo): captura por CDP con cookie falsa y test de comportamiento del `Dialog`.
 - Un único servidor de desarrollo compartido evita choques en `.next`.
+
+### Lecciones de la Oleada 3
+
+- El catálogo se divide en dos rutas: `/design-system` (fundamentos: tokens) y `/components` (todas las secciones de componentes). Registro en `design-system/catalog/registry.ts` (`foundationSections` y `componentSections`); las páginas usan los wrappers cliente de `Catalogs.tsx` porque las secciones son funciones y no cruzan la frontera servidor→cliente.
+- Los workers pi entregaron 11 tareas sin bloqueos; los defectos fueron siempre visuales o de integración, nunca de tipos: `composes` de clases globales no funciona en CSS Modules (usar tokens), botones `ivory` sobre superficies `--ds-surface` se ven como texto (usar `outline`), `index.ts` sin reexportar todos los tipos, `anchor-name` fijo compartido entre instancias, pies de foto copiados entre demos.
+- Un worker corrigió un fichero ajeno a su TARGET para desbloquear su typecheck: revisar el diff completo, no solo el TARGET.
+- `shoot.mjs --selector=#id` recorta una sección del catálogo y avisa de desbordamiento horizontal.
 
 ## 10. Riesgos abiertos
 

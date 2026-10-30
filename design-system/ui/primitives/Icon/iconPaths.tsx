@@ -8,9 +8,37 @@ export type IconName =
   | "check"
   | "copy"
   | "share"
-  | "trash";
+  | "trash"
+  | "search"
+  | "user"
+  | "alert"
+  | "link";
 
 export const paths: Record<IconName, ReactNode> = {
+  search: (
+    <>
+      <circle cx="11" cy="11" r="6" />
+      <path d="m20 20-4.5-4.5" />
+    </>
+  ),
+  user: (
+    <>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 20c1-4 4-6 8-6s7 2 8 6" />
+    </>
+  ),
+  alert: (
+    <>
+      <path d="M12 4 3 20h18L12 4Z" />
+      <path d="M12 10v4m0 3v.01" />
+    </>
+  ),
+  link: (
+    <>
+      <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1" />
+      <path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" />
+    </>
+  ),
   "chevron-down": <path d="m6 9 6 6 6-6" />,
   "chevron-right": <path d="m9 6 6 6-6 6" />,
   "arrow-right": <path d="M4 12h16m-6-6 6 6-6 6" />,

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
-import { Header } from "../components/header";
+import { cookies, headers } from "next/headers";
+import { AppHeaderShell } from "../components/app-header";
+import { getAuth } from "../lib/auth";
 import { LOCALE_COOKIE, parseLocale } from "../lib/locale";
 import "./globals.css";
 
@@ -19,14 +20,34 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     // Fall back to the default locale if request cookies cannot be read.
   }
 
+  let user: { name: string; email: string } | null = null;
+  try {
+    const session = await getAuth().api.getSession({ headers: await headers() });
+    user = session ? { name: session.user.name, email: session.user.email } : null;
+  } catch {
+    user = null;
+  }
+
   return (
     <html lang={locale} data-ds-theme="auto">
       <head>
-        <link rel="preload" href="/fonts/source-serif-4-latin-opsz-wght.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/geist-latin-wght.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link
+          rel="preload"
+          href="/fonts/source-serif-4-latin-opsz-wght.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/geist-latin-wght.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
-        <Header locale={locale} />
+        <AppHeaderShell locale={locale} user={user} />
         {children}
       </body>
     </html>
