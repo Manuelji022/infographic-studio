@@ -1,0 +1,112 @@
+/*
+Canonical markup:
+<ul class="ig-bar-chart"><li class="ig-bar-chart__row"
+  style="--ig-value:62;--ig-max:100"><span
+  class="ig-bar-chart__label">Etiqueta</span><span
+  class="ig-bar-chart__track"><span class="ig-bar-chart__bar"><span
+  class="ig-bar-chart__value">62 %</span></span></span></li>...</ul>
+<div class="ig-stat"><p class="ig-stat__value">2,7x</p>
+  <p class="ig-stat__label">Descripcion de la cifra</p></div>
+*/
+.ig-bar-chart {
+  display: grid;
+  gap: var(--ds-spacing-12);
+}
+
+.ig-bar-chart__row {
+  display: grid;
+  min-width: 0;
+  gap: var(--ds-spacing-8);
+}
+
+.ig-bar-chart__label {
+  font-family: var(--ds-type-ui-sm-family);
+  font-size: var(--ds-type-ui-sm-size);
+  font-weight: var(--ds-type-ui-sm-weight);
+  line-height: var(--ds-type-ui-sm-leading);
+  letter-spacing: var(--ds-type-ui-sm-tracking);
+  color: var(--ds-text);
+}
+
+.ig-bar-chart__track {
+  display: flex;
+  min-width: 0;
+  min-height: 36px;
+  overflow: hidden;
+  border-radius: var(--ds-radius-badge);
+  background: var(--ds-surface-deep);
+}
+
+.ig-bar-chart__bar {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  width: calc(var(--ig-value) / var(--ig-max, 100) * 100%);
+  min-width: fit-content;
+  max-width: 100%;
+  padding: var(--ds-spacing-4);
+  border-radius: var(--ds-radius-badge);
+  background: var(--ds-data-1);
+}
+
+.ig-bar-chart__value {
+  font-family: var(--ds-type-ui-strong-family);
+  font-size: var(--ds-type-ui-strong-size);
+  font-weight: var(--ds-type-ui-strong-weight);
+  line-height: var(--ds-type-ui-strong-leading);
+  letter-spacing: var(--ds-type-ui-strong-tracking);
+  padding: 0 var(--ds-spacing-8);
+  border-radius: var(--ds-radius-badge);
+  background: var(--ds-surface);
+  color: var(--ds-text);
+  white-space: nowrap;
+}
+
+.ig-bar-chart__row--projected .ig-bar-chart__bar {
+  border: 2px dashed var(--ds-data-1);
+  background: var(--ds-surface-feature);
+}
+
+.ig-bar-chart__row--series-2 .ig-bar-chart__bar {
+  background: var(--ds-data-2);
+}
+
+.ig-bar-chart__row--series-3 .ig-bar-chart__bar {
+  background: var(--ds-data-3);
+}
+
+.ig-bar-chart__row--series-4 .ig-bar-chart__bar {
+  background: var(--ds-data-4);
+}
+
+.ig-stat {
+  min-width: 0;
+}
+
+.ig-stat__value {
+  font-family: var(--ds-type-display-family);
+  font-size: clamp(44px, 7vw, 72px);
+  font-weight: var(--ds-type-display-weight);
+  line-height: 1;
+  letter-spacing: var(--ds-type-display-tracking);
+  color: var(--ds-text);
+  overflow-wrap: anywhere;
+}
+
+.ig-stat__label {
+  margin-top: var(--ds-spacing-8);
+  font-family: var(--ds-type-ui-sm-family);
+  font-size: var(--ds-type-ui-sm-size);
+  font-weight: var(--ds-type-ui-sm-weight);
+  line-height: var(--ds-type-ui-sm-leading);
+  letter-spacing: var(--ds-type-ui-sm-tracking);
+  color: var(--ds-text-muted);
+}
+
+@media (min-width: 560px) {
+  .ig-bar-chart__row {
+    grid-template-columns: minmax(0, 30%) minmax(0, 1fr);
+    align-items: center;
+    gap: var(--ds-spacing-16);
+  }
+}

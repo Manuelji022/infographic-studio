@@ -2,15 +2,19 @@
 
 import { useState } from "react";
 import styles from "./catalog.module.css";
-import type { CatalogLocale, CatalogSection } from "./types";
+import type { CatalogLocale, CatalogSection, CatalogTheme, InfographicCatalogData } from "./types";
 
-type Theme = "auto" | "light" | "dark";
-
-const themes: Theme[] = ["auto", "light", "dark"];
+const themes: CatalogTheme[] = ["auto", "light", "dark"];
 const locales: CatalogLocale[] = ["es", "en"];
 
-export function CatalogShell({ title, sections }: { title: string; sections: CatalogSection[] }) {
-  const [theme, setTheme] = useState<Theme>("auto");
+type CatalogShellProps = {
+  title: string;
+  sections: CatalogSection[];
+  infographic?: InfographicCatalogData;
+};
+
+export function CatalogShell({ title, sections, infographic }: CatalogShellProps) {
+  const [theme, setTheme] = useState<CatalogTheme>("auto");
   const [locale, setLocale] = useState<CatalogLocale>("es");
 
   return (
@@ -48,7 +52,7 @@ export function CatalogShell({ title, sections }: { title: string; sections: Cat
         {sections.map(({ id, title, Component }) => (
           <section key={id} id={id} className={styles.section}>
             <h2 className="ds-type-subheading-serif">{title[locale]}</h2>
-            <Component locale={locale} />
+            <Component locale={locale} theme={theme} infographic={infographic} />
           </section>
         ))}
       </main>

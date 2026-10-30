@@ -1,6 +1,7 @@
 import { ComposerSection } from "./sections/ComposerSection";
 import { DialogsSection } from "./sections/DialogsSection";
 import { FormsSection } from "./sections/FormsSection";
+import { InfographicSection } from "./sections/InfographicSection";
 import { LibrarySection } from "./sections/LibrarySection";
 import { NavigationSection } from "./sections/NavigationSection";
 import { ProgressAndStatesSection } from "./sections/ProgressAndStatesSection";
@@ -12,6 +13,11 @@ import type { CatalogSection } from "./types";
 /** Foundations shown at /design-system. Owned by the coordinator. */
 export const foundationSections: CatalogSection[] = [
   { id: "tokens", title: { es: "Tokens", en: "Tokens" }, Component: TokensSection },
+  {
+    id: "infographic",
+    title: { es: "Infografía", en: "Infographic" },
+    Component: InfographicSection,
+  },
 ];
 
 /** Components shown at /components. Owned by the coordinator; workers own their section file. */
