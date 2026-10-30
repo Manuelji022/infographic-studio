@@ -1,7 +1,8 @@
 # Design system — Plan de implementación (M1)
 
-> Estado: **borrador v0.1** · 2026-10-30
-> Documento de trabajo para iterar los pasos y delegarlos. Cuando se cierre, los cambios de alcance se vuelcan en `FUNCTIONAL_SPEC.md` §6 y §11 (la spec manda; este plan es el "cómo").
+> Estado: **cerrado** · 2026-10-30
+> El propietario dio por concluido el design system tras la Oleada 4. La Oleada 5 (E2E con Playwright y cierre formal) **se descarta** y no forma parte de M1. Los cambios de alcance ya están en `FUNCTIONAL_SPEC.md` §6 y §11 (la spec manda; este plan es el "cómo").
+> Siguiente trabajo: la librería de gráficos para el agente (`FUNCTIONAL_SPEC.md` §6.5, plan en `CHART_LIBRARY_PLAN.md`).
 > Convención: `[ ]` pendiente · `[~]` en curso · `[x]` hecho y revisado.
 
 ---
@@ -30,7 +31,7 @@ Fuera de alcance de M1: generación con el agente (M3), biblioteca y compartir (
 | D6 | Generador de tokens | **Decidido** | Script propio en JS, sin dependencias (`scripts/build-tokens.mjs`) |
 | D7 | Prefijos | **Propuesto** | Tokens `--ds-*` · clases infografía `ig-*` · props de datos de infografía `--ig-*` (`--ig-value`, `--ig-max`) · componentes UI con CSS Modules |
 | D8 | Los componentes del DS **no llevan textos propios**: reciben strings por props; i18n vive en la app | **Propuesto** | Evita conflictos en `messages/*.ts` entre workers y mantiene el DS reutilizable |
-| D9 | Runner E2E | **Propuesto** | Playwright (necesario para la deuda de M0 y la regresión visual) |
+| D9 | Runner E2E | **Aplazado** (2026-10-30) | Playwright sigue siendo la opción prevista, pero no se instala en M1 (Oleada 5 descartada) |
 
 > D1, D2, D4 y D5 están reflejadas en `FUNCTIONAL_SPEC.md` (§6, §12). Las propuestas D7–D9 también quedaron en la spec; si cambia alguna, se corrige allí primero.
 
@@ -233,13 +234,15 @@ Aceptación: la de la Oleada 2 (lint, typecheck, `tokens:check`, `contrast:check
 Dependencias: 4.A → (4.B, 4.C, 4.D) → 4.E.
 Nota: `agent/skills/design-system.md` (generada desde el manifiesto) se deja para M3.
 
-### Oleada 5 — Verificación E2E y cierre de M1
+### Oleada 5 — Verificación E2E y cierre de M1 (descartada)
 
-- [ ] **5.A** Instalar Playwright y configurar informes (HTML + trazas) como artefacto repetible.
-- [ ] **5.B** E2E: rechazo de cuentas no propietarias por el hook de la allowlist (arrastre de M0).
-- [ ] **5.C** E2E: login y protección de rutas (arrastre de M0).
-- [ ] **5.D** E2E/visual: el catálogo `/design-system` renderiza todos los componentes en ambos temas sin errores de consola; capturas de referencia.
-- [ ] **5.E** `CHANGELOG.md` del DS con la versión `1.0.0`; marcar M1 en la spec.
+**Descartada por el propietario el 2026-10-30.** El design system se da por concluido con las Oleadas 0–4. Ninguna de estas tareas se hace en M1; si se retoman, será en un hito posterior:
+
+- **5.A** Instalar Playwright y configurar informes (HTML + trazas). Aplazado (D9).
+- **5.B** E2E: rechazo de cuentas no propietarias por el hook de la allowlist (arrastre de M0). Sigue pendiente, sin hito.
+- **5.C** E2E: login y protección de rutas (arrastre de M0). Sigue pendiente, sin hito.
+- **5.D** E2E/visual del catálogo. Sustituido por la revisión manual con capturas ya hecha en cada oleada.
+- **5.E** `CHANGELOG.md` con `1.0.0`. No se crea; M1 se marca como cerrado en la spec (§11).
 
 ## 7. Cómo delegar (plantilla de comandos)
 
@@ -283,7 +286,7 @@ Checklist por entrega, antes de aceptar y de lanzar la siguiente oleada:
 7. **API de componentes:** variantes explícitas, `ref` como prop, sin strings propios, sin props booleanas de estilo.
 8. **Veredicto por tarea:** aceptada · corrección (reenvío al mismo terminal o `--retry-of`) · rechazada. Se registra en la tabla de seguimiento.
 
-El propietario aprueba explícitamente: tema oscuro (**aprobado 2026-10-30**), primer catálogo (**aprobado 2026-10-30**) y `PromptComposer` (fin Oleada 3).
+El propietario aprueba explícitamente: tema oscuro (**aprobado 2026-10-30**), primer catálogo (**aprobado 2026-10-30**) y `PromptComposer` (**aprobado 2026-10-30**).
 
 ## 9. Seguimiento
 
@@ -310,7 +313,7 @@ El propietario aprueba explícitamente: tema oscuro (**aprobado 2026-10-30**), p
 | 4.C `render.ts` | [x] | pi/gpt-6-luna | Aceptada con correcciones | Autocontenido 256 KB, iframe 29 KB (`scripts/dev/render-test.ts`). Corregido: `fontBaseUrl` se interpolaba sin validar en el CSS; líneas >100 |
 | 4.D `examples/` + fichas | [x] | pi/gpt-6-luna (4.D1a, 4.D1b, 4.D2) | Aceptada con correcciones | 12 fichas `ig-*.md`; `pensiones.es/en.html` (datos ilustrativos, 43 comprobaciones en `examples-check.ts`). El valor de `ig-bar-chart` pasa a una pastilla `--ds-surface` (el texto sobre `--ds-data-*` fallaba AA: hasta 2,20:1 en oscuro) |
 | 4.E Catálogo de infografía | [x] | pi/gpt-6-luna (4.E1, 4.E2) + coordinador | Aceptada con correcciones | Sección «Infografía» en `/design-system`: ejemplo completo + 12 muestras (`samples.ts`) en `<iframe sandbox="allow-same-origin">` (sin scripts; solo para medir la altura) con `srcdoc` compuesto en el cliente por `document.ts` (el CSS viaja una vez). Comprobado en navegador: tema, idioma y ancho móvil. Vía de producción (sandbox estricto + fuentes base64) comprobada aparte. Corregido por el coordinador: medición de altura (el `load` ocurre antes de hidratar), muestras con hermanos en la raíz y `ig-options` con un solo item |
-| 5.A–5.E E2E y cierre | [ ] | | | |
+| 5.A–5.E E2E y cierre | Descartada | — | — | Decisión del propietario (2026-10-30): el DS se cierra sin la Oleada 5. Las pruebas E2E de M0 (5.B, 5.C) quedan pendientes sin hito |
 
 ### Lecciones de la Oleada 2 (para las siguientes)
 
@@ -335,4 +338,5 @@ El propietario aprueba explícitamente: tema oscuro (**aprobado 2026-10-30**), p
 - **Copyright de Source Serif 4:** el paquete de Fontsource trae "Google Inc."; revisar si se quiere citar a Adobe en una página de créditos.
 - **Fluid type:** los mínimos de display/heading pueden rozar en 360 px con títulos largos en español.
 - **`@font-face` con URL absoluta `/fonts/...`:** el render en `iframe srcdoc` y el `.html` exportado necesitan resolverla (origen en el primero, base64 en el segundo). Cubierto por 4.C; probar pronto.
-- **Regresión visual:** hasta tener Playwright (5.A), las comprobaciones visuales son manuales con capturas.
+- **Regresión visual:** sin Playwright (Oleada 5 descartada), las comprobaciones visuales siguen siendo manuales con capturas (`scripts/dev/shoot.mjs`).
+- **Deuda E2E de M0:** el rechazo de cuentas no propietarias y la protección de rutas no tienen prueba automática. Se verificaron a mano en M0.
