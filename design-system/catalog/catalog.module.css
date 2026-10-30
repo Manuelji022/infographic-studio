@@ -34,6 +34,12 @@
   cursor: pointer;
 }
 
+.iconToggle {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--ds-spacing-4) var(--ds-spacing-8);
+}
+
 .toggle[aria-pressed="true"] {
   background: var(--ds-surface-inverse);
   color: var(--ds-text-inverse);

@@ -1,10 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { Icon } from "../ui/primitives/Icon";
+import type { IconName } from "../ui/primitives/Icon";
 import styles from "./catalog.module.css";
 import type { CatalogLocale, CatalogSection, CatalogTheme, InfographicCatalogData } from "./types";
 
-const themes: CatalogTheme[] = ["auto", "light", "dark"];
+const themes: { value: CatalogTheme; icon: IconName; label: string }[] = [
+  { value: "auto", icon: "monitor-cog", label: "System theme" },
+  { value: "light", icon: "sun", label: "Light theme" },
+  { value: "dark", icon: "moon", label: "Dark theme" },
+];
 const locales: CatalogLocale[] = ["es", "en"];
 
 type CatalogShellProps = {
@@ -22,15 +28,17 @@ export function CatalogShell({ title, sections, infographic }: CatalogShellProps
       <header className={styles.toolbar}>
         <h1 className="ds-type-subheading-sans">{title}</h1>
         <div className={styles.group} role="group" aria-label="Theme">
-          {themes.map((value) => (
+          {themes.map(({ value, icon, label }) => (
             <button
               key={value}
               type="button"
-              className={styles.toggle}
+              className={`${styles.toggle} ${styles.iconToggle}`}
               aria-pressed={theme === value}
+              aria-label={label}
+              title={label}
               onClick={() => setTheme(value)}
             >
-              {value}
+              <Icon name={icon} size="sm" />
             </button>
           ))}
         </div>

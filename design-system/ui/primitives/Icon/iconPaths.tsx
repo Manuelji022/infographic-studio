@@ -15,7 +15,11 @@ export type IconName =
   | "link"
   | "info"
   | "success"
-  | "warning";
+  | "warning"
+  | "sun"
+  | "moon"
+  | "monitor-cog"
+  | "globe";
 
 export const paths: Record<IconName, ReactNode> = {
   info: (
@@ -81,6 +85,45 @@ export const paths: Record<IconName, ReactNode> = {
     <>
       <path d="M4 7h16M10 11v6m4-6v6" />
       <path d="m6 7 1 13h10l1-13M9 7V4h6v3" />
+    </>
+  ),
+  sun: (
+    <>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.93 4.93 1.41 1.41" />
+      <path d="m17.66 17.66 1.41 1.41" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m6.34 17.66-1.41 1.41" />
+      <path d="m19.07 4.93-1.41 1.41" />
+    </>
+  ),
+  moon: (
+    <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+  ),
+  "monitor-cog": (
+    <>
+      <path d="M12 17v4" />
+      <path d="m14.305 7.53.923-.382" />
+      <path d="m15.228 4.852-.923-.383" />
+      <path d="m16.852 3.228-.383-.924" />
+      <path d="m16.852 8.772-.383.923" />
+      <path d="m19.148 3.228.383-.924" />
+      <path d="m19.53 9.696-.382-.924" />
+      <path d="m20.772 4.852.924-.383" />
+      <path d="m20.772 7.148.924.383" />
+      <path d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7" />
+      <path d="M8 21h8" />
+      <circle cx="18" cy="6" r="3" />
+    </>
+  ),
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z" />
     </>
   ),
 };

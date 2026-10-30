@@ -45,7 +45,7 @@ const variants = [
 
 const iconNames = [
   "chevron-down", "chevron-right", "arrow-right", "close",
-  "check", "copy", "share", "trash",
+  "check", "copy", "share", "trash", "sun", "moon", "monitor-cog",
 ] as const;
 
 export function TextAndActionsSection({ locale }: CatalogSectionProps) {
