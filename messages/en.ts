@@ -7,6 +7,7 @@ export const en = {
   navLibrary: "Library",
   navComponents: "Components",
   navDesignSystem: "Design system",
+  navCharts: "Charts",
   loginButton: "Continue with Google",
   loginPending: "Signing in",
   loginError: "Could not sign in. Please try again.",

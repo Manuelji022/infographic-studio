@@ -23,6 +23,7 @@ export function AppHeaderShell({
         { key: "library", label: messages.navLibrary, href: "/library" },
         { key: "components", label: messages.navComponents, href: "/components" },
         { key: "design-system", label: messages.navDesignSystem, href: "/design-system" },
+        { key: "charts", label: messages.navCharts, href: "/charts" },
       ].map((item) => ({
         ...item,
         current:

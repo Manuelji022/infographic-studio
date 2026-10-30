@@ -5,6 +5,7 @@ export const es = {
   navLibrary: "Biblioteca",
   navComponents: "Componentes",
   navDesignSystem: "Design system",
+  navCharts: "Gráficos",
   loginButton: "Continuar con Google",
   loginPending: "Iniciando sesión",
   loginError: "No se pudo iniciar sesión. Inténtalo de nuevo.",

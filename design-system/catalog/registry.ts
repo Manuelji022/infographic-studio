@@ -1,3 +1,4 @@
+import { ChartsSection } from "./sections/ChartsSection";
 import { ComposerSection } from "./sections/ComposerSection";
 import { DialogsSection } from "./sections/DialogsSection";
 import { FormsSection } from "./sections/FormsSection";
@@ -50,4 +51,9 @@ export const componentSections: CatalogSection[] = [
     title: { es: "Progreso y estados", en: "Progress and states" },
     Component: ProgressAndStatesSection,
   },
+];
+
+/** Charts shown at /charts. Owned by the coordinator. */
+export const chartSections: CatalogSection[] = [
+  { id: "charts", title: { es: "Gráficos", en: "Charts" }, Component: ChartsSection },
 ];

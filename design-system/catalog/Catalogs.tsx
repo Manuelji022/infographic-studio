@@ -1,8 +1,8 @@
 "use client";
 
 import { CatalogShell } from "./CatalogShell";
-import { componentSections, foundationSections } from "./registry";
-import type { InfographicCatalogData } from "./types";
+import { chartSections, componentSections, foundationSections } from "./registry";
+import type { ChartsCatalogData, InfographicCatalogData } from "./types";
 
 // Client wrappers: the section components are functions, so they cannot cross the server boundary.
 export function FoundationsCatalog({ infographic }: { infographic: InfographicCatalogData }) {
@@ -17,4 +17,8 @@ export function FoundationsCatalog({ infographic }: { infographic: InfographicCa
 
 export function ComponentsCatalog() {
   return <CatalogShell title="Components" sections={componentSections} />;
+}
+
+export function ChartsCatalog({ charts }: { charts: ChartsCatalogData }) {
+  return <CatalogShell title="Charts" sections={chartSections} charts={charts} />;
 }

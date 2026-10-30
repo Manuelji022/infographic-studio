@@ -37,7 +37,8 @@ function checkFontBaseUrl(fontBaseUrl: string | undefined): void {
 
 function loadCss(embed: boolean, fontBaseUrl: string | undefined): string {
   const key = JSON.stringify([embed, fontBaseUrl]);
-  const cached = cssCache.get(key);
+  // In development, always re-read: regenerated tokens must show up without a server restart.
+  const cached = process.env.NODE_ENV === "production" ? cssCache.get(key) : undefined;
   if (cached !== undefined) return cached;
 
   const root = path.join(process.cwd(), "design-system");

@@ -11,10 +11,24 @@ export type InfographicCatalogData = {
   examples: Record<CatalogLocale, string>;
 };
 
+/** One chart shown at /charts: a server-rendered fragment per sample language. */
+export type ChartSample = {
+  id: string;
+  title: Record<CatalogLocale, string>;
+  html: Record<CatalogLocale, string>;
+};
+
+/** Server-built data for the charts section (CSS with the chart styles, and the samples). */
+export type ChartsCatalogData = {
+  css: string;
+  samples: ChartSample[];
+};
+
 export type CatalogSectionProps = {
   locale: CatalogLocale;
   theme: CatalogTheme;
   infographic?: InfographicCatalogData;
+  charts?: ChartsCatalogData;
 };
 
 export type CatalogSection = {

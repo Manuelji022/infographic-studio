@@ -29,7 +29,7 @@ type IgFrameProps = {
   css: string;
 };
 
-function IgFrame({ fragment, title, locale, theme, css }: IgFrameProps) {
+export function IgFrame({ fragment, title, locale, theme, css }: IgFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const observerRef = useRef<ResizeObserver | undefined>(undefined);
   const observedRef = useRef<Document | undefined>(undefined);
