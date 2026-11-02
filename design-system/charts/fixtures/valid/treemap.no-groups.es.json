@@ -1,0 +1,46 @@
+{
+  "id": "treemap-no-groups-es",
+  "type": "treemap",
+  "title": "Distribución del gasto público",
+  "description": "Datos de ejemplo para comprobar el reparto por áreas.",
+  "sourceQuote": "Fuente: datos sintéticos de ejemplo.",
+  "period": "1996",
+  "unit": {
+    "kind": "number",
+    "decimals": 2
+  },
+  "items": [
+    {
+      "label": "Protección social",
+      "value": 30
+    },
+    {
+      "label": "Sanidad pública",
+      "value": 20
+    },
+    {
+      "label": "Educación universitaria",
+      "value": 15
+    },
+    {
+      "label": "Transporte interurbano",
+      "value": 12
+    },
+    {
+      "label": "Investigación científica",
+      "value": 9
+    },
+    {
+      "label": "Medio ambiente",
+      "value": 7
+    },
+    {
+      "label": "Vivienda y urbanismo",
+      "value": 5
+    },
+    {
+      "label": "Servicios comunitarios",
+      "value": 2
+    }
+  ]
+}

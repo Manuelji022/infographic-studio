@@ -1,0 +1,17 @@
+{
+  "id": "donut-valido",
+  "type": "donut",
+  "title": "Title",
+  "description": "Description",
+  "sourceQuote": "Source",
+  "parts": [
+    {
+      "label": "Part A",
+      "value": -1
+    },
+    {
+      "label": "Part B",
+      "value": 2
+    }
+  ]
+}

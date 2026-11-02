@@ -1,0 +1,54 @@
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-32);
+  min-width: 0;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-16);
+  min-width: 0;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-8);
+  min-width: 0;
+}
+
+.row,
+.buttonRow {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-12);
+}
+
+.deep,
+.inverse {
+  background: var(--ds-surface-inverse);
+  border-radius: var(--ds-radius-lg);
+  color: var(--ds-text-inverse);
+  padding: var(--ds-spacing-16);
+}
+
+.paragraph {
+  max-width: var(--ds-prose-max-width);
+}
+
+.iconGrid {
+  display: grid;
+  gap: var(--ds-spacing-16);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.iconCell {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-8);
+  min-width: 0;
+}

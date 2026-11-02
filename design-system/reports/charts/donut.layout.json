@@ -1,0 +1,29 @@
+{
+  "type": "donut",
+  "runs": [
+    {
+      "width": 360,
+      "scheme": "light",
+      "charts": 8,
+      "issues": []
+    },
+    {
+      "width": 360,
+      "scheme": "dark",
+      "charts": 8,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "scheme": "light",
+      "charts": 8,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "scheme": "dark",
+      "charts": 8,
+      "issues": []
+    }
+  ]
+}

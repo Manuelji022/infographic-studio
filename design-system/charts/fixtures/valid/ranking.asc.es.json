@@ -1,0 +1,25 @@
+{
+  "id": "ranking-asc-es",
+  "type": "ranking",
+  "title": "Costes de menor a mayor",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "order": "asc",
+  "unit": {
+    "kind": "number",
+    "decimals": 2
+  },
+  "items": [
+    {
+      "label": "Transporte público",
+      "value": 12.35
+    },
+    {
+      "label": "Servicios municipales",
+      "value": 8.75
+    },
+    {
+      "label": "Gestión de residuos",
+      "value": 10.25
+    }
+  ]
+}

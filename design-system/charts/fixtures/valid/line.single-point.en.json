@@ -1,0 +1,20 @@
+{
+  "type": "line",
+  "sourceQuote": "Source: illustrative data.",
+  "id": "line-single-point-en",
+  "title": "One available observation",
+  "x": {
+    "kind": "year",
+    "values": [
+      2024
+    ]
+  },
+  "series": [
+    {
+      "name": "Observation",
+      "values": [
+        42
+      ]
+    }
+  ]
+}

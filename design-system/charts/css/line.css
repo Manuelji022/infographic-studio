@@ -1,0 +1,56 @@
+.ig-chart__line-area {
+  position: absolute;
+}
+
+.ig-chart--line .ig-chart__svg {
+  overflow: visible;
+}
+
+.ig-chart__line-stroke {
+  fill: none;
+  stroke: var(--chart-color);
+  stroke-width: 2.5px;
+  vector-effect: non-scaling-stroke;
+}
+
+.ig-chart__line-projected {
+  stroke-dasharray: 6 4;
+}
+
+.ig-chart--line .ig-chart__axis {
+  stroke: var(--ds-border-strong);
+  stroke-width: 2px;
+}
+
+.ig-chart__line-dot {
+  fill: none;
+  stroke: var(--chart-color);
+  stroke-width: 5px;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.ig-chart__line-y,
+.ig-chart__line-x,
+.ig-chart__line-end {
+  position: absolute;
+}
+
+.ig-chart__line-y {
+  transform: translate(calc(-100% - 10px), -50%);
+}
+
+.ig-chart__line-x-middle { transform: translateX(-50%); }
+.ig-chart__line-x-end { transform: translateX(-100%); }
+
+.ig-chart__line-end {
+  margin-left: 10px;
+  width: max-content;
+  max-width: 195px;
+  transform: translateY(-50%);
+}
+
+.ig-chart--line .ig-chart__legend {
+  margin-top: 12px;
+}
+

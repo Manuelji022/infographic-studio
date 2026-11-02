@@ -1,0 +1,46 @@
+{
+  "id": "treemap-no-groups-en",
+  "type": "treemap",
+  "title": "Public spending distribution",
+  "description": "Example data for checking the distribution by area.",
+  "sourceQuote": "Source: synthetic example data.",
+  "period": "1996",
+  "unit": {
+    "kind": "number",
+    "decimals": 2
+  },
+  "items": [
+    {
+      "label": "Social protection",
+      "value": 30
+    },
+    {
+      "label": "Public health",
+      "value": 20
+    },
+    {
+      "label": "Higher education",
+      "value": 15
+    },
+    {
+      "label": "Intercity transport",
+      "value": 12
+    },
+    {
+      "label": "Scientific research",
+      "value": 9
+    },
+    {
+      "label": "Environment",
+      "value": 7
+    },
+    {
+      "label": "Housing and urban planning",
+      "value": 5
+    },
+    {
+      "label": "Community services",
+      "value": 2
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+/*
+Canonical markup:
+<aside class="ig-verdict">
+  <p class="ig-verdict__label">Veredicto</p>
+  <p class="ig-verdict__text">Idea final</p>
+</aside>
+<footer class="ig-footer">
+  <p class="ig-footer__sources">Fuentes</p>
+  <p class="ig-footer__meta">Autor, medio, fecha</p>
+</footer>
+<aside class="ig-callout">
+  <p class="ig-callout__title">Titulo</p>
+  <p class="ig-callout__text">Texto</p>
+</aside>
+<aside class="ig-callout ig-callout--neutral">
+  <p class="ig-callout__title">Titulo</p>
+  <p class="ig-callout__text">Texto</p>
+</aside>
+<div class="ig-options">
+  <div class="ig-options__item">
+    <h3 class="ig-options__title">Alternativa</h3>
+    <p class="ig-options__text">Explicacion</p>
+  </div>
+  ...
+</div>
+*/
+.ig-verdict {
+  padding: var(--ds-card-padding);
+  border-radius: var(--ds-radius-card);
+  background: var(--ds-surface-inverse);
+  color: var(--ds-text-inverse);
+}
+
+.ig-verdict__label {
+  margin-bottom: var(--ds-spacing-8);
+  font-family: var(--ds-type-label-family);
+  font-size: var(--ds-type-label-size);
+  font-weight: var(--ds-type-label-weight);
+  line-height: var(--ds-type-label-leading);
+  letter-spacing: var(--ds-type-label-tracking);
+  text-transform: uppercase;
+}
+
+.ig-verdict__text {
+  font-family: var(--ds-type-subheading-serif-family);
+  font-size: clamp(22px, var(--ds-type-subheading-serif-size), 32px);
+  font-weight: var(--ds-type-subheading-serif-weight);
+  line-height: var(--ds-type-subheading-serif-leading);
+  letter-spacing: var(--ds-type-subheading-serif-tracking);
+}
+
+.ig-footer {
+  padding-top: var(--ds-spacing-24);
+  border-top: 1px solid var(--ds-border-strong);
+  color: var(--ds-text-muted);
+  font-family: var(--ds-type-caption-family);
+  font-size: var(--ds-type-caption-size);
+  font-weight: var(--ds-type-caption-weight);
+  line-height: var(--ds-type-caption-leading);
+  letter-spacing: var(--ds-type-caption-tracking);
+}
+
+.ig-footer__sources + .ig-footer__meta {
+  margin-top: var(--ds-spacing-8);
+}
+
+.ig-callout {
+  padding: var(--ds-spacing-16) var(--ds-spacing-24);
+  border: 1px solid var(--ds-border);
+  border-left: 4px solid var(--ds-accent);
+  border-radius: 0 var(--ds-radius-lg) var(--ds-radius-lg) 0;
+  background: var(--ds-surface);
+}
+
+.ig-callout--neutral {
+  border-left-color: var(--ds-border-strong);
+}
+
+.ig-callout__title {
+  margin-bottom: var(--ds-spacing-8);
+  font-family: var(--ds-type-ui-strong-family);
+  font-size: var(--ds-type-ui-strong-size);
+  font-weight: var(--ds-type-ui-strong-weight);
+  line-height: var(--ds-type-ui-strong-leading);
+  letter-spacing: var(--ds-type-ui-strong-tracking);
+}
+
+.ig-callout__text {
+  font-family: var(--ds-type-body-sm-family);
+  font-size: var(--ds-type-body-sm-size);
+  font-weight: var(--ds-type-body-sm-weight);
+  line-height: var(--ds-type-body-sm-leading);
+  letter-spacing: var(--ds-type-body-sm-tracking);
+}
+
+.ig-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: var(--ds-spacing-16);
+}
+
+.ig-options__item {
+  min-width: 0;
+  padding: var(--ds-card-padding);
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-card);
+  background: var(--ds-surface);
+}
+
+.ig-options__title {
+  margin-bottom: var(--ds-spacing-8);
+  font-family: var(--ds-type-title-family);
+  font-size: var(--ds-type-title-size);
+  font-weight: var(--ds-type-title-weight);
+  line-height: var(--ds-type-title-leading);
+  letter-spacing: var(--ds-type-title-tracking);
+}
+
+.ig-options__text {
+  font-family: var(--ds-type-body-sm-family);
+  font-size: var(--ds-type-body-sm-size);
+  font-weight: var(--ds-type-body-sm-weight);
+  line-height: var(--ds-type-body-sm-leading);
+  letter-spacing: var(--ds-type-body-sm-tracking);
+}

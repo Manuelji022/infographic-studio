@@ -1,0 +1,8 @@
+.root {
+  display: block;
+  color: var(--ds-text);
+  font-family: var(--ds-type-ui-medium-family);
+  font-size: var(--ds-type-ui-medium-size);
+  font-weight: var(--ds-type-ui-medium-weight);
+  line-height: var(--ds-type-ui-medium-leading);
+}

@@ -1,0 +1,24 @@
+.layout {
+  display: grid;
+  gap: var(--ds-spacing-16);
+  min-width: 0;
+}
+
+.languageRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-8);
+}
+
+.menuRow {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.frame {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-card);
+}

@@ -1,0 +1,12 @@
+.layout {
+  display: grid;
+  gap: var(--ds-spacing-24);
+  min-width: 0;
+}
+
+.stack {
+  display: grid;
+  justify-items: start;
+  gap: var(--ds-spacing-12);
+  min-width: 0;
+}

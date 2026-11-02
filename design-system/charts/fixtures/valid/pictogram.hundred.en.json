@@ -1,0 +1,10 @@
+{
+  "id": "pictogram-hundred-en",
+  "type": "pictogram",
+  "title": "Programme participation",
+  "sourceQuote": "Source: example data.",
+  "of": 100,
+  "value": 37,
+  "icon": "square",
+  "label": "People who completed the programme"
+}

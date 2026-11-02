@@ -1,0 +1,168 @@
+$ pnpm next typegen && pnpm tsc --noEmit
+Generating route types...
+✓ Types generated successfully
+exit: 0
+
+$ pnpm lint
+$ eslint
+exit: 0
+
+$ node scripts/dev/charts-schema-test.ts
+(node:95471) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/manueljimenezlopez/orca/workspaces/infographic-studio/turbot/scripts/dev/charts-schema-test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/manueljimenezlopez/orca/workspaces/infographic-studio/turbot/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+OK valid/column.en.json
+OK valid/column.es.json
+OK valid/column.four-series.en.json
+OK valid/column.four-series.es.json
+OK valid/column.many.en.json
+OK valid/column.many.es.json
+OK valid/column.negative.en.json
+OK valid/column.negative.es.json
+OK valid/donut.en.json
+OK valid/donut.es.json
+OK valid/donut.no-total.en.json
+OK valid/donut.no-total.es.json
+OK valid/donut.six-parts.en.json
+OK valid/donut.six-parts.es.json
+OK valid/donut.tiny-part.en.json
+OK valid/donut.tiny-part.es.json
+OK valid/line.dense.en.json
+OK valid/line.dense.es.json
+OK valid/line.en.json
+OK valid/line.es.json
+OK valid/line.gaps.en.json
+OK valid/line.gaps.es.json
+OK valid/line.negative.en.json
+OK valid/line.negative.es.json
+OK valid/line.projected.en.json
+OK valid/line.projected.es.json
+OK valid/line.single-point.en.json
+OK valid/line.single-point.es.json
+OK valid/pictogram.decimal.en.json
+OK valid/pictogram.decimal.es.json
+OK valid/pictogram.en.json
+OK valid/pictogram.es.json
+OK valid/pictogram.full.en.json
+OK valid/pictogram.full.es.json
+OK valid/pictogram.hundred.en.json
+OK valid/pictogram.hundred.es.json
+OK valid/pictogram.zero.en.json
+OK valid/pictogram.zero.es.json
+OK valid/ranking.asc.en.json
+OK valid/ranking.asc.es.json
+OK valid/ranking.en.json
+OK valid/ranking.es.json
+OK valid/ranking.fifteen.en.json
+OK valid/ranking.fifteen.es.json
+OK valid/ranking.negative.en.json
+OK valid/ranking.negative.es.json
+OK valid/scatter.dense.en.json
+OK valid/scatter.dense.es.json
+OK valid/scatter.en.json
+OK valid/scatter.es.json
+OK valid/scatter.negative.en.json
+OK valid/scatter.negative.es.json
+OK valid/scatter.no-highlight.en.json
+OK valid/scatter.no-highlight.es.json
+OK valid/stacked.bar.absolute.en.json
+OK valid/stacked.bar.absolute.es.json
+OK valid/stacked.bar.percent.en.json
+OK valid/stacked.bar.percent.es.json
+OK valid/stacked.bar.tiny.en.json
+OK valid/stacked.bar.tiny.es.json
+OK valid/stacked.columns.absolute.en.json
+OK valid/stacked.columns.absolute.es.json
+OK valid/stacked.columns.highlight-free.en.json
+OK valid/stacked.columns.highlight-free.es.json
+OK valid/stacked.columns.percent.en.json
+OK valid/stacked.columns.percent.es.json
+OK valid/stacked.columns.six-series.en.json
+OK valid/stacked.columns.six-series.es.json
+OK valid/treemap.data6.en.json
+OK valid/treemap.data6.es.json
+OK valid/treemap.dominant.en.json
+OK valid/treemap.dominant.es.json
+OK valid/treemap.en.json
+OK valid/treemap.es.json
+OK valid/treemap.no-groups.en.json
+OK valid/treemap.no-groups.es.json
+OK valid/treemap.single.en.json
+OK valid/treemap.single.es.json
+OK valid/treemap.tiny.en.json
+OK valid/treemap.tiny.es.json
+OK invalid/control-character.json
+OK invalid/donut-negative-value.json
+OK invalid/duplicate-group-id.json
+OK invalid/empty-title.json
+OK invalid/invalid-id.json
+OK invalid/line-length-mismatch.json
+OK invalid/long-title.json
+OK invalid/missing-group.json
+OK invalid/not-finite.json
+OK invalid/pictogram-negative-value.json
+OK invalid/pictogram-over-of.json
+OK invalid/pictogram-too-many-decimals.json
+OK invalid/projected-from-out-of-range.json
+OK invalid/too-large-number.json
+OK invalid/too-many-series.json
+OK invalid/treemap-negative-value.json
+OK invalid/unknown-field.json
+OK invalid/unknown-type.json
+OK invalid/wrong-data-type.json
+99/99 fixtures passed
+exit: 0
+
+$ node scripts/dev/charts-render-test.ts
+(node:95472) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/manueljimenezlopez/orca/workspaces/infographic-studio/turbot/scripts/dev/charts-render-test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/manueljimenezlopez/orca/workspaces/infographic-studio/turbot/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+charts-render-test: 80 fixtures passed, 0 failure(s)
+exit: 0
+
+$ node scripts/dev/charts-treemap-test.ts
+(node:95483) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/manueljimenezlopez/orca/workspaces/infographic-studio/turbot/scripts/dev/charts-treemap-test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/manueljimenezlopez/orca/workspaces/infographic-studio/turbot/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+charts-treemap-test: 60 geometry cases, visible/table data passed
+exit: 0
+
+$ grep -rnE '#[0-9a-fA-F]{3,8}\b|box-shadow|gradient|!important' design-system/charts/render design-system/charts/css design-system/charts/layout
+exit: 1
+
+$ awk 'length > 100' design-system/charts/layout/treemap.ts design-system/charts/render/treemap.ts design-system/charts/css/treemap.css scripts/dev/charts-treemap-test.ts design-system/components/ig-chart-treemap.md design-system/charts/fixtures/valid/treemap.*.json
+exit: 0
+
+$ node scripts/dev/charts-report.ts treemap
+Wrote design-system/reports/charts/treemap.html (12 fixtures)
+exit: 0
+
+$ node scripts/dev/charts-layout-check.mjs treemap
+treemap 360px light: 12 charts, 0 issue(s)
+treemap 360px dark: 12 charts, 0 issue(s)
+treemap 1280px light: 12 charts, 0 issue(s)
+treemap 1280px dark: 12 charts, 0 issue(s)
+exit: 0
+
+$ node scripts/dev/shoot.mjs file://$PWD/design-system/reports/charts/treemap.html \
+  design-system/reports/charts/shots/treemap-360-light.png 360 light
+shoot: wrote treemap-360-light.png (360x8349, light)
+exit: 0
+
+$ node scripts/dev/shoot.mjs file://$PWD/design-system/reports/charts/treemap.html \
+  design-system/reports/charts/shots/treemap-360-dark.png 360 dark
+shoot: wrote treemap-360-dark.png (360x8349, dark)
+exit: 0
+
+$ node scripts/dev/shoot.mjs file://$PWD/design-system/reports/charts/treemap.html \
+  design-system/reports/charts/shots/treemap-1280-light.png 1280 light
+shoot: wrote treemap-1280-light.png (1280x9129, light)
+exit: 0
+
+$ node scripts/dev/shoot.mjs file://$PWD/design-system/reports/charts/treemap.html \
+  design-system/reports/charts/shots/treemap-1280-dark.png 1280 dark
+shoot: wrote treemap-1280-dark.png (1280x9129, dark)
+exit: 0

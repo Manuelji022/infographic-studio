@@ -1,0 +1,32 @@
+{
+  "id": "presupuesto-en",
+  "type": "donut",
+  "title": "Budget by area",
+  "description": "Amounts in millions",
+  "sourceQuote": "Source: example data.",
+  "unit": {
+    "kind": "currency",
+    "currency": "EUR",
+    "decimals": 0
+  },
+  "parts": [
+    {
+      "label": "Staff",
+      "value": 42,
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Operations",
+      "value": 31
+    },
+    {
+      "label": "Other",
+      "value": 27,
+      "emphasis": "negative"
+    }
+  ],
+  "total": {
+    "label": "Total",
+    "value": 100
+  }
+}

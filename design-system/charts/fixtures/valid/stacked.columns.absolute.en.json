@@ -1,0 +1,32 @@
+{
+  "id": "apilado-columns-absolute-en",
+  "type": "stacked",
+  "title": "Composition by region",
+  "description": "Distribution across two groups",
+  "sourceQuote": "Source: example data.",
+  "unit": {
+    "kind": "number"
+  },
+  "layout": "columns",
+  "mode": "absolute",
+  "categories": [
+    "North",
+    "South"
+  ],
+  "series": [
+    {
+      "name": "Group A",
+      "values": [
+        62,
+        51
+      ]
+    },
+    {
+      "name": "Group B",
+      "values": [
+        38,
+        49
+      ]
+    }
+  ]
+}

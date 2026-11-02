@@ -1,0 +1,75 @@
+.layout {
+  display: grid;
+  gap: var(--ds-spacing-16);
+  min-width: 0;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: var(--ds-spacing-8);
+}
+
+.controls button {
+  padding: var(--ds-spacing-8) var(--ds-spacing-12);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-surface);
+  color: var(--ds-text);
+  cursor: pointer;
+}
+
+.controls button[aria-pressed="true"] {
+  background: var(--ds-canvas);
+}
+
+.note {
+  margin: 0;
+  color: var(--ds-text-muted);
+  text-align: center;
+}
+
+.chartsLink {
+  margin: 0;
+  color: var(--ds-text);
+  text-align: center;
+}
+
+.chartsLink a {
+  color: var(--ds-text);
+  text-decoration: underline;
+}
+
+.preview {
+  display: grid;
+  gap: var(--ds-spacing-24);
+  min-width: 0;
+  width: 100%;
+}
+
+.mobile {
+  max-width: 360px;
+  margin-inline: auto;
+}
+
+.item {
+  display: grid;
+  gap: var(--ds-spacing-12);
+  min-width: 0;
+}
+
+.item h3 {
+  margin: 0;
+}
+
+.item code {
+  overflow-wrap: anywhere;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-canvas);
+}

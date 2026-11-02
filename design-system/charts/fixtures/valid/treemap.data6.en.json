@@ -1,0 +1,31 @@
+{
+  "id": "treemap-data6-en",
+  "type": "treemap",
+  "title": "Public spending distribution",
+  "description": "Example data for checking the distribution by area.",
+  "sourceQuote": "Source: synthetic example data.",
+  "period": "1996",
+  "unit": {
+    "kind": "number",
+    "decimals": 2
+  },
+  "items": [
+    {
+      "label": "Natural environment conservation",
+      "value": 72,
+      "group": "g0"
+    },
+    {
+      "label": "Urban waste management",
+      "value": 28,
+      "group": "g0"
+    }
+  ],
+  "groups": [
+    {
+      "id": "g0",
+      "label": "Environment",
+      "tone": "data-6"
+    }
+  ]
+}

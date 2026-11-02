@@ -1,0 +1,29 @@
+{
+  "id": "apilado-bar-percent-es",
+  "type": "stacked",
+  "title": "Composición por región",
+  "description": "Distribución de dos grupos",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "unit": {
+    "kind": "percent"
+  },
+  "layout": "bar",
+  "mode": "percent",
+  "categories": [
+    "2026"
+  ],
+  "series": [
+    {
+      "name": "Grupo A",
+      "values": [
+        60
+      ]
+    },
+    {
+      "name": "Grupo B",
+      "values": [
+        40
+      ]
+    }
+  ]
+}

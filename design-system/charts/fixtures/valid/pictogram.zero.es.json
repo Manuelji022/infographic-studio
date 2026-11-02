@@ -1,0 +1,10 @@
+{
+  "id": "pictogram-zero-es",
+  "type": "pictogram",
+  "title": "Participación en el programa",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "of": 100,
+  "value": 0,
+  "icon": "person",
+  "label": "Personas que completaron el programa"
+}

@@ -1,0 +1,131 @@
+[
+  {
+    "id": "gasto-funcion",
+    "type": "treemap",
+    "title": "Gasto público por función",
+    "description": "% del gasto público total",
+    "sourceQuote": "Fuentes: datos ilustrativos tomados de una imagen de referencia sobre el gasto público por función en 1996; no son cifras oficiales.",
+    "unit": {
+      "kind": "percent",
+      "decimals": 1
+    },
+    "period": "1996",
+    "groups": [
+      {
+        "id": "proteccion-social",
+        "label": "Protección social",
+        "tone": "highlight"
+      },
+      {
+        "id": "servicios",
+        "label": "Servicios",
+        "tone": "data-2"
+      },
+      {
+        "id": "deuda",
+        "label": "Deuda",
+        "tone": "negative"
+      },
+      {
+        "id": "economia",
+        "label": "Economía",
+        "tone": "data-5"
+      },
+      {
+        "id": "estado",
+        "label": "Estado",
+        "tone": "neutral"
+      },
+      {
+        "id": "otros",
+        "label": "Otros",
+        "tone": "data-3"
+      }
+    ],
+    "items": [
+      {
+        "label": "Pensiones e I.T.",
+        "value": 25.6,
+        "group": "proteccion-social",
+        "emphasis": "highlight"
+      },
+      {
+        "label": "Desempleo",
+        "value": 4.9,
+        "group": "proteccion-social"
+      },
+      {
+        "label": "Resto protección social",
+        "value": 1.3,
+        "group": "proteccion-social"
+      },
+      {
+        "label": "Familia e hijos",
+        "value": 1.1,
+        "group": "proteccion-social"
+      },
+      {
+        "label": "Sanidad",
+        "value": 12.2,
+        "group": "servicios"
+      },
+      {
+        "label": "Educación",
+        "value": 9.9,
+        "group": "servicios"
+      },
+      {
+        "label": "Intereses de la deuda",
+        "value": 12,
+        "group": "deuda",
+        "emphasis": "negative"
+      },
+      {
+        "label": "Transporte",
+        "value": 6,
+        "group": "economia"
+      },
+      {
+        "label": "Asuntos económicos",
+        "value": 4.6,
+        "group": "economia"
+      },
+      {
+        "label": "I+D",
+        "value": 2.3,
+        "group": "economia"
+      },
+      {
+        "label": "Serv. públicos generales",
+        "value": 5.9,
+        "group": "estado"
+      },
+      {
+        "label": "Orden público",
+        "value": 4.3,
+        "group": "estado"
+      },
+      {
+        "label": "Defensa",
+        "value": 2.8,
+        "group": "estado"
+      },
+      {
+        "label": "Ocio, cultura y religión",
+        "value": 3,
+        "group": "otros"
+      },
+      {
+        "label": "Vivienda y urbanismo",
+        "value": 2.3,
+        "group": "otros"
+      },
+      {
+        "label": "Medio ambiente",
+        "value": 1.8,
+        "group": "otros"
+      }
+    ],
+    "note": "Datos ilustrativos tomados de una imagen de referencia; no son cifras oficiales."
+  }
+]

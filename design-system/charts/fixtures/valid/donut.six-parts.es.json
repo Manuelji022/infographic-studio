@@ -1,0 +1,38 @@
+{
+  "id": "donut-six-parts-es",
+  "type": "donut",
+  "title": "Distribución de recursos",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "parts": [
+    {
+      "label": "Atención a personas dependientes",
+      "value": 32,
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Formación y empleo juvenil",
+      "value": 24
+    },
+    {
+      "label": "Infraestructuras de transporte",
+      "value": 18
+    },
+    {
+      "label": "Investigación y desarrollo local",
+      "value": 12
+    },
+    {
+      "label": "Protección del medio ambiente",
+      "value": 9,
+      "emphasis": "negative"
+    },
+    {
+      "label": "Servicios administrativos",
+      "value": 5
+    }
+  ],
+  "total": {
+    "label": "Total",
+    "value": 100
+  }
+}

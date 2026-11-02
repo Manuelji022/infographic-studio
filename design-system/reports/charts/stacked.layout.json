@@ -1,0 +1,29 @@
+{
+  "type": "stacked",
+  "runs": [
+    {
+      "width": 360,
+      "scheme": "light",
+      "charts": 14,
+      "issues": []
+    },
+    {
+      "width": 360,
+      "scheme": "dark",
+      "charts": 14,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "scheme": "light",
+      "charts": 14,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "scheme": "dark",
+      "charts": 14,
+      "issues": []
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "ciudades-es",
+  "type": "ranking",
+  "title": "Ciudades por población",
+  "description": "Población en miles",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "unit": {
+    "kind": "number",
+    "decimals": 0,
+    "suffix": " mil"
+  },
+  "items": [
+    {
+      "label": "Madrid",
+      "value": 3300,
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Barcelona",
+      "value": 1600
+    },
+    {
+      "label": "Valencia",
+      "value": 800
+    }
+  ],
+  "order": "desc"
+}

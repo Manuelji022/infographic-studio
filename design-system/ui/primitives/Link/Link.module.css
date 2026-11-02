@@ -1,0 +1,23 @@
+.link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.link:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.default {
+  color: inherit;
+}
+
+.inverse {
+  color: var(--ds-text-inverse);
+}

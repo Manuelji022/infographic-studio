@@ -1,0 +1,115 @@
+.button {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-lg);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--ds-type-ui-strong-family);
+  font-size: var(--ds-type-ui-strong-size);
+  font-weight: var(--ds-type-ui-strong-weight);
+  gap: var(--ds-spacing-8);
+  justify-content: center;
+  letter-spacing: var(--ds-type-ui-strong-tracking);
+  line-height: var(--ds-type-ui-single-leading);
+  max-width: 100%;
+  min-height: 44px;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button {
+    transition: background-color 150ms ease;
+  }
+}
+
+.button:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.button:disabled {
+  background: var(--ds-surface-deep);
+  border-color: transparent;
+  color: var(--ds-text-muted);
+  cursor: not-allowed;
+}
+
+.md {
+  padding: 0 var(--ds-spacing-24);
+}
+
+.sm {
+  min-height: 36px;
+  padding: 0 var(--ds-spacing-16);
+}
+
+.accent {
+  background: var(--ds-accent);
+  color: var(--ds-on-accent);
+}
+
+.accent:not(:disabled):hover {
+  background: var(--ds-accent-hover);
+}
+
+.ivory {
+  background: var(--ds-surface);
+  border-color: var(--ds-border-strong);
+  color: var(--ds-text);
+}
+
+.ivory:not(:disabled):hover {
+  background: var(--ds-surface-deep);
+}
+
+.outline {
+  background: transparent;
+  border-color: var(--ds-text);
+  color: var(--ds-text);
+}
+
+.outline:not(:disabled):hover {
+  background: var(--ds-surface-deep);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--ds-text);
+}
+
+.ghost:not(:disabled):hover {
+  background: var(--ds-surface-deep);
+}
+
+.inverse.outline {
+  background: transparent;
+  border-color: var(--ds-text-inverse);
+  color: var(--ds-text-inverse);
+}
+
+.inverse.outline:not(:disabled):hover {
+  background: color-mix(in srgb, var(--ds-text-inverse) 15%, transparent);
+}
+
+.inverse.ghost {
+  color: var(--ds-text-inverse);
+}
+
+.inverse:focus-visible {
+  outline-color: var(--ds-text-inverse);
+}
+
+.inverse.outline:disabled {
+  border-color: color-mix(in srgb, var(--ds-text-inverse) 55%, transparent);
+}
+
+.inverse.outline:disabled,
+.inverse.ghost:disabled {
+  background: transparent;
+  color: color-mix(in srgb, var(--ds-text-inverse) 55%, transparent);
+}
+
+.inverse.outline:disabled:hover,
+.inverse.ghost:disabled:hover {
+  background: transparent;
+}

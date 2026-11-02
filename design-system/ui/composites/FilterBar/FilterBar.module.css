@@ -1,0 +1,21 @@
+.root {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--ds-spacing-16);
+  align-items: end;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-8);
+  min-width: 0;
+}
+
+@media (max-width: 360px) {
+  .root {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

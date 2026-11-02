@@ -1,0 +1,38 @@
+{
+  "id": "scatter-negative-en",
+  "type": "scatter",
+  "title": "Balances and changes",
+  "sourceQuote": "Source: example data.",
+  "x": {
+    "label": "Income change"
+  },
+  "y": {
+    "label": "Spending change"
+  },
+  "points": [
+    {
+      "x": -12,
+      "y": 8,
+      "highlight": true,
+      "label": "North"
+    },
+    {
+      "x": 8,
+      "y": -5,
+      "highlight": true,
+      "label": "South"
+    },
+    {
+      "x": -4,
+      "y": -3
+    },
+    {
+      "x": 5,
+      "y": 9
+    },
+    {
+      "x": 0,
+      "y": 0
+    }
+  ]
+}

@@ -3,10 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/build-tokens.mjs && node scripts/sync-design-system-fonts.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/build-tokens.mjs && node scripts/sync-design-system-fonts.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "tokens:build": "node scripts/build-tokens.mjs",
+    "tokens:check": "node scripts/build-tokens.mjs --check",
+    "contrast:check": "node scripts/check-contrast.mjs",
+    "typecheck": "next typegen && tsc --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node --env-file=.env.local node_modules/drizzle-kit/bin.cjs migrate"
   },
@@ -17,7 +23,8 @@
     "eve": "^0.82.0",
     "next": "16.4.2",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^20",

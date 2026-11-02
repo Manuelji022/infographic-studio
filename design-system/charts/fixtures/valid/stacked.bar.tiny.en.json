@@ -1,0 +1,31 @@
+{
+  "id": "stacked-bar-tiny-en",
+  "type": "stacked",
+  "title": "Composition by category",
+  "sourceQuote": "Example data.",
+  "categories": [
+    "Total"
+  ],
+  "series": [
+    {
+      "name": "Series 1",
+      "values": [
+        72
+      ]
+    },
+    {
+      "name": "Series 2",
+      "values": [
+        27.7
+      ]
+    },
+    {
+      "name": "Series 3",
+      "values": [
+        0.3
+      ]
+    }
+  ],
+  "layout": "bar",
+  "mode": "percent"
+}

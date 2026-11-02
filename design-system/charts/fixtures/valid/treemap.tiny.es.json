@@ -1,0 +1,182 @@
+{
+  "id": "treemap-tiny-es",
+  "type": "treemap",
+  "title": "Distribución del gasto público",
+  "description": "Datos de ejemplo para comprobar el reparto por áreas.",
+  "sourceQuote": "Fuente: datos sintéticos de ejemplo.",
+  "period": "1996",
+  "unit": {
+    "kind": "number",
+    "decimals": 2
+  },
+  "items": [
+    {
+      "label": "Administración territorial 1",
+      "value": 90,
+      "group": "g0"
+    },
+    {
+      "label": "Administración territorial 2",
+      "value": 0.11,
+      "group": "g1",
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Administración territorial 3",
+      "value": 0.12000000000000001,
+      "group": "g2"
+    },
+    {
+      "label": "Administración territorial 4",
+      "value": 0.13,
+      "group": "g0"
+    },
+    {
+      "label": "Administración territorial 5",
+      "value": 0.14,
+      "group": "g1"
+    },
+    {
+      "label": "Administración territorial 6",
+      "value": 0.15000000000000002,
+      "group": "g2"
+    },
+    {
+      "label": "Administración territorial 7",
+      "value": 0.16,
+      "group": "g0"
+    },
+    {
+      "label": "Administración territorial 8",
+      "value": 0.17,
+      "group": "g1"
+    },
+    {
+      "label": "Administración territorial 9",
+      "value": 0.18,
+      "group": "g2"
+    },
+    {
+      "label": "Administración territorial 10",
+      "value": 0.19,
+      "group": "g0"
+    },
+    {
+      "label": "Administración territorial 11",
+      "value": 0.2,
+      "group": "g1"
+    },
+    {
+      "label": "Administración territorial 12",
+      "value": 0.21000000000000002,
+      "group": "g2"
+    },
+    {
+      "label": "Administración territorial 13",
+      "value": 0.22,
+      "group": "g0"
+    },
+    {
+      "label": "Administración territorial 14",
+      "value": 0.23,
+      "group": "g1"
+    },
+    {
+      "label": "Administración territorial 15",
+      "value": 0.24000000000000002,
+      "group": "g2"
+    },
+    {
+      "label": "Administración territorial 16",
+      "value": 0.25,
+      "group": "g0"
+    },
+    {
+      "label": "Administración territorial 17",
+      "value": 0.26,
+      "group": "g1"
+    },
+    {
+      "label": "Administración territorial 18",
+      "value": 0.27,
+      "group": "g2"
+    },
+    {
+      "label": "Administración territorial 19",
+      "value": 0.28,
+      "group": "g0"
+    },
+    {
+      "label": "Administración territorial 20",
+      "value": 0.29000000000000004,
+      "group": "g1"
+    },
+    {
+      "label": "Administración territorial 21",
+      "value": 0.30000000000000004,
+      "group": "g2"
+    },
+    {
+      "label": "Administración territorial 22",
+      "value": 0.31,
+      "group": "g0"
+    },
+    {
+      "label": "Administración territorial 23",
+      "value": 0.32,
+      "group": "g1"
+    },
+    {
+      "label": "Administración territorial 24",
+      "value": 0.33,
+      "group": "g2"
+    },
+    {
+      "label": "Administración territorial 25",
+      "value": 0.33999999999999997,
+      "group": "g0"
+    },
+    {
+      "label": "Administración territorial 26",
+      "value": 0.35,
+      "group": "g1"
+    },
+    {
+      "label": "Administración territorial 27",
+      "value": 0.36,
+      "group": "g2"
+    },
+    {
+      "label": "Administración territorial 28",
+      "value": 0.37,
+      "group": "g0"
+    },
+    {
+      "label": "Administración territorial 29",
+      "value": 0.38,
+      "group": "g1"
+    },
+    {
+      "label": "Administración territorial 30",
+      "value": 0.39,
+      "group": "g2"
+    }
+  ],
+  "groups": [
+    {
+      "id": "g0",
+      "label": "Servicios esenciales",
+      "tone": "data-2"
+    },
+    {
+      "id": "g1",
+      "label": "Protección social",
+      "tone": "highlight"
+    },
+    {
+      "id": "g2",
+      "label": "Infraestructuras",
+      "tone": "data-5"
+    }
+  ]
+}

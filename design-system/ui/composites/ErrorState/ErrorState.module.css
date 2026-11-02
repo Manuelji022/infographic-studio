@@ -1,0 +1,7 @@
+.state {
+  box-sizing: border-box;
+  padding: var(--ds-card-padding);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-card);
+  background: var(--ds-surface);
+}

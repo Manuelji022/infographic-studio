@@ -1,0 +1,4437 @@
+{
+  "type": "treemap",
+  "runs": [
+    {
+      "width": 360,
+      "scheme": "light",
+      "charts": 12,
+      "issues": [],
+      "figures": [
+        {
+          "name": "treemap.data6.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 493.1875,
+              "top": 89.796875,
+              "bottom": 582.984375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 89.796875,
+              "bottom": 115.796875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 123.796875,
+              "bottom": 140.59375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 434.390625,
+              "top": 148.59375,
+              "bottom": 582.984375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 89.796875,
+              "bottom": 90.796875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 148.59375,
+              "bottom": 176.59375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 365.59375,
+              "top": 188.59375,
+              "bottom": 554.1875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 566.1875,
+              "bottom": 582.984375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.data6.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 493.1875,
+              "top": 744.78125,
+              "bottom": 1237.96875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 744.78125,
+              "bottom": 770.78125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 778.78125,
+              "bottom": 795.578125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 434.390625,
+              "top": 803.578125,
+              "bottom": 1237.96875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 744.78125,
+              "bottom": 745.78125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 803.578125,
+              "bottom": 831.578125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 365.59375,
+              "top": 843.578125,
+              "bottom": 1209.171875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 1221.171875,
+              "bottom": 1237.96875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.dominant.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 476.390625,
+              "top": 1399.765625,
+              "bottom": 1876.15625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 1399.765625,
+              "bottom": 1425.765625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 1433.765625,
+              "bottom": 1450.5625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 417.59375,
+              "top": 1458.5625,
+              "bottom": 1876.15625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 1399.765625,
+              "bottom": 1400.765625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 1458.5625,
+              "bottom": 1486.5625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 348.796875,
+              "top": 1498.5625,
+              "bottom": 1847.359375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 1859.359375,
+              "bottom": 1876.15625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.dominant.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 476.390625,
+              "top": 2037.953125,
+              "bottom": 2514.34375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 2037.953125,
+              "bottom": 2063.953125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 2071.953125,
+              "bottom": 2088.75,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 417.59375,
+              "top": 2096.75,
+              "bottom": 2514.34375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 2037.953125,
+              "bottom": 2038.953125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 2096.75,
+              "bottom": 2124.75,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 348.796875,
+              "top": 2136.75,
+              "bottom": 2485.546875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 2497.546875,
+              "bottom": 2514.34375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 564.375,
+              "top": 2676.140625,
+              "bottom": 3240.515625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 2676.140625,
+              "bottom": 2702.140625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 2710.140625,
+              "bottom": 2726.9375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 505.578125,
+              "top": 2734.9375,
+              "bottom": 3240.515625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 2676.140625,
+              "bottom": 2677.140625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 2734.9375,
+              "bottom": 2762.9375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 415.984375,
+              "top": 2774.9375,
+              "bottom": 3190.921875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 37.59375,
+              "top": 3202.921875,
+              "bottom": 3240.515625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 564.375,
+              "top": 3402.3125,
+              "bottom": 3966.6875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 3402.3125,
+              "bottom": 3428.3125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 3436.3125,
+              "bottom": 3453.109375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 505.578125,
+              "top": 3461.109375,
+              "bottom": 3966.6875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 3402.3125,
+              "bottom": 3403.3125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 3461.109375,
+              "bottom": 3489.109375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 415.984375,
+              "top": 3501.109375,
+              "bottom": 3917.09375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 37.59375,
+              "top": 3929.09375,
+              "bottom": 3966.6875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.no-groups.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 464.390625,
+              "top": 4128.484375,
+              "bottom": 4592.875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 4128.484375,
+              "bottom": 4154.484375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 4162.484375,
+              "bottom": 4179.28125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 405.59375,
+              "top": 4187.28125,
+              "bottom": 4592.875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 4128.484375,
+              "bottom": 4129.484375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 4187.28125,
+              "bottom": 4215.28125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 365.59375,
+              "top": 4227.28125,
+              "bottom": 4592.875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.no-groups.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 464.390625,
+              "top": 4754.671875,
+              "bottom": 5219.0625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 4754.671875,
+              "bottom": 4780.671875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 4788.671875,
+              "bottom": 4805.46875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 405.59375,
+              "top": 4813.46875,
+              "bottom": 5219.0625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 4754.671875,
+              "bottom": 4755.671875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 4813.46875,
+              "bottom": 4841.46875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 365.59375,
+              "top": 4853.46875,
+              "bottom": 5219.0625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.single.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 430.796875,
+              "top": 5380.859375,
+              "bottom": 5811.65625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 5380.859375,
+              "bottom": 5406.859375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 5414.859375,
+              "bottom": 5431.65625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 372,
+              "top": 5439.65625,
+              "bottom": 5811.65625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 5380.859375,
+              "bottom": 5381.859375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 5439.65625,
+              "bottom": 5467.65625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 332,
+              "top": 5479.65625,
+              "bottom": 5811.65625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.single.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 430.796875,
+              "top": 5973.453125,
+              "bottom": 6404.25,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 5973.453125,
+              "bottom": 5999.453125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 6007.453125,
+              "bottom": 6024.25,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 372,
+              "top": 6032.25,
+              "bottom": 6404.25,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 5973.453125,
+              "bottom": 5974.453125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 6032.25,
+              "bottom": 6060.25,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 332,
+              "top": 6072.25,
+              "bottom": 6404.25,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.tiny.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 782.734375,
+              "top": 6566.046875,
+              "bottom": 7348.78125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 6566.046875,
+              "bottom": 6592.046875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 6600.046875,
+              "bottom": 6616.84375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 723.9375,
+              "top": 6624.84375,
+              "bottom": 7348.78125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 6566.046875,
+              "bottom": 6567.046875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 6624.84375,
+              "bottom": 6652.84375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 634.34375,
+              "top": 6664.84375,
+              "bottom": 7299.1875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 37.59375,
+              "top": 7311.1875,
+              "bottom": 7348.78125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.tiny.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 782.734375,
+              "top": 7510.578125,
+              "bottom": 8293.3125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 7510.578125,
+              "bottom": 7536.578125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 7544.578125,
+              "bottom": 7561.375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 723.9375,
+              "top": 7569.375,
+              "bottom": 8293.3125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 7510.578125,
+              "bottom": 7511.578125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 7569.375,
+              "bottom": 7597.375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 634.34375,
+              "top": 7609.375,
+              "bottom": 8243.71875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 37.59375,
+              "top": 8255.71875,
+              "bottom": 8293.3125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "scheme": "dark",
+      "charts": 12,
+      "issues": [],
+      "figures": [
+        {
+          "name": "treemap.data6.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 493.1875,
+              "top": 89.796875,
+              "bottom": 582.984375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 89.796875,
+              "bottom": 115.796875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 123.796875,
+              "bottom": 140.59375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 434.390625,
+              "top": 148.59375,
+              "bottom": 582.984375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 89.796875,
+              "bottom": 90.796875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 148.59375,
+              "bottom": 176.59375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 365.59375,
+              "top": 188.59375,
+              "bottom": 554.1875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 566.1875,
+              "bottom": 582.984375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.data6.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 493.1875,
+              "top": 744.78125,
+              "bottom": 1237.96875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 744.78125,
+              "bottom": 770.78125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 778.78125,
+              "bottom": 795.578125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 434.390625,
+              "top": 803.578125,
+              "bottom": 1237.96875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 744.78125,
+              "bottom": 745.78125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 803.578125,
+              "bottom": 831.578125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 365.59375,
+              "top": 843.578125,
+              "bottom": 1209.171875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 1221.171875,
+              "bottom": 1237.96875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.dominant.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 476.390625,
+              "top": 1399.765625,
+              "bottom": 1876.15625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 1399.765625,
+              "bottom": 1425.765625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 1433.765625,
+              "bottom": 1450.5625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 417.59375,
+              "top": 1458.5625,
+              "bottom": 1876.15625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 1399.765625,
+              "bottom": 1400.765625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 1458.5625,
+              "bottom": 1486.5625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 348.796875,
+              "top": 1498.5625,
+              "bottom": 1847.359375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 1859.359375,
+              "bottom": 1876.15625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.dominant.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 476.390625,
+              "top": 2037.953125,
+              "bottom": 2514.34375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 2037.953125,
+              "bottom": 2063.953125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 2071.953125,
+              "bottom": 2088.75,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 417.59375,
+              "top": 2096.75,
+              "bottom": 2514.34375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 2037.953125,
+              "bottom": 2038.953125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 2096.75,
+              "bottom": 2124.75,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 348.796875,
+              "top": 2136.75,
+              "bottom": 2485.546875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 2497.546875,
+              "bottom": 2514.34375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 564.375,
+              "top": 2676.140625,
+              "bottom": 3240.515625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 2676.140625,
+              "bottom": 2702.140625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 2710.140625,
+              "bottom": 2726.9375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 505.578125,
+              "top": 2734.9375,
+              "bottom": 3240.515625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 2676.140625,
+              "bottom": 2677.140625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 2734.9375,
+              "bottom": 2762.9375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 415.984375,
+              "top": 2774.9375,
+              "bottom": 3190.921875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 37.59375,
+              "top": 3202.921875,
+              "bottom": 3240.515625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 564.375,
+              "top": 3402.3125,
+              "bottom": 3966.6875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 3402.3125,
+              "bottom": 3428.3125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 3436.3125,
+              "bottom": 3453.109375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 505.578125,
+              "top": 3461.109375,
+              "bottom": 3966.6875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 3402.3125,
+              "bottom": 3403.3125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 3461.109375,
+              "bottom": 3489.109375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 415.984375,
+              "top": 3501.109375,
+              "bottom": 3917.09375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 37.59375,
+              "top": 3929.09375,
+              "bottom": 3966.6875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.no-groups.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 464.390625,
+              "top": 4128.484375,
+              "bottom": 4592.875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 4128.484375,
+              "bottom": 4154.484375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 4162.484375,
+              "bottom": 4179.28125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 405.59375,
+              "top": 4187.28125,
+              "bottom": 4592.875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 4128.484375,
+              "bottom": 4129.484375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 4187.28125,
+              "bottom": 4215.28125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 365.59375,
+              "top": 4227.28125,
+              "bottom": 4592.875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.no-groups.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 464.390625,
+              "top": 4754.671875,
+              "bottom": 5219.0625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 4754.671875,
+              "bottom": 4780.671875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 4788.671875,
+              "bottom": 4805.46875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 405.59375,
+              "top": 4813.46875,
+              "bottom": 5219.0625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 4754.671875,
+              "bottom": 4755.671875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 4813.46875,
+              "bottom": 4841.46875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 365.59375,
+              "top": 4853.46875,
+              "bottom": 5219.0625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.single.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 430.796875,
+              "top": 5380.859375,
+              "bottom": 5811.65625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 5380.859375,
+              "bottom": 5406.859375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 5414.859375,
+              "bottom": 5431.65625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 372,
+              "top": 5439.65625,
+              "bottom": 5811.65625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 5380.859375,
+              "bottom": 5381.859375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 5439.65625,
+              "bottom": 5467.65625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 332,
+              "top": 5479.65625,
+              "bottom": 5811.65625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.single.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 430.796875,
+              "top": 5973.453125,
+              "bottom": 6404.25,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 5973.453125,
+              "bottom": 5999.453125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 6007.453125,
+              "bottom": 6024.25,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 372,
+              "top": 6032.25,
+              "bottom": 6404.25,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 5973.453125,
+              "bottom": 5974.453125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 6032.25,
+              "bottom": 6060.25,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 332,
+              "top": 6072.25,
+              "bottom": 6404.25,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.tiny.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 782.734375,
+              "top": 6566.046875,
+              "bottom": 7348.78125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 6566.046875,
+              "bottom": 6592.046875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 6600.046875,
+              "bottom": 6616.84375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 723.9375,
+              "top": 6624.84375,
+              "bottom": 7348.78125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 6566.046875,
+              "bottom": 6567.046875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 6624.84375,
+              "bottom": 6652.84375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 634.34375,
+              "top": 6664.84375,
+              "bottom": 7299.1875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 37.59375,
+              "top": 7311.1875,
+              "bottom": 7348.78125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.tiny.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 782.734375,
+              "top": 7510.578125,
+              "bottom": 8293.3125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 7510.578125,
+              "bottom": 7536.578125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 7544.578125,
+              "bottom": 7561.375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 723.9375,
+              "top": 7569.375,
+              "bottom": 8293.3125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 7510.578125,
+              "bottom": 7511.578125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 7569.375,
+              "bottom": 7597.375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 634.34375,
+              "top": 7609.375,
+              "bottom": 8243.71875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 37.59375,
+              "top": 8255.71875,
+              "bottom": 8293.3125,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "scheme": "light",
+      "charts": 12,
+      "issues": [],
+      "figures": [
+        {
+          "name": "treemap.data6.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 556.390625,
+              "top": 89.796875,
+              "bottom": 646.1875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 89.796875,
+              "bottom": 115.796875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 123.796875,
+              "bottom": 140.59375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 497.59375,
+              "top": 148.59375,
+              "bottom": 646.1875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 89.796875,
+              "bottom": 90.796875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 148.59375,
+              "bottom": 176.59375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 188.59375,
+              "bottom": 617.390625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 629.390625,
+              "bottom": 646.1875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.data6.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 556.390625,
+              "top": 847.984375,
+              "bottom": 1404.375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 847.984375,
+              "bottom": 873.984375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 881.984375,
+              "bottom": 898.78125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 497.59375,
+              "top": 906.78125,
+              "bottom": 1404.375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 847.984375,
+              "bottom": 848.984375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 906.78125,
+              "bottom": 934.78125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 946.78125,
+              "bottom": 1375.578125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 1387.578125,
+              "bottom": 1404.375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.dominant.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 556.390625,
+              "top": 1606.171875,
+              "bottom": 2162.5625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 1606.171875,
+              "bottom": 1632.171875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 1640.171875,
+              "bottom": 1656.96875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 497.59375,
+              "top": 1664.96875,
+              "bottom": 2162.5625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 1606.171875,
+              "bottom": 1607.171875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 1664.96875,
+              "bottom": 1692.96875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 1704.96875,
+              "bottom": 2133.765625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 2145.765625,
+              "bottom": 2162.5625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.dominant.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 556.390625,
+              "top": 2364.359375,
+              "bottom": 2920.75,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 2364.359375,
+              "bottom": 2390.359375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 2398.359375,
+              "bottom": 2415.15625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 497.59375,
+              "top": 2423.15625,
+              "bottom": 2920.75,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 2364.359375,
+              "bottom": 2365.359375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 2423.15625,
+              "bottom": 2451.15625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 2463.15625,
+              "bottom": 2891.953125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 2903.953125,
+              "bottom": 2920.75,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 573.1875,
+              "top": 3122.546875,
+              "bottom": 3695.734375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 3122.546875,
+              "bottom": 3148.546875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 3156.546875,
+              "bottom": 3173.34375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 514.390625,
+              "top": 3181.34375,
+              "bottom": 3695.734375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 3122.546875,
+              "bottom": 3123.546875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 3181.34375,
+              "bottom": 3209.34375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 445.59375,
+              "top": 3221.34375,
+              "bottom": 3666.9375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 3678.9375,
+              "bottom": 3695.734375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 573.1875,
+              "top": 3897.53125,
+              "bottom": 4470.71875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 3897.53125,
+              "bottom": 3923.53125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 3931.53125,
+              "bottom": 3948.328125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 514.390625,
+              "top": 3956.328125,
+              "bottom": 4470.71875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 3897.53125,
+              "bottom": 3898.53125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 3956.328125,
+              "bottom": 3984.328125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 445.59375,
+              "top": 3996.328125,
+              "bottom": 4441.921875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 4453.921875,
+              "bottom": 4470.71875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.no-groups.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 527.59375,
+              "top": 4672.515625,
+              "bottom": 5200.109375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 4672.515625,
+              "bottom": 4698.515625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 4706.515625,
+              "bottom": 4723.3125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 468.796875,
+              "top": 4731.3125,
+              "bottom": 5200.109375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 4672.515625,
+              "bottom": 4673.515625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 4731.3125,
+              "bottom": 4759.3125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 4771.3125,
+              "bottom": 5200.109375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.no-groups.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 527.59375,
+              "top": 5401.90625,
+              "bottom": 5929.5,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 5401.90625,
+              "bottom": 5427.90625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 5435.90625,
+              "bottom": 5452.703125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 468.796875,
+              "top": 5460.703125,
+              "bottom": 5929.5,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 5401.90625,
+              "bottom": 5402.90625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 5460.703125,
+              "bottom": 5488.703125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 5500.703125,
+              "bottom": 5929.5,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.single.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 510.796875,
+              "top": 6131.296875,
+              "bottom": 6642.09375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 6131.296875,
+              "bottom": 6157.296875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 6165.296875,
+              "bottom": 6182.09375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 452,
+              "top": 6190.09375,
+              "bottom": 6642.09375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 6131.296875,
+              "bottom": 6132.296875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 6190.09375,
+              "bottom": 6218.09375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 412,
+              "top": 6230.09375,
+              "bottom": 6642.09375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.single.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 510.796875,
+              "top": 6843.890625,
+              "bottom": 7354.6875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 6843.890625,
+              "bottom": 6869.890625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 6877.890625,
+              "bottom": 6894.6875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 452,
+              "top": 6902.6875,
+              "bottom": 7354.6875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 6843.890625,
+              "bottom": 6844.890625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 6902.6875,
+              "bottom": 6930.6875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 412,
+              "top": 6942.6875,
+              "bottom": 7354.6875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.tiny.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 657.171875,
+              "top": 7556.484375,
+              "bottom": 8213.65625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 7556.484375,
+              "bottom": 7582.484375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 7590.484375,
+              "bottom": 7607.28125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 598.375,
+              "top": 7615.28125,
+              "bottom": 8213.65625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 7556.484375,
+              "bottom": 7557.484375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 7615.28125,
+              "bottom": 7643.28125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 529.578125,
+              "top": 7655.28125,
+              "bottom": 8184.859375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 8196.859375,
+              "bottom": 8213.65625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.tiny.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 657.171875,
+              "top": 8415.453125,
+              "bottom": 9072.625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 8415.453125,
+              "bottom": 8441.453125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 8449.453125,
+              "bottom": 8466.25,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 598.375,
+              "top": 8474.25,
+              "bottom": 9072.625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 8415.453125,
+              "bottom": 8416.453125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 8474.25,
+              "bottom": 8502.25,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 529.578125,
+              "top": 8514.25,
+              "bottom": 9043.828125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 9055.828125,
+              "bottom": 9072.625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "scheme": "dark",
+      "charts": 12,
+      "issues": [],
+      "figures": [
+        {
+          "name": "treemap.data6.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 556.390625,
+              "top": 89.796875,
+              "bottom": 646.1875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 89.796875,
+              "bottom": 115.796875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 123.796875,
+              "bottom": 140.59375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 497.59375,
+              "top": 148.59375,
+              "bottom": 646.1875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 89.796875,
+              "bottom": 90.796875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 148.59375,
+              "bottom": 176.59375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 188.59375,
+              "bottom": 617.390625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 629.390625,
+              "bottom": 646.1875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.data6.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 556.390625,
+              "top": 847.984375,
+              "bottom": 1404.375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 847.984375,
+              "bottom": 873.984375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 881.984375,
+              "bottom": 898.78125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 497.59375,
+              "top": 906.78125,
+              "bottom": 1404.375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 847.984375,
+              "bottom": 848.984375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 906.78125,
+              "bottom": 934.78125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 946.78125,
+              "bottom": 1375.578125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 1387.578125,
+              "bottom": 1404.375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.dominant.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 556.390625,
+              "top": 1606.171875,
+              "bottom": 2162.5625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 1606.171875,
+              "bottom": 1632.171875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 1640.171875,
+              "bottom": 1656.96875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 497.59375,
+              "top": 1664.96875,
+              "bottom": 2162.5625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 1606.171875,
+              "bottom": 1607.171875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 1664.96875,
+              "bottom": 1692.96875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 1704.96875,
+              "bottom": 2133.765625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 2145.765625,
+              "bottom": 2162.5625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.dominant.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 556.390625,
+              "top": 2364.359375,
+              "bottom": 2920.75,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 2364.359375,
+              "bottom": 2390.359375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 2398.359375,
+              "bottom": 2415.15625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 497.59375,
+              "top": 2423.15625,
+              "bottom": 2920.75,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 2364.359375,
+              "bottom": 2365.359375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 2423.15625,
+              "bottom": 2451.15625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 2463.15625,
+              "bottom": 2891.953125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 2903.953125,
+              "bottom": 2920.75,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 573.1875,
+              "top": 3122.546875,
+              "bottom": 3695.734375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 3122.546875,
+              "bottom": 3148.546875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 3156.546875,
+              "bottom": 3173.34375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 514.390625,
+              "top": 3181.34375,
+              "bottom": 3695.734375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 3122.546875,
+              "bottom": 3123.546875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 3181.34375,
+              "bottom": 3209.34375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 445.59375,
+              "top": 3221.34375,
+              "bottom": 3666.9375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 3678.9375,
+              "bottom": 3695.734375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 573.1875,
+              "top": 3897.53125,
+              "bottom": 4470.71875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 3897.53125,
+              "bottom": 3923.53125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 3931.53125,
+              "bottom": 3948.328125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 514.390625,
+              "top": 3956.328125,
+              "bottom": 4470.71875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 3897.53125,
+              "bottom": 3898.53125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 3956.328125,
+              "bottom": 3984.328125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 445.59375,
+              "top": 3996.328125,
+              "bottom": 4441.921875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 4453.921875,
+              "bottom": 4470.71875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.no-groups.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 527.59375,
+              "top": 4672.515625,
+              "bottom": 5200.109375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 4672.515625,
+              "bottom": 4698.515625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 4706.515625,
+              "bottom": 4723.3125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 468.796875,
+              "top": 4731.3125,
+              "bottom": 5200.109375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 4672.515625,
+              "bottom": 4673.515625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 4731.3125,
+              "bottom": 4759.3125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 4771.3125,
+              "bottom": 5200.109375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.no-groups.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 527.59375,
+              "top": 5401.90625,
+              "bottom": 5929.5,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 5401.90625,
+              "bottom": 5427.90625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 5435.90625,
+              "bottom": 5452.703125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 468.796875,
+              "top": 5460.703125,
+              "bottom": 5929.5,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 5401.90625,
+              "bottom": 5402.90625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 5460.703125,
+              "bottom": 5488.703125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 428.796875,
+              "top": 5500.703125,
+              "bottom": 5929.5,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.single.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 510.796875,
+              "top": 6131.296875,
+              "bottom": 6642.09375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 6131.296875,
+              "bottom": 6157.296875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 6165.296875,
+              "bottom": 6182.09375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 452,
+              "top": 6190.09375,
+              "bottom": 6642.09375,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 6131.296875,
+              "bottom": 6132.296875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 6190.09375,
+              "bottom": 6218.09375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 412,
+              "top": 6230.09375,
+              "bottom": 6642.09375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.single.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 510.796875,
+              "top": 6843.890625,
+              "bottom": 7354.6875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 6843.890625,
+              "bottom": 6869.890625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 6877.890625,
+              "bottom": 6894.6875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 452,
+              "top": 6902.6875,
+              "bottom": 7354.6875,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 6843.890625,
+              "bottom": 6844.890625,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 6902.6875,
+              "bottom": 6930.6875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 412,
+              "top": 6942.6875,
+              "bottom": 7354.6875,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            }
+          ]
+        },
+        {
+          "name": "treemap.tiny.en.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 657.171875,
+              "top": 7556.484375,
+              "bottom": 8213.65625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 7556.484375,
+              "bottom": 7582.484375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 7590.484375,
+              "bottom": 7607.28125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 598.375,
+              "top": 7615.28125,
+              "bottom": 8213.65625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 7556.484375,
+              "bottom": 7557.484375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 7615.28125,
+              "bottom": 7643.28125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 529.578125,
+              "top": 7655.28125,
+              "bottom": 8184.859375,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 8196.859375,
+              "bottom": 8213.65625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        },
+        {
+          "name": "treemap.tiny.es.json",
+          "elements": [
+            {
+              "className": "ig-chart ig-chart--treemap",
+              "height": 657.171875,
+              "top": 8415.453125,
+              "bottom": 9072.625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "8px"
+            },
+            {
+              "className": "ig-chart__title",
+              "height": 26,
+              "top": 8415.453125,
+              "bottom": 8441.453125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__desc",
+              "height": 16.796875,
+              "top": 8449.453125,
+              "bottom": 8466.25,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__body",
+              "height": 598.375,
+              "top": 8474.25,
+              "bottom": 9072.625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "12px"
+            },
+            {
+              "className": "ig-chart__table",
+              "height": 1,
+              "top": 8415.453125,
+              "bottom": 8416.453125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__treemap-period",
+              "height": 28,
+              "top": 8474.25,
+              "bottom": 8502.25,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__wide",
+              "height": 529.578125,
+              "top": 8514.25,
+              "bottom": 9043.828125,
+              "display": "block",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__narrow",
+              "height": 0,
+              "top": 0,
+              "bottom": 0,
+              "display": "none",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "normal"
+            },
+            {
+              "className": "ig-chart__legend",
+              "height": 16.796875,
+              "top": 9055.828125,
+              "bottom": 9072.625,
+              "display": "flex",
+              "margin": "0px",
+              "padding": "0px",
+              "gap": "4px 16px"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

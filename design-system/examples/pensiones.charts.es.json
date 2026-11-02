@@ -1,0 +1,45 @@
+[
+  {
+    "type": "line",
+    "sourceQuote": "Cifras y escenarios ilustrativos creados para mostrar los componentes del design system.",
+    "id": "gasto-pensiones",
+    "title": "Gasto anual en pensiones",
+    "description": "Índice, 1995 = 100",
+    "unit": {
+      "kind": "number",
+      "decimals": 0
+    },
+    "note": "Tramo discontinuo: previsión ilustrativa",
+    "x": {
+      "kind": "year",
+      "values": [
+        1995,
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2025,
+        2030,
+        2035
+      ]
+    },
+    "series": [
+      {
+        "name": "Gasto",
+        "values": [
+          100,
+          118,
+          140,
+          165,
+          190,
+          230,
+          270,
+          300,
+          330
+        ],
+        "projectedFrom": 7
+      }
+    ]
+  }
+]

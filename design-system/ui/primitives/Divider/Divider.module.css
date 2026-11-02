@@ -1,0 +1,4 @@
+.horizontal { border: 0; border-top: 1px solid var(--ds-border); width: 100%; }
+.vertical { width: 1px; align-self: stretch; background: var(--ds-border); }
+.strong.horizontal { border-color: var(--ds-border-strong); }
+.strong.vertical { background: var(--ds-border-strong); }

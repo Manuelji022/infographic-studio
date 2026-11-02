@@ -1,0 +1,55 @@
+{
+  "id": "column-four-series-es",
+  "type": "column",
+  "title": "Comparación por categoría",
+  "sourceQuote": "Datos de ejemplo.",
+  "categories": [
+    "Atención a personas dependientes",
+    "Transporte público metropolitano",
+    "Investigación y desarrollo",
+    "Rehabilitación de viviendas",
+    "Protección del medio ambiente"
+  ],
+  "series": [
+    {
+      "name": "Serie 1",
+      "values": [
+        1100,
+        1191,
+        1282,
+        1373,
+        1464
+      ]
+    },
+    {
+      "name": "Serie 2",
+      "values": [
+        1390,
+        1481,
+        1572,
+        1663,
+        1754
+      ]
+    },
+    {
+      "name": "Serie 3",
+      "values": [
+        1680,
+        1771,
+        1862,
+        1953,
+        2044
+      ]
+    },
+    {
+      "name": "Serie 4",
+      "values": [
+        1970,
+        2061,
+        2152,
+        2243,
+        2334
+      ]
+    }
+  ]
+}

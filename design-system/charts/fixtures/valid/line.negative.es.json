@@ -1,0 +1,32 @@
+{
+  "type": "line",
+  "sourceQuote": "Fuente: datos ilustrativos.",
+  "id": "line-negative-es",
+  "title": "Cambio del saldo de empleo",
+  "unit": {
+    "kind": "number",
+    "suffix": "empleos"
+  },
+  "x": {
+    "kind": "year",
+    "values": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2024
+    ]
+  },
+  "series": [
+    {
+      "name": "Saldo neto",
+      "values": [
+        -12,
+        -4,
+        0,
+        8,
+        19
+      ]
+    }
+  ]
+}

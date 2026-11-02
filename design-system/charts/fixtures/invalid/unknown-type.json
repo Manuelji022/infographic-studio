@@ -1,0 +1,23 @@
+{
+  "id": "serie-valida",
+  "type": "radial",
+  "title": "Title",
+  "description": "Description",
+  "sourceQuote": "Source",
+  "x": {
+    "kind": "year",
+    "values": [
+      2024,
+      2025
+    ]
+  },
+  "series": [
+    {
+      "name": "Series",
+      "values": [
+        1,
+        2
+      ]
+    }
+  ]
+}

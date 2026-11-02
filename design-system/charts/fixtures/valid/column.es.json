@@ -1,0 +1,26 @@
+{
+  "id": "ventas-es",
+  "type": "column",
+  "title": "Ventas por trimestre",
+  "description": "Unidades vendidas",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "unit": {
+    "kind": "number",
+    "decimals": 0
+  },
+  "categories": [
+    "T1",
+    "T2",
+    "T3"
+  ],
+  "series": [
+    {
+      "name": "Ventas",
+      "values": [
+        12,
+        17,
+        15
+      ]
+    }
+  ]
+}

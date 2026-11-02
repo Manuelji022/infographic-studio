@@ -1,0 +1,48 @@
+{
+  "type": "line",
+  "sourceQuote": "Source: illustrative data.",
+  "id": "line-gaps-en",
+  "title": "Series with missing observations",
+  "x": {
+    "kind": "category",
+    "values": [
+      "Start",
+      "March",
+      "June",
+      "September",
+      "End"
+    ]
+  },
+  "series": [
+    {
+      "name": "National production",
+      "values": [
+        4,
+        null,
+        6,
+        null,
+        8
+      ]
+    },
+    {
+      "name": "Household consumption",
+      "values": [
+        null,
+        8,
+        null,
+        null,
+        3
+      ]
+    },
+    {
+      "name": "Public investment",
+      "values": [
+        2,
+        4,
+        null,
+        7,
+        null
+      ]
+    }
+  ]
+}

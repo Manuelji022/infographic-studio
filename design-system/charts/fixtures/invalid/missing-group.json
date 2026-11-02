@@ -1,0 +1,21 @@
+{
+  "id": "tree-valido",
+  "type": "treemap",
+  "title": "Title",
+  "description": "Description",
+  "sourceQuote": "Source",
+  "items": [
+    {
+      "label": "Item",
+      "value": 1,
+      "group": "missing-group"
+    }
+  ],
+  "groups": [
+    {
+      "id": "group-a",
+      "label": "First",
+      "tone": "data-1"
+    }
+  ]
+}

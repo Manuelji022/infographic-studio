@@ -1,0 +1,135 @@
+/*
+ * Canonical markup:
+ * <div class="ig-change">
+ *   <span class="ig-change__label">Etiqueta</span>
+ *   <span class="ig-change__values">
+ *     <s class="ig-change__from">4 %</s>
+ *     <span class="ig-change__arrow" aria-hidden="true">&rarr;</span>
+ *     <strong class="ig-change__to">9 %</strong>
+ *   </span>
+ * </div>
+ * <ol class="ig-timeline">
+ *   <li class="ig-timeline__item">
+ *     <span class="ig-timeline__date">1985</span><p class="ig-timeline__text">Hito</p>
+ *   </li>
+ *   <li class="ig-timeline__item ig-timeline__item--now">...</li>
+ * </ol>
+ */
+.ig-change {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-8);
+}
+
+.ig-change__label {
+  font-family: var(--ds-type-ui-sm-family);
+  font-size: var(--ds-type-ui-sm-size);
+  font-weight: var(--ds-type-ui-sm-weight);
+  line-height: var(--ds-type-ui-sm-leading);
+  letter-spacing: var(--ds-type-ui-sm-tracking);
+  color: var(--ds-text-muted);
+}
+
+.ig-change__values {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--ds-spacing-12);
+}
+
+.ig-change__from {
+  font-family: var(--ds-type-subheading-serif-family);
+  font-size: var(--ds-type-subheading-serif-size);
+  font-weight: var(--ds-type-subheading-serif-weight);
+  line-height: var(--ds-type-subheading-serif-leading);
+  letter-spacing: var(--ds-type-subheading-serif-tracking);
+  color: var(--ds-text-muted);
+  text-decoration: line-through;
+}
+
+.ig-change__arrow {
+  font-family: var(--ds-type-ui-family);
+  font-size: var(--ds-type-ui-size);
+  font-weight: var(--ds-type-ui-weight);
+  line-height: var(--ds-type-ui-leading);
+  letter-spacing: var(--ds-type-ui-tracking);
+}
+
+.ig-change__to {
+  font-family: var(--ds-type-display-family);
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: var(--ds-type-display-weight);
+  line-height: var(--ds-type-display-leading);
+  letter-spacing: var(--ds-type-display-tracking);
+  color: var(--ds-text);
+}
+
+.ig-change--worse .ig-change__to {
+  color: var(--ds-danger-text);
+}
+
+.ig-timeline {
+  position: relative;
+  padding-left: var(--ds-spacing-32);
+}
+
+.ig-timeline::before {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 5px;
+  width: 2px;
+  background: var(--ds-border-strong);
+  content: "";
+}
+
+.ig-timeline__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-4);
+  min-width: 0;
+}
+
+.ig-timeline__item + .ig-timeline__item {
+  margin-top: var(--ds-spacing-24);
+}
+
+.ig-timeline__item::before {
+  position: absolute;
+  top: 0;
+  left: calc(-1 * var(--ds-spacing-32));
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--ds-text);
+  border-radius: 50%;
+  background: var(--ds-surface);
+  content: "";
+}
+
+.ig-timeline__date {
+  font-family: var(--ds-type-ui-strong-family);
+  font-size: var(--ds-type-ui-strong-size);
+  font-weight: var(--ds-type-ui-strong-weight);
+  line-height: var(--ds-type-ui-strong-leading);
+  letter-spacing: var(--ds-type-ui-strong-tracking);
+  color: var(--ds-text-muted);
+}
+
+.ig-timeline__text {
+  font-family: var(--ds-type-body-sm-family);
+  font-size: var(--ds-type-body-sm-size);
+  font-weight: var(--ds-type-body-sm-weight);
+  line-height: var(--ds-type-body-sm-leading);
+  letter-spacing: var(--ds-type-body-sm-tracking);
+}
+
+.ig-timeline__item--now::before {
+  border-color: var(--ds-accent);
+  background: var(--ds-accent);
+}
+
+.ig-timeline__item--now .ig-timeline__date {
+  color: var(--ds-text);
+  font-weight: var(--ds-type-ui-strong-weight);
+}

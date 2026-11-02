@@ -1,0 +1,10 @@
+{
+  "id": "pictogram-full-es",
+  "type": "pictogram",
+  "title": "Participación en el programa",
+  "sourceQuote": "Fuente: datos de ejemplo.",
+  "of": 10,
+  "value": 10,
+  "icon": "circle",
+  "label": "Personas que completaron el programa"
+}

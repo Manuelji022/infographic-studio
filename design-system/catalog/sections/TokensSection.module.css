@@ -1,0 +1,6 @@
+.root {
+  display: grid;
+  gap: var(--ds-spacing-32);
+  min-width: 0;
+  color: var(--ds-text);
+}

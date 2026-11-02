@@ -1,0 +1,47 @@
+.status {
+  display: inline-flex;
+  color: var(--ds-text);
+}
+
+.spinner {
+  display: block;
+}
+
+.sm {
+  width: var(--ds-spacing-16);
+  height: var(--ds-spacing-16);
+}
+
+.md {
+  width: var(--ds-spacing-24);
+  height: var(--ds-spacing-24);
+}
+
+.lg {
+  width: var(--ds-spacing-32);
+  height: var(--ds-spacing-32);
+}
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

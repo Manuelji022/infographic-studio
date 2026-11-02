@@ -1,0 +1,183 @@
+{
+  "canvas": {
+    "$value": "{color.slate-dark}",
+    "$type": "color",
+    "$description": "Theme dark canvas color."
+  },
+  "surface": {
+    "$value": "{color.slate-raised}",
+    "$type": "color",
+    "$description": "Theme dark surface color."
+  },
+  "surface-feature": {
+    "$value": "{color.manilla-night}",
+    "$type": "color",
+    "$description": "Theme dark surface-feature color."
+  },
+  "surface-deep": {
+    "$value": "{color.slate-medium}",
+    "$type": "color",
+    "$description": "Theme dark surface-deep color."
+  },
+  "surface-inverse": {
+    "$value": "{color.ivory-light}",
+    "$type": "color",
+    "$description": "Theme dark surface-inverse color."
+  },
+  "text": {
+    "$value": "{color.ivory-light}",
+    "$type": "color",
+    "$description": "Theme dark text color."
+  },
+  "text-muted": {
+    "$value": "{color.cloud-medium}",
+    "$type": "color",
+    "$description": "Theme dark text-muted color."
+  },
+  "text-inverse": {
+    "$value": "{color.slate-dark}",
+    "$type": "color",
+    "$description": "Theme dark text-inverse color."
+  },
+  "border": {
+    "$value": "{color.slate-medium}",
+    "$type": "color",
+    "$description": "Theme dark border color."
+  },
+  "border-strong": {
+    "$value": "{color.cloud-dark}",
+    "$type": "color",
+    "$description": "Theme dark border-strong color."
+  },
+  "accent": {
+    "$value": "{color.clay}",
+    "$type": "color",
+    "$description": "Theme dark accent color."
+  },
+  "accent-hover": {
+    "$value": "{color.clay-deep}",
+    "$type": "color",
+    "$description": "Theme dark accent-hover color."
+  },
+  "on-accent": {
+    "$value": "{color.slate-dark}",
+    "$type": "color",
+    "$description": "Theme dark on-accent color."
+  },
+  "focus-ring": {
+    "$value": "{color.ivory-light}",
+    "$type": "color",
+    "$description": "Theme dark focus-ring color."
+  },
+  "data": {
+    "1": {
+      "$value": "{color.clay}",
+      "$type": "color",
+      "$description": "Theme dark data color 1."
+    },
+    "2": {
+      "$value": "{color.ivory-light}",
+      "$type": "color",
+      "$description": "Theme dark data color 2."
+    },
+    "3": {
+      "$value": "{color.ochre-light}",
+      "$type": "color",
+      "$description": "Theme dark data color 3."
+    },
+    "4": {
+      "$value": "{color.olive-light}",
+      "$type": "color",
+      "$description": "Theme dark data color 4."
+    },
+    "5": {
+      "$value": "{color.taupe-light}",
+      "$type": "color",
+      "$description": "Theme dark data color 5."
+    },
+    "6": {
+      "$value": "{color.sage-light}",
+      "$type": "color",
+      "$description": "Theme dark data color 6."
+    }
+  },
+  "danger": {
+    "$value": "{color.red}",
+    "$type": "color",
+    "$description": "Theme dark danger color. Borders and icons only, never text."
+  },
+  "danger-text": {
+    "$value": "{color.red-light}",
+    "$type": "color",
+    "$description": "Theme dark danger-text color. Error messages and their icon."
+  },
+  "chart": {
+    "highlight": {
+      "$value": "{color.yellow}",
+      "$type": "color",
+      "$description": "Theme dark chart highlight color."
+    },
+    "highlight-soft": {
+      "$value": "{color.yellow-muted}",
+      "$type": "color",
+      "$description": "Theme dark chart soft highlight color."
+    },
+    "on-highlight": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark chart highlight foreground color."
+    },
+    "negative": {
+      "$value": "{color.red}",
+      "$type": "color",
+      "$description": "Theme dark chart negative emphasis color."
+    },
+    "on-negative": {
+      "$value": "{color.ivory-light}",
+      "$type": "color",
+      "$description": "Theme dark chart negative foreground color."
+    },
+    "gap": {
+      "$value": "{color.slate-raised}",
+      "$type": "color",
+      "$description": "Theme dark chart cell gap color."
+    },
+    "grid": {
+      "$value": "{color.slate-medium}",
+      "$type": "color",
+      "$description": "Theme dark chart grid color."
+    }
+  },
+  "on-data": {
+    "1": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 1 foreground color."
+    },
+    "2": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 2 foreground color."
+    },
+    "3": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 3 foreground color."
+    },
+    "4": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 4 foreground color."
+    },
+    "5": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 5 foreground color."
+    },
+    "6": {
+      "$value": "{color.slate-dark}",
+      "$type": "color",
+      "$description": "Theme dark on-data 6 foreground color."
+    }
+  }
+}

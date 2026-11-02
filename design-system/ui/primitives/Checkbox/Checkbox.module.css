@@ -1,0 +1,55 @@
+.label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ds-spacing-8);
+  color: var(--ds-text);
+  font-family: var(--ds-type-ui-family);
+  font-size: var(--ds-type-ui-size);
+  line-height: var(--ds-type-ui-leading);
+  cursor: pointer;
+}
+
+.control {
+  box-sizing: border-box;
+  flex: none;
+  width: var(--ds-spacing-24);
+  height: var(--ds-spacing-24);
+  margin: 0;
+  appearance: none;
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-surface);
+  cursor: pointer;
+}
+
+.control:checked {
+  display: grid;
+  place-items: center;
+  border-color: var(--ds-surface-inverse);
+  background: var(--ds-surface-inverse);
+}
+
+.control:checked::after {
+  width: var(--ds-spacing-8);
+  height: var(--ds-spacing-12);
+  border: solid var(--ds-text-inverse);
+  border-width: 0 2px 2px 0;
+  content: "";
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.control:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.control:disabled {
+  border-color: var(--ds-border);
+  background: var(--ds-surface-deep);
+  cursor: not-allowed;
+}
+
+.label:has(.control:disabled) {
+  color: var(--ds-text-muted);
+  cursor: not-allowed;
+}

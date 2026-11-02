@@ -1,0 +1,98 @@
+/*
+ * Canonical markup:
+ * ig-header:
+ * <header class="ig-header"><h1 class="ig-header__title">Titular</h1>
+ * <p class="ig-header__lede">Entradilla</p></header>
+ * ig-section:
+ * <section class="ig-section"><h2 class="ig-section__title">Titular-conclusion</h2>
+ * <p class="ig-section__measure">Que se mide y en que unidad</p> ...contenido...</section>
+ * ig-card:
+ * <div class="ig-card"><h3 class="ig-card__title">Titulo</h3>
+ * <p class="ig-card__text">Texto</p></div>
+ * ig-grid: <div class="ig-grid">...ig-card (u otros)...</div>
+ */
+.ig-header {
+  padding-bottom: var(--ds-spacing-24);
+  border-bottom: 4px solid var(--ds-text);
+}
+
+.ig-header__title {
+  font-family: var(--ds-type-display-family);
+  font-size: clamp(36px, 7vw, var(--ds-type-display-size));
+  font-weight: var(--ds-type-display-weight);
+  line-height: var(--ds-type-display-leading);
+  letter-spacing: var(--ds-type-display-tracking);
+}
+
+.ig-header__lede {
+  margin-top: var(--ds-spacing-8);
+  font-family: var(--ds-type-subheading-serif-family);
+  font-size: var(--ds-type-subheading-serif-size);
+  font-weight: var(--ds-type-subheading-serif-weight);
+  line-height: var(--ds-type-subheading-serif-leading);
+  letter-spacing: var(--ds-type-subheading-serif-tracking);
+  color: var(--ds-text-muted);
+}
+
+.ig-section > * + * {
+  margin-top: var(--ds-spacing-24);
+}
+
+.ig-section__title {
+  font-family: var(--ds-type-heading-family);
+  font-size: clamp(28px, 4vw, var(--ds-type-heading-size));
+  font-weight: var(--ds-type-heading-weight);
+  line-height: var(--ds-type-heading-leading);
+  letter-spacing: var(--ds-type-heading-tracking);
+}
+
+.ig-section__measure {
+  margin-top: var(--ds-spacing-8);
+  font-family: var(--ds-type-ui-sm-family);
+  font-size: var(--ds-type-ui-sm-size);
+  font-weight: var(--ds-type-ui-sm-weight);
+  line-height: var(--ds-type-ui-sm-leading);
+  letter-spacing: var(--ds-type-ui-sm-tracking);
+  color: var(--ds-text-muted);
+}
+
+.ig-card {
+  padding: var(--ds-card-padding);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-card);
+  background: var(--ds-surface);
+}
+
+.ig-card > * + * {
+  margin-top: var(--ds-spacing-12);
+}
+
+.ig-card__title {
+  font-family: var(--ds-type-title-family);
+  font-size: var(--ds-type-title-size);
+  font-weight: var(--ds-type-title-weight);
+  line-height: var(--ds-type-title-leading);
+  letter-spacing: var(--ds-type-title-tracking);
+}
+
+.ig-card__text {
+  font-family: var(--ds-type-body-sm-family);
+  font-size: var(--ds-type-body-sm-size);
+  font-weight: var(--ds-type-body-sm-weight);
+  line-height: var(--ds-type-body-sm-leading);
+  letter-spacing: var(--ds-type-body-sm-tracking);
+}
+
+.ig-card--feature {
+  background: var(--ds-surface-feature);
+}
+
+.ig-card--deep {
+  background: var(--ds-surface-deep);
+}
+
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+  gap: var(--ds-spacing-16);
+}

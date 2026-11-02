@@ -1,0 +1,22 @@
+{
+  "id": "ranking-negative-en",
+  "type": "ranking",
+  "title": "Balances and changes",
+  "sourceQuote": "Source: example data.",
+  "order": "desc",
+  "items": [
+    {
+      "label": "Current balance",
+      "value": 34
+    },
+    {
+      "label": "Capital balance",
+      "value": -18,
+      "emphasis": "negative"
+    },
+    {
+      "label": "Financial balance",
+      "value": 7
+    }
+  ]
+}

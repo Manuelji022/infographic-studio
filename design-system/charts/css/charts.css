@@ -1,0 +1,205 @@
+/* Vocabulario visual público de gráficos; ver CHART_LIBRARY_PLAN.md §5.4.
+   render.ts inlinea los @import (un fichero por tipo, ./<tipo>.css). */
+@import "./line.css";
+@import "./column.css";
+@import "./stacked.css";
+@import "./donut.css";
+@import "./pictogram.css";
+@import "./scatter.css";
+@import "./ranking.css";
+@import "./treemap.css";
+
+.ig-chart {
+  position: relative;
+  container-type: inline-size;
+  font-family: var(--ds-type-ui-sm-family);
+  color: var(--ds-text);
+}
+
+/* No margin here: .ig-section > * + * spaces the chart from its siblings. */
+.ig-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-8);
+}
+
+.ig-chart__title {
+  margin: 0;
+  font-family: var(--ds-type-title-family);
+  font-size: var(--ds-type-title-size);
+  font-weight: var(--ds-type-title-weight);
+  line-height: var(--ds-type-title-leading);
+  letter-spacing: var(--ds-type-title-tracking);
+}
+
+.ig-chart__desc,
+.ig-chart__note {
+  margin: 0;
+  color: var(--ds-text-muted);
+}
+
+.ig-chart__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-12);
+  min-width: 0;
+}
+
+.ig-chart__desc,
+.ig-chart__note,
+.ig-chart__tick,
+.ig-chart__legend-item,
+.ig-chart__also {
+  font-family: var(--ds-type-caption-family);
+  font-size: var(--ds-type-caption-size);
+  font-weight: var(--ds-type-caption-weight);
+  line-height: var(--ds-type-caption-leading);
+  letter-spacing: var(--ds-type-caption-tracking);
+}
+
+.ig-chart__label,
+.ig-chart__value {
+  font-family: var(--ds-type-label-family);
+  font-size: var(--ds-type-label-size);
+  font-weight: var(--ds-type-label-weight);
+  line-height: var(--ds-type-label-leading);
+  letter-spacing: var(--ds-type-label-tracking);
+}
+
+.ig-chart__plot {
+  position: relative;
+}
+
+.ig-chart__plot--h-sm { height: 240px; }
+.ig-chart__plot--h-md { height: 320px; }
+.ig-chart__plot--h-lg { height: 400px; }
+
+.ig-chart__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ig-chart__svg path,
+.ig-chart__svg line,
+.ig-chart__svg polyline,
+.ig-chart__svg circle {
+  vector-effect: non-scaling-stroke;
+}
+
+.ig-chart__grid,
+.ig-chart__axis {
+  fill: none;
+  stroke: var(--ds-chart-grid);
+  stroke-width: 1px;
+}
+
+.ig-chart__tick {
+  color: var(--ds-text-muted);
+  white-space: nowrap;
+}
+
+.ig-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-4) var(--ds-spacing-16);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ig-chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-spacing-8);
+}
+
+.ig-chart__swatch {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  background: var(--chart-color);
+}
+
+.ig-chart__also {
+  color: var(--ds-text-muted);
+}
+
+.ig-chart__also ul {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ig-chart__also span::after { content: ": "; }
+.ig-chart__also li { display: inline; }
+.ig-chart__also li + li::before { content: " · "; }
+
+.ig-chart__s1 { --chart-color: var(--ds-data-1); --chart-on: var(--ds-on-data-1); }
+.ig-chart__s2 { --chart-color: var(--ds-data-2); --chart-on: var(--ds-on-data-2); }
+.ig-chart__s3 { --chart-color: var(--ds-data-3); --chart-on: var(--ds-on-data-3); }
+.ig-chart__s4 { --chart-color: var(--ds-data-4); --chart-on: var(--ds-on-data-4); }
+.ig-chart__s5 { --chart-color: var(--ds-data-5); --chart-on: var(--ds-on-data-5); }
+.ig-chart__s6 { --chart-color: var(--ds-data-6); --chart-on: var(--ds-on-data-6); }
+.ig-chart__highlight {
+  --chart-color: var(--ds-chart-highlight);
+  --chart-on: var(--ds-chart-on-highlight);
+}
+.ig-chart__highlight-soft {
+  --chart-color: var(--ds-chart-highlight-soft);
+  --chart-on: var(--ds-chart-on-highlight);
+}
+.ig-chart__negative {
+  --chart-color: var(--ds-chart-negative);
+  --chart-on: var(--ds-chart-on-negative);
+}
+.ig-chart__neutral {
+  --chart-color: var(--ds-surface-deep);
+  --chart-on: var(--ds-text);
+}
+
+.ig-chart__cell {
+  background: var(--chart-color);
+  color: var(--chart-on);
+  border: 2px solid var(--ds-chart-gap);
+  /* Yellow fails 3:1 on light surfaces: a 1px edge inside the gap marks the cell. */
+  outline: 1px solid var(--chart-edge, transparent);
+  outline-offset: -3px;
+}
+
+.ig-chart__highlight,
+.ig-chart__highlight-soft {
+  --chart-edge: var(--ds-border-strong);
+}
+
+[data-ds-theme="dark"] .ig-chart__highlight,
+[data-ds-theme="dark"] .ig-chart__highlight-soft {
+  --chart-edge: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-ds-theme="auto"] .ig-chart__highlight,
+  [data-ds-theme="auto"] .ig-chart__highlight-soft {
+    --chart-edge: transparent;
+  }
+}
+
+/* Only hide: showing restores each element's own display (block, flex, inline...). */
+.ig-chart__narrow { display: none; }
+
+@container (max-width: 480px) {
+  .ig-chart__wide { display: none; }
+  .ig-chart__narrow { display: revert; }
+}
+
+.ig-chart__table {
+  position: absolute;
+  display: block;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

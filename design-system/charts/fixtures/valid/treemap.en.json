@@ -1,0 +1,128 @@
+{
+  "id": "gasto-funcion-en",
+  "type": "treemap",
+  "title": "Public spending by function, 1996",
+  "description": "Share of total public spending",
+  "sourceQuote": "Source: example data.",
+  "unit": {
+    "kind": "percent",
+    "decimals": 1
+  },
+  "period": "1996",
+  "groups": [
+    {
+      "id": "social-protection",
+      "label": "Social protection",
+      "tone": "highlight"
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "tone": "data-2"
+    },
+    {
+      "id": "debt",
+      "label": "Debt",
+      "tone": "negative"
+    },
+    {
+      "id": "economy",
+      "label": "Economy",
+      "tone": "data-5"
+    },
+    {
+      "id": "state",
+      "label": "State",
+      "tone": "neutral"
+    },
+    {
+      "id": "other",
+      "label": "Other",
+      "tone": "data-3"
+    }
+  ],
+  "items": [
+    {
+      "label": "Pensions and sickness",
+      "value": 25.6,
+      "group": "social-protection",
+      "emphasis": "highlight"
+    },
+    {
+      "label": "Unemployment",
+      "value": 4.9,
+      "group": "social-protection"
+    },
+    {
+      "label": "Other social protection",
+      "value": 1.3,
+      "group": "social-protection"
+    },
+    {
+      "label": "Family and children",
+      "value": 1.1,
+      "group": "social-protection"
+    },
+    {
+      "label": "Health",
+      "value": 12.2,
+      "group": "services"
+    },
+    {
+      "label": "Education",
+      "value": 9.9,
+      "group": "services"
+    },
+    {
+      "label": "Debt interest",
+      "value": 12.0,
+      "group": "debt",
+      "emphasis": "negative"
+    },
+    {
+      "label": "Transport",
+      "value": 6.0,
+      "group": "economy"
+    },
+    {
+      "label": "Economic affairs",
+      "value": 4.6,
+      "group": "economy"
+    },
+    {
+      "label": "R&D",
+      "value": 2.3,
+      "group": "economy"
+    },
+    {
+      "label": "General public services",
+      "value": 5.9,
+      "group": "state"
+    },
+    {
+      "label": "Public order",
+      "value": 4.3,
+      "group": "state"
+    },
+    {
+      "label": "Defence",
+      "value": 2.8,
+      "group": "state"
+    },
+    {
+      "label": "Leisure, culture and religion",
+      "value": 3.0,
+      "group": "other"
+    },
+    {
+      "label": "Housing and urban planning",
+      "value": 2.3,
+      "group": "other"
+    },
+    {
+      "label": "Environment",
+      "value": 1.8,
+      "group": "other"
+    }
+  ]
+}

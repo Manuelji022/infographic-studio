@@ -1,11 +1,16 @@
 "use client";
 
-import { createAuthClient } from "better-auth/react";
 import { useState } from "react";
+import { Button, Spinner } from "@ds/ui";
+import { authClient } from "../lib/auth-client";
 
-const authClient = createAuthClient();
-
-export function LoginButton({ label }: { label: string }) {
+export function LoginButton({
+  label,
+  pendingLabel,
+}: {
+  label: string;
+  pendingLabel: string;
+}) {
   const [pending, setPending] = useState(false);
 
   async function signIn() {
@@ -18,8 +23,8 @@ export function LoginButton({ label }: { label: string }) {
   }
 
   return (
-    <button type="button" onClick={signIn} disabled={pending}>
-      {label}
-    </button>
+    <Button variant="accent" onClick={signIn} disabled={pending}>
+      {pending ? <Spinner size="sm" label={pendingLabel} /> : label}
+    </Button>
   );
 }

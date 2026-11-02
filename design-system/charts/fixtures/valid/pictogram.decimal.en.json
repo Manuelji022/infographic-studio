@@ -1,0 +1,10 @@
+{
+  "id": "pictogram-decimal-en",
+  "type": "pictogram",
+  "title": "Programme participation",
+  "sourceQuote": "Source: example data.",
+  "of": 10,
+  "value": 7.5,
+  "icon": "person",
+  "label": "People who completed the programme"
+}

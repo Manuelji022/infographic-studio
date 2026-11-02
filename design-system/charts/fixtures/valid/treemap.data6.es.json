@@ -1,0 +1,31 @@
+{
+  "id": "treemap-data6-es",
+  "type": "treemap",
+  "title": "Distribución del gasto público",
+  "description": "Datos de ejemplo para comprobar el reparto por áreas.",
+  "sourceQuote": "Fuente: datos sintéticos de ejemplo.",
+  "period": "1996",
+  "unit": {
+    "kind": "number",
+    "decimals": 2
+  },
+  "items": [
+    {
+      "label": "Conservación del medio natural",
+      "value": 72,
+      "group": "g0"
+    },
+    {
+      "label": "Gestión de residuos urbanos",
+      "value": 28,
+      "group": "g0"
+    }
+  ],
+  "groups": [
+    {
+      "id": "g0",
+      "label": "Medio ambiente",
+      "tone": "data-6"
+    }
+  ]
+}

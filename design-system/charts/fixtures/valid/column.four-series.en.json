@@ -1,0 +1,55 @@
+{
+  "id": "column-four-series-en",
+  "type": "column",
+  "title": "Comparison by category",
+  "sourceQuote": "Example data.",
+  "categories": [
+    "Care for dependent people",
+    "Metropolitan public transport",
+    "Research and development",
+    "Housing refurbishment",
+    "Environmental protection"
+  ],
+  "series": [
+    {
+      "name": "Series 1",
+      "values": [
+        1100,
+        1191,
+        1282,
+        1373,
+        1464
+      ]
+    },
+    {
+      "name": "Series 2",
+      "values": [
+        1390,
+        1481,
+        1572,
+        1663,
+        1754
+      ]
+    },
+    {
+      "name": "Series 3",
+      "values": [
+        1680,
+        1771,
+        1862,
+        1953,
+        2044
+      ]
+    },
+    {
+      "name": "Series 4",
+      "values": [
+        1970,
+        2061,
+        2152,
+        2243,
+        2334
+      ]
+    }
+  ]
+}

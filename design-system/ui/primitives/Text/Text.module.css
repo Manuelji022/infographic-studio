@@ -1,0 +1,3 @@
+.default { color: var(--ds-text); }
+.muted { color: var(--ds-text-muted); }
+.inverse { color: var(--ds-text-inverse); }

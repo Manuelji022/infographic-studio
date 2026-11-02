@@ -1,0 +1,29 @@
+{
+  "type": "pictogram",
+  "runs": [
+    {
+      "width": 360,
+      "scheme": "light",
+      "charts": 10,
+      "issues": []
+    },
+    {
+      "width": 360,
+      "scheme": "dark",
+      "charts": 10,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "scheme": "light",
+      "charts": 10,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "scheme": "dark",
+      "charts": 10,
+      "issues": []
+    }
+  ]
+}

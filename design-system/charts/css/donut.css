@@ -1,0 +1,63 @@
+.ig-chart__donut-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+}
+
+.ig-chart__donut-ring {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  justify-self: center;
+}
+
+.ig-chart__donut-svg { display: block; width: 220px; height: 220px; }
+
+.ig-chart__donut-sector {
+  fill: var(--chart-color);
+  stroke: var(--ds-chart-gap);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.ig-chart__donut-total {
+  position: absolute;
+  inset: 28%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow-wrap: anywhere;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.ig-chart__donut-total-label { font-size: 12px; font-weight: 400; }
+
+.ig-chart__donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.ig-chart__donut-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.ig-chart__donut-item .ig-chart__swatch { margin-top: 4px; }
+.ig-chart__donut-detail { display: flex; flex-direction: column; overflow-wrap: anywhere; }
+.ig-chart__donut-detail > span + span { color: var(--ds-text-muted); }
+
+@container (max-width: 480px) {
+  .ig-chart__donut-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
