@@ -1,0 +1,75 @@
+.root {
+  position: absolute;
+  top: var(--ds-spacing-8);
+  right: var(--ds-spacing-8);
+  z-index: 2;
+}
+
+.trigger {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--ds-border);
+  border-radius: 999px;
+  background: var(--ds-surface);
+  color: var(--ds-text);
+  cursor: pointer;
+}
+
+.trigger:hover,
+.root[data-open] .trigger {
+  background: var(--ds-surface-deep);
+}
+
+.trigger:focus-visible,
+.item:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.dots {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+.list {
+  position: absolute;
+  top: calc(100% + var(--ds-spacing-4));
+  right: 0;
+  display: grid;
+  min-width: 12rem;
+  margin: 0;
+  padding: var(--ds-spacing-4);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-spacing-12);
+  background: var(--ds-surface);
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-8);
+  width: 100%;
+  min-height: 2.5rem;
+  padding: var(--ds-spacing-8) var(--ds-spacing-12);
+  border: 0;
+  border-radius: var(--ds-spacing-8);
+  background: transparent;
+  color: var(--ds-text);
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: var(--ds-surface-deep);
+}
+
+.danger {
+  color: var(--ds-danger-text);
+}
