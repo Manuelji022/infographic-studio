@@ -1,0 +1,23 @@
+.frame {
+  position: relative;
+  width: 100%;
+  max-width: 62rem;
+  margin-inline: auto;
+}
+
+.iframe {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-spacing-12);
+  background: var(--ds-canvas);
+}
+
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

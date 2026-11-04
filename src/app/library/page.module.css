@@ -1,0 +1,26 @@
+.main {
+  display: grid;
+  gap: var(--ds-spacing-24);
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: var(--ds-spacing-24) var(--ds-spacing-16) var(--ds-spacing-32);
+}
+
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-spacing-16);
+}
+
+.title {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-inline: var(--ds-spacing-32);
+  }
+}
