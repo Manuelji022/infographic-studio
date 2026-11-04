@@ -1,38 +1,46 @@
 # PromptComposer
 
 ## Propósito
-Formulario controlado para redactar una solicitud y configurar opciones de salida.
+Compositor de la pantalla Generar: un único contenedor con borde que reúne un textarea grande,
+el selector de tipo de contenido, una URL de origen opcional, el contador de caracteres y el
+único botón de acento. No lleva campos de título, tema ni idioma: el agente decide ambos.
 
 ## API
 
 | Propiedad | Tipo | Predeterminado | Descripción |
 |---|---|---|---|
-| `values` | `PromptComposerValues` | Requerido | Valores controlados del texto y las opciones. |
-| `onChange` | `(values: PromptComposerValues) => void` | Requerido | Recibe el objeto completo al cambiar un campo. |
-| `onSubmit` | `(values: PromptComposerValues) => void` | Requerido | Recibe los valores al enviar el formulario. |
-| `labels` | `PromptComposerLabels` | Requerido | Etiquetas, mensajes y nombres de las opciones de idioma. |
-| `themeOptions` | `Array<{ value: string; label: string }>` | Requerido | Temas disponibles. |
-| `status` | `"idle" \| "submitting"` | `"idle"` | Estado de envío. |
-| `error` | `{ message; action?; reference? }` | — | Error de envío con `ErrorMessage` pequeño: mensaje, acción de reintento y referencia opcional. |
-| `warnAt` | `number` | `30000` | Umbral de caracteres para mostrar el aviso. |
+| `values` | `PromptComposerValues` | Requerido | `{ text, sourceUrl, contentType }`, controlados por el padre. |
+| `onChange` | `(values) => void` | Requerido | Recibe el objeto completo al cambiar un campo. |
+| `onSubmit` | `(values) => void` | Requerido | Se llama solo con texto no vacío y URL válida o vacía. `sourceUrl` llega recortada y vacía si se quitó. |
+| `labels` | `PromptComposerLabels` | Requerido | Todos los textos (el componente no lleva copy): etiqueta y placeholder del texto, `counter(n)`, `warning(limit)`, selector, URL (`sourceUrlAdd`, `sourceUrlLabel`, `sourceUrlPlaceholder`, `sourceUrlInvalid`, `sourceUrlRemove`), `submit`, `submitting` y `shortcutHint` opcional. |
+| `contentTypeOptions` | `Array<{ value; label; description }>` | Requerido | Tipos de contenido. La lista vive en el consumidor, así añadir un tipo no toca el componente. |
+| `status` | `"idle" \| "submitting"` | `"idle"` | `submitting` bloquea el compositor y muestra el spinner en el botón. |
+| `locked` | `boolean` | `false` | Solo lectura sin cambiar la etiqueta del botón (por ejemplo mientras se muestra el progreso). |
+| `error` | `{ message; action?; reference? }` | — | `ErrorMessage` pequeño bajo el contenedor: mensaje, acción de reintento y referencia plegada. |
+| `warnAt` | `number` | `30000` | Umbral del aviso suave; nunca bloquea el envío. |
+| `autoFocus` | `boolean` | `false` | Enfoca el textarea al montar. |
 | Props nativas | `ComponentProps<"form">` sin `onSubmit`, `onChange` ni `children` | — | Atributos nativos del formulario. |
 
-`OutputLanguage` admite `"original"`, `"es"` y `"en"`. `PromptComposerValues`
-contiene `text`, `title`, `sourceUrl`, `theme` y `outputLanguage`. `PromptComposerLabels`
-contiene todas las etiquetas y funciones de contador y aviso necesarias para la interfaz.
+Se exporta también `isValidSourceUrl(value)`: acepta solo URLs `http://` o `https://`.
 
 ## Variantes y estados
-El formulario es controlado: el padre proporciona `values` y actualiza el objeto
-recibido en `onChange`. Las opciones adicionales están en un elemento `details`
-nativo cerrado por defecto. El aviso aparece al superar `warnAt`, sin impedir el envío.
-El único botón de envío se deshabilita si el texto está vacío o el estado es `submitting`;
-en este último estado muestra el indicador y el texto proporcionado.
+- **Vacío**: el botón Generar está deshabilitado.
+- **Con texto**: botón activo, contador visible. `⌘/Ctrl + Enter` envía desde el textarea.
+- **Texto muy largo**: `Note` de aviso bajo el contenedor al superar `warnAt`; no bloquea.
+- **URL de origen**: la acción discreta «+ URL de origen» despliega un `Input`; un botón con
+  icono lo quita. Se valida solo el formato (http/https) y el error aparece al salir del campo
+  o al enviar.
+- **Enviando / bloqueado**: textarea y controles en solo lectura, fondo atenuado.
+- **Error**: `ErrorMessage` con acción de reintento; el texto se conserva siempre.
+
+El textarea crece con el contenido (`field-sizing: content`, con mínimo y máximo de altura).
 
 ## Accesibilidad
-Los controles usan `Field` con etiquetas asociadas; el contador se anuncia con
-`aria-live="polite"` y el error en una región `aria-live="polite"`. Las opciones usan disclosure
-nativo. El botón refleja los estados de envío y texto vacío mediante `disabled`.
+El textarea tiene `aria-label` y el foco del contenedor se dibuja con el anillo de foco del
+sistema. El contador se anuncia con `aria-live="polite"`; el error de URL con `role="alert"`.
+El selector de tipo (`ContentTypeSelect`) es un listbox: `aria-haspopup`, `aria-expanded`,
+`aria-activedescendant`; flechas, Inicio/Fin, Enter/Espacio y Escape. Todo es operable con teclado.
 
 ## Cuándo usarlo y cuándo no
-Úsalo para recoger texto de entrada y opciones relacionadas en un único envío.
-No lo uses para formularios con campos o flujos que requieran otra composición.
+Úsalo para la entrada principal de generación. Para un selector con descripciones en otro
+contexto, usa `ContentTypeSelect` por separado; para opciones simples, `Select`.

@@ -74,27 +74,42 @@ try {
 
   // ---- PromptComposer (last form in #composer is the interactive demo)
   const demo = `(() => { const f = document.querySelectorAll('#composer form'); return f[f.length - 1]; })()`;
+  const errForm = `[...document.querySelectorAll('#composer form')].find((f) => f.querySelector('details'))`;
   await evaluate(`${demo}.scrollIntoView({ block: 'center' })`);
   await evaluate(`${demo}.querySelector('textarea').focus()`);
   const btnDisabled = () => evaluate(`${demo}.querySelector('button[type=submit]').disabled`);
+  const counter = () => evaluate(`${demo}.querySelector('[aria-live=polite]').textContent`);
   check('empty: submit is disabled', await btnDisabled());
+  check('URL field is hidden by default', !(await evaluate(`!!${demo}.querySelector('input[type=url]')`)));
+  await evaluate(`${demo}.querySelector('[aria-haspopup=listbox]').click()`);
+  await sleep(200);
+  check('content type lists four options', (await evaluate(`document.querySelectorAll('[role=option]').length`)) === 4);
+  await key('Escape', 'Escape', 27);
+  await sleep(200);
+  check('Escape closes the content type list', !(await evaluate(`!!document.querySelector('[role=listbox]')`)));
+  await evaluate(`${demo}.querySelector('textarea').focus()`);
   await send('Input.insertText', { text: 'Hola mundo' });
   await sleep(300);
   check('typing enables submit', !(await btnDisabled()));
-  check('counter shows 10 characters', /^10\b/.test(await evaluate(`${demo}.querySelector('[aria-live=polite]').textContent`)),
-    await evaluate(`${demo}.querySelector('[aria-live=polite]').textContent`));
+  check('counter shows 10 characters', /^10\b/.test(await counter()), await counter());
   check('no warning under the limit', !(await evaluate(`/límite|limit/i.test(${demo}.textContent)`)));
   await evaluate(`(() => { const t = ${demo}.querySelector('textarea'); const set = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set; set.call(t, 'x'.repeat(30001)); t.dispatchEvent(new Event('input', { bubbles: true })); })()`);
   await sleep(400);
   check('warning appears above 30000 characters', await evaluate(`/límite|limit/i.test(${demo}.textContent)`));
-  check('counter shows 30001 characters', /30[.,  ]?001/.test(await evaluate(`${demo}.querySelector('[aria-live=polite]').textContent`)),
-    await evaluate(`${demo}.querySelector('[aria-live=polite]').textContent`));
+  check('counter shows 30001 characters', /30[.,  ]?001/.test(await counter()), await counter());
   check('submit still allowed above the warning', !(await btnDisabled()));
-  check('options are collapsed by default', !(await evaluate(`${demo}.querySelector('details').open`)));
-  await evaluate(`${demo}.querySelector('summary').click()`);
+  await evaluate(`(() => { const t = ${demo}.querySelector('textarea'); const set = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set; set.call(t, 'Hola mundo'); t.dispatchEvent(new Event('input', { bubbles: true })); })()`);
   await sleep(200);
-  check('options open on click and show 4 fields', (await evaluate(`${demo}.querySelector('details').open`)) &&
-    (await evaluate(`${demo}.querySelectorAll('details input, details select').length`)) === 4);
+  await evaluate(`[...${demo}.querySelectorAll('button')].find((b) => b.textContent.includes('URL de origen')).click()`);
+  await sleep(200);
+  check('source URL field appears on demand', await evaluate(`!!${demo}.querySelector('input[type=url]')`));
+  await evaluate(`(() => { const i = ${demo}.querySelector('input[type=url]'); i.focus(); const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set; set.call(i, 'no es una url'); i.dispatchEvent(new Event('input', { bubbles: true })); i.blur(); })()`);
+  await sleep(300);
+  check('invalid URL shows the format error', await evaluate(`!!${demo}.querySelector('[role=alert]')`));
+  check('invalid URL does not block the button', !(await btnDisabled()));
+  await evaluate(`(() => { const i = ${demo}.querySelector('input[type=url]'); const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set; set.call(i, 'https://example.com/a'); i.dispatchEvent(new Event('input', { bubbles: true })); })()`);
+  await sleep(200);
+  check('valid URL clears the error', !(await evaluate(`!!${demo}.querySelector('[role=alert]')`)));
   await evaluate(`${demo}.querySelector('button[type=submit]').click()`);
   await sleep(300);
   check('submitting: spinner shown and button disabled', (await evaluate(`${demo}.querySelectorAll('[role=status]').length`)) >= 1 && (await btnDisabled()));
@@ -102,15 +117,14 @@ try {
   check('back to idle after the simulated submit', !(await btnDisabled()));
   await evaluate(`${demo}.scrollIntoView({ block: 'center' })`);
   await send('Page.captureScreenshot', { format: 'png' }).then((r) => {
-    fs.writeFileSync(process.env.SHOT_DIR ? path.join(process.env.SHOT_DIR, 'composer-options-open.png') : path.join(os.tmpdir(), 'composer-options-open.png'), Buffer.from(r.result.data, 'base64'));
+    fs.writeFileSync(process.env.SHOT_DIR ? path.join(process.env.SHOT_DIR, 'composer-demo.png') : path.join(os.tmpdir(), 'composer-demo.png'), Buffer.from(r.result.data, 'base64'));
   });
 
   // ---- ErrorMessage inside the composer error demo
-  const errBox = `document.querySelector('#composer form:has([aria-live=polite] svg) [aria-live=polite]:has(details)')`;
-  check('error shows retry action and collapsed reference', (await evaluate(`!!${errBox}?.querySelector('button')`)) &&
-    !(await evaluate(`${errBox}.querySelector('details').open`)));
-  await evaluate(`${errBox}.querySelector('summary').click()`);
-  check('reference opens and shows the ID', /req_/.test(await evaluate(`${errBox}.querySelector('code').textContent`)));
+  check('error shows retry action and collapsed reference', (await evaluate(`!!${errForm}?.querySelector('button')`)) &&
+    !(await evaluate(`${errForm}.querySelector('details').open`)));
+  await evaluate(`${errForm}.querySelector('summary').click()`);
+  check('reference opens and shows the ID', /req_/.test(await evaluate(`${errForm}.querySelector('code').textContent`)));
 
   // ---- ShareDialog: copy link
   await evaluate(`[...document.querySelectorAll('#dialogs button')].find((b) => /con enlace|with link/i.test(b.textContent)).click()`);

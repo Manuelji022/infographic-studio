@@ -18,3 +18,9 @@
   outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
   outline-offset: var(--ds-focus-ring-offset);
 }
+
+.saving {
+  display: flex;
+  align-items: center;
+  min-height: 1.5rem;
+}

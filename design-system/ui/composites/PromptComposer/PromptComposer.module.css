@@ -1,73 +1,159 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--ds-spacing-16);
+  gap: var(--ds-spacing-12);
   width: 100%;
   min-width: 0;
 }
 
-.counter {
+.container {
   display: flex;
   flex-direction: column;
-  gap: var(--ds-spacing-8);
+  box-sizing: border-box;
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-2xl);
+  background: var(--ds-surface);
+  min-width: 0;
 }
 
-.counter p {
-  margin: 0;
-}
-
-.options {
-  border-top: 1px solid var(--ds-border);
-  border-bottom: 1px solid var(--ds-border);
-}
-
-.summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ds-spacing-12);
-  padding: var(--ds-spacing-16) 0;
-  cursor: pointer;
-  list-style: none;
-}
-
-.summary::-webkit-details-marker {
-  display: none;
-}
-
-.summary:focus-visible {
+.container:focus-within {
   outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
   outline-offset: var(--ds-focus-ring-offset);
 }
 
-.chevron {
-  flex: 0 0 auto;
+.container[data-readonly] {
+  background: var(--ds-surface-deep);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ds-spacing-16);
-  padding: 0 0 var(--ds-spacing-16);
+/* Higher specificity than the Textarea primitive: the container draws border and focus. */
+.container .textarea {
+  min-height: 220px;
+  max-height: 60vh;
+  border: 0;
+  border-radius: var(--ds-radius-2xl) var(--ds-radius-2xl) 0 0;
+  padding: var(--ds-spacing-24) var(--ds-spacing-24) var(--ds-spacing-12);
+  background: transparent;
+  field-sizing: content;
+  overflow-y: auto;
+  font-family: var(--ds-type-body-lg-family);
+  font-size: var(--ds-type-body-lg-size);
+  line-height: var(--ds-type-body-lg-leading);
 }
 
-.actions {
+.container .textarea:focus-visible {
+  outline: none;
+}
+
+.container .textarea[readonly] {
+  color: var(--ds-text);
+  cursor: default;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.urlRow {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  gap: var(--ds-spacing-8);
+  padding: 0 var(--ds-spacing-16) var(--ds-spacing-8);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .chevron {
-    transition: transform 160ms ease;
-  }
+.urlError {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-8);
+  margin: 0;
+  padding: 0 var(--ds-spacing-16) var(--ds-spacing-8);
+  color: var(--ds-danger);
+  font-size: var(--ds-type-body-sm-size);
+}
 
-  .options[open] .chevron {
-    transform: rotate(180deg);
-  }
+.iconButton {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--ds-radius-lg);
+  background: transparent;
+  color: var(--ds-text-muted);
+  cursor: pointer;
+}
+
+.iconButton:hover:not(:disabled) {
+  background: var(--ds-surface-deep);
+  color: var(--ds-text);
+}
+
+.iconButton:focus-visible,
+.addUrl:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-spacing-8) var(--ds-spacing-16);
+  padding: var(--ds-spacing-8) var(--ds-spacing-12) var(--ds-spacing-12);
+}
+
+.toolbarStart,
+.toolbarEnd {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-8);
+  min-width: 0;
+}
+
+.toolbarEnd {
+  margin-left: auto;
+  gap: var(--ds-spacing-16);
+}
+
+.count {
+  font-variant-numeric: tabular-nums;
+}
+
+.addUrl {
+  min-height: 36px;
+  padding: 0 var(--ds-spacing-8);
+  border: 0;
+  border-radius: var(--ds-radius-lg);
+  background: transparent;
+  color: var(--ds-text-muted);
+  font-family: var(--ds-type-ui-medium-family);
+  font-size: var(--ds-type-ui-medium-size);
+  cursor: pointer;
+}
+
+.addUrl:hover:not(:disabled) {
+  background: var(--ds-surface-deep);
+  color: var(--ds-text);
+}
+
+.addUrl:disabled {
+  cursor: not-allowed;
 }
 
 @media (max-width: 600px) {
-  .grid {
-    grid-template-columns: minmax(0, 1fr);
+  .container .textarea {
+    min-height: 180px;
+    padding: var(--ds-spacing-16) var(--ds-spacing-16) var(--ds-spacing-8);
+  }
+
+  .toolbar {
+    padding: var(--ds-spacing-8);
   }
 }
