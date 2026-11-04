@@ -52,3 +52,6 @@ design-system/reports/charts/shots/
 # scripts/dev/examples-check.ts and scripts/dev/render-test.ts <dir>
 design-system/reports/charts/examples/
 design-system/reports/charts/render-test/
+
+# UI mockup screenshots: regenerate with the scripts/dev/*-e2e.mjs or shoot.mjs
+design-system/reports/shots/
