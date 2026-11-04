@@ -87,11 +87,11 @@ La interfaz está **en español por defecto**, con un **toggle para cambiar a in
 3. El agente llama a la tool **`save_infographic`**. La tool:
    - valida la entrada con **código determinista**, no con el criterio del modelo (schema Zod + reglas de §5.5);
    - si hay errores, **los devuelve al agente**, que corrige el HTML y lo vuelve a intentar (máx. 3 intentos);
-   - si todo es válido, inserta la infografía en PostgreSQL con estado `draft` y devuelve su `id`.
+   - si todo es válido, inserta la infografía en PostgreSQL con estado `saved` (guardado al generar, D1) y devuelve su `id`.
 4. El frontend recibe el `id` por el stream y muestra la infografía leyéndola de la BD.
-5. El usuario la revisa: **Conservar** (pasa a `saved`), **Refinar** (nueva versión en la misma sesión) o **Descartar** (se borra).
+5. El usuario la revisa: la infografía ya está guardada al generar (D1); puede **Refinar** (nueva versión en la misma sesión) o **Eliminar** desde la biblioteca.
 
-**Por qué así:** si la validación vive en una tool, el agente se autocorrige antes de que veas un resultado roto. Y la BD queda como la única fuente de verdad que consume Next.js. Los borradores que no se conservan se limpian solos a los 7 días (cron de Vercel).
+**Por qué así:** si la validación vive en una tool, el agente se autocorrige antes de que veas un resultado roto. Y la BD queda como la única fuente de verdad que consume Next.js. Solo quedan borradores (`draft`) si falla algo a mitad; esos se limpian solos a los 7 días (cron de Vercel).
 
 **Requisito técnico:** la tool del agente y la app de Next comparten `DATABASE_URL` y el módulo `db/` (schema de Drizzle y validador). Eve queda fuera de M0: en M3 hay que comprobar que el build de eve puede importar módulos de fuera de `agent/`. Si no puede, esos módulos se mueven a `agent/lib/` y la app los importa desde ahí.
 
@@ -106,13 +106,13 @@ Prioridad: **P0** = imprescindible para v1 · **P1** = deseable en v1 · **P2** 
 | ID | Requisito | Prio |
 | --- | --- | --- |
 | GEN-01 | El usuario puede pegar un texto (artículo, informe, notas) en un área de texto. | P0 |
-| GEN-02 | Opcionalmente indica título, URL de origen y tema visual del design system. Si no, el agente los infiere. | P1 |
-| GEN-03 | Por defecto, la infografía se genera **en el idioma del texto original** (ES o EN), detectado por el agente. Un selector opcional "Idioma de salida: original / ES / EN" permite forzar otro. El toggle de la interfaz no influye. | P0 |
-| GEN-03b | Si el texto original no está en español ni en inglés, la salida es en español, salvo que el selector diga otra cosa. | P1 |
+| GEN-02 | Opcionalmente indica la URL de origen. El agente decide el título y el idioma; el título se edita luego en línea. | P1 |
+| GEN-03 | Por defecto, la infografía se genera **en el idioma del texto original** (ES o EN), detectado por el agente. El toggle de la interfaz no influye. | P0 |
+| GEN-03b | Si el texto original no está en español ni en inglés, la salida es en español. | P1 |
 | GEN-04 | Al pulsar **Generar**, la UI muestra el progreso del stream (analizando, componiendo, validando, guardando). | P0 |
 | GEN-05 | El agente identifica los **datos clave** (cifras, porcentajes, fechas, comparaciones, rankings) y los **mensajes principales**. | P0 |
 | GEN-06 | El agente compone la infografía **solo** con componentes del design system (§6). | P0 |
-| GEN-07 | El agente guarda el resultado mediante `save_infographic` tras pasar la validación (§3.1). | P0 |
+| GEN-07 | El agente guarda el resultado mediante `save_infographic` tras pasar la validación (§3.1). Tras la validación, la infografía se guarda directamente con estado `saved` (D1); no hay paso intermedio de borrador salvo que falle algo a mitad. | P0 |
 | GEN-08 | La previsualización se renderiza aislada en `<iframe sandbox srcdoc>`, sin `allow-scripts`. | P0 |
 | GEN-09 | **Refinar** con una instrucción ("más compacta", "tema oscuro", "añade la cifra de 2023") reutiliza la sesión de eve y crea una nueva versión. | P1 |
 | GEN-10 | Si el texto no tiene datos cuantitativos, el agente lo avisa y crea una infografía de ideas clave **sin inventar cifras**. | P0 |
@@ -122,18 +122,18 @@ Prioridad: **P0** = imprescindible para v1 · **P1** = deseable en v1 · **P2** 
 
 | ID | Requisito | Prio |
 | --- | --- | --- |
-| LIB-01 | Conservar, refinar o descartar el borrador recién generado. | P0 |
+| LIB-01 | Eliminar una infografía desde la biblioteca. Ya no hay paso Conservar/Descartar: al generar se guarda (D1). | P0 |
 | LIB-02 | Editar título y etiquetas propuestas por el agente. | P1 |
 | LIB-03 | Detalle `/i/[id]`: infografía grande, metadatos, datos clave, texto original plegable, idiomas disponibles y estado de compartición. | P0 |
 | LIB-04 | Acciones: **descargar `.html`** (autocontenido, con el CSS del design system incrustado, en el idioma activo), **copiar HTML**, **eliminar**. | P0 |
 | LIB-05 | Eliminar pide confirmación y revoca los enlaces compartidos. | P0 |
-| LIB-06 | Historial de versiones de una infografía refinada. | P2 |
+| LIB-06 | Historial de versiones de una infografía: deshacer y rehacer en la sesión de edición, y un panel con las ediciones (con restaurar a cualquier versión). Las ediciones de un solo bloque también se registran (D7). | P1 |
 
 ### 4.3 Búsqueda
 
 | ID | Requisito | Prio |
 | --- | --- | --- |
-| SRCH-01 | En `/library`, un buscador filtra las infografías guardadas (`saved`). | P0 |
+| SRCH-01 | En `/library`, un buscador filtra las infografías guardadas (`saved`). Filtros por tipo de contenido y rango de fechas; el estado de búsqueda y filtros vive en la URL. | P0 |
 | SRCH-02 | Full-text con `tsvector` y `ts_rank` sobre título, etiquetas, resumen y texto original, **en cualquiera de los dos idiomas**: buscar "pensions" encuentra una infografía en español si tiene versión en inglés. | P0 |
 | SRCH-03 | Tolerancia a errores tipográficos con `pg_trgm` sobre el título. | P1 |
 | SRCH-04 | Filtros por etiqueta, rango de fechas, idioma y "compartidas". Orden por relevancia o por fecha. | P1 |
@@ -586,10 +586,12 @@ Notas:
 
 ## 10. Pantallas
 
+Las pantallas y sus estados están detallados en `UI_EXPERIENCE.md` (fase de mockups, cerrada el 2026-11-04). Esa fase no tiene persistencia real: los datos viven en `src/mocks/` y se sustituyen en M3.
+
 Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el menú de sesión.
 
 1. **Login (`/login`)** — botón "Continuar con Google". Si el email no está en la allowlist, muestra un error genérico.
-2. **Generar (`/`)** — área de texto y campos opcionales (tema e idioma de salida, "original" por defecto), *Generar*, progreso, previsualización, panel de datos clave y avisos, *Conservar / Refinar / Descartar*.
+2. **Generar (`/`)** — área de texto, selector de tipo de contenido y URL de origen opcional, *Generar*, progreso, previsualización, panel de datos clave y avisos, *Refinar*. La infografía ya está guardada al generar (D1, D2).
 3. **Biblioteca (`/library`)** — buscador, filtros, rejilla de tarjetas y estado vacío.
 4. **Detalle (`/i/[id]`)** — infografía en el idioma del toggle (o *Traducir* si no existe), metadatos, datos clave, texto original, *Compartir* (crear, copiar, revocar, caducidad, idioma por defecto), *Descargar*, *Copiar HTML*, *Refinar*, *Eliminar*.
 5. **Catálogos (`/design-system`, `/components`, `/charts`)** — catálogos vivos de tokens, componentes `ig-*` con los ejemplos completos, componentes de UI y gráficos.
@@ -605,6 +607,7 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 | [x] | M1 — Design system | **Cerrado el 2026-10-30** sin la Oleada 5 del plan (E2E con Playwright y `CHANGELOG`), que el propietario descartó. Las pruebas E2E arrastradas de M0 quedan pendientes, sin hito asignado. Estilo editorial de papel cálido (§6). Tokens en JSON DTCG con generador propio y check de deriva, temas claro y oscuro (el oscuro, derivado, aprobado el 2026-10-30), informe de contraste AA, fuentes autoalojadas (**hechas**: Source Serif 4, Geist y Geist Mono), componentes de UI (primitivas y composites, incl. `PromptComposer`), los 12 componentes `ig-*` ★ con su `manifest.ts`, validador y renderer/exportación, página `/design-system` y la referencia reescrita en `examples/`. Plan por oleadas en `DESIGN_SYSTEM_PLAN.md`. Arrastre de M0: prueba E2E de que una cuenta no propietaria es rechazada por el hook de allowlist, y pruebas E2E del login y de la protección de rutas (Playwright; `AGENTS.md`). |
 | [x] | M1b — Gráficos    | **Cerrado el 2026-10-30.** Librería de gráficos (§6.5): schemas Zod de los 8 tipos, renderer determinista spec → SVG + HTML, hueco `ig-chart` en manifiesto y validador, `expandCharts` en `buildDocument` (iframe y export), fichas `ig-chart-*.md`, ejemplos `gasto-publico` y `pensiones` con specs, y catálogo `/charts` (sustituye a la sección "Gráficos" de `/design-system`, que solo enlaza a él). Probado con specs de ejemplo y sin agente. Plan, seguimiento y lecciones en `CHART_LIBRARY_PLAN.md`. |
 | [ ] | M2 — Frontend (**siguiente**) | Biblioteca, búsqueda full-text multidioma con ranking y filtros, detalle, descargar/copiar/eliminar, compartir (`share_links`, `/s/[token]`, revocar, caducidad, Open Graph, `noindex`) y toggle de idioma. Se prueba con infografías de ejemplo, sin agente.                                                                                                                                                                                                                                                                                                       |
+| [x] | Fase de mockups de UI | Pantallas U0–U8 de `UI_EXPERIENCE.md` con datos simulados en `src/mocks/` (sin agente ni BD). Decisiones D1–D7 trasladadas a esta spec. **Cerrada el 2026-11-04** con la prueba E2E del recorrido completo (`scripts/dev/tour-e2e.mjs`, informe en `design-system/reports/tour-e2e/`). Pendiente para M3: sustituir `src/mocks/` por el agente y la BD (plan en `UI_EXPERIENCE.md` §12). |
 | [ ] | M3 — Agente        | Agente eve: canal con auth del propietario (`agent/channels/eve.ts`) y spike de importación de `db/` y `design-system/` desde fuera de `agent/` con una tool mínima que lea de la BD. Generar con `save_infographic` (validación y reintentos), renderer de borradores, conservar/descartar, refinar en la misma sesión, `save_translation` con *Traducir* y evals en ES y EN.                                                                                                                                                                                      |
 | [ ] | M4 — Pulido        | Componentes de texto restantes (`ig-quote`, `ig-key-points`), evals en CI, cron de limpieza de borradores y aplicar el estilo visual definitivo cuando llegue.                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
@@ -622,7 +625,7 @@ Todas las pantallas privadas llevan en la cabecera el **toggle ES/EN** y el men�
 | Auth | Better Auth con Google, con allowlist de un único email |
 | Despliegue | Vercel, app y agente en el mismo proyecto |
 | Acceso | Solo el propietario; invitados únicamente por enlace compartido |
-| Guardado | El agente valida y sube vía tool; la validación es código determinista. Primero se guarda como `draft` y pasa a `saved` al pulsar *Conservar*. |
+| Guardado | El agente valida y sube vía tool; la validación es código determinista. Se guarda directamente como `saved` (D1); solo queda `draft` si falla algo a mitad. |
 | Formato | Fragmento HTML con un design system propio; exportación autocontenida |
 | Idioma de la UI | Español por defecto, con toggle a inglés (también en la vista compartida) |
 | Idioma de las infografías | Se generan en el idioma del texto original (con opción de forzar ES/EN) y se traducen solo bajo demanda |
