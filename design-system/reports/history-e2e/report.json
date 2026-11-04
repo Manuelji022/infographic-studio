@@ -1,0 +1,240 @@
+{
+  "startedAt": "2026-11-04T12:40:55.579Z",
+  "base": "http://localhost:3000",
+  "checks": [
+    {
+      "scenario": "history-1280",
+      "name": "starts at the original version (undo disabled, reset first if an earlier run left edits)",
+      "ok": true,
+      "detail": "reset from earlier edits"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "seed document loaded",
+      "ok": true,
+      "detail": "10 blocks"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "edit 1 (global) is applied",
+      "ok": true,
+      "detail": "Studio /  / He actualizado 1 bloque: /  / Pensiones e I.T. / Deshacer"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "edit 1 changed the stored document",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "a leaf text block exists for the block edit",
+      "ok": true,
+      "detail": "header-1"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "edit 2 (block) is applied to exactly 1 block",
+      "ok": true,
+      "detail": "Studio /  / He actualizado 1 bloque: /  / La protección social se llevaba un tercio del gasto púb… / Deshacer"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "edit 2 changed the stored document",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "edit 2 changed the selected block root",
+      "ok": true,
+      "detail": "[\"header-1\"]"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "edit 3 (global) is applied",
+      "ok": true,
+      "detail": "Studio /  / He actualizado 1 bloque: /  / Pensiones e I.T. / Deshacer"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "edit 3 changed the stored document",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "panel lists 3 edits plus the original version",
+      "ok": true,
+      "detail": "4 rows"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "newest edit is first and is the current state",
+      "ok": true,
+      "detail": "Infografía completa / 4 nov 2026, 12:41 / Versión actual /  / Destaca las conclusiones /  / Bloques afectados: Pensiones e I.T."
+    },
+    {
+      "scenario": "history-1280",
+      "name": "rows follow the edit order newest first",
+      "ok": true,
+      "detail": "[\"4 nov 2026, 12:41\",\"4 nov 2026, 12:41\",\"4 nov 2026, 12:41\",\"Restaurar\"]"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "the block edit row names the affected block",
+      "ok": true,
+      "detail": "Bloque / 4 nov 2026, 12:41 /  / Estilo más minimalista /  / Bloques afectados: La protección social se llevaba un tercio del gasto púb… /  / Restaurar"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "original version is the last row and is restorable",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "every non-current row has a Restore button",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "restore announces \"Versión restaurada.\" in the panel live region",
+      "ok": true,
+      "detail": "Versión restaurada."
+    },
+    {
+      "scenario": "history-1280",
+      "name": "restored document is byte-identical to the snapshot after edit 1 (download hash)",
+      "ok": true,
+      "detail": "ce435:292052 vs ce435:292052"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "restored document equals the snapshot after edit 1 per data-block-id root",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "after restoring, the current marker is on the first edit",
+      "ok": true,
+      "detail": "other,other,current,other"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "later entries stay in the list (redo tail kept, 4 rows)",
+      "ok": true,
+      "detail": "4 rows"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "redo is still possible after restoring to edit 1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "restoring to the original gives the pristine seed (download hash)",
+      "ok": true,
+      "detail": "79a9d:292122 vs 79a9d:292122"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "restoring to the original gives the pristine seed per data-block-id root",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "original is now the current state",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "undo is disabled at the original version",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "redo is possible from the original",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "restoring forward to the newest edit gives its snapshot (download hash)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "focus returns to the More trigger when the panel closes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "redo possible before the new edit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "new edit after restoring is applied",
+      "ok": true,
+      "detail": "Studio /  / He actualizado 1 bloque: /  / Pensiones e I.T. / Deshacer"
+    },
+    {
+      "scenario": "history-1280",
+      "name": "a new edit truncates the redo tail (redo disabled)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "history-1280",
+      "name": "after truncation the list is new edit, edit 1, original (3 rows; block and edit 2 gone)",
+      "ok": true,
+      "detail": "[\"Infografía completa / 4 nov 2026, 12:41 / Versión actual /  / Destaca las conclusiones de nuevo /  / Bloques afectados: Pensiones e I.T.\",\"Infografía completa / 4 nov 2026, 12:41 /  / Reduce el texto /  / Bloques afectados: Pensiones e I.T. /  / Restaurar\",\"Versión original / Restaurar\"]"
+    },
+    {
+      "scenario": "history-360",
+      "name": "no horizontal overflow in the panel at 360 px",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "polish",
+      "name": "Escape pressed inside the iframe closes the mobile chat overlay",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "polish",
+      "name": "bar chat toggle is named \"Abrir el chat\" when the chat is closed",
+      "ok": true,
+      "detail": "Abrir el chat"
+    },
+    {
+      "scenario": "polish",
+      "name": "the chat panel close button is not named like the bar toggle",
+      "ok": true,
+      "detail": "[\"Cerrar\",null,null,null,null,\"Enviar\"]"
+    }
+  ],
+  "summary": {
+    "total": 37,
+    "passed": 37,
+    "failed": 0
+  },
+  "screenshots": {
+    "light1280": "design-system/reports/shots/ui-history/panel-1280-light.png",
+    "dark1280": "design-system/reports/shots/ui-history/panel-1280-dark.png",
+    "light360": "design-system/reports/shots/ui-history/panel-360-light.png",
+    "dark360": "design-system/reports/shots/ui-history/panel-360-dark.png"
+  },
+  "finishedAt": "2026-11-04T12:41:19.877Z"
+}
