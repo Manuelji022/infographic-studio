@@ -1,0 +1,79 @@
+{
+  "startedAt": "2026-11-04T12:45:53.544Z",
+  "base": "http://localhost:3000",
+  "checks": [
+    {
+      "scenario": "login",
+      "name": "the fake session cookie opens / without redirect to /login",
+      "ok": true,
+      "detail": "path=/, composer=true"
+    },
+    {
+      "scenario": "generate",
+      "name": "the mock generation redirects to /i/<new id> (not pensiones)",
+      "ok": true,
+      "detail": "/i/gen-da725a91 (type=Artículo)"
+    },
+    {
+      "scenario": "workspace",
+      "name": "the iframe shows data-block-id blocks and the chat is visible at 1280 px",
+      "ok": true,
+      "detail": "12 bloques, chat 360x844 visible=true, viewport 1280px, design-system/reports/tour-e2e/workspace-1280.png"
+    },
+    {
+      "scenario": "select",
+      "name": "one block is selected (context chip) and the download is saved as \"before\"",
+      "ok": true,
+      "detail": "selected chart-4 (Gráfico: Gasto anual en pensiones); before: 12 bloques"
+    },
+    {
+      "scenario": "edit",
+      "name": "the chat edit reports exactly 1 changed block (the selected one) with Undo",
+      "ok": true,
+      "detail": "Studio /  / He actualizado 1 bloque: /  / Gasto anual en pensiones / Deshacer · chips=[\"Gasto anual en pensiones\"]"
+    },
+    {
+      "scenario": "scope",
+      "name": "after the edit only the selected block differs in the download",
+      "ok": true,
+      "detail": "1 bloque cambiado: chart-4 (seleccionado: chart-4; bloques 12→12)"
+    },
+    {
+      "scenario": "undo",
+      "name": "Undo in the bar returns the download to the exact \"before\" HTML",
+      "ok": true,
+      "detail": "HTML identico al de antes"
+    },
+    {
+      "scenario": "share",
+      "name": "the share dialog creates a link with a new token (not demo-*)",
+      "ok": true,
+      "detail": "/s/ccbb078b094d4ae1af46fc45d45ced2ed64355cc"
+    },
+    {
+      "scenario": "public",
+      "name": "the public link opens without a session cookie and shows the infographic",
+      "ok": true,
+      "detail": "title=\"El envejecimiento eleva la presión sobre las pensiones\", iframe present, session cookie absent"
+    },
+    {
+      "scenario": "404",
+      "name": "an unknown token answers HTTP 404",
+      "ok": true,
+      "detail": "HTTP 404"
+    },
+    {
+      "scenario": "404",
+      "name": "a revoked token (demo-revocada) answers HTTP 404",
+      "ok": true,
+      "detail": "HTTP 404"
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "passed": 11,
+    "failed": 0
+  },
+  "generatedInfographic": "gen-da725a91",
+  "finishedAt": "2026-11-04T12:46:06.873Z"
+}

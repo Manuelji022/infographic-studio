@@ -1,0 +1,62 @@
+.list {
+  display: grid;
+  gap: var(--ds-spacing-12);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: grid;
+  gap: var(--ds-spacing-4);
+  padding: var(--ds-spacing-12);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-surface-deep);
+  min-width: 0;
+}
+
+.row[aria-current="true"] {
+  border-color: var(--ds-accent);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--ds-spacing-8);
+  color: var(--ds-text-muted);
+  font-size: 0.8125rem;
+}
+
+.scope {
+  font-weight: 600;
+  color: var(--ds-text);
+}
+
+.current {
+  color: var(--ds-accent);
+  font-weight: 600;
+}
+
+.instruction {
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--ds-spacing-4);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

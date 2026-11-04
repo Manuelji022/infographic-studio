@@ -1,0 +1,94 @@
+.toolbar {
+  display: grid;
+  gap: var(--ds-spacing-16);
+}
+
+.search {
+  width: 100%;
+}
+
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--ds-spacing-16);
+}
+
+.sort {
+  min-width: 10rem;
+}
+
+.count {
+  margin: 0;
+  margin-inline-start: auto;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  align-items: end;
+  gap: var(--ds-spacing-16);
+  padding: var(--ds-spacing-16);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-spacing-12);
+  background: var(--ds-surface);
+}
+
+.switchSlot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-spacing-8);
+  min-height: 2.5rem;
+}
+
+.notice:empty {
+  display: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ds-spacing-24);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: opacity 120ms;
+}
+
+.grid[data-pending] {
+  opacity: 0.6;
+}
+
+.cell {
+  position: relative;
+  min-width: 0;
+}
+
+.cell > article {
+  height: 100%;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid {
+    transition: none;
+  }
+}

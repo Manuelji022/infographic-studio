@@ -1,0 +1,58 @@
+.page {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--ds-canvas);
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-spacing-12);
+  min-height: 3.25rem;
+  padding: var(--ds-spacing-8) var(--ds-spacing-16);
+  border-bottom: 1px solid var(--ds-border);
+  background: var(--ds-surface);
+}
+
+.title {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.main {
+  flex: 1;
+  padding: var(--ds-spacing-24) var(--ds-spacing-16) var(--ds-spacing-32);
+}
+
+.footer {
+  padding: var(--ds-spacing-16);
+  border-top: 1px solid var(--ds-border);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.source {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+.source:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+@media (min-width: 640px) {
+  .main {
+    padding-inline: var(--ds-spacing-24);
+    padding-block: var(--ds-spacing-32) var(--ds-spacing-76);
+  }
+}

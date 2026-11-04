@@ -1,0 +1,55 @@
+.main {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-spacing-24);
+  padding: var(--ds-spacing-24) var(--ds-spacing-16);
+}
+
+.card {
+  display: grid;
+  gap: var(--ds-spacing-16);
+  width: 100%;
+  max-width: 28rem;
+  padding: var(--ds-spacing-32) var(--ds-spacing-24);
+  text-align: center;
+  justify-items: center;
+}
+
+.code {
+  margin: 0;
+  color: var(--ds-text-muted);
+}
+
+.title {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.body {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--ds-spacing-8);
+  margin-top: var(--ds-spacing-8);
+}
+
+.linkButton {
+  text-decoration: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.errorBox {
+  width: 100%;
+  text-align: left;
+}

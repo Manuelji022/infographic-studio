@@ -1,0 +1,369 @@
+{
+  "stamp": "2026-11-02T15:37:53.869Z",
+  "base": "http://localhost:3000",
+  "total": 60,
+  "failed": 0,
+  "notes": [],
+  "checks": [
+    {
+      "scenario": "pensiones-1280",
+      "name": "a chart block root exists in the iframe DOM with data-block-id",
+      "ok": true,
+      "detail": "chart-4"
+    },
+    {
+      "scenario": "pensiones-1280",
+      "name": "iframe stays sandbox=\"allow-same-origin\" (no allow-scripts)",
+      "ok": true,
+      "detail": "allow-same-origin"
+    },
+    {
+      "scenario": "pensiones-1280",
+      "name": "no script is injected in the iframe document",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "pensiones-1280",
+      "name": "at rest nothing is drawn over the document",
+      "ok": true,
+      "detail": "\"\""
+    },
+    {
+      "scenario": "pensiones-1280",
+      "name": "hover shows the type label and the three actions",
+      "ok": true,
+      "detail": "Gráfico: Gasto anual en pensiones / Comentar / Editar con IA / Regenerar"
+    },
+    {
+      "scenario": "pensiones-1280",
+      "name": "click selects: the context chip names the chart",
+      "ok": true,
+      "detail": "Gráfico: Gasto anual en pensiones"
+    },
+    {
+      "scenario": "pensiones-1280",
+      "name": "selection is announced (aria-live blockSelected)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "pensiones-1280",
+      "name": "selecting moves the focus to the chat input",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "A-to-columns",
+      "name": "only that block shows the working veil while the edit runs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "A-to-columns",
+      "name": "reply says exactly 1 block was updated",
+      "ok": true,
+      "detail": "Studio /  / He actualizado 1 bloque: /  / Gasto anual en pensiones / Deshacer"
+    },
+    {
+      "scenario": "A-to-columns",
+      "name": "reply lists exactly the selected block",
+      "ok": true,
+      "detail": "[\"Gasto anual en pensiones\"]"
+    },
+    {
+      "scenario": "A-to-columns",
+      "name": "the chart block changed and every other root is byte-identical (only its ancestors, which contain it, differ)",
+      "ok": true,
+      "detail": "{\"changed\":[\"section-2\",\"chart-4\"],\"others\":[]}"
+    },
+    {
+      "scenario": "A-to-columns",
+      "name": "the selection survives the edit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "A-to-columns",
+      "name": "Undo is offered in the chat reply",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "A-to-columns",
+      "name": "Undo is offered in the block toolbar",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "A-to-columns",
+      "name": "the stored document changed (download differs)",
+      "ok": true,
+      "detail": "b:290490 -> 6:291237"
+    },
+    {
+      "scenario": "A-to-columns",
+      "name": "another infographic is untouched",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "A-to-columns",
+      "name": "the original chart is a line chart and now it is a column chart",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "A-to-lines",
+      "name": "only that block shows the working veil while the edit runs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "A-to-lines",
+      "name": "the chart is a line chart again",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "A-to-lines",
+      "name": "reply lists exactly the selected block",
+      "ok": true,
+      "detail": "[\"Gasto anual en pensiones\"]"
+    },
+    {
+      "scenario": "A-to-lines",
+      "name": "the chart block changed and every other root is byte-identical",
+      "ok": true,
+      "detail": "{\"changed\":[\"section-2\",\"chart-4\"],\"others\":[]}"
+    },
+    {
+      "scenario": "A-undo",
+      "name": "after the first undo the document equals the state before the second edit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "A-undo",
+      "name": "after the second undo every block is byte-identical to the original",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "scenario": "A-undo",
+      "name": "the stored document is byte-identical to the original (download hash)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "B-not-possible",
+      "name": "reply explains it is not possible",
+      "ok": true,
+      "detail": "Studio /  / No puedo hacer ese cambio con los datos del texto original."
+    },
+    {
+      "scenario": "B-not-possible",
+      "name": "no Undo and no changed-block chips on that reply",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "B-not-possible",
+      "name": "no block changed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "B-not-possible",
+      "name": "the stored document is untouched (download hash)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "B-not-possible",
+      "name": "asking for a line chart when it already is one is refused, not faked",
+      "ok": true,
+      "detail": "Studio /  / No puedo hacer ese cambio con los datos del texto original."
+    },
+    {
+      "scenario": "esc",
+      "name": "Esc deselects (context chip gone)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "chips",
+      "name": "a changed-block chip selects that block (context chip appears)",
+      "ok": true,
+      "detail": "El gasto se multiplicó por 2,7,La población mayor gana peso,Las decisiones graduales amplían las opciones"
+    },
+    {
+      "scenario": "chips",
+      "name": "global edit undone to the original",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "keyboard",
+      "name": "arrow keys move through the block list (outside the iframe)",
+      "ok": true,
+      "detail": "Gráfico Gasto público por función"
+    },
+    {
+      "scenario": "keyboard",
+      "name": "the navigator is reachable by Tab (tabindex=0, listbox, labelled)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "keyboard",
+      "name": "the previewed block is outlined in the layer",
+      "ok": true,
+      "detail": "11 / Gráfico: Gasto público por función"
+    },
+    {
+      "scenario": "keyboard",
+      "name": "Enter selects the block (context chip shown)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "comments",
+      "name": "chat lists the notes of the selected block (empty text when there are none)",
+      "ok": true,
+      "detail": "{\"count\":11,\"empty\":false,\"items\":11}"
+    },
+    {
+      "scenario": "comments",
+      "name": "the comment popover opens with the field focused",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "comments",
+      "name": "saving a note shows a numeric badge on the block",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "comments",
+      "name": "the note is listed in the chat for the selected block",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "comments",
+      "name": "notes persist in the mock store across a reload (badge back after reload)",
+      "ok": true,
+      "detail": "Gráfico: Gasto público por función"
+    },
+    {
+      "scenario": "regenerate",
+      "name": "regenerate visibly changes the selected block and nothing else",
+      "ok": true,
+      "detail": "{\"target\":\"chart-3\",\"others\":[]}"
+    },
+    {
+      "scenario": "regenerate",
+      "name": "reply has Undo and lists that block",
+      "ok": true,
+      "detail": "[\"Gasto público por función\"]"
+    },
+    {
+      "scenario": "regenerate",
+      "name": "undo restores the exact original document",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "comment-footer-1280",
+      "name": "the infographic has a footer block",
+      "ok": true,
+      "detail": "footer-12"
+    },
+    {
+      "scenario": "comment-footer-1280",
+      "name": "the comment popover on the footer is fully inside the overlay layer (textarea and buttons visible)",
+      "ok": true,
+      "detail": "{\"popoverInside\":true,\"partsInside\":true,\"popover\":[251,547],\"layer\":[-2217,824]}"
+    },
+    {
+      "scenario": "touch-360-light",
+      "name": "touch layout: no hover toolbar at rest",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "touch-360-light",
+      "name": "tap selects and shows the bottom action bar",
+      "ok": true,
+      "detail": "{\"top\":640.8125,\"bottom\":780,\"vh\":780,\"buttons\":[\"Comentar\",\"Editar con IA\",\"Regenerar\"]}"
+    },
+    {
+      "scenario": "touch-360-light",
+      "name": "the bar offers Comment / Edit with AI / Regenerate",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "touch-360-light",
+      "name": "selecting by tap does not open the chat or raise the keyboard",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "touch-360-light",
+      "name": "no horizontal overflow at 360 px",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "touch-360-light",
+      "name": "the comment popover is a bottom sheet inside the viewport",
+      "ok": true,
+      "detail": "{\"l\":12,\"r\":348,\"vw\":360,\"b\":768,\"vh\":780}"
+    },
+    {
+      "scenario": "touch-360-light",
+      "name": "Esc closes the comment popover first (block stays selected)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "touch-360-light",
+      "name": "Edit with AI opens the chat sheet with the context chip",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "touch-360-dark",
+      "name": "touch layout: no hover toolbar at rest",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "touch-360-dark",
+      "name": "tap selects and shows the bottom action bar",
+      "ok": true,
+      "detail": "{\"top\":640.8125,\"bottom\":780,\"vh\":780,\"buttons\":[\"Comentar\",\"Editar con IA\",\"Regenerar\"]}"
+    },
+    {
+      "scenario": "touch-360-dark",
+      "name": "the bar offers Comment / Edit with AI / Regenerate",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "touch-360-dark",
+      "name": "selecting by tap does not open the chat or raise the keyboard",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "scenario": "touch-360-dark",
+      "name": "no horizontal overflow at 360 px",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

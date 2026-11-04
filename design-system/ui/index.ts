@@ -22,6 +22,7 @@ export * from "./primitives/VisuallyHidden";
 // Composites (assembled by the coordinator).
 export * from "./composites/AppHeader";
 export * from "./composites/ConfirmDialog";
+export * from "./composites/ContentTypeSelect";
 export * from "./composites/EmptyState";
 export * from "./composites/ErrorMessage";
 export * from "./composites/ErrorState";
