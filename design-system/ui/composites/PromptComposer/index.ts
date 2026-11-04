@@ -1,6 +1,5 @@
-export { PromptComposer } from "./PromptComposer";
+export { PromptComposer, isValidSourceUrl, normalizePromptInput } from "./PromptComposer";
 export type {
-  OutputLanguage,
   PromptComposerError,
   PromptComposerLabels,
   PromptComposerProps,

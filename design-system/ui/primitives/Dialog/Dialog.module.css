@@ -1,6 +1,7 @@
 .dialog {
   box-sizing: border-box;
   width: min(32rem, calc(100% - var(--ds-spacing-32)));
+  margin: auto; /* a global `* { margin: 0 }` reset would pin the dialog top-left */
   padding: 0;
   border: 1px solid var(--ds-border);
   border-radius: var(--ds-radius-card);

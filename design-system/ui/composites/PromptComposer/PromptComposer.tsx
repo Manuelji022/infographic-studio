@@ -1,26 +1,26 @@
 "use client";
 
-import type { ComponentProps, ReactNode } from "react";
+import { useId, useState } from "react";
+import type { ComponentProps, KeyboardEvent, ReactNode } from "react";
+import { cx } from "../../cx";
 import { Button } from "../../primitives/Button";
-import { Note } from "../../primitives/Note";
-import { ErrorMessage } from "../ErrorMessage";
-import { Field } from "../../primitives/Field";
 import { Icon } from "../../primitives/Icon";
 import { Input } from "../../primitives/Input";
-import { Select } from "../../primitives/Select";
+import { Note } from "../../primitives/Note";
 import { Spinner } from "../../primitives/Spinner";
 import { Text } from "../../primitives/Text";
 import { Textarea } from "../../primitives/Textarea";
+import { ContentTypeSelect } from "../ContentTypeSelect";
+import type { ContentTypeOption } from "../ContentTypeSelect";
+import { ErrorMessage } from "../ErrorMessage";
 import styles from "./PromptComposer.module.css";
-
-export type OutputLanguage = "original" | "es" | "en";
 
 export type PromptComposerValues = {
   text: string;
-  title: string;
+  /** Optional; empty string when not provided. */
   sourceUrl: string;
-  theme: string;
-  outputLanguage: OutputLanguage;
+  /** Value of one of `contentTypeOptions`. */
+  contentType: string;
 };
 
 export type PromptComposerLabels = {
@@ -28,14 +28,17 @@ export type PromptComposerLabels = {
   textPlaceholder: string;
   counter: (count: number) => string;
   warning: (limit: number) => string;
-  optionsSummary: string;
-  titleLabel: string;
+  contentTypeLabel: string;
+  /** Discreet action that reveals the URL input, for example "Source URL". */
+  sourceUrlAdd: string;
   sourceUrlLabel: string;
-  themeLabel: string;
-  outputLanguageLabel: string;
-  outputLanguageOptions: Record<OutputLanguage, string>;
+  sourceUrlPlaceholder: string;
+  sourceUrlInvalid: string;
+  sourceUrlRemove: string;
   submit: string;
   submitting: string;
+  /** Optional hint announced for the keyboard shortcut, for example "⌘ Enter to generate". */
+  shortcutHint?: string;
 };
 
 export type PromptComposerError = {
@@ -54,123 +57,193 @@ export type PromptComposerProps = Omit<
   onChange: (values: PromptComposerValues) => void;
   onSubmit: (values: PromptComposerValues) => void;
   labels: PromptComposerLabels;
-  themeOptions: Array<{ value: string; label: string }>;
+  contentTypeOptions: ContentTypeOption[];
   status?: "idle" | "submitting";
+  /** Locks every control (read-only text) without changing the button label. */
+  locked?: boolean;
   error?: PromptComposerError;
   warnAt?: number;
+  autoFocus?: boolean;
 };
+
+export function isValidSourceUrl(value: string): boolean {
+  try {
+    const url = new URL(value.trim());
+    return url.protocol === "http:" || url.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * The single submit rule, shared by the form and any retry: text must be non-empty and the
+ * URL, when present, must be http/https. Returns the normalized values, or null if blocked.
+ */
+export function normalizePromptInput(values: PromptComposerValues): PromptComposerValues | null {
+  if (values.text.trim() === "") return null;
+  const sourceUrl = values.sourceUrl.trim();
+  if (sourceUrl !== "" && !isValidSourceUrl(sourceUrl)) return null;
+  return { ...values, sourceUrl };
+}
 
 export function PromptComposer({
   values,
   onChange,
   onSubmit,
   labels,
-  themeOptions,
+  contentTypeOptions,
   status = "idle",
+  locked = false,
   error,
   warnAt = 30000,
+  autoFocus = false,
   className,
   ...props
 }: PromptComposerProps) {
+  // The URL field is open when the user asked for it or when a value exists (for example a
+  // draft restored after mount), so a non-empty sourceUrl is never hidden or silently dropped.
+  const [urlRequested, setUrlRequested] = useState(false);
+  const urlOpen = urlRequested || values.sourceUrl !== "";
+  const [urlTouched, setUrlTouched] = useState(false);
+  const urlId = useId();
+  const urlErrorId = `${urlId}-error`;
+  const hintId = `${urlId}-hint`;
+  const busy = status === "submitting";
+  const readOnly = locked || busy;
+  const urlInvalid =
+    urlOpen && values.sourceUrl.trim() !== "" && !isValidSourceUrl(values.sourceUrl);
+  const showUrlError = urlInvalid && urlTouched;
+  const canSubmit = values.text.trim() !== "" && !readOnly;
+  const count = values.text.length;
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onSubmit(values);
+    if (!canSubmit) return;
+    const normalized = normalizePromptInput(values);
+    if (!normalized) {
+      setUrlTouched(true);
+      return;
+    }
+    onSubmit(normalized);
+  }
+
+  function handleKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
+    if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+      event.preventDefault();
+      event.currentTarget.form?.requestSubmit();
+    }
   }
 
   return (
     <form
       {...props}
-      className={[styles.form, className].filter(Boolean).join(" ")}
+      className={cx(styles.form, className)}
       onSubmit={handleSubmit}
     >
-      <Field label={labels.textLabel}>
+      <div className={styles.container} data-readonly={readOnly || undefined}>
         <Textarea
-          rows={10}
+          aria-label={labels.textLabel}
+          aria-describedby={labels.shortcutHint ? hintId : undefined}
+          className={styles.textarea}
+          resize="none"
+          rows={8}
+          autoFocus={autoFocus}
+          readOnly={readOnly}
           value={values.text}
           placeholder={labels.textPlaceholder}
+          onKeyDown={handleKeyDown}
           onChange={(event) => onChange({ ...values, text: event.target.value })}
         />
-      </Field>
-      <div className={styles.counter}>
-        <Text variant="caption" aria-live="polite">
-          {labels.counter(values.text.length)}
-        </Text>
-        {values.text.length > warnAt && (
-          <Note variant="warning" size="small">{labels.warning(warnAt)}</Note>
-        )}
-      </div>
-      <details className={styles.options}>
-        <summary className={`ds-type-ui-medium ${styles.summary}`}>
-          {labels.optionsSummary}
-          <Icon name="chevron-down" className={styles.chevron} />
-        </summary>
-        <div className={styles.grid}>
-          <Field label={labels.titleLabel}>
-            <Input
-              value={values.title}
-              maxLength={200}
-              onChange={(event) => onChange({ ...values, title: event.target.value })}
-            />
-          </Field>
-          <Field label={labels.sourceUrlLabel}>
+        {labels.shortcutHint ? (
+          <span id={hintId} className={styles.srOnly}>
+            {labels.shortcutHint}
+          </span>
+        ) : null}
+        {urlOpen ? (
+          <div className={styles.urlRow}>
             <Input
               type="url"
+              inputMode="url"
+              autoComplete="off"
+              aria-label={labels.sourceUrlLabel}
+              aria-invalid={showUrlError}
+              aria-describedby={showUrlError ? urlErrorId : undefined}
+              placeholder={labels.sourceUrlPlaceholder}
+              readOnly={readOnly}
               value={values.sourceUrl}
+              onBlur={() => setUrlTouched(true)}
               onChange={(event) => onChange({ ...values, sourceUrl: event.target.value })}
             />
-          </Field>
-          <Field label={labels.themeLabel}>
-            <Select
-              value={values.theme}
-              onChange={(event) => onChange({ ...values, theme: event.target.value })}
+            <button
+              type="button"
+              className={styles.iconButton}
+              aria-label={labels.sourceUrlRemove}
+              disabled={readOnly}
+              onClick={() => {
+                setUrlRequested(false);
+                setUrlTouched(false);
+                onChange({ ...values, sourceUrl: "" });
+              }}
             >
-              {themeOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </Select>
-          </Field>
-          <Field label={labels.outputLanguageLabel}>
-            <Select
-              value={values.outputLanguage}
-              onChange={(event) =>
-                onChange({
-                  ...values,
-                  outputLanguage: event.target.value as OutputLanguage,
-                })
-              }
+              <Icon name="close" size="sm" />
+            </button>
+          </div>
+        ) : null}
+        {showUrlError ? (
+          <p id={urlErrorId} role="alert" className={styles.urlError}>
+            <Icon name="alert" size="sm" />
+            {labels.sourceUrlInvalid}
+          </p>
+        ) : null}
+        <div className={styles.toolbar}>
+          <div className={styles.toolbarStart}>
+            <ContentTypeSelect
+              label={labels.contentTypeLabel}
+              options={contentTypeOptions}
+              value={values.contentType}
+              disabled={readOnly}
+              onChange={(contentType) => onChange({ ...values, contentType })}
+            />
+            {urlOpen ? null : (
+              <button
+                type="button"
+                className={styles.addUrl}
+                disabled={readOnly}
+                onClick={() => setUrlRequested(true)}
+              >
+                <span aria-hidden="true">+</span> {labels.sourceUrlAdd}
+              </button>
+            )}
+          </div>
+          <div className={styles.toolbarEnd}>
+            <Text
+              variant="caption"
+              tone="muted"
+              as="span"
+              className={styles.count}
+              aria-live="polite"
             >
-              {(["original", "es", "en"] as const).map((language) => (
-                <option key={language} value={language}>
-                  {labels.outputLanguageOptions[language]}
-                </option>
-              ))}
-            </Select>
-          </Field>
+              {labels.counter(count)}
+            </Text>
+            <Button variant="accent" type="submit" disabled={!canSubmit}>
+              {busy ? (
+                <>
+                  <Spinner size="sm" label={labels.submitting} />
+                  {labels.submitting}
+                </>
+              ) : (
+                labels.submit
+              )}
+            </Button>
+          </div>
         </div>
-      </details>
+      </div>
+      {count > warnAt ? <Note variant="warning" size="small">{labels.warning(warnAt)}</Note> : null}
       {error ? (
         <ErrorMessage size="small" action={error.action} reference={error.reference}>
           {error.message}
         </ErrorMessage>
       ) : null}
-      <div className={styles.actions}>
-        <Button
-          variant="accent"
-          type="submit"
-          disabled={values.text.trim() === "" || status === "submitting"}
-        >
-          {status === "submitting" ? (
-            <>
-              <Spinner size="sm" label={labels.submitting} />
-              {labels.submitting}
-            </>
-          ) : (
-            labels.submit
-          )}
-        </Button>
-      </div>
     </form>
   );
 }
