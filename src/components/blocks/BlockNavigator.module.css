@@ -1,0 +1,61 @@
+.nav {
+  position: absolute;
+  top: var(--ds-spacing-8);
+  left: var(--ds-spacing-8);
+  z-index: 4;
+  max-width: calc(100% - var(--ds-spacing-16));
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-surface);
+  font-family: var(--ds-font-sans);
+  font-size: 0.875rem;
+}
+
+/* Visually hidden until focused, but still in the accessibility tree and the tab order. */
+.hidden {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  clip-path: inset(50%);
+}
+
+.list {
+  max-height: 40vh;
+  margin: 0;
+  padding: var(--ds-spacing-4);
+  overflow-y: auto;
+  list-style: none;
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+  border-radius: var(--ds-radius-lg);
+}
+
+.option {
+  /* Reserved on every row, so marking the selected one never shifts the text. */
+  border-inline-start: 3px solid transparent;
+  padding: var(--ds-spacing-4) var(--ds-spacing-8);
+  border-radius: var(--ds-spacing-4);
+  color: var(--ds-text);
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nested {
+  padding-inline-start: var(--ds-spacing-24);
+}
+
+.kind {
+  color: var(--ds-text-muted);
+}
+
+.active {
+  background: var(--ds-surface-deep);
+}
+
+.option[aria-selected="true"] {
+  font-weight: 600;
+  border-inline-start-color: var(--ds-accent);
+}

@@ -1,0 +1,234 @@
+.layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: var(--ds-spacing-12);
+  pointer-events: none;
+}
+
+.outline {
+  position: absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.hover {
+  outline: 1px solid var(--ds-border-strong);
+  outline-offset: -1px;
+}
+
+.selected {
+  outline: 2px solid var(--ds-accent);
+  outline-offset: -2px;
+}
+
+.tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: calc(100% - 7.5rem);
+  padding: 2px var(--ds-spacing-8);
+  overflow: hidden;
+  border-radius: 0 0 var(--ds-spacing-8) 0;
+  background: var(--ds-surface);
+  color: var(--ds-text);
+  font-family: var(--ds-font-sans);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selected .tag {
+  background: var(--ds-accent);
+  color: var(--ds-on-accent);
+}
+
+.toolbar {
+  position: absolute;
+  top: var(--ds-spacing-4);
+  right: var(--ds-spacing-4);
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-spacing-8);
+  background: var(--ds-surface);
+  pointer-events: auto;
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-spacing-8);
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0 var(--ds-spacing-4);
+  border: 0;
+  border-radius: var(--ds-spacing-4);
+  background: transparent;
+  color: var(--ds-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.action:hover:not(:disabled) {
+  background: var(--ds-surface-deep);
+}
+
+.action:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.action:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.actionText {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.badge {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 var(--ds-spacing-4);
+  border: 1px solid var(--ds-border-strong);
+  border-radius: 999px;
+  background: var(--ds-surface);
+  color: var(--ds-text);
+  font-family: var(--ds-font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  transform: translate(calc(-100% - var(--ds-spacing-4)), calc(-100% - var(--ds-spacing-4)));
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.badge:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.veil {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-spacing-8);
+  background: color-mix(in srgb, var(--ds-canvas) 72%, transparent);
+  color: var(--ds-text);
+  font-family: var(--ds-font-sans);
+  font-size: 0.875rem;
+  pointer-events: auto;
+}
+
+.updated {
+  position: absolute;
+  box-sizing: border-box;
+  outline: 2px solid var(--ds-accent);
+  outline-offset: -2px;
+  background: color-mix(in srgb, var(--ds-accent) 14%, transparent);
+  animation: updated 1.2s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes updated {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion: no fade, only the outline for the same time. */
+@media (prefers-reduced-motion: reduce) {
+  .updated {
+    background: transparent;
+    animation: updated-step 1.2s steps(1, end) forwards;
+  }
+
+  @keyframes updated-step {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+.bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 6;
+  display: grid;
+  gap: var(--ds-spacing-8);
+  padding: var(--ds-spacing-8) var(--ds-spacing-16) calc(var(--ds-spacing-8) + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--ds-border);
+  background: var(--ds-surface);
+  font-family: var(--ds-font-sans);
+}
+
+.barName {
+  overflow: hidden;
+  color: var(--ds-text-muted);
+  font-size: 0.8125rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.barActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-8);
+}
+
+.barActions .action {
+  flex: 1 1 auto;
+  min-height: 2.75rem;
+  padding: 0 var(--ds-spacing-12);
+  border: 1px solid var(--ds-border);
+  font-size: 0.875rem;
+}
+
+.barActions .actionText {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Above the block when there is room, so it never covers the block's own heading. */
+.tagAbove {
+  top: auto;
+  bottom: 100%;
+  border-radius: var(--ds-spacing-8) var(--ds-spacing-8) 0 0;
+}
