@@ -1,6 +1,6 @@
 # Design system index
 
-Start here. This file says where things live; it does not duplicate them. Imported in code as `@ds/*` (tsconfig path to this folder).
+Start here. This file says where things live; it does not duplicate them. A condensed link list for LLMs is in `llms.txt`. Imported in code as `@ds/*` (tsconfig path to this folder).
 
 ## Where things live
 
