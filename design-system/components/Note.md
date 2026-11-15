@@ -33,3 +33,7 @@ estado: no añadas un botón de cierre ad hoc.
 ## Cuándo usarlo y cuándo no
 Una Note por concepto; no apiles varias en una tarjeta ni añadas un segundo botón junto a la acción. Para
 errores de sección o de ruta usa `ErrorMessage`; para validación de campo, el `error` de `Field`.
+
+## Estilo Paper
+
+Radio `--ds-paper-radius-lg` y texto `ui` (15/24). Los tonos success/warning/error usan los roles `success-*`, `warning-*` y `danger-*` (borde, icono y, en `fill`, el fondo `*-subtle`); en Studio los valores son idénticos a los anteriores. En Paper, `fill` default usa `--ds-control` y `secondary` usa `--ds-surface-deep`. Las reglas Paper usan `@scope` (de `data-ds-style="paper"` hasta un `data-ds-style="studio"` anidado), así que un subárbol Studio dentro de Paper conserva su aspecto.

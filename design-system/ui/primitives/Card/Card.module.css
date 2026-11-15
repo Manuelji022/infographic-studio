@@ -33,3 +33,10 @@
   padding-top: var(--ds-spacing-16);
 }
 .inverse .footer { border-color: color-mix(in srgb, var(--ds-text-inverse) 35%, transparent); }
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .card {
+    border-radius: var(--ds-paper-radius-5xl);
+    padding: var(--ds-spacing-32);
+  }
+}

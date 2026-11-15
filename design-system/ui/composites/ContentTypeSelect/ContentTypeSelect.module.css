@@ -23,7 +23,7 @@
 .trigger:hover:not(:disabled),
 .trigger[aria-expanded="true"] {
   border-color: var(--ds-border);
-  background: var(--ds-surface-deep);
+  background: var(--ds-control-hover);
 }
 
 .trigger:focus-visible,
@@ -33,7 +33,7 @@
 }
 
 .trigger:disabled {
-  color: var(--ds-text-muted);
+  color: var(--ds-text-disabled);
   cursor: not-allowed;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .active {
-  background: var(--ds-surface-deep);
+  background: var(--ds-control-hover);
 }
 
 .optionLabel {
@@ -87,4 +87,25 @@
   font-family: var(--ds-type-caption-family);
   font-size: var(--ds-type-caption-size);
   line-height: var(--ds-type-caption-leading);
+}
+
+/* Paper style */
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .trigger:hover:not(:disabled),
+  :scope .trigger[aria-expanded="true"] {
+    border-color: var(--ds-border-strong);
+  }
+
+  :scope .trigger {
+    border-radius: var(--ds-paper-radius-lg);
+  }
+
+  :scope .list {
+    border-radius: var(--ds-paper-radius-2xl);
+    background: var(--ds-surface-overlay);
+  }
+
+  :scope .option {
+    border-radius: var(--ds-paper-radius-lg);
+  }
 }

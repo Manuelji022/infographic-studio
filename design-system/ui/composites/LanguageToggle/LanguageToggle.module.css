@@ -30,7 +30,7 @@
 .trigger:hover,
 .root:has(.panel:popover-open) .trigger,
 .item:hover {
-  background: var(--ds-surface-deep);
+  background: var(--ds-control-hover);
 }
 
 .trigger:focus-visible,
@@ -51,7 +51,7 @@
   padding: var(--ds-spacing-8);
   border: 1px solid var(--ds-border);
   border-radius: var(--ds-radius-lg);
-  background: var(--ds-surface);
+  background: var(--ds-surface-overlay);
   color: var(--ds-text);
   position: fixed;
   top: anchor(bottom);
@@ -94,5 +94,21 @@
     right: var(--ds-spacing-16);
     left: auto;
     margin: 0;
+  }
+}
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .trigger {
+    border-radius: var(--ds-paper-radius-2xl);
+  }
+
+  :scope .panel {
+    border-radius: var(--ds-paper-radius-lg);
+  }
+
+  :scope .item {
+    padding: 10px var(--ds-spacing-12);
+    border-radius: var(--ds-paper-radius-md);
+    font-size: var(--ds-type-ui-size);
   }
 }

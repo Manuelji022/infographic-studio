@@ -179,5 +179,97 @@
       "$type": "color",
       "$description": "Theme dark on-data 6 foreground color."
     }
+  },
+  "control": {
+    "$value": "{color.slate-raised}",
+    "$type": "color"
+  },
+  "control-hover": {
+    "$value": "{color.slate-medium}",
+    "$type": "color"
+  },
+  "control-active": {
+    "$value": "{color.slate-medium}",
+    "$type": "color"
+  },
+  "surface-overlay": {
+    "$value": "{color.slate-raised}",
+    "$type": "color"
+  },
+  "surface-inverse-hover": {
+    "$value": "{color.ivory-medium}",
+    "$type": "color"
+  },
+  "text-subtle": {
+    "$value": "{color.cloud-medium}",
+    "$type": "color"
+  },
+  "text-disabled": {
+    "$value": "{color.cloud-medium}",
+    "$type": "color"
+  },
+  "border-subtle": {
+    "$value": "{color.slate-medium}",
+    "$type": "color"
+  },
+  "accent-active": {
+    "$value": "{color.clay-deep}",
+    "$type": "color"
+  },
+  "accent-subtle": {
+    "$value": "{color.manilla-night}",
+    "$type": "color"
+  },
+  "accent-text": {
+    "$value": "{color.ivory-light}",
+    "$type": "color"
+  },
+  "accent-border": {
+    "$value": "{color.cloud-dark}",
+    "$type": "color"
+  },
+  "danger-hover": {
+    "$value": "{color.red-deep}",
+    "$type": "color"
+  },
+  "danger-subtle": {
+    "$value": "{color.slate-raised}",
+    "$type": "color"
+  },
+  "danger-border": {
+    "$value": "{color.red}",
+    "$type": "color"
+  },
+  "success": {
+    "$value": "{color.olive-light}",
+    "$type": "color"
+  },
+  "success-text": {
+    "$value": "{color.olive-light}",
+    "$type": "color"
+  },
+  "success-subtle": {
+    "$value": "{color.slate-raised}",
+    "$type": "color"
+  },
+  "success-border": {
+    "$value": "{color.olive-light}",
+    "$type": "color"
+  },
+  "warning": {
+    "$value": "{color.ochre-light}",
+    "$type": "color"
+  },
+  "warning-text": {
+    "$value": "{color.ochre-light}",
+    "$type": "color"
+  },
+  "warning-subtle": {
+    "$value": "{color.slate-raised}",
+    "$type": "color"
+  },
+  "warning-border": {
+    "$value": "{color.ochre-light}",
+    "$type": "color"
   }
 }

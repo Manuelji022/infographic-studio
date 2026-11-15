@@ -10,6 +10,9 @@ const tokenFiles = [
   'semantic.tokens.json',
   'themes/light.tokens.json',
   'themes/dark.tokens.json',
+  'styles/paper/base.tokens.json',
+  'styles/paper/light.tokens.json',
+  'styles/paper/dark.tokens.json',
 ];
 
 function isAlias(value) {
@@ -47,7 +50,9 @@ export function flattenGroups(documents) {
   for (const { file, document } of documents) {
     const prefix = file.startsWith('themes/')
       ? `themes.${path.basename(file).split('.')[0]}`
-      : '';
+      : file.startsWith('styles/')
+        ? file.replace(/\.tokens\.json$/, '').replaceAll('/', '.')
+        : '';
     visit(document, prefix, file);
   }
 
@@ -57,7 +62,8 @@ export function flattenGroups(documents) {
 function validateValue(value, type, token) {
   let valid = true;
   if (type === 'color') {
-    valid = typeof value === 'string' && /^#[\da-f]{6}(?:[\da-f]{2})?$/i.test(value);
+    valid = typeof value === 'string'
+      && /^(?:#[\da-f]{6}(?:[\da-f]{2})?|oklch\((?:\d+(?:\.\d+)?)% 0 0\))$/i.test(value);
   } else if (type === 'dimension') {
     // Layout dimensions also allow the contract's clamp() expressions.
     valid = typeof value === 'string'
@@ -76,6 +82,14 @@ function validateValue(value, type, token) {
 }
 
 function compareThemeKeys(documents) {
+  const paperThemes = documents.filter((document) => /styles\/paper\/(light|dark)\.tokens\.json$/.test(document.file));
+  if (paperThemes.length === 2) {
+    const keys = paperThemes.map((document) => flattenGroups([document])
+      .map((token) => token.path.replace(/^styles\.paper\.(light|dark)\./, '')).sort());
+    if (JSON.stringify(keys[0]) !== JSON.stringify(keys[1])) {
+      throw new Error('Paper light/dark token keys differ');
+    }
+  }
   const themes = documents.filter((document) => document.file.startsWith('themes/'));
   if (themes.length !== 2) return;
 

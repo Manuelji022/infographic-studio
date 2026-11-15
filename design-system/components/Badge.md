@@ -23,3 +23,7 @@ El elemento es un `span` sin semántica de control. El texto debe identificar la
 ## Cuándo usarlo y cuándo no
 
 Úsalo para metadatos compactos. No lo uses como botón ni para comunicar mensajes extensos.
+
+## Estilo Paper
+
+Radio `--ds-paper-radius-full` (píldora). En Paper la variante `solid` usa `--ds-control`; Studio mantiene `--ds-surface-deep`. Tipografía `caption-medium` y relleno 4/8 ya coincidían. Las reglas Paper usan `@scope` (de `data-ds-style="paper"` hasta un `data-ds-style="studio"` anidado), así que un subárbol Studio dentro de Paper conserva su aspecto.

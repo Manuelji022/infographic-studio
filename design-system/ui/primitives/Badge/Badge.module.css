@@ -19,3 +19,13 @@
 .solid {
   background: var(--ds-surface-deep);
 }
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .solid {
+    background: var(--ds-control);
+  }
+
+  :scope .base {
+    border-radius: var(--ds-paper-radius-full);
+  }
+}

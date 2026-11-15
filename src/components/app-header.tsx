@@ -3,15 +3,18 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { getMessages, type Locale } from "../../messages";
-import { AppHeader, LanguageToggle, UserMenu } from "@ds/ui";
+import { AppHeader, LanguageToggle, StyleToggle, UserMenu } from "@ds/ui";
 import { authClient } from "../lib/auth-client";
 import { writeLocaleCookie } from "../lib/locale";
+import { writeStyleCookie, type DesignStyle } from "../lib/style";
 
 export function AppHeaderShell({
   locale,
+  style,
   user,
 }: {
   locale: Locale;
+  style: DesignStyle;
   user: { name: string; email: string } | null;
 }) {
   const messages = getMessages(locale);
@@ -47,6 +50,18 @@ export function AppHeaderShell({
       items={items}
       actions={
         <>
+          <StyleToggle
+            label={messages.styleToggle}
+            value={style}
+            options={[
+              { value: "studio", label: messages.styleStudio },
+              { value: "paper", label: messages.stylePaper },
+            ]}
+            onChange={(value) => {
+              writeStyleCookie(value as DesignStyle);
+              router.refresh();
+            }}
+          />
           <LanguageToggle
             label={messages.languageToggle}
             value={locale}

@@ -78,3 +78,9 @@
   gap: var(--ds-spacing-4);
   color: var(--ds-text-muted);
 }
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .card {
+    border-radius: var(--ds-paper-radius-5xl);
+  }
+}

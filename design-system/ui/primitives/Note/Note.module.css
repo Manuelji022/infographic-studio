@@ -29,7 +29,7 @@
 }
 
 .fill {
-  background: color-mix(in srgb, var(--note-border) 14%, var(--ds-surface));
+  background: var(--note-fill, color-mix(in srgb, var(--note-border) 14%, var(--ds-surface)));
 }
 
 .secondary {
@@ -39,18 +39,21 @@
 }
 
 .success {
-  --note-border: var(--ds-data-4);
-  --note-icon: var(--ds-data-4);
+  --note-border: var(--ds-success-border);
+  --note-icon: var(--ds-success-text);
+  --note-tone: var(--ds-success-subtle);
 }
 
 .warning {
-  --note-border: var(--ds-data-3);
-  --note-icon: var(--ds-data-3);
+  --note-border: var(--ds-warning-border);
+  --note-icon: var(--ds-warning-text);
+  --note-tone: var(--ds-warning-subtle);
 }
 
 .error {
-  --note-border: var(--ds-danger);
+  --note-border: var(--ds-danger-border);
   --note-icon: var(--ds-danger-text);
+  --note-tone: var(--ds-danger-subtle);
   --note-text: var(--ds-danger-text);
 }
 
@@ -78,6 +81,29 @@
   flex: none;
   margin-inline-start: auto;
   align-self: center;
+}
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .note {
+    border-radius: var(--ds-paper-radius-lg);
+    font-family: var(--ds-type-ui-family);
+    font-size: var(--ds-type-ui-size);
+    line-height: var(--ds-type-ui-leading);
+  }
+
+  :scope .fill {
+    --note-fill: var(--ds-control);
+  }
+
+  :scope .fill.secondary {
+    --note-fill: var(--ds-surface-deep);
+  }
+
+  :scope .fill.success,
+  :scope .fill.warning,
+  :scope .fill.error {
+    --note-fill: var(--note-tone);
+  }
 }
 
 @media (max-width: 480px) {

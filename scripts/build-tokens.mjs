@@ -42,7 +42,7 @@ function isSemantic(token) {
 function typographyDeclarations(typography) {
   const declarations = [];
   for (const token of typography) {
-    const role = token.path;
+    const role = token.path.replace(/^styles\.paper\.base\.typography\./, '');
     const value = token.$value;
     const familyReference = value.fontFamily.slice(1, -1).replaceAll('.', '-');
     const family = `var(--ds-${familyReference})`;
@@ -75,7 +75,7 @@ function typographyDeclarations(typography) {
 function typeClasses(typography) {
   const lines = [];
   for (const token of typography) {
-    const role = token.path;
+    const role = token.path.replace(/^styles\.paper\.base\.typography\./, '');
     lines.push(
       `.ds-type-${role} {`,
       `  font-family: var(--ds-type-${role}-family);`,
@@ -93,7 +93,7 @@ function typeClasses(typography) {
 function buildTokensCss(tokens) {
   const primitives = tokens.filter(isPrimitive);
   const semantic = tokens.filter(isSemantic);
-  const typography = tokens.filter((token) => token.$type === 'typography');
+  const typography = tokens.filter((token) => token.file === 'typography.tokens.json');
   const lines = [
     header,
     ':root {',
@@ -112,46 +112,61 @@ function buildTokensCss(tokens) {
   return lines.join('\n');
 }
 
-function themeTokens(tokens, name) {
-  return tokens.filter((token) => token.file === `themes/${name}.tokens.json`);
+function themeTokens(tokens, name, style = 'studio') {
+  const file = style === 'studio' ? `themes/${name}.tokens.json`
+    : `styles/paper/${name}.tokens.json`;
+  return tokens.filter((token) => token.file === file
+    && (style === 'studio' || token.path.includes('.roles.')));
 }
 
-function themeBlock(tokens, name, selector) {
-  const declarations = themeTokens(tokens, name).map((token) => {
-    const themePath = token.path.replace(/^themes\.(?:light|dark)\./, '');
+function themeBlock(tokens, values, name, selector, style = 'studio') {
+  const declarations = themeTokens(tokens, name, style).map((token) => {
+    const themePath = token.path.replace(/^themes\.(?:light|dark)\.|^styles\.paper\.(?:light|dark)\.roles\./, '');
     const variable = themePath.replaceAll('.', '-');
-    return `  --ds-${variable}: ${cssValue(token)};`;
+    const value = style === 'paper' ? values[token.path] : undefined;
+    return `  --ds-${variable}: ${cssValue(value === undefined ? token : { ...token, $value: value })};`;
   });
-  return [
-    `${selector} {`,
-    `  color-scheme: ${name};`,
-    ...declarations,
-    '}',
-  ].join('\n');
+  return [`${selector} {`, `  color-scheme: ${name};`, ...declarations, '}'].join('\n');
 }
 
-function buildThemesCss(tokens) {
-  const automaticDark = themeBlock(tokens, 'dark', '[data-ds-theme="auto"]')
-    .split('\n')
-    .map((line) => `  ${line}`)
-    .join('\n');
-  const lines = [
-    header,
-    themeBlock(tokens, 'light', ':root'),
-    '',
-    themeBlock(tokens, 'light', '[data-ds-theme="light"]'),
-    '',
-    themeBlock(tokens, 'dark', '[data-ds-theme="dark"]'),
-    '',
-    '@media (prefers-color-scheme: dark) {',
-    automaticDark,
-    '}',
-    '',
-  ];
+function buildThemesCss(tokens, values) {
+  const block = (name, selector, style) => themeBlock(tokens, values, name, selector, style);
+  const media = (contents) => '@media (prefers-color-scheme: dark) {\n'
+    + contents.split('\n').map((line) => `  ${line}`).join('\n') + '\n}';
+  const lines = [header, block('light', ':root'), '',
+    block('light', '[data-ds-theme="light"]'), '',
+    block('dark', '[data-ds-theme="dark"]'), '',
+    media(block('dark', '[data-ds-theme="auto"]')), ''];
+  for (const style of ['paper', 'studio']) {
+    const scope = `[data-ds-style="${style}"]`;
+    // Three attributes ensure an element's own style/theme beats an ancestor's
+    // two-attribute descendant selector, including the later Studio reset.
+    const own = (theme) => `${scope}[data-ds-theme="${theme}"][data-ds-theme]`;
+    lines.push(block('light', `${scope},\n${scope} [data-ds-theme="light"],\n${scope} [data-ds-theme="auto"],\n${own('light')},\n${own('auto')}`, style), '',
+      block('dark', `${scope} [data-ds-theme="dark"],\n${own('dark')}`, style), '',
+      media(block('dark', `${scope} [data-ds-theme="auto"],\n${own('auto')}`, style)), '');
+  }
   return lines.join('\n');
 }
 
-function outputFiles(tokens) {
+function buildStylesCss(tokens) {
+  const paper = tokens.filter((token) => token.file === 'styles/paper/base.tokens.json');
+  const typography = paper.filter((token) => token.$type === 'typography');
+  const primitives = paper.filter((token) => token.$type !== 'typography');
+  const variable = (token) => `--ds-${token.path.replace('styles.paper.base.', '').replaceAll('.', '-')}`;
+  const paperDeclarations = primitives.map((token) => `  ${variable(token)}: ${cssValue(token)};`);
+  const resetDeclarations = primitives.map((token) => {
+    const original = tokens.find((item) => item.path === token.path.replace('styles.paper.base.', ''));
+    return `  ${variable(token)}: ${original ? cssValue(original) : 'initial'};`;
+  });
+  return [header, '[data-ds-style="paper"] {', ...paperDeclarations,
+    ...typographyDeclarations(typography), '}', '', '[data-ds-style="studio"] {',
+    ...resetDeclarations,
+    ...typographyDeclarations(tokens.filter((token) => token.file === 'typography.tokens.json')),
+    '}', ''].join('\n');
+}
+
+function outputFiles(tokens, values) {
   return new Map([
     [
       'design-system/tokens/build/tokens.css',
@@ -159,8 +174,9 @@ function outputFiles(tokens) {
     ],
     [
       'design-system/tokens/build/themes.css',
-      buildThemesCss(tokens),
+      buildThemesCss(tokens, values),
     ],
+    ['design-system/tokens/build/styles.css', buildStylesCss(tokens)],
   ]);
 }
 
@@ -182,9 +198,9 @@ function writeOrCheck(files, checkOnly) {
 }
 
 function main() {
-  const { tokens } = resolveTokens(loadTokenFiles());
+  const { tokens, values } = resolveTokens(loadTokenFiles());
   const checkOnly = process.argv.includes('--check');
-  writeOrCheck(outputFiles(tokens), checkOnly);
+  writeOrCheck(outputFiles(tokens, values), checkOnly);
 }
 
 try {

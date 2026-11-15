@@ -32,3 +32,9 @@ mediante `aria-labelledby`. No se intercepta Tab.
 ## Cuándo usarlo y cuándo no
 Úsalo para una tarea o decisión que interrumpe el flujo. No lo uses para
 contenido persistente, avisos breves ni paneles no modales.
+
+## Estilo Paper
+Con `data-ds-style="paper"` el panel usa `--ds-surface-overlay` (el diálogo
+flota), borde `--ds-border`, radio 24px (`--ds-paper-radius-5xl`) y relleno
+fijo de 32px. Título, pie (margen 24px, separación 12px) y fondo atenuado no
+cambian. En Studio el aspecto es idéntico al anterior. Las reglas Paper usan `@scope` (de `data-ds-style="paper"` hasta un `data-ds-style="studio"` anidado), así que un subárbol Studio dentro de Paper conserva su aspecto.

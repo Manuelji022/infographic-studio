@@ -29,3 +29,7 @@ Región `aria-live` (polite por defecto). La referencia es un `<details>` nativo
 Úsalo para fallos de una sección o del envío de un formulario. Para validación de campo usa el `error` de
 `Field`. Redacta qué pasó y el siguiente paso, sin «Oops» ni «Algo salió mal»; «No se pudo…» para el
 usuario y «Error al…» para el sistema. No reintentes en segundo plano.
+
+## Estilo Paper
+Sin cambios de geometría: el componente no tiene contenedor y la tipografía (Geist, 13/15/20 px) y los
+colores `danger-text` y `text-muted` salen de los tokens del estilo.

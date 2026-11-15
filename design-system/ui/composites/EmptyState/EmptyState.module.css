@@ -23,3 +23,10 @@
 .action {
   margin-top: var(--ds-spacing-8);
 }
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .state {
+    border-color: var(--ds-border-strong);
+    border-radius: var(--ds-paper-radius-2xl);
+  }
+}
