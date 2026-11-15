@@ -5,3 +5,10 @@
   border-radius: var(--ds-radius-card);
   background: var(--ds-surface);
 }
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .state {
+    border-color: var(--ds-border-strong);
+    border-radius: var(--ds-paper-radius-3xl);
+  }
+}

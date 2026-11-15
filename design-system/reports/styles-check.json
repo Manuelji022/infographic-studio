@@ -1,0 +1,438 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "html default",
+      "expected": {
+        "--ds-surface": "#faf9f5",
+        "--ds-text": "#141413",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#faf9f5",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      },
+      "passed": true,
+      "actualColorScheme": "light",
+      "actual": {
+        "--ds-surface": "#faf9f5",
+        "--ds-text": "#141413",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#faf9f5",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      }
+    },
+    {
+      "name": "html auto without style under emulated light",
+      "theme": "auto",
+      "scheme": "light",
+      "expected": {
+        "--ds-surface": "#faf9f5",
+        "--ds-text": "#141413",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#faf9f5",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      },
+      "colorScheme": "light",
+      "passed": true,
+      "actualColorScheme": "light",
+      "actual": {
+        "--ds-surface": "#faf9f5",
+        "--ds-text": "#141413",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#faf9f5",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      }
+    },
+    {
+      "name": "html auto without style under emulated dark",
+      "theme": "auto",
+      "scheme": "dark",
+      "expected": {
+        "--ds-surface": "#1f1f1d",
+        "--ds-text": "#faf9f5",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#1f1f1d",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      },
+      "colorScheme": "dark",
+      "passed": true,
+      "actualColorScheme": "dark",
+      "actual": {
+        "--ds-surface": "#1f1f1d",
+        "--ds-text": "#faf9f5",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#1f1f1d",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      }
+    },
+    {
+      "name": "paper dark / child auto under emulated light",
+      "style": "paper",
+      "theme": "dark",
+      "target": "auto",
+      "scheme": "light",
+      "expected": {
+        "--ds-surface": "#FFFFFF",
+        "--ds-text": "#000000DF",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#0000000F",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      },
+      "colorScheme": "light",
+      "passed": true,
+      "actualColorScheme": "light",
+      "actual": {
+        "--ds-surface": "#FFFFFF",
+        "--ds-text": "#000000DF",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#0000000F",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      }
+    },
+    {
+      "name": "studio dark / child auto under emulated light",
+      "style": "studio",
+      "theme": "dark",
+      "target": "auto",
+      "scheme": "light",
+      "expected": {
+        "--ds-surface": "#faf9f5",
+        "--ds-text": "#141413",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#faf9f5",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      },
+      "colorScheme": "light",
+      "passed": true,
+      "actualColorScheme": "light",
+      "actual": {
+        "--ds-surface": "#faf9f5",
+        "--ds-text": "#141413",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#faf9f5",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      }
+    },
+    {
+      "name": "studio / nested paper light / child paper dark",
+      "style": "studio",
+      "theme": "light",
+      "target": "nested-paper-dark",
+      "expected": {
+        "--ds-surface": "#111111",
+        "--ds-text": "#FFFFFFED",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#FFFFFF12",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      },
+      "passed": true,
+      "actualColorScheme": "dark",
+      "actual": {
+        "--ds-surface": "#111111",
+        "--ds-text": "#FFFFFFED",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#FFFFFF12",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      }
+    },
+    {
+      "name": "html paper light",
+      "style": "paper",
+      "theme": "light",
+      "expected": {
+        "--ds-surface": "#FFFFFF",
+        "--ds-text": "#000000DF",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#0000000F",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      },
+      "passed": true,
+      "actualColorScheme": "light",
+      "actual": {
+        "--ds-surface": "#FFFFFF",
+        "--ds-text": "#000000DF",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#0000000F",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      }
+    },
+    {
+      "name": "html paper dark",
+      "style": "paper",
+      "theme": "dark",
+      "expected": {
+        "--ds-surface": "#111111",
+        "--ds-text": "#FFFFFFED",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#FFFFFF12",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      },
+      "passed": true,
+      "actualColorScheme": "dark",
+      "actual": {
+        "--ds-surface": "#111111",
+        "--ds-text": "#FFFFFFED",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#FFFFFF12",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      }
+    },
+    {
+      "name": "paper html / child dark theme",
+      "style": "paper",
+      "theme": "light",
+      "target": "dark",
+      "expected": {
+        "--ds-surface": "#111111",
+        "--ds-text": "#FFFFFFED",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#FFFFFF12",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      },
+      "passed": true,
+      "actualColorScheme": "dark",
+      "actual": {
+        "--ds-surface": "#111111",
+        "--ds-text": "#FFFFFFED",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#FFFFFF12",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      }
+    },
+    {
+      "name": "paper html / child studio dark",
+      "style": "paper",
+      "theme": "light",
+      "target": "studio-dark",
+      "expected": {
+        "--ds-surface": "#1f1f1d",
+        "--ds-text": "#faf9f5",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#1f1f1d",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      },
+      "passed": true,
+      "actualColorScheme": "dark",
+      "actual": {
+        "--ds-surface": "#1f1f1d",
+        "--ds-text": "#faf9f5",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#1f1f1d",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      }
+    },
+    {
+      "name": "studio html / child paper light",
+      "style": "studio",
+      "theme": "dark",
+      "target": "paper-light",
+      "expected": {
+        "--ds-surface": "#FFFFFF",
+        "--ds-text": "#000000DF",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#0000000F",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      },
+      "passed": true,
+      "actualColorScheme": "light",
+      "actual": {
+        "--ds-surface": "#FFFFFF",
+        "--ds-text": "#000000DF",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#0000000F",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      }
+    },
+    {
+      "name": "paper auto under emulated dark",
+      "style": "paper",
+      "theme": "auto",
+      "scheme": "dark",
+      "expected": {
+        "--ds-surface": "#111111",
+        "--ds-text": "#FFFFFFED",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#FFFFFF12",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      },
+      "passed": true,
+      "actualColorScheme": "dark",
+      "actual": {
+        "--ds-surface": "#111111",
+        "--ds-text": "#FFFFFFED",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#FFFFFF12",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      }
+    },
+    {
+      "name": "paper html / child auto under emulated dark",
+      "style": "paper",
+      "theme": "light",
+      "target": "auto",
+      "scheme": "dark",
+      "expected": {
+        "--ds-surface": "#111111",
+        "--ds-text": "#FFFFFFED",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#FFFFFF12",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      },
+      "colorScheme": "dark",
+      "passed": true,
+      "actualColorScheme": "dark",
+      "actual": {
+        "--ds-surface": "#111111",
+        "--ds-text": "#FFFFFFED",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#FFFFFF12",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      }
+    },
+    {
+      "name": "paper dark / child studio light",
+      "style": "paper",
+      "theme": "dark",
+      "target": "studio-light",
+      "expected": {
+        "--ds-surface": "#faf9f5",
+        "--ds-text": "#141413",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#faf9f5",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      },
+      "passed": true,
+      "actualColorScheme": "light",
+      "actual": {
+        "--ds-surface": "#faf9f5",
+        "--ds-text": "#141413",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#faf9f5",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      }
+    },
+    {
+      "name": "paper dark / child studio auto under emulated light",
+      "style": "paper",
+      "theme": "dark",
+      "target": "studio-auto",
+      "expected": {
+        "--ds-surface": "#faf9f5",
+        "--ds-text": "#141413",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#faf9f5",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      },
+      "passed": true,
+      "actualColorScheme": "light",
+      "actual": {
+        "--ds-surface": "#faf9f5",
+        "--ds-text": "#141413",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#faf9f5",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      }
+    },
+    {
+      "name": "studio dark / child paper auto under emulated light",
+      "style": "studio",
+      "theme": "dark",
+      "target": "paper-auto",
+      "expected": {
+        "--ds-surface": "#FFFFFF",
+        "--ds-text": "#000000DF",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#0000000F",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      },
+      "passed": true,
+      "actualColorScheme": "light",
+      "actual": {
+        "--ds-surface": "#FFFFFF",
+        "--ds-text": "#000000DF",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#0000000F",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      }
+    },
+    {
+      "name": "paper dark / child paper light",
+      "style": "paper",
+      "theme": "dark",
+      "target": "paper-light",
+      "expected": {
+        "--ds-surface": "#FFFFFF",
+        "--ds-text": "#000000DF",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#0000000F",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      },
+      "passed": true,
+      "actualColorScheme": "light",
+      "actual": {
+        "--ds-surface": "#FFFFFF",
+        "--ds-text": "#000000DF",
+        "--ds-accent": "#0D74CE",
+        "--ds-control": "#0000000F",
+        "--ds-type-body-family": "Geist, system-ui, sans-serif",
+        "--ds-type-ui-size": "15px"
+      }
+    },
+    {
+      "name": "studio html auto under emulated dark",
+      "style": "studio",
+      "theme": "auto",
+      "scheme": "dark",
+      "expected": {
+        "--ds-surface": "#1f1f1d",
+        "--ds-text": "#faf9f5",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#1f1f1d",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      },
+      "passed": true,
+      "actualColorScheme": "dark",
+      "actual": {
+        "--ds-surface": "#1f1f1d",
+        "--ds-text": "#faf9f5",
+        "--ds-accent": "#d97757",
+        "--ds-control": "#1f1f1d",
+        "--ds-type-body-family": "\"Source Serif 4\", ui-serif, Georgia, serif",
+        "--ds-type-ui-size": "16px"
+      }
+    }
+  ]
+}

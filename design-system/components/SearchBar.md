@@ -27,3 +27,6 @@ limpieza recibe `clearLabel`. Al limpiar se devuelve el foco al campo.
 ## Cuándo usarlo y cuándo no
 Úsalo para búsquedas controladas con una consulta de texto. No lo uses para formularios de filtros
 o búsquedas que no tengan un envío explícito.
+
+## Estilo Paper
+Sin cambios propios: la barra solo organiza el campo y el botón, cuyo aspecto Paper (campo de 40 px de alto y botón de 44 px, ambos con radio de 6 px) pertenece a las primitivas. Se mantienen los roles semánticos.

@@ -1,0 +1,74 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-spacing-4);
+  box-sizing: border-box;
+  height: 44px;
+  padding: 3px;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-xl);
+  background: var(--ds-surface);
+}
+
+.option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 36px;
+  padding: 0 var(--ds-spacing-12);
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-lg);
+  background: transparent;
+  color: var(--ds-text-muted);
+  cursor: pointer;
+  font-family: var(--ds-type-ui-sm-family);
+  font-size: var(--ds-type-ui-sm-size);
+  font-weight: var(--ds-type-ui-sm-weight);
+  line-height: var(--ds-type-ui-sm-leading);
+  letter-spacing: var(--ds-type-ui-sm-tracking);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .option {
+    transition: background-color 150ms ease;
+  }
+}
+
+/* The group is 44px tall; stretch each option's hit area to the full height. */
+.option::after {
+  content: "";
+  position: absolute;
+  inset: -5px 0;
+}
+
+.option:hover {
+  background: var(--ds-control-hover);
+}
+
+.option[aria-pressed="true"] {
+  background: var(--ds-surface-inverse);
+  color: var(--ds-text-inverse);
+  font-weight: var(--ds-type-ui-strong-weight);
+}
+
+.option:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .root {
+    border-radius: var(--ds-paper-radius-lg);
+  }
+
+  :scope .option {
+    border-radius: var(--ds-paper-radius-md);
+    font-size: var(--ds-type-ui-size);
+    font-weight: var(--ds-type-ui-weight);
+  }
+
+  :scope .option[aria-pressed="true"] {
+    font-weight: var(--ds-type-ui-weight);
+  }
+}

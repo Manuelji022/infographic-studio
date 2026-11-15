@@ -24,3 +24,7 @@ para lectores de pantalla.
 ## Cuándo usarlo y cuándo no
 Úsalo para procesos secuenciales de generación. No lo uses para progreso
 indeterminado sin pasos definidos.
+
+## Estilo Paper
+El conector entre marcadores pasa a `border-strong` (en Studio sigue en `border`). Marcadores,
+etiquetas y estados se leen igual en ambos estilos.

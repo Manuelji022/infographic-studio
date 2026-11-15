@@ -22,3 +22,7 @@ corresponden al consumidor.
 
 ## Cuándo usarlo y cuándo no
 Úsalo cuando una sección no tenga contenido que mostrar. No lo uses para comunicar errores.
+
+## Estilo Paper
+Contenedor con radio `--ds-paper-radius-2xl` (12 px) y borde `--ds-border-strong`; padding y separación
+se mantienen. Definido en `EmptyState.module.css` con un selector acotado a `data-ds-style="paper"`.

@@ -49,4 +49,49 @@
   stroke-linejoin: round;
   stroke-width: 1.5;
   pointer-events: none;
+}/* Paper style */
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .control {
+    height: 40px;
+    border-radius: var(--ds-paper-radius-md);
+    padding: 0 32px 0 12px;
+    background: var(--ds-surface);
+    font-size: var(--ds-type-ui-sm-size);
+    line-height: var(--ds-type-ui-sm-leading);
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+  }
+
+  :scope .control:hover:not(:disabled):not(:focus-visible):not([aria-invalid="true"]) {
+    border-color: var(--ds-text-subtle);
+  }
+
+  :scope .control:focus-visible {
+    outline: none;
+    border-color: var(--ds-focus-ring);
+    box-shadow: 0 0 0 1px var(--ds-focus-ring);
+  }
+
+  :scope .control:disabled {
+    border-color: var(--ds-border-strong);
+    background:
+      linear-gradient(var(--ds-control), var(--ds-control)),
+      var(--ds-surface);
+    color: var(--ds-text-disabled);
+  }
+
+  :scope .control:disabled::placeholder {
+    color: var(--ds-text-disabled);
+  }
+
+  :scope .control[aria-invalid="true"] {
+    border: 1px solid var(--ds-danger);
+    padding: 0 32px 0 12px;
+    box-shadow: 0 0 0 1px var(--ds-danger);
+  }
+
+  :scope .control[aria-invalid="true"]:focus-visible {
+    border-color: var(--ds-danger);
+    box-shadow: 0 0 0 1px var(--ds-danger), 0 0 0 3px var(--ds-focus-ring);
+  }
 }

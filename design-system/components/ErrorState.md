@@ -26,3 +26,7 @@ recibida por propiedad y puede recibir el foco al aparecer.
 ## Cuándo usarlo y cuándo no
 Úsalo para errores recuperables dentro de una vista. No lo uses para errores
 que requieran navegación o confirmación modal.
+
+## Estilo Paper
+Contenedor con radio `--ds-paper-radius-3xl` (16 px) y borde `--ds-border-strong`; el padding de 32 px y
+el resto vienen de los tokens. Definido en `ErrorState.module.css` con un selector acotado a `data-ds-style="paper"`.

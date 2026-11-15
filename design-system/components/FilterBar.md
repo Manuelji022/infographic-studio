@@ -28,3 +28,6 @@ con su etiqueta mediante `Field`; el interruptor tiene como nombre `sharedLabel`
 ## Cuándo usarlo y cuándo no
 Úsalo para filtros combinables en una biblioteca. No lo uses como formulario de
 edición ni para filtros que requieren estado interno independiente.
+
+## Estilo Paper
+Sin cambios propios: la cuadrícula (16 px) y las acciones (8 px) coinciden con el marco Paper; el aspecto de selectores, interruptor y botón pertenece a las primitivas.

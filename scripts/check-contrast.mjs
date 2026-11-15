@@ -217,43 +217,52 @@ function linearize(channel) {
   return ((normalized + 0.055) / 1.055) ** 2.4;
 }
 
-/** Convert a hex color to RGB channels, ignoring alpha when supplied. */
-function parseHexColor(color) {
+/** Parse sRGB hex (including alpha) or the achromatic OKLCH Paper surfaces. */
+function parseColor(color) {
+  const neutral = /^oklch\(([\d.]+)% 0 0\)$/.exec(color);
+  if (neutral) {
+    const linear = (Number(neutral[1]) / 100) ** 3;
+    const channel = 255 * (linear <= 0.0031308 ? 12.92 * linear : 1.055 * linear ** (1 / 2.4) - 0.055);
+    return [channel, channel, channel, 1];
+  }
   if (!/^#[\da-f]{6}(?:[\da-f]{2})?$/i.test(color)) {
     throw new Error(`invalid color value ${JSON.stringify(color)}`);
   }
-  const hex = color.slice(1, 7);
-  return [0, 2, 4].map((offset) => Number.parseInt(hex.slice(offset, offset + 2), 16));
+  return [...[1, 3, 5].map((offset) => Number.parseInt(color.slice(offset, offset + 2), 16)),
+    color.length === 9 ? Number.parseInt(color.slice(7), 16) / 255 : 1];
 }
 
-/** Calculate WCAG 2.x relative luminance for a hex sRGB color. */
+function composite(color, background) {
+  return color.slice(0, 3).map((channel, index) => channel * color[3] + background[index] * (1 - color[3]));
+}
+
 function relativeLuminance(color) {
-  const [red, green, blue] = parseHexColor(color).map(linearize);
+  const [red, green, blue] = color.map(linearize);
   return (0.2126 * red) + (0.7152 * green) + (0.0722 * blue);
 }
 
-/** Calculate the WCAG contrast ratio between two hex sRGB colors. */
-function contrastRatio(firstColor, secondColor) {
-  const first = relativeLuminance(firstColor);
-  const second = relativeLuminance(secondColor);
-  const lighter = Math.max(first, second);
-  const darker = Math.min(first, second);
-  return (lighter + 0.05) / (darker + 0.05);
+function contrastRatio(firstColor, secondColor, page) {
+  const background = composite(parseColor(secondColor), parseColor(page));
+  const foreground = composite(parseColor(firstColor), background);
+  const first = relativeLuminance(foreground);
+  const second = relativeLuminance(background);
+  return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
 }
 
-function tokenColor(values, theme, token) {
-  const color = values[`themes.${theme}.${token}`];
+function tokenColor(values, theme, token, style = 'studio') {
+  const prefix = style === 'studio' ? `themes.${theme}` : `styles.paper.${theme}.roles`;
+  const color = values[`${prefix}.${token}`];
   if (typeof color !== 'string') {
     throw new Error(`themes.${theme}.${token}: expected a resolved hex color`);
   }
   return color;
 }
 
-function evaluateTheme(values, theme) {
+function evaluateTheme(values, theme, style = 'studio') {
   return contrastPairs.map((pair) => {
-    const foreground = tokenColor(values, theme, pair.foreground);
-    const background = tokenColor(values, theme, pair.background);
-    const ratio = contrastRatio(foreground, background);
+    const foreground = tokenColor(values, theme, pair.foreground, style);
+    const background = tokenColor(values, theme, pair.background, style);
+    const ratio = contrastRatio(foreground, background, tokenColor(values, theme, 'surface', style));
     return {
       ...pair,
       ratio,
@@ -339,10 +348,16 @@ function main() {
     light: evaluateTheme(values, 'light'),
     dark: evaluateTheme(values, 'dark'),
   };
-  const allRows = Object.values(results).flat();
+  const paper = { light: evaluateTheme(values, 'light', 'paper'), dark: evaluateTheme(values, 'dark', 'paper') };
+  const allRows = [...Object.values(results).flat(), ...Object.values(paper).flat()];
+  const paperReport = ['## Paper', '', 'Alpha backgrounds are composited over Paper page; alpha foregrounds over the resulting background.', '',
+    ...['light', 'dark'].flatMap((theme) => [`### Paper ${theme}`, '', markdownTable(paper[theme]), ''])].join('\n');
   fs.mkdirSync(path.dirname(reportPath), { recursive: true });
-  fs.writeFileSync(reportPath, reportContents(results));
+  fs.writeFileSync(reportPath, reportContents(results) + paperReport);
+  console.log('Studio');
   printTable(results);
+  console.log('Paper');
+  printTable(paper);
   if (allRows.some((row) => !row.passed && !row.exception)) process.exitCode = 1;
 }
 

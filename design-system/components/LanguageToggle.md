@@ -31,3 +31,6 @@ táctil mínima de 44 px.
 ## Cuándo usarlo y cuándo no
 Úsalo para elegir entre idiomas disponibles. No lo uses para navegación entre páginas ni para
 selecciones de muchas opciones.
+
+## Estilo Paper
+Con `data-ds-style="paper"` el disparador usa radio de 12 px, el fondo al pasar el cursor es `control-hover` y el panel usa `surface-overlay` con radio de 8 px. Los elementos del menú tienen 10 px de relleno vertical, radio de 6 px y texto `ui` de 15 px. El foco usa el anillo azul del tema. La API y el comportamiento no cambian.

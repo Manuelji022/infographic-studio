@@ -80,3 +80,10 @@
   line-height: var(--ds-type-ui-strong-leading);
   letter-spacing: var(--ds-type-ui-strong-tracking);
 }
+
+/* Paper style */
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .step:not(:last-child)::before {
+    background: var(--ds-border-strong);
+  }
+}

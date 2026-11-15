@@ -7,7 +7,7 @@ import { ErrorScreen, useClientLocale } from "../components/error-screen";
 export default function GlobalError({ error, retry }: { error: unknown; retry: () => void }) {
   const locale = useClientLocale();
   return (
-    <html lang={locale} data-ds-theme="auto">
+    <html lang={locale} data-ds-style="studio" data-ds-theme="auto">
       <body>
         <ErrorScreen error={error} retry={retry} locale={locale} />
       </body>
