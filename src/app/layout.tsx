@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { cookies, headers } from "next/headers";
 import { AppHeaderShell } from "../components/app-header";
 import { getAuth } from "../lib/auth";
-import { LOCALE_COOKIE, parseLocale } from "../lib/locale";
+import { LOCALE_COOKIE, THEME_COOKIE, parseLocale, parseTheme } from "../lib/locale";
 import "./globals.css";
 
 export const instant = false;
@@ -20,6 +20,13 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     // Fall back to the default locale if request cookies cannot be read.
   }
 
+  let theme = parseTheme(undefined);
+  try {
+    theme = parseTheme((await cookies()).get(THEME_COOKIE)?.value);
+  } catch {
+    // Follow the system theme if request cookies cannot be read.
+  }
+
   let user: { name: string; email: string } | null = null;
   try {
     const session = await getAuth().api.getSession({ headers: await headers() });
@@ -29,7 +36,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   }
 
   return (
-    <html lang={locale} data-ds-theme="auto">
+    <html lang={locale} data-ds-theme={theme}>
       <head>
         <link
           rel="preload"
@@ -47,7 +54,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body>
-        <AppHeaderShell locale={locale} user={user} />
+        <AppHeaderShell locale={locale} theme={theme} user={user} />
         {children}
       </body>
     </html>
