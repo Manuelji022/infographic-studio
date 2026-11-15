@@ -30,6 +30,7 @@ export * from "./composites/FilterBar";
 export * from "./composites/GenerationProgress";
 export * from "./composites/InfographicCard";
 export * from "./composites/LanguageToggle";
+export * from "./composites/ThemeToggle";
 export * from "./composites/StyleToggle";
 export * from "./composites/PromptComposer";
 export * from "./composites/SearchBar";

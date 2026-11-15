@@ -17,3 +17,18 @@ export function writeLocaleCookie(locale: Locale): void {
     // Cookie persistence is best-effort; the UI remains usable.
   }
 }
+
+export const THEME_COOKIE = "ds-theme";
+export type ThemeChoice = "light" | "dark";
+
+export function parseTheme(value: unknown): ThemeChoice | "auto" {
+  return value === "light" || value === "dark" ? value : "auto";
+}
+
+export function writeThemeCookie(theme: ThemeChoice): void {
+  try {
+    document.cookie = `${THEME_COOKIE}=${theme}; path=/; max-age=31536000; samesite=lax`;
+  } catch {
+    // Persistence is best-effort; the theme still applies for this page.
+  }
+}

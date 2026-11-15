@@ -1,0 +1,45 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  box-sizing: border-box;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-surface-deep);
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ds-radius-lg);
+  background: transparent;
+  color: var(--ds-text-muted);
+  cursor: pointer;
+}
+
+.segment[aria-pressed="true"] {
+  background: var(--ds-surface-inverse);
+  color: var(--ds-text-inverse);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .segment {
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+}
+
+.segment:not([aria-pressed="true"]):hover {
+  color: var(--ds-text);
+}
+
+.segment:focus-visible {
+  outline: var(--ds-focus-ring-width) solid var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}

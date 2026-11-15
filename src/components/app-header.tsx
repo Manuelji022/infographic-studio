@@ -3,23 +3,27 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { getMessages, type Locale } from "../../messages";
-import { AppHeader, LanguageToggle, StyleToggle, UserMenu } from "@ds/ui";
+import { useState } from "react";
+import { AppHeader, LanguageToggle, StyleToggle, ThemeToggle, UserMenu } from "@ds/ui";
 import { authClient } from "../lib/auth-client";
-import { writeLocaleCookie } from "../lib/locale";
+import { writeLocaleCookie, writeThemeCookie, type ThemeChoice } from "../lib/locale";
 import { writeStyleCookie, type DesignStyle } from "../lib/style";
 
 export function AppHeaderShell({
   locale,
   style,
+  theme: initialTheme,
   user,
 }: {
   locale: Locale;
   style: DesignStyle;
+  theme: ThemeChoice | "auto";
   user: { name: string; email: string } | null;
 }) {
   const messages = getMessages(locale);
   const pathname = usePathname();
   const router = useRouter();
+  const [theme, setTheme] = useState(initialTheme);
   // Login and shared-link screens have their own minimal chrome (UI_EXPERIENCE §4.1, §4.9).
   // The workspace (/i/*) brings its own thin bar (UI_EXPERIENCE §4.3).
   const bare =
@@ -60,6 +64,17 @@ export function AppHeaderShell({
             onChange={(value) => {
               writeStyleCookie(value as DesignStyle);
               router.refresh();
+            }}
+          />
+          <ThemeToggle
+            label={messages.themeToggle}
+            lightLabel={messages.themeLight}
+            darkLabel={messages.themeDark}
+            value={theme}
+            onChange={(value) => {
+              setTheme(value);
+              writeThemeCookie(value);
+              document.documentElement.dataset.dsTheme = value;
             }}
           />
           <LanguageToggle
