@@ -24,3 +24,7 @@ Con `title`, expone `role="img"` y asocia el título con `aria-labelledby`. Sin 
 ## Cuándo usarlo y cuándo no
 
 Úsalo junto a texto o con un nombre accesible cuando sea informativo. No lo uses como sustituto de texto esencial sin etiqueta accesible.
+
+## Estilo Paper
+
+Sin reglas propias: trazo de 1,5, tamaños 16/20/24 y color heredado (`currentColor`) coinciden con Paper. Los colores de intención del frame son una opción de Paper fuera de la API.

@@ -32,3 +32,9 @@ Los campos tienen etiquetas. Copiar anuncia el éxito mediante una región de es
 
 ## Cuándo usarlo y cuándo no
 Úsalo para gestionar enlaces compartidos. No lo uses como diálogo de confirmación destructiva.
+
+## Estilo Paper
+Hereda el estilo Paper de `Dialog` (panel `--ds-surface-overlay`, radio 24px,
+relleno de 32px). No añade CSS propio específico de Paper. Pendiente de
+diseño: el marco Paper dibuja una línea superior sobre el pie «Cerrar»; hoy el
+pie lo gestiona `Dialog` y no se ha añadido.

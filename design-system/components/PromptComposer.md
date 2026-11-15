@@ -44,3 +44,8 @@ El selector de tipo (`ContentTypeSelect`) es un listbox: `aria-haspopup`, `aria-
 ## Cuándo usarlo y cuándo no
 Úsalo para la entrada principal de generación. Para un selector con descripciones en otro
 contexto, usa `ContentTypeSelect` por separado; para opciones simples, `Select`.
+
+## Estilo Paper
+Contenedor con radio 16px y borde `border-strong`; los botones de icono y «+ URL de origen»
+usan texto `text-subtle` y radio 8px, con fondo `control-hover` al pasar el ratón. El error de
+URL usa `danger-text`. Todo el color sale de roles semánticos; Studio no cambia.

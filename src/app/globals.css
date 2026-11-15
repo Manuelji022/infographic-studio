@@ -1,6 +1,7 @@
 @import "../../design-system/fonts/fonts.css";
 @import "../../design-system/tokens/build/tokens.css";
 @import "../../design-system/tokens/build/themes.css";
+@import "../../design-system/tokens/build/styles.css";
 
 html {
   height: 100%;
@@ -24,6 +25,16 @@ body {
   line-height: var(--ds-type-body-leading);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* A nested style boundary (e.g. the catalog stage) restates body text, so it does not
+   inherit font sizes already computed from the outer style. Never on <html> (rem units). */
+body [data-ds-style] {
+  color: var(--ds-text);
+  font-family: var(--ds-font-serif);
+  font-size: var(--ds-type-body-size);
+  font-weight: var(--ds-type-body-weight);
+  line-height: var(--ds-type-body-leading);
 }
 
 * {

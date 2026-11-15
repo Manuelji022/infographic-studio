@@ -25,3 +25,6 @@ accesible, icono informativo y texto visible; no depende solo del color.
 ## Cuándo usarlo y cuándo no
 Usar para controles con etiqueta o mensaje contextual. No anidar campos ni usarlo para
 contenido que no sea un formulario.
+
+## Estilo Paper
+Paper no cambia la estructura de `Field`: separación de 8 px, descripción y error en `body-sm` (13/20 en Paper), icono de error de 16 px con `danger-text`. Los cambios visibles vienen de `Label` y de los controles hijos (`Input`, `Select`, `Textarea`).

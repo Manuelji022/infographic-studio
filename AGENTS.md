@@ -58,6 +58,8 @@ scripts/
                           # charts-layout-check.mjs, shoot.mjs (screenshots)
 ```
 
+Design system index (where tokens, component specs and the manifest live, plus naming conventions): `design-system/README.md`. Read it before touching tokens or components.
+
 Plans and specs live at the root: `FUNCTIONAL_SPEC.md` (the what), `DESIGN_SYSTEM_PLAN.md` and `CHART_LIBRARY_PLAN.md` (the how, with progress tables and lessons).
 
 ## Testing approach

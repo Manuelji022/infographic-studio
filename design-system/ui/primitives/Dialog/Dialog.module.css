@@ -5,7 +5,7 @@
   padding: 0;
   border: 1px solid var(--ds-border);
   border-radius: var(--ds-radius-card);
-  background: var(--ds-surface);
+  background: var(--ds-surface-overlay);
   color: var(--ds-text);
 }
 
@@ -34,4 +34,14 @@
   justify-content: flex-end;
   gap: var(--ds-spacing-12);
   margin-top: var(--ds-spacing-24);
+}
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .dialog {
+    border-radius: var(--ds-paper-radius-5xl);
+  }
+
+  :scope .panel {
+    padding: var(--ds-spacing-32);
+  }
 }

@@ -21,6 +21,20 @@
   border-radius: 50%;
 }
 
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .skeleton {
+    background: var(--ds-control);
+  }
+
+  :scope .text {
+    border-radius: var(--ds-paper-radius-sm);
+  }
+
+  :scope .block {
+    border-radius: var(--ds-paper-radius-lg);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .skeleton {
     animation: pulse 1.5s ease-in-out infinite;

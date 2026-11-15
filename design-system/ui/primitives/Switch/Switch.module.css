@@ -59,4 +59,42 @@
   .control::before {
     transition: transform 160ms ease;
   }
+}/* Paper style */
+
+@scope (:global([data-ds-style="paper"])) to (:global([data-ds-style="studio"])) {
+  :scope .control {
+    width: 40px;
+    height: 24px;
+    border: 0;
+    border-radius: var(--ds-paper-radius-full);
+    background: var(--ds-control);
+  }
+
+  :scope .control:hover:not(:disabled):not(:checked) {
+    background: var(--ds-control-hover);
+  }
+
+  :scope .control::before {
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background: var(--ds-text);
+  }
+
+  :scope .control:checked {
+    background: var(--ds-surface-inverse);
+  }
+
+  :scope .control:checked:hover:not(:disabled) {
+    background: var(--ds-surface-inverse-hover);
+  }
+
+  :scope .control:checked::before {
+    background: var(--ds-text-inverse);
+    transform: translate(16px, -50%);
+  }
+
+  :scope .label:has(.control:disabled) {
+    color: var(--ds-text-disabled);
+  }
 }

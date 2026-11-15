@@ -3,6 +3,9 @@ import type { ComponentType } from "react";
 /** Language of the sample content shown in the catalog (independent of the app locale). */
 export type CatalogLocale = "es" | "en";
 
+/** Visual style of the design system shown in the catalog (data-ds-style). */
+export type CatalogStyle = "studio" | "paper";
+
 export type CatalogTheme = "auto" | "light" | "dark";
 
 /** Server-built data for the infographic section (CSS and reference examples as fragments). */

@@ -1,0 +1,52 @@
+# Infographic Studio design system
+
+> Design tokens, React UI components, an infographic vocabulary (`ig-*` HTML/CSS components) and a chart library. Imported in code as `@ds/*`. Locales: es, en. Themes: light, dark. Read `README.md` first; paths below are relative to `design-system/`.
+
+## Start here
+
+- [README.md](README.md): index of where everything lives, naming conventions and rules for agents
+
+## Tokens (source of truth: DTCG JSON; CSS is generated, never edit it)
+
+- [tokens/primitives.tokens.json](tokens/primitives.tokens.json): colour, font, spacing and radius primitives
+- [tokens/semantic.tokens.json](tokens/semantic.tokens.json): layout, component and focus tokens
+- [tokens/typography.tokens.json](tokens/typography.tokens.json): type scale
+- [tokens/themes/light.tokens.json](tokens/themes/light.tokens.json): light theme values
+- [tokens/themes/dark.tokens.json](tokens/themes/dark.tokens.json): dark theme values
+- [tokens/build/tokens.css](tokens/build/tokens.css): generated `--ds-*` custom properties
+- [tokens/build/themes.css](tokens/build/themes.css): generated theme overrides
+
+## App UI components (React)
+
+- [ui/index.ts](ui/index.ts): barrel export of all primitives and composites
+- [ui/primitives/](ui/primitives/): Badge, Button, Card, Checkbox, Dialog, Divider, Field, Icon, Input, Label, Link, Note, Select, Skeleton, Spinner, Switch, Text, Textarea, VisuallyHidden
+- [ui/composites/](ui/composites/): AppHeader, ConfirmDialog, EmptyState, ErrorMessage, ErrorState, FilterBar, GenerationProgress, InfographicCard, LanguageToggle, PromptComposer, SearchBar, ShareDialog, UserMenu
+- [components/](components/): one `<Name>.md` spec per component (props, variants, accessibility, when to use); infographic ones are `ig-<name>.md`
+
+## Infographic vocabulary
+
+- [infographic/manifest.ts](infographic/manifest.ts): `COMPONENTS`, the allowed `ig-*` classes, variants and data props
+- [infographic/validate.ts](infographic/validate.ts): `validateFragment`, markup must pass it
+- [infographic/render.ts](infographic/render.ts): `buildDocument`, wraps a fragment into a full document
+- [infographic/document.ts](infographic/document.ts): locales, themes, CSP
+- [infographic/components.css](infographic/components.css): `ig-*` styles (partials in `infographic/css/`)
+- [examples/](examples/): reference infographics, `<name>.<locale>.html` plus `<name>.charts.<locale>.json`
+
+## Charts
+
+- [charts/index.ts](charts/index.ts): `validateChartSpec`, `renderChart`, `expandCharts`
+- [charts/schema/](charts/schema/): zod specs per chart type (column, donut, line, pictogram, ranking, scatter, stacked, treemap)
+- [charts/render/](charts/render/): SVG renderers per chart type
+- [../CHART_LIBRARY_PLAN.md](../CHART_LIBRARY_PLAN.md): chart library plan and progress
+
+## Conventions
+
+- Tokens: `--ds-<group>-<name>`; prefer semantic groups (surface, text, border, accent, danger, focus) over `--ds-color-*` primitives; never hard-code colours
+- Infographic classes: BEM with `ig-` prefix (`ig-block`, `ig-block__element`, `ig-block--variant`); chart ids match `/^[a-z][a-z0-9-]{0,31}$/` and are referenced by `data-chart`
+- After editing tokens run `pnpm tokens:build`; verify with `pnpm tokens:check` and `pnpm contrast:check`
+
+## Optional
+
+- [../DESIGN_SYSTEM_PLAN.md](../DESIGN_SYSTEM_PLAN.md): design system plan, progress and lessons
+- [../FUNCTIONAL_SPEC.md](../FUNCTIONAL_SPEC.md): product spec
+- [catalog/registry.ts](catalog/registry.ts): sections of the private visual catalogs

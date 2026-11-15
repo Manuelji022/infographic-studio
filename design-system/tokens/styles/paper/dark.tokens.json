@@ -1,0 +1,419 @@
+{
+  "palette": {
+    "page": {
+      "$value": "#111111",
+      "$type": "color"
+    },
+    "shell": {
+      "$value": "#000000",
+      "$type": "color"
+    },
+    "card": {
+      "$value": "#FFFFFF09",
+      "$type": "color"
+    },
+    "sunken": {
+      "$value": "#00000066",
+      "$type": "color"
+    },
+    "overlay": {
+      "$value": "oklch(25.2% 0 0)",
+      "$type": "color"
+    },
+    "component": {
+      "$value": "#FFFFFF12",
+      "$type": "color"
+    },
+    "component-hover": {
+      "$value": "#FFFFFF1B",
+      "$type": "color"
+    },
+    "component-active": {
+      "$value": "#FFFFFF22",
+      "$type": "color"
+    },
+    "primary-foreground": {
+      "$value": "#FFFFFFED",
+      "$type": "color"
+    },
+    "secondary-foreground": {
+      "$value": "#FFFFFFBF",
+      "$type": "color"
+    },
+    "tertiary-foreground": {
+      "$value": "#FFFFFF8A",
+      "$type": "color"
+    },
+    "disabled-foreground": {
+      "$value": "#FFFFFF55",
+      "$type": "color"
+    },
+    "on-solid-foreground": {
+      "$value": "#FFFFFF",
+      "$type": "color"
+    },
+    "brand-solid": {
+      "$value": "#0D74CE",
+      "$type": "color"
+    },
+    "brand-solid-hover": {
+      "$value": "#0A66B8",
+      "$type": "color"
+    },
+    "brand-solid-active": {
+      "$value": "#095AA3",
+      "$type": "color"
+    },
+    "brand-subtle": {
+      "$value": "#0077FF3A",
+      "$type": "color"
+    },
+    "brand-foreground": {
+      "$value": "#70B8FF",
+      "$type": "color"
+    },
+    "brand-border": {
+      "$value": "#0F89FD7F",
+      "$type": "color"
+    },
+    "positive-solid": {
+      "$value": "#218358",
+      "$type": "color"
+    },
+    "positive-subtle": {
+      "$value": "#22FF991E",
+      "$type": "color"
+    },
+    "positive-foreground": {
+      "$value": "#3DD68C",
+      "$type": "color"
+    },
+    "positive-border": {
+      "$value": "#44FFAA4B",
+      "$type": "color"
+    },
+    "warning-solid": {
+      "$value": "#C24800",
+      "$type": "color"
+    },
+    "warning-subtle": {
+      "$value": "#FB6A0025",
+      "$type": "color"
+    },
+    "warning-foreground": {
+      "$value": "#FFA057",
+      "$type": "color"
+    },
+    "warning-border": {
+      "$value": "#FD75045C",
+      "$type": "color"
+    },
+    "danger-solid": {
+      "$value": "#D13415",
+      "$type": "color"
+    },
+    "danger-solid-hover": {
+      "$value": "#B82C0F",
+      "$type": "color"
+    },
+    "danger-subtle": {
+      "$value": "#FF55330F",
+      "$type": "color"
+    },
+    "danger-foreground": {
+      "$value": "#FF977D",
+      "$type": "color"
+    },
+    "danger-border": {
+      "$value": "#FF4F3864",
+      "$type": "color"
+    },
+    "inverted": {
+      "$value": "#FFFFFFF2",
+      "$type": "color"
+    },
+    "inverted-hover": {
+      "$value": "#FFFFFFCC",
+      "$type": "color"
+    },
+    "on-inverted-foreground": {
+      "$value": "#000000",
+      "$type": "color"
+    },
+    "border-default": {
+      "$value": "#FFFFFF12",
+      "$type": "color"
+    },
+    "border-subtle": {
+      "$value": "#FFFFFF09",
+      "$type": "color"
+    },
+    "border-strong": {
+      "$value": "#FFFFFF2C",
+      "$type": "color"
+    },
+    "focus-ring": {
+      "$value": "#3B9EFF",
+      "$type": "color"
+    }
+  },
+  "roles": {
+    "canvas": {
+      "$value": "{styles.paper.dark.palette.shell}",
+      "$type": "color"
+    },
+    "surface": {
+      "$value": "{styles.paper.dark.palette.page}",
+      "$type": "color"
+    },
+    "surface-feature": {
+      "$value": "{styles.paper.dark.palette.brand-subtle}",
+      "$type": "color"
+    },
+    "surface-deep": {
+      "$value": "{styles.paper.dark.palette.sunken}",
+      "$type": "color"
+    },
+    "surface-inverse": {
+      "$value": "{styles.paper.dark.palette.inverted}",
+      "$type": "color"
+    },
+    "text": {
+      "$value": "{styles.paper.dark.palette.primary-foreground}",
+      "$type": "color"
+    },
+    "text-muted": {
+      "$value": "{styles.paper.dark.palette.secondary-foreground}",
+      "$type": "color"
+    },
+    "text-inverse": {
+      "$value": "{styles.paper.dark.palette.on-inverted-foreground}",
+      "$type": "color"
+    },
+    "border": {
+      "$value": "{styles.paper.dark.palette.border-default}",
+      "$type": "color"
+    },
+    "border-strong": {
+      "$value": "{styles.paper.dark.palette.border-strong}",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "{styles.paper.dark.palette.brand-solid}",
+      "$type": "color"
+    },
+    "accent-hover": {
+      "$value": "{styles.paper.dark.palette.brand-solid-hover}",
+      "$type": "color"
+    },
+    "on-accent": {
+      "$value": "{styles.paper.dark.palette.on-solid-foreground}",
+      "$type": "color"
+    },
+    "focus-ring": {
+      "$value": "{styles.paper.dark.palette.focus-ring}",
+      "$type": "color"
+    },
+    "danger": {
+      "$value": "{styles.paper.dark.palette.danger-solid}",
+      "$type": "color"
+    },
+    "danger-text": {
+      "$value": "{styles.paper.dark.palette.danger-foreground}",
+      "$type": "color"
+    },
+    "control": {
+      "$value": "{styles.paper.dark.palette.component}",
+      "$type": "color"
+    },
+    "control-hover": {
+      "$value": "{styles.paper.dark.palette.component-hover}",
+      "$type": "color"
+    },
+    "control-active": {
+      "$value": "{styles.paper.dark.palette.component-active}",
+      "$type": "color"
+    },
+    "surface-overlay": {
+      "$value": "{styles.paper.dark.palette.overlay}",
+      "$type": "color"
+    },
+    "surface-inverse-hover": {
+      "$value": "{styles.paper.dark.palette.inverted-hover}",
+      "$type": "color"
+    },
+    "text-subtle": {
+      "$value": "{styles.paper.dark.palette.tertiary-foreground}",
+      "$type": "color"
+    },
+    "text-disabled": {
+      "$value": "{styles.paper.dark.palette.disabled-foreground}",
+      "$type": "color"
+    },
+    "border-subtle": {
+      "$value": "{styles.paper.dark.palette.border-subtle}",
+      "$type": "color"
+    },
+    "accent-active": {
+      "$value": "{styles.paper.dark.palette.brand-solid-active}",
+      "$type": "color"
+    },
+    "accent-subtle": {
+      "$value": "{styles.paper.dark.palette.brand-subtle}",
+      "$type": "color"
+    },
+    "accent-text": {
+      "$value": "{styles.paper.dark.palette.brand-foreground}",
+      "$type": "color"
+    },
+    "accent-border": {
+      "$value": "{styles.paper.dark.palette.brand-border}",
+      "$type": "color"
+    },
+    "danger-hover": {
+      "$value": "{styles.paper.dark.palette.danger-solid-hover}",
+      "$type": "color"
+    },
+    "danger-subtle": {
+      "$value": "{styles.paper.dark.palette.danger-subtle}",
+      "$type": "color"
+    },
+    "danger-border": {
+      "$value": "{styles.paper.dark.palette.danger-border}",
+      "$type": "color"
+    },
+    "success": {
+      "$value": "{styles.paper.dark.palette.positive-solid}",
+      "$type": "color"
+    },
+    "success-text": {
+      "$value": "{styles.paper.dark.palette.positive-foreground}",
+      "$type": "color"
+    },
+    "success-subtle": {
+      "$value": "{styles.paper.dark.palette.positive-subtle}",
+      "$type": "color"
+    },
+    "success-border": {
+      "$value": "{styles.paper.dark.palette.positive-border}",
+      "$type": "color"
+    },
+    "warning": {
+      "$value": "{styles.paper.dark.palette.warning-solid}",
+      "$type": "color"
+    },
+    "warning-text": {
+      "$value": "{styles.paper.dark.palette.warning-foreground}",
+      "$type": "color"
+    },
+    "warning-subtle": {
+      "$value": "{styles.paper.dark.palette.warning-subtle}",
+      "$type": "color"
+    },
+    "warning-border": {
+      "$value": "{styles.paper.dark.palette.warning-border}",
+      "$type": "color"
+    },
+    "data": {
+      "1": {
+        "$value": "{color.clay}",
+        "$type": "color",
+        "$description": "Theme dark data color 1."
+      },
+      "2": {
+        "$value": "{color.ivory-light}",
+        "$type": "color",
+        "$description": "Theme dark data color 2."
+      },
+      "3": {
+        "$value": "{color.ochre-light}",
+        "$type": "color",
+        "$description": "Theme dark data color 3."
+      },
+      "4": {
+        "$value": "{color.olive-light}",
+        "$type": "color",
+        "$description": "Theme dark data color 4."
+      },
+      "5": {
+        "$value": "{color.taupe-light}",
+        "$type": "color",
+        "$description": "Theme dark data color 5."
+      },
+      "6": {
+        "$value": "{color.sage-light}",
+        "$type": "color",
+        "$description": "Theme dark data color 6."
+      }
+    },
+    "on-data": {
+      "1": {
+        "$value": "{color.slate-dark}",
+        "$type": "color",
+        "$description": "Theme dark on-data 1 foreground color."
+      },
+      "2": {
+        "$value": "{color.slate-dark}",
+        "$type": "color",
+        "$description": "Theme dark on-data 2 foreground color."
+      },
+      "3": {
+        "$value": "{color.slate-dark}",
+        "$type": "color",
+        "$description": "Theme dark on-data 3 foreground color."
+      },
+      "4": {
+        "$value": "{color.slate-dark}",
+        "$type": "color",
+        "$description": "Theme dark on-data 4 foreground color."
+      },
+      "5": {
+        "$value": "{color.slate-dark}",
+        "$type": "color",
+        "$description": "Theme dark on-data 5 foreground color."
+      },
+      "6": {
+        "$value": "{color.slate-dark}",
+        "$type": "color",
+        "$description": "Theme dark on-data 6 foreground color."
+      }
+    },
+    "chart": {
+      "highlight": {
+        "$value": "{color.yellow}",
+        "$type": "color",
+        "$description": "Theme dark chart highlight color."
+      },
+      "highlight-soft": {
+        "$value": "{color.yellow-muted}",
+        "$type": "color",
+        "$description": "Theme dark chart soft highlight color."
+      },
+      "on-highlight": {
+        "$value": "{color.slate-dark}",
+        "$type": "color",
+        "$description": "Theme dark chart highlight foreground color."
+      },
+      "negative": {
+        "$value": "{color.red}",
+        "$type": "color",
+        "$description": "Theme dark chart negative emphasis color."
+      },
+      "on-negative": {
+        "$value": "{color.ivory-light}",
+        "$type": "color",
+        "$description": "Theme dark chart negative foreground color."
+      },
+      "gap": {
+        "$value": "{color.slate-raised}",
+        "$type": "color",
+        "$description": "Theme dark chart cell gap color."
+      },
+      "grid": {
+        "$value": "{color.slate-medium}",
+        "$type": "color",
+        "$description": "Theme dark chart grid color."
+      }
+    }
+  }
+}

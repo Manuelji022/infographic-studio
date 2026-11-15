@@ -23,3 +23,7 @@ Usa semántica y navegación de teclado nativas del elemento `a`, con foco visib
 ## Cuándo usarlo y cuándo no
 
 Úsalo para navegar a un destino. No lo uses para ejecutar una acción; para eso corresponde Button.
+
+## Estilo Paper
+
+Sin reglas propias: subrayado de 1 px, color heredado y anillo de foco vienen de los tokens de Paper. El tono de marca del frame es una opción de Paper fuera de la API.

@@ -24,3 +24,6 @@ cierre al hacer clic fuera. Los controles ofrecen foco visible.
 
 ## Cuándo usarlo y cuándo no
 Úsalo para acciones vinculadas a la sesión actual. No lo uses como menú principal de navegación.
+
+## Estilo Paper
+Con `data-ds-style="paper"` el disparador y el panel tienen radio de 8 px y borde `border`. El panel usa `surface-overlay`. Una línea divisoria de 1 px separa la identidad de las acciones. Las acciones son rectangulares (sin radio), con 14 px de relleno vertical y fondo `control-hover` al pasar el cursor. La API no cambia.

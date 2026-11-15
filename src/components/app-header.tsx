@@ -4,16 +4,19 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { getMessages, type Locale } from "../../messages";
 import { useState } from "react";
-import { AppHeader, LanguageToggle, ThemeToggle, UserMenu } from "@ds/ui";
+import { AppHeader, LanguageToggle, StyleToggle, ThemeToggle, UserMenu } from "@ds/ui";
 import { authClient } from "../lib/auth-client";
 import { writeLocaleCookie, writeThemeCookie, type ThemeChoice } from "../lib/locale";
+import { writeStyleCookie, type DesignStyle } from "../lib/style";
 
 export function AppHeaderShell({
   locale,
+  style,
   theme: initialTheme,
   user,
 }: {
   locale: Locale;
+  style: DesignStyle;
   theme: ThemeChoice | "auto";
   user: { name: string; email: string } | null;
 }) {
@@ -51,6 +54,18 @@ export function AppHeaderShell({
       items={items}
       actions={
         <>
+          <StyleToggle
+            label={messages.styleToggle}
+            value={style}
+            options={[
+              { value: "studio", label: messages.styleStudio },
+              { value: "paper", label: messages.stylePaper },
+            ]}
+            onChange={(value) => {
+              writeStyleCookie(value as DesignStyle);
+              router.refresh();
+            }}
+          />
           <ThemeToggle
             label={messages.themeToggle}
             lightLabel={messages.themeLight}

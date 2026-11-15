@@ -179,5 +179,97 @@
       "$type": "color",
       "$description": "Theme light on-data 6 foreground color."
     }
+  },
+  "control": {
+    "$value": "{color.ivory-light}",
+    "$type": "color"
+  },
+  "control-hover": {
+    "$value": "{color.oat-warm}",
+    "$type": "color"
+  },
+  "control-active": {
+    "$value": "{color.oat-warm}",
+    "$type": "color"
+  },
+  "surface-overlay": {
+    "$value": "{color.ivory-light}",
+    "$type": "color"
+  },
+  "surface-inverse-hover": {
+    "$value": "{color.slate-medium}",
+    "$type": "color"
+  },
+  "text-subtle": {
+    "$value": "{color.slate-soft}",
+    "$type": "color"
+  },
+  "text-disabled": {
+    "$value": "{color.slate-soft}",
+    "$type": "color"
+  },
+  "border-subtle": {
+    "$value": "{color.stone}",
+    "$type": "color"
+  },
+  "accent-active": {
+    "$value": "{color.clay-deep}",
+    "$type": "color"
+  },
+  "accent-subtle": {
+    "$value": "{color.manilla}",
+    "$type": "color"
+  },
+  "accent-text": {
+    "$value": "{color.slate-dark}",
+    "$type": "color"
+  },
+  "accent-border": {
+    "$value": "{color.cloud-dark}",
+    "$type": "color"
+  },
+  "danger-hover": {
+    "$value": "{color.red-deep}",
+    "$type": "color"
+  },
+  "danger-subtle": {
+    "$value": "{color.ivory-light}",
+    "$type": "color"
+  },
+  "danger-border": {
+    "$value": "{color.red}",
+    "$type": "color"
+  },
+  "success": {
+    "$value": "{color.olive}",
+    "$type": "color"
+  },
+  "success-text": {
+    "$value": "{color.olive}",
+    "$type": "color"
+  },
+  "success-subtle": {
+    "$value": "{color.ivory-light}",
+    "$type": "color"
+  },
+  "success-border": {
+    "$value": "{color.olive}",
+    "$type": "color"
+  },
+  "warning": {
+    "$value": "{color.ochre}",
+    "$type": "color"
+  },
+  "warning-text": {
+    "$value": "{color.ochre}",
+    "$type": "color"
+  },
+  "warning-subtle": {
+    "$value": "{color.ivory-light}",
+    "$type": "color"
+  },
+  "warning-border": {
+    "$value": "{color.ochre}",
+    "$type": "color"
   }
 }

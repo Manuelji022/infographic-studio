@@ -30,3 +30,7 @@ anillo visible; el estado deshabilitado usa `disabled` y cambia visualmente.
 Úsalo para ejecutar acciones. Reserva accent a una única acción principal.
 Usa `tone="inverse"` en outline y ghost sobre superficies oscuras. Para
 navegación usa un enlace, no un botón.
+
+## Estilo Paper
+
+Radio `--ds-paper-radius-md`, etiqueta 15 px medium (`ui-medium`). `accent` usa el relleno de marca; `ivory` usa `--ds-control` con borde `--ds-border`; `outline` usa borde `--ds-border-strong`; hover de ivory, outline y ghost con `--ds-control-hover`. Deshabilitado: `--ds-control` sobre `--ds-surface` con texto `--ds-text-disabled` y sin borde. `tone="inverse"` no cambia. La variante danger del frame Paper no existe en la API y queda fuera. Las reglas Paper usan `@scope` (de `data-ds-style="paper"` hasta un `data-ds-style="studio"` anidado), así que un subárbol Studio dentro de Paper conserva su aspecto.

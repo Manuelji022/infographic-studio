@@ -24,3 +24,6 @@ con teclado nativos, y muestra foco visible. La etiqueta se asocia al control.
 ## Cuándo usarlo y cuándo no
 Úsalo para opciones binarias de efecto inmediato. No lo uses para seleccionar
 entre varias alternativas ni para acciones que requieren confirmación explícita.
+
+## Estilo Paper
+Con `data-ds-style="paper"`: pista de 40 × 24 px sin borde, radio total; apagada en `control` (hover: `control-hover`) con pulgar de 18 px en `text`; encendida en `surface-inverse` con pulgar `text-inverse`. Deshabilitado: etiqueta en `text-disabled`. Foco con el anillo habitual. Las reglas Paper usan `@scope` (de `data-ds-style="paper"` hasta un `data-ds-style="studio"` anidado), así que un subárbol Studio dentro de Paper conserva su aspecto.

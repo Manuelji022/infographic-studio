@@ -29,3 +29,6 @@ El enlace conserva subrayado y foco visible en la tarjeta. Los metadatos se pres
 ## Cuándo usarlo y cuándo no
 Úsalo para un elemento de una biblioteca de infografías. No lo uses para acciones independientes
 o contenido que no tenga un destino principal.
+
+## Estilo Paper
+La tarjeta usa radio de 24 px (`--ds-paper-radius-5xl`); colores, borde de 1 px, título subrayado y rellenos se mantienen con los mismos roles semánticos. La miniatura muestra infografías, que conservan los colores Studio en esta fase.

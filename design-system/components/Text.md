@@ -26,3 +26,7 @@ El elemento se elige con `as` para conservar la jerarquía semántica. El compon
 ## Cuándo usarlo y cuándo no
 
 Úsalo para texto que debe adoptar un rol tipográfico del sistema. No lo uses para controles interactivos ni para reemplazar elementos semánticos con una jerarquía incorrecta.
+
+## Estilo Paper
+
+Sin reglas propias: los roles tipográficos y los tonos se adaptan por los tokens de Paper (Geist, escala 56/44/24/20/18/15/13/12/11).
